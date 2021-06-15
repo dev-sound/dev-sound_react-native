@@ -2,7 +2,7 @@ import React from 'react';
 import {Text,View,SafeAreaView,Image,StyleSheet} from 'react-native';
 import Header from './src/componentes/Header'
 import Banner from './assets/img/banner1.png'
-import TextoBR from './src/componentes/texto'
+
 
 export default () => {
   return (
@@ -17,9 +17,9 @@ export default () => {
         </View>
 
     </SafeAreaView>
-  )
-}
+    )
 
+  }
 
 const style =  StyleSheet.create(
   {
