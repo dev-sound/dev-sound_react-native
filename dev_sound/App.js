@@ -1,21 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {Text,View,SafeAreaView,Image,StyleSheet} from 'react-native';
+import Header from './src/componentes/Header'
+import Banner from './assets/img/banner1.png'
 
-export default function App() {
+
+export default () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+     <SafeAreaView>
+        <View>
+          <Header/>   
+         
+        </View>
+
+        <View /* Banner  */> 
+         <Image source={Banner}   style={style.bannerImgs} />
+        </View>
+
+    </SafeAreaView>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+const style =  StyleSheet.create(
+  {
+    bannerImgs:{
+      overflow:'hidden',
+     resizeMode:'contain'
+    }
+  }
+)
