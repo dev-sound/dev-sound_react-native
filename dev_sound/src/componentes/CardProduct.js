@@ -1,52 +1,55 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import SaxImg from '../../assets/sax_.png'
+import Sax_Strauss_Img from '../../assets/imgs/sax_.png'
 
 export default function cardProduct () {
     return (
-        <View style={styles.container}>
+        <View style={styles.cardProductContainer}>
             <TouchableOpacity>
-                <View style={styles.image}>
-                <Image style={styles.productimage} source={SaxImg}></Image>
+                <View style={styles.cardImageContainer}>
+                <Image style={styles.cardProductImage} source={Sax_Strauss_Img}></Image>
                 </View>
-                <Text style={styles.text}>SAXOFONE STRAUSS</Text>
-                <Text style={styles.text}>R$4.500,00</Text>
+                <Text style={styles.cardProductTitle}>SAXOFONE STRAUSS</Text>
+                <Text style={styles.cardProductPrice}>R$4.500,00</Text>
             </TouchableOpacity>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#fff',
+    cardProductContainer: {
         width: 200,
         height: 200,
-        alignItems: 'center',
     },
 
-    image: {
-        borderRadius: 11,
+    cardImageContainer: {
         shadowColor: "#000",
         shadowOffset: {
-            width: 0,
+            width: 3,
             height: 3,
         },
         shadowOpacity: 0.27,
         shadowRadius: 4.65,
-        
         elevation: 6,
         marginBottom: 10,
+        borderRadius: 11,
     },
 
-    productimage: {
-        borderRadius: 11,
+    cardProductImage: {
         width: 200,
         height: 200,
+        borderRadius: 11,
     },
 
-    text: {
-        color: '#000',
+    cardProductTitle: {
         fontWeight: 'bold',
         alignSelf: 'center',
+        fontSize: 17,
+    },
+
+    cardProductPrice: {
+        fontWeight: 'normal',
+        alignSelf: 'center',
+        fontSize: 18,
     }
   })
