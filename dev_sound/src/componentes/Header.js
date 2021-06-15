@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet,Text,View,Image,TouchableOpacity} from 'react-native';
-import Logo from './logo'
-
+import Logo from './logo';
+import MenuNav from './Navigation'
 
 const Header = props => {
 
@@ -10,12 +10,11 @@ const Header = props => {
         <View style={style.headerArea} >
            
             <TouchableOpacity>
-                    <Text> Nav </Text>
+                    <MenuNav style={style.test}/>
             </TouchableOpacity>
             
             <TouchableOpacity>
                     <Logo/>
-                 
             </TouchableOpacity>
 
             <TouchableOpacity>
@@ -33,11 +32,10 @@ const style =  StyleSheet.create(
         headerArea:{
             paddingTop:45,
             padding:15,
-            backgroundColor:"#F1F1F1",
             flexDirection:'row',
             justifyContent:'space-between',
             alignItems:'center'
-        }
+        },
     }
 )
 
