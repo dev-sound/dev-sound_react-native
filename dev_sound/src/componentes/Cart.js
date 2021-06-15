@@ -1,15 +1,14 @@
 import React from 'react'
 import {View, Text, TouchableOpacity, Image} from 'react-native'
-import MenuIcon from '../../assets/icons/menu_icon.png'
+import CartIcon from '../../assets/icons/cart_icon1.png'
 
 
 export default () => {
     return (
        <View>
            <TouchableOpacity>
-               <Image source={MenuIcon}/>  
+               <Image source={CartIcon}/>  
            </TouchableOpacity>
        </View>
     )
 }
-
