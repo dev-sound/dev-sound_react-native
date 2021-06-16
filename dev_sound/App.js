@@ -6,9 +6,12 @@ export default () => {
   return (
 
      <SafeAreaView >
-
+        
+        {/* Begin Pagina Home   */}
           <Home/>       
+        {/* End Pagina Home   */}
 
+        
       </SafeAreaView>
     )
 
