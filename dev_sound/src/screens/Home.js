@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity,View,SafeAreaView,Image,StyleSheet} from 'react-native';
 import Header from '../componentes/Header'
-import Banner from '../../assets/img/banner1.png'
+import Search  from '../componentes/Search';
 
 
 export default () => {
@@ -9,13 +9,9 @@ export default () => {
 
      <SafeAreaView style={style.container}>
         <View>
-          <Header/>   
+          <Header/>
+          <Search/>
         </View>
-
-        <View /* Banner  */>
-            <Image source={Banner}   style={style.bannerImgs} />
-        </View>
-
     </SafeAreaView>
     )
 
@@ -30,7 +26,6 @@ const style =  StyleSheet.create(
 
     container:{
       backgroundColor: "#F1F1F1",
-
     }
   }
 )

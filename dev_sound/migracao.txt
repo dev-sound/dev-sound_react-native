@@ -1,23 +1,23 @@
 Telas
     HOME
-        HEADER
+        HEADER --> Global
             LOGO
             DRAWER
             CART
-        SEARCH
+        SEARCH --> Global
         BANNER
         CARROUSEL
-            TITULO
+            TITULO  --> Global
             PRODUTOSGRID
 --------------------------------------------------            
     tela-PRODUTO
-        HEADER
+        HEADER --> Global
             LOGO
             DRAWER
             CART
         PRODUTO
             PROPS
-                TITULO
+                TITULO-PDP
                 IMAGE
                 PREÇO
                 DESCRIÇÃO
@@ -27,7 +27,7 @@ Telas
             NOME
 -----------------------------------------------------
     CARRINHO
-        HEADER
+        HEADER --> Global
             LOGO
             DRAWER
             CART
@@ -75,7 +75,7 @@ Telas
             NOME
 -----------------------------------------------------------
     PERFIL
-        HEADER
+        HEADER --> Global
             DRAWER
             CART
             LOGO
@@ -91,7 +91,7 @@ Telas
                 PRODUTO GRID DETALHADO
 ---------------------------------------------------------
     PAGAMENTO
-         HEADER
+         HEADER --> Global
             LOGO
             DRAWERBOTAO
             PROPS
@@ -105,7 +105,7 @@ Telas
         BTN 
 ------------------------------------------------------
     PEDIDO CONCLUIDO 
-        HEADER
+        HEADER --> Global
             DRAWER
             CART
             LOGO

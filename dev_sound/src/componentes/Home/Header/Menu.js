@@ -1,6 +1,6 @@
 import React from 'react'
 import {View, TouchableOpacity, Image} from 'react-native'
-import MenuIcon from '../../assets/icons/menu_icon.png'
+import MenuIcon from '../../../../assets/icons/menu_icon.png'
 
 
 export default () => {
