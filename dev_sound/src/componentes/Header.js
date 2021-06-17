@@ -9,7 +9,6 @@ export default () => {
 
     return (
         <View style={style.headerArea} >
-           
             <TouchableOpacity>
                     <MenuNav style={style.test}/>
             </TouchableOpacity>
