@@ -7,11 +7,13 @@ export default props => {
         <View style = {styles.container}>
            <View style = {styles.containerInput}>
                 <TextInput style = {styles.input} placeholder = 'O que você procura hoje?'/>
+             
                 <View  style = {styles.image}>
                     <TouchableOpacity style={styles.ImagePosition}>
                         <Image source = {searchIcon}/>
                     </TouchableOpacity>
                 </View>
+           
             </View>
         </View>
     )
@@ -53,7 +55,6 @@ const styles = StyleSheet.create({
     ImagePosition:{
         position:'relative',
         top:6
-
     }
 
 })

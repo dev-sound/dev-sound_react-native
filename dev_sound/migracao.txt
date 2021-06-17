@@ -1,4 +1,5 @@
 Telas
+
     HOME
         HEADER --> Global
             LOGO
@@ -8,7 +9,7 @@ Telas
         BANNER
         CARROUSEL
             TITULO  --> Global
-            PRODUTOSGRID
+            PRODUTOSGRID  --> GLOBAL
 --------------------------------------------------            
     tela-PRODUTO
         HEADER --> Global
@@ -21,7 +22,6 @@ Telas
                 IMAGE
                 PREÇO
                 DESCRIÇÃO
-            BTN
         BOTAO
             PROPS
             NOME
@@ -31,10 +31,10 @@ Telas
             LOGO
             DRAWER
             CART
-        TITULO
-        PRODUTO GRID DETALHADO
+        TITULO -- GLOBAL 
+        PRODUTO GRID DETALHADO  --> GLOBAL
         BTN QTD
-        BOTAO
+        BOTAO -- GLOBAL
             PROPS
             NOME
 -------------------------------------------------------            
@@ -47,8 +47,8 @@ Telas
                 TAMANHO
                 TITLE
                 COR
-                BORDERRADIUS
-        BOTAO
+                BORDERRADIUS --> Padronizar( Melhorias )
+        BOTAO  -- GLOBAL
             PROPS
             NOME
 ---------------------------------------------------------
@@ -59,44 +59,45 @@ Telas
                 TITLE
                 COR
                 BORDERRADIUS
-        BOTAO
+        BOTAO  -- GLOBAL
             PROPS
             NOME
 -----------------------------------------------------------        
     CATEGORIA
-        TITULO
-        PRODUTOSGRID
+        TITULO  -->  GLOBAL
+        PRODUTOSGRID --> GLOBAL 
 ----------------------------------------------------------
     CONTATO
         FIELD
-        MSG BOX
-        BOTAO
+         MSG BOX
+        BOTAO  -->  GLOBAL
             PROPS
             NOME
 -----------------------------------------------------------
     PERFIL
+    
         HEADER --> Global
             DRAWER
             CART
             LOGO
+
         ENDEREÇO
-            BOTAO
+            BOTAO  -->  GLOBAL
                 PROPS
                 NOME
-        PEDIDO
+
+        PEDIDO 
             PORTRAIT_PEDIDOS
-                BOTAO
+                BOTAO  --> GLOBAL
                     PROPS
                     NOME
-                PRODUTO GRID DETALHADO
+                PRODUTO GRID DETALHADO  --> GLOBAL
 ---------------------------------------------------------
     PAGAMENTO
-         HEADER --> Global
-            LOGO
-            DRAWERBOTAO
-            PROPS
-            NOME
-        FIELD
+         HEADER --> Global   {  Melhorias }
+            LOGO  
+            
+        FIELD  --> GLOBAL
             PROPS
                 TAMANHO
                 TITLE
