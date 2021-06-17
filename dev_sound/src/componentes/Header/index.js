@@ -63,3 +63,21 @@ const style =  StyleSheet.create(
     }
 )
 
+/* 
+
+
+Positions ---
+    Static  -> Padrão 
+    Relative -> Relativo da onde ele esta.. 
+    Absolute -> Não Respeita escopo 
+    Fixed - >  mantem fixo aonde decide o local..
+
+
+
+---------------------
+Top 
+Left
+Rigth
+Bottom
+
+*/

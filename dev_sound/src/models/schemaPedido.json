@@ -1,0 +1,29 @@
+{
+    "id_pedido":"",
+    "data_compra":"",
+    "previsao_entrega":"",
+    "Produtos" : [
+        {
+            "id_produto":"",
+            "Descricao":"",
+            "Qtd_Produto":"1",
+            "Valor_unitario":""
+        },
+        {
+            "id_produto":"",
+            "Descricao":"",
+            "Qtd_Produto":"1",
+            "Valor_unitario":""
+        }
+    ],
+
+    "Forma_pagamento":{
+        "ehBoleto":"true",
+        "Numero_Boleto":"",
+        "Numero_transacao":""
+    },
+
+    "Frete":"",
+    "Total_items":"",
+    "Total_Valor":""
+}
