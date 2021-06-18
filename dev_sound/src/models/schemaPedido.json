@@ -1,13 +1,13 @@
 {
-    "id_pedido":"",
-    "data_compra":"",
-    "previsao_entrega":"",
+    "id_pedido":"", // --> number --> unique --> requiredd
+    "data_compra":"", // --> date --> required
+    "previsao_entrega":"", // --> date --> required
     "Produtos" : [
         {
-            "id_produto":"",
-            "Descricao":"",
-            "Qtd_Produto":"1",
-            "Valor_unitario":""
+            "id_produto":"",// --> number --> unique --> required 
+            "Descricao":"", // --> string --> required
+            "Qtd_Produto":"1",// --> number --> required --> Min: 1
+            "Valor_unitario":"" // --> number --> required
         },
         {
             "id_produto":"",
@@ -18,12 +18,12 @@
     ],
 
     "Forma_pagamento":{
-        "ehBoleto":"true",
-        "Numero_Boleto":"",
-        "Numero_transacao":""
+        "ehBoleto":"true", // --> boolean --> required
+        "Numero_Boleto":"", // --> string --> required
+        "Numero_transacao":"" // --> number --> required
     },
-
-    "Frete":"",
-    "Total_items":"",
-    "Total_Valor":""
-}
+ 
+    "Frete": 20.00, 
+    "Total_items":"", // --> number --> required
+    "Total_Valor":"" // --> number --> required
+} 

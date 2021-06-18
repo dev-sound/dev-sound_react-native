@@ -1,11 +1,11 @@
 {
-    "id_Produto":"",
-    "Descrição_Produto":"",
-    "Categoria_Produto":"",
-    "Serie_Produto":"",
-    "Img_Produto": "../../../assets/img/guitarra_promo.png",
-    "Modelo_Produto":"modeloProduto",
+    "id_Produto":"", // --> number --> required
+    "Descrição_Produto":"", // --> string --> required
+    "Categoria_Produto":"", // --> string --> required
+    "Serie_Produto":"", // --> string --> required
+    "Img_Produto": "../../../assets/img/guitarra_promo.png", // --> string --> 
+    "Modelo_Produto":"modeloProduto", 
     "Preço_unitario":"preçoUnitario",
-    "Estoque":"20"
+    "Estoque":"20" 
 }
 
