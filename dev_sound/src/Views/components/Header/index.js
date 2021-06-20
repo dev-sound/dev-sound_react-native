@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet,Text,View,Image,TouchableOpacity} from 'react-native';
-import Logo from '../componentes/Home/Header/logo';
-import MenuNav from '../componentes/Home/Header/Menu'
-import CartIcon from '../componentes/Home/Header/Cart'
+import Logo from './logo';
+import MenuNav from './Menu'
+import CartIcon from './Cart'
 
 
 export default () => {
@@ -62,21 +62,3 @@ const style =  StyleSheet.create(
     }
 )
 
-/* 
-
-
-Positions ---
-    Static  -> Padrão 
-    Relative -> Relativo da onde ele esta.. 
-    Absolute -> Não Respeita escopo 
-    Fixed - >  mantem fixo aonde decide o local..
-
-
-
----------------------
-Top 
-Left
-Rigth
-Bottom
-
-*/

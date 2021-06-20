@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import Sax_Strauss_Img from '../../../../assets/img/sax_.png'
+import Sax_Strauss_Img from '../../../../../assets/img/sax_.png'
 
 export default function cardProduct () {
     return (

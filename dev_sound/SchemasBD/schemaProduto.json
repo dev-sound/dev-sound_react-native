@@ -5,7 +5,7 @@
     "Serie_Produto":"",
     "Img_Produto": "../../../assets/img/guitarra_promo.png",
     "Modelo_Produto":"modeloProduto",
-    "Preço_unitario":"preçoUnitario",
+    "Preco_unitario":"preçoUnitario",
     "Estoque":"20"
 }
 

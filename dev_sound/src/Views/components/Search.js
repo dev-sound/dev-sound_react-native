@@ -1,6 +1,7 @@
 import React from 'react'
-import {StyleSheet, TextInput, Image, View, TouchableOpacity} from 'react-native'
-import searchIcon from '../../assets/icons/search_icon.png'
+import {StyleSheet, TextInput, Image, View, TouchableOpacity} from 'react-native';
+import searchIcon from '../../../assets/icons/search_icon.png'
+
 
 export default props => {
     return (
