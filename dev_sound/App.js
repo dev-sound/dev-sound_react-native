@@ -1,13 +1,11 @@
 import React from 'react'
 import {View, Text, TouchableOpacity} from 'react-native'
-import Menu from './src/componentes/Menu'
-import Cart from './src/componentes/Cart'
+import Home from './src/screens/Home'
 
 export default () => {
   return (
     <View>
-      <Menu/>
-      <Cart/>
+      <Home/>
     </View>
   )
 }

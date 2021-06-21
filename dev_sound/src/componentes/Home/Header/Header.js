@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet,Text,View,Image,TouchableOpacity} from 'react-native';
-import Logo from '../componentes/Home/Header/logo';
-import MenuNav from '../componentes/Home/Header/Menu'
-import CartIcon from '../componentes/Home/Header/Cart'
+import Logo from './logo';
+import MenuNav from '../Header/Menu'
+import CartIcon from './Cart'
 
 
 export default () => {
