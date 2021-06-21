@@ -1,0 +1,115 @@
+Telas
+    HOME
+        HEADER --> Global
+            LOGO
+            DRAWER
+            CART
+        SEARCH --> Global
+        BANNER
+        CARROUSEL
+            TITULO  --> Global
+            PRODUTOSGRID
+--------------------------------------------------            
+    tela-PRODUTO
+        HEADER --> Global
+            LOGO
+            DRAWER
+            CART
+        PRODUTO
+            PROPS
+                TITULO-PDP
+                IMAGE
+                PREÇO
+                DESCRIÇÃO
+            BTN
+        BOTAO
+            PROPS
+            NOME
+-----------------------------------------------------
+    CARRINHO
+        HEADER --> Global
+            LOGO
+            DRAWER
+            CART
+        TITULO
+        PRODUTO GRID DETALHADO
+        BTN QTD
+        BOTAO
+            PROPS
+            NOME
+-------------------------------------------------------            
+    SIDE MENU
+------------------------------------------------------    
+    LOGIN
+        PORTRAIT
+         FIELD
+            PROPS
+                TAMANHO
+                TITLE
+                COR
+                BORDERRADIUS
+        BOTAO
+            PROPS
+            NOME
+---------------------------------------------------------
+    CADASTRO
+          FIELD
+            PROPS
+                TAMANHO
+                TITLE
+                COR
+                BORDERRADIUS
+        BOTAO
+            PROPS
+            NOME
+-----------------------------------------------------------        
+    CATEGORIA
+        TITULO
+        PRODUTOSGRID
+----------------------------------------------------------
+    CONTATO
+        FIELD
+        MSG BOX
+        BOTAO
+            PROPS
+            NOME
+-----------------------------------------------------------
+    PERFIL
+        HEADER --> Global
+            DRAWER
+            CART
+            LOGO
+        ENDEREÇO
+            BOTAO
+                PROPS
+                NOME
+        PEDIDO
+            PORTRAIT_PEDIDOS
+                BOTAO
+                    PROPS
+                    NOME
+                PRODUTO GRID DETALHADO
+---------------------------------------------------------
+    PAGAMENTO
+         HEADER --> Global
+            LOGO
+            DRAWERBOTAO
+            PROPS
+            NOME
+        FIELD
+            PROPS
+                TAMANHO
+                TITLE
+                COR
+                BORDERRADIUS
+        BTN 
+------------------------------------------------------
+    PEDIDO CONCLUIDO 
+        HEADER --> Global
+            DRAWER
+            CART
+            LOGO
+        PORTRAIT_PEDIDOS
+                BTN
+                PRODUTO GRID DETALHADO
+----------------------------------------------------
