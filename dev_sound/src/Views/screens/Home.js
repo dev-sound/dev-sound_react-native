@@ -1,8 +1,7 @@
 import React from 'react';
-import {TouchableOpacity,View,SafeAreaView,Image,StyleSheet} from 'react-native';
-import Header from '../componentes/Header'
-import Search  from '../componentes/Search';
-
+import {View,SafeAreaView,StyleSheet} from 'react-native';
+import Search  from '../components/Search';
+import Header from '../components/Header/'
 
 export default () => {
   return (
@@ -19,11 +18,6 @@ export default () => {
 
 const style =  StyleSheet.create(
   {
-    bannerImgs:{
-      overflow:'hidden',
-     resizeMode:'contain'
-    },
-
     container:{
       backgroundColor: "#F1F1F1",
     }

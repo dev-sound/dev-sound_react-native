@@ -4,8 +4,8 @@
     "Categoria_Produto":"", // --> string --> required
     "Serie_Produto":"", // --> string --> required
     "Img_Produto": "../../../assets/img/guitarra_promo.png", // --> string --> 
-    "Modelo_Produto":"modeloProduto", // --> string --> required
-    "Preço_unitario":"preçoUnitario", // --> number - required
-    "Estoque":"20" // --> number - required
+    "Modelo_Produto":"modeloProduto", 
+    "Preço_unitario":"preçoUnitario",
+    "Estoque":"20" 
 }
 
