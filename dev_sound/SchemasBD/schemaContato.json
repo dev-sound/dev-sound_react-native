@@ -1,0 +1,7 @@
+{
+    "id_contato":"",  // -> number --> unique --> required
+    "Nome":"",  // --> string  --> required
+    "email":"", // --> string --> unique --> required
+    "Assunto":"", // --> string  --> required
+    "Mensagem":"" // --> string --> required
+}

@@ -1,11 +1,17 @@
-import React from 'react'
-import {View, Text, TouchableOpacity} from 'react-native'
-import Home from './src/screens/Home'
+import React from 'react';
+import { SafeAreaView } from 'react-native'
+import Home from './src/Views/screens/Home'
 
 export default () => {
   return (
-    <View>
-      <Home/>
-    </View>
-  )
+     <SafeAreaView >
+        
+        {/* Begin Pagina Home   */}
+        <Home/>
+        {/* End Pagina Home   */}
+
+        
+      </SafeAreaView>
+    )
+
 }
