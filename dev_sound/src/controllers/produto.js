@@ -11,9 +11,9 @@ module.exports = app => {
             infoProduto.Estoque =  convertInt
 
             const ProdutosDB  = app.src.models.schemaProdutos
-            
 
-            mongoose.connect(app.constantes.constsDB.connectDB ,
+            mongoose.connect(
+                app.constantes.constsDB.connectDB ,
                 app.constantes.constsDB.connectParams
             )
             .then(()=> {

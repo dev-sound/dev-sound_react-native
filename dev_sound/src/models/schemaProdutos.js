@@ -11,6 +11,8 @@ module.exports = app => {
             Categoria_Produto:{type:String,required:true},
             Serie_Produto:{type:String,required:true},
             Img_Produto:{type:String},
+            Fabricante:{type:String,required:true},
+            Especificacao:{type:String,required:true},
             Modelo_Produto:{type:String,required:true},
             Preco_unitario:{type:Number,required:true},
             Estoque:{type:Number,required:true}
@@ -22,6 +24,5 @@ module.exports = app => {
     return produtosDB
 }
 
-
-// Inserir Sub-categoria : Guitarra , Violão etc.. 
+//Convenção Para ID'S de produto -> PROD01
 
