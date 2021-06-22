@@ -1,8 +1,7 @@
 import React from 'react';
 import {View,SafeAreaView,StyleSheet} from 'react-native';
 import Search  from '../components/Search';
-import Header from '../components/Header/'
-import Home from 'dev_sound/src/Views/screens/Home.js'
+import Header from '../components/Header';
 
 export default () => {
   return (
