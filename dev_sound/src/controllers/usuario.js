@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
+
 
 module.exports = (app) => {
     const UsuarioController = {
@@ -42,11 +44,14 @@ module.exports = (app) => {
         login(request,response){
 
             mongoose.connect(
-                app.constantes.db.connection,
-                app.constantes.db.connectionParams
+                app.constantes.constsDB.connectDB ,
+                app.constantes.constsDB.connectParams
             )
             .then(() => {
                 const UsuarioDB = app.src.models.schemaUsuarios;
+
+
+                
                 UsuarioDB.find( {email: request.body.email} )
                 .then((resultado) => {
                     if (resultado.length > 0) {
@@ -54,20 +59,24 @@ module.exports = (app) => {
                         console.log('usuario localizado no cadastro:');
                         console.log(usuario);
 
-                        const senhaValida = bcrypt.compareSync(request.body.senhaValida, usuario.senhaValida);
+                        const senhaValida = bcrypt.compareSync(request.body.senha, usuario.senhaValida);
                         console.log(`senhaValida: ${senhaValida}`);
 
                         if (senhaValida) {
-                            const payload = { login: usuario.login };
-                            const token = chaveJWT.sing(
+
+
+                            const payload = { login: usuario.email };
+                            const token = jwt.sign(
                                 payload,
                                 app.constantes.constSec.chaveJWT,
                                 { expiresIn: app.constantes.constSec.tempoExpiracaoToken }
                             );
+
+
                             console.log(`token: ${token}`);
                             mongoose.disconnect();
                             response.set('Authorization', token)
-                            response.status(200).send(`Usuário conectado: ${token}`);
+                            response.status(200).send(`Usuário conectado:`);
                         } else {
                             mongoose.disconnect();
                             response.status(401).send('Login ou senha inválida.');
