@@ -28,7 +28,7 @@ module.exports = (app) => {
                 .catch((erro) => {
                     console.log(`Erro ao cadastrar o usuario: ${erro}`);
                     console.log(erro);
-                    response.status(500).send(`Erro ao cadastrar o usuario: ${erro}`);    
+                    response.status(401).send(`Erro ao cadastrar o usuario: ${erro}`);    
                 });
                 
             })
