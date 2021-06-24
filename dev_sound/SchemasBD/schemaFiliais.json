@@ -1,0 +1,14 @@
+{
+    "_id": "1",
+    "nome": "Matriz",
+    "Endereço": {
+        "rua":"Av. São João",
+        "numero":"439",
+        "bairro": "República",
+        "cidade": "São Paulo",
+        "UF": "SP"        
+    }, 
+    "razaoSocial": "DEV.SOUND",
+    "inscricaoEstadual": "780.707.167.867",
+    "CNPJ": "82.960.909/0001-56"
+}

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 module.exports = app => {
-    schemaContato = mongoose.Schema
+    const schemaContato = mongoose.Schema
     (
         {
             "id_contato" : {type: String, required: true, index:{unique: true}},
