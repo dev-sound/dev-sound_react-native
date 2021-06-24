@@ -55,7 +55,7 @@ module.exports = app => {
                             } //FIM Inserção de Cartão
 
                     
-                            console.log(!Object.entries(usuarioInfo.Endereco)[1][1] == undefined)
+                            console.log(Object.entries(usuarioInfo.Endereco)[1][1] == undefined)
                             if(!Object.entries(usuarioInfo.Endereco)[1][1] == undefined) {
                                 console.log('Tem Endereço')
                             }else{
