@@ -5,7 +5,7 @@ module.exports = (app) => {
     const constSec = {
         custoHash: properties.get('sec.hash'),
         chaveJWT: properties.get('sec.jwt'),
-        tempoExpiracaoToken: '2m'
+        tempoExpiracaoToken: '9000m'
     }
     return constSec;
 }
