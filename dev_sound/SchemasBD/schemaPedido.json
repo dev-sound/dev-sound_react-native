@@ -1,9 +1,9 @@
 {
     "id_pedido":"", // --> number --> unique --> required
-    "id_cliente":"", // --> number -- required
+    "id_cliente":"",
     "EmailCliente":"",// --> required
     "data_compra":"", // --> date --> required
-    "previsao_entrega":"", // --> date --> required
+    "previsao_entrega":"7 Dias", // --> date --> required
     "Produtos" : [
         {
             "id_produto":"",// --> number --> unique --> required 
