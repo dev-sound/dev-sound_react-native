@@ -1,0 +1,7 @@
+// localhost:3000/addEstoque
+
+{
+    
+    "_id":"60d65892496f465346ec68b8",
+    "estoque": 10
+}
