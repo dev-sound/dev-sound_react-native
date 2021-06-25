@@ -18,7 +18,7 @@ module.exports = app => {
             preco:{type:Number,required:true},
             estoque:{type:Number,required:true},
             destaque:{type:Boolean,required:true},
-            data:{type:Date}
+            dataCadastro:{type:Date, required: true}
         }
     ) 
 
