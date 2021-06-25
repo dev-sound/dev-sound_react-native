@@ -1,0 +1,15 @@
+{
+   
+    "nome":"1. GUITARRA FENDER® SIG SERIES JIMI HENDRIX STRATOCASTER® ",
+    "descricao":"Honrando o eletrizante 'Voodoo Chile' que popularizou a guitarra Stratocaster® e sua enorme flexibilidade sônica, a Jimi Hendrix Stratocaster® te dá o mesmo som incendiário e o mesmo feeling das distintas Strats 'invertidas' que Hendrix usava, com visual clássico e timbre 'vintage'.",
+    "categoria":"cordas",
+    "serie":"Artist & Signatures",
+    "img":"",
+    "fabricante":"Fender",
+    "especificacao": "- Corpo em alder- Braço maple 'C' shape c/ headstock invertido- Escala em maple com 25.5 (64.8 cm)- Escala com raio de 9.5 (241 mm)- 21 trastes medium jumbo- Largura do nut de 1.650 (42 mm)- Tarraxas estilo vintage- Ponte estilo vintage c/ 6 saddles- Ferragem cromada- 3 captadores American Vintage '65 Gray-Bottom Strat®- Chave de 5 posições- Escudo branco (3 ply)- Controles de MV/T/T- Encordoamento Fender® USA 250R (.010-.046)- Acompanha Deluxe Gig Bag",
+    "modelo":
+    preco:{type:Number,required:true},
+    estoque:{type:Number,required:true},
+    destaque:{type:Boolean,required:true},
+    data:{type:Date} 
+}
