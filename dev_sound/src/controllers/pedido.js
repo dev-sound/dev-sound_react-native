@@ -127,7 +127,7 @@ module.exports = app => {
 
                             }
                         })
-                        .catch(err => erroOp(err,response,'Cartão Credito'))//FIM Inserção de Cartão
+                        .catch(err => console.log(err))//FIM Inserção de Cartão
 
                 })
                 .catch(err => erroConnectBD(err,response))// Catch do Mongo
