@@ -10,10 +10,12 @@ module.exports = app => {
             previsao_entrega:{type:String,required:true},
             Produtos:[
                 {
-                    id_produto:{type:String},
-                    Descricao:{type:String},
-                    Qtd_Produto:{type:String},
-                    Valor_unitario:{type:String}
+                    id_produto:{type:String,index:{unique:true}},
+                    nome:{type:String}, 
+                    categoria:{type:String},
+                    qtd_Produto:{type:Number},
+                    valor_unitario:{type:Number},    
+                    valor_total_produto:{type:Number}   
                 }
             ],
 
@@ -23,7 +25,7 @@ module.exports = app => {
             },
 
             Frete: {type:Number,required:true},
-            Total_items:{type:Number,required:true},
+            Valor_Total_items:{type:Number,required:true},
             Total_Valor:{type:Number,required:true},
         }
     )
