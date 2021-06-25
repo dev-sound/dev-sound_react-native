@@ -1,6 +1,6 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native'
-import Home from './src/Views/screens/Home'
+import { SafeAreaView } from 'react-native';
+import Home from './src/Views/screens/Home';
 
 export default () => {
   return (

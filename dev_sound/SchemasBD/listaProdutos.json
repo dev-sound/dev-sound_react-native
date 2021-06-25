@@ -1,0 +1,25 @@
+{
+    "nome": "GUITARRA FENDER® SIG SERIES JIMI HENDRIX STRATOCASTER®",
+    "descricao": "Honrando o eletrizante 'Voodoo Chile' que popularizou a guitarra Stratocaster® e sua enorme flexibilidade sônica, a Jimi Hendrix Stratocaster® te dá o mesmo som incendiário e o mesmo feeling das distintas Strats 'invertidas' que Hendrix usava, com visual clássico e timbre 'vintage'. ",
+    "categoria" : "corda",
+    "serie" : "Artist & Signatures",
+    "img": "../../assets/instrumentos/guitarra",
+    "fabricante": "fender",
+    "especificacao": "",
+    "modelo": "#014-5802-305",
+    "preco": "11242.50",
+    "estoque": 20
+}
+
+{
+    "nome": "GUITARRA FENDER® PLAYER JAGUAR® PF 014-6303-506 BLACK",
+    "descricao": "A guitarra Fender® Jaguar® foi lançada em 1962. Modelo offset usado e consagrado por nomes como: Carl Wilson (Beach Boys), John Frusciante (Red Hot Chilli Peppers), Win Butler (Arcade Fire) e Johnny Marr (The Smiths), foi relançada em 1999 e é um instrumento sempre presente nos palcos dos grandes shows e festivais pelo mundo! Sempre copiada e nunca igualada, a nova Fender® Jaguar® Player Series apresenta uma nova configuração de captadores Alnico 2 (braço/single coil) e Alnico 3 (ponte/humbucking), 22 trastes, novas cores, um contorno de corpo mais acentuado para uma confortável execução. Surpreenda-se com a nova Fender® Jaguar® Player Series.   ",
+    "categoria" : "corda",
+    "serie" : "Player",
+    "img": "../../assets/instrumentos/guitarra",
+    "fabricante": "fender",
+    "especificacao": "",
+    "modelo": "#014-6303-506",
+    "preco": "7867.50",
+    "estoque": 20
+}
