@@ -1,0 +1,35 @@
+
+{
+    "id_cliente":"01", // Cadastro  --> Required --> Number --> Unique
+    "Nome":"nomeCliente",// Cadastro  --> Required --> String
+    "Sobrenome":"sobrenomeCliente",// Cadastro  --> Required --> String
+    "Email":"email@email.com",// Cadastro  --> Required --> String --> Unique --> Login
+    "Telefone":"221232312",// Cadastro  --> Required --> Number
+    "SenhaValida":"senhaCliente",// Cadastro  --> Required --> String 
+    "Endereco":{ 
+        "Cep":"cepCliente", // Pagamentos --> String 
+        "Rua":"ruaCliente", // Pagamentos --> String 
+        "Numero":"numeroCliente",  // Pagamentos --> Numero 
+        "Barro":"bairroCliente",   // Pagamentos --> String 
+        "Cidade":"cidadeCliente",  // Pagamentos --> String 
+        "UF":"ufCliente" // Pagamentos --> String --> Max:2 caracteres 
+    },
+    
+    "Pedidos":[
+        {
+            "id_pedido":"",     // Perfil --> Number --> Unique --> Required
+            "Data_pedido":"",   // Perfil --> Date --> Required
+            "Forma_pagamento":"",// Perfil --> String --> Required
+            "Status":"" // Perfil --> String
+        } 
+
+        ,{
+            "id_pedido":"",// Perfil --> Number --> Unique --> Required
+            "Data_pedido":"",// Perfil --> Date --> Required
+            "Forma_pagamento":"",// Perfil --> String --> Required
+            "Status":"" // Perfil --> String
+        }
+    ]
+
+}
+
