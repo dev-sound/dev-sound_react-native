@@ -4,6 +4,7 @@
     "EmailCliente":"",// --> required
     "data_compra":"", // --> date --> required
     "previsao_entrega":"7 Dias", // --> date --> required
+
     "Produtos" : [
         {
             "id_produto":"",// --> number --> unique --> required 
@@ -22,7 +23,6 @@
     "Forma_pagamento":{
         "ehBoleto":"true", // --> boolean --> required
         "Numero_Boleto":"", // --> string --> required
-        "Numero_transacao":"" // --> number --> required
     },
  
     "Frete": 100.00, 
