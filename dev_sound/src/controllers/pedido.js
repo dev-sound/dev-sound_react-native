@@ -32,7 +32,8 @@ module.exports = app => {
                         .then(usuarioInfo => {
                             
                             if(!usuarioInfo.cartaoCredito) { // Inicio Inserção Cartão
-                               // Cair aqui é pq nao tem cartão..
+                                // Cair aqui é pq nao tem cartão..
+
                                const cartaoUsuario = infosUser.cartaoCredito.toString()
                                const cartaUser = cartaoUsuario.substring(0,12)
                                const ultimosNumeros = cartaoUsuario.substring(12,16)
@@ -47,27 +48,40 @@ module.exports = app => {
                                         console.log(verifyLogin.login)
                                         response.status(200).send(`Cartão cadastrado com sucesso..  ************${ultimosNumeros}`)
                                         console.log(CadastroCartao)
-                              
                                    })
                                    .catch(err => erroOp(err,response,'Cartão Credito Criptgrafia'))
-                            } else{
-                                response.send('Cartao Já cadastrado.. ')   
-                            } //FIM Inserção de Cartão
 
-                    
-                            console.log(Object.entries(usuarioInfo.Endereco)[1][1] == undefined)
-                            if(!Object.entries(usuarioInfo.Endereco)[1][1] == undefined) {
-                                console.log('Tem Endereço')
-                            }else{
-                                console.log('NAO Tem objeto')
+                            }else { //FIM Inserção de Cartão
+
+                                // Inicio cadastro Endereço 
+
+                                if(Object.entries(usuarioInfo.Endereco)[1][1] == undefined) {
+
+                                    usuarioDB.updateOne(
+                                        {email:verifyLogin.login},        
+                                        {$set:{Endereco:{
+                                            cep:infosUser.cep,
+                                            rua:infosUser.rua,
+                                            numero:infosUser.numero,
+                                            bairro:infosUser.bairro,
+                                            cidade:infosUser.cidade,
+                                            UF:infosUser.uf
+                                        }}}
+                                    )
+                                    .then(infoEndereco => {
+                                        response.status(200).send(`Endereço Cadastrado com sucesso -> ${infoEndereco}`)
+                                        console.log('Cadastro de Endereço')
+                                    })
+                                    .catch(err => erroOp(err,response,'Cadastro Endereço'))
+    
+                                }
+                                else { 
+                                    console.log('Tem Cadastro')
+                                    response.send('Cadastro de Cartao e endereço finalizado')
+                                }
                             }
-
                         })
                         .catch(err => erroOp(err,response,'Cartão Credito'))//FIM Inserção de Cartão
-
-                     
-
-
 
                 })
                 .catch(err => erroConnectBD(err,response))// Catch do Mongo
