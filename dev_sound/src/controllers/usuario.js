@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 module.exports = (app) => {
     const UsuarioController = {
@@ -42,8 +43,8 @@ module.exports = (app) => {
         login(request,response){
 
             mongoose.connect(
-                app.constantes.db.connection,
-                app.constantes.db.connectionParams
+                app.constantes.constsDB.connectDB,
+                app.constantes.constsDB.connectParams
             )
             .then(() => {
                 const UsuarioDB = app.src.models.schemaUsuarios;
@@ -54,11 +55,11 @@ module.exports = (app) => {
                         console.log('usuario localizado no cadastro:');
                         console.log(usuario);
 
-                        const senhaValida = bcrypt.compareSync(request.body.senhaValida, usuario.senhaValida);
+                        const senhaValida = bcrypt.compareSync(request.body.senha, usuario.senhaValida);
                         console.log(`senhaValida: ${senhaValida}`);
 
                         if (senhaValida) {
-                            const payload = { login: usuario.login };
+                            const payload = { email: usuario.email };
                             const token = chaveJWT.sing(
                                 payload,
                                 app.constantes.constSec.chaveJWT,
