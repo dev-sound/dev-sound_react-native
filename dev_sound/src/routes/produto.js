@@ -5,4 +5,5 @@ module.exports = app => {
     app.put('/addEstoque',app.src.controllers.produto.addEstoque)
 
     app.get('/exibirProduto/:id_Produto', app.src.controllers.exibirProduto.verProduto)
+
 }

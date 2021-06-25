@@ -12,9 +12,9 @@ module.exports = (app) => {
                     const Produto = app.src.models.schemaProdutos
 
                     Produto.find( { id_Produto: request.params.id_Produto } )
-                    .then((itensProduto) => {
-                        console.log(itensProduto)
-                        response.status(200).send(itensProduto)
+                    .then(({Categoria_Produto}) => {
+                        console.log({Categoria_Produto})
+                        response.status(200).send({Categoria_Produto})
                     })
                     .catch((erro) => {
                         response.status(500).send(`Erro ao consultar produtos: ${erro}`)
