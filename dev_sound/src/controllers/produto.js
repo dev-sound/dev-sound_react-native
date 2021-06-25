@@ -13,24 +13,23 @@ module.exports = app => {
 
             const ProdutosDB  = app.src.models.schemaProdutos
 
-            if (infoProduto.dataCadastro == undefined) {
-                infoProduto.dataCadastro = new Date
-            }            
 
-            console.log(request.body)
-            mongoose.connect(
-                app.constantes.constsDB.connectDB ,
-                app.constantes.constsDB.connectParams
-            )
-            .then(()=> {
-                ProdutosDB.create(infoProduto)
-                    .then(infosCadastradas => {
-                        response.status(200).send(`PRODUTOS CADASTRADOS -> ${infosCadastradas}`)
-                    })
-                    .catch(erro =>{
-                        response.status(401).send('PRODUTOS NÃO CADASTRADOS.')
-                        console.log(erro)
-                    })
+            if(infoProduto.Estoque > 0) { 
+               
+                mongoose.connect(
+                    app.constantes.constsDB.connectDB ,
+                    app.constantes.constsDB.connectParams
+                )
+                .then(()=> {
+
+                    ProdutosDB.create(infoProduto)
+                        .then(infosCadastradas => {
+                            response.status(200).send(`PRODUTOS CADASTRADOS -> ${infosCadastradas}`)
+                        })
+                        .catch(erro =>{
+                            response.status(401).send('PRODUTOS NÃO CADASTRADOS.')
+                            console.log(erro)
+                        })
 
                 })
                 .catch(erro => {
@@ -45,7 +44,6 @@ module.exports = app => {
             }
 
         },
-
 
         addEstoque(request,response){
 
