@@ -53,7 +53,7 @@ module.exports = app => {
             )
             .then(() =>{
                 console.log(request.params.nome)
-                ProdutosDB.find( { nome: { $all: pesquisa, $options: 'i' }} )
+                ProdutosDB.find( { nome: { $regex: pesquisa, $options: 'i' }} )
                 .then((listaProdutos) => {
                     // console.log(listaProdutos)
                     mongoose.disconnect()
