@@ -5,22 +5,27 @@ module.exports = app => {
     const schemaPedido = mongoose.Schema(
         {
             id_cliente:{type:String,required:true},
-            EmailCliente:{},
-            data_compra:{},
-            previsao_entrega:{},
+            EmailCliente:{type:String,required:true},
+            data_compra:{type:Date,required:true},
+            previsao_entrega:{type:String,required:true},
             Produtos:[
-                {}
+                {
+                    id_produto:{type:String},
+                    Descricao:{type:String},
+                    Qtd_Produto:{type:String},
+                    Valor_unitario:{type:String}
+                }
             ],
 
             Forma_pagamento:{
-                ehBoleto::{},
-                Numero_Boleto:{},
-                Numero_transacao:{},
+                ehBoleto:{type:Boolean},
+                Numero_Boleto:{type:String}
             },
 
-            Frete: {},
-            Total_items:{},
-            Total_Valor:{},
+            Frete: {type:Number,required:true},
+            Total_items:{type:Number,required:true},
+            Total_Valor:{type:Number,required:true},
+        }
     )
 
     const PedidoDB =  mongoose.model('Pedido',schemaPedido);

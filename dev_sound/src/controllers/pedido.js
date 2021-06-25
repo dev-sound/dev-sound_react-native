@@ -76,12 +76,16 @@ module.exports = app => {
     
                                 }
                                 else { 
-                                    console.log('Tem Cadastro')
-                                    response.send('Cadastro de Cartao e endereço finalizado')
+                                  
+                                    const PedidoDB = app.src.models.schemaPedido
+                                    const ProdutoDB = app.src.models.schemaProdutos
+
+                                    console.log(ProdutoDB)
                                 }
                             }
                         })
                         .catch(err => erroOp(err,response,'Cartão Credito'))//FIM Inserção de Cartão
+
                 })
                 .catch(err => erroConnectBD(err,response))// Catch do Mongo
             }
