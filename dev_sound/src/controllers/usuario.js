@@ -111,9 +111,9 @@ module.exports = (app) => {
                     const Usuario = app.src.models.schemaUsuarios
 
                     Usuario.find( { email: request.params.email } )
-                    .then(({dadosCliente}) => {
-                        console.log({dadosCliente})
-                        response.status(200).send({dadosCliente})
+                    .then((dadosCliente) => {
+                        console.log(dadosCliente)
+                        response.status(200).send(dadosCliente)
                     })
                     .catch((erro) => {
                         response.status(500).send(`Erro ao consultar o cliente: ${erro}`)
