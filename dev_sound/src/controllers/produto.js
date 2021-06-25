@@ -9,12 +9,15 @@ module.exports = app => {
 
             const infoProduto =  request.body
             let convertInt = parseInt(infoProduto.estoque)
+            const dataCadastro =  new  Date()
             infoProduto.estoque =  convertInt
-
+            infoProduto.data = dataCadastro
+         
+            console.log(dataCadastro)
             const ProdutosDB  = app.src.models.schemaProdutos
 
 
-            if(infoProduto.Estoque > 0) { 
+                if(infoProduto.estoque > 0) { 
                
                 mongoose.connect(
                     app.constantes.constsDB.connectDB ,
@@ -24,6 +27,7 @@ module.exports = app => {
 
                     ProdutosDB.create(infoProduto)
                         .then(infosCadastradas => {
+
                             response.status(200).send(`PRODUTOS CADASTRADOS -> ${infosCadastradas}`)
                         })
                         .catch(erro =>{
@@ -51,9 +55,9 @@ module.exports = app => {
             const ProdutosDB = app.src.models.schemaProdutos
 
 
-            console.log(ProdutosDB)
+            console.log(infoProduto)
             
-            if(infoProduto.Estoque > 0){
+            if(infoProduto.estoque > 0){
 
                 mongoose.connect(
                     app.constantes.constsDB.connectDB ,
@@ -61,14 +65,15 @@ module.exports = app => {
                 )
                 .then(()=> {
 
-                    ProdutosDB.findOne({id_Produto:infoProduto.id_Produto})
+                    ProdutosDB.findOne({_id:infoProduto._id})
                         .then(Produto => {
-                            const estoqueDB = Produto.Estoque
-                            const produtoNumero = parseInt(infoProduto.Estoque)
+                            const estoqueDB = Produto.estoque
+                            const produtoNumero = parseInt(infoProduto.estoque)
                             
+        
                             ProdutosDB.updateOne(
-                                {id_Produto:infoProduto.id_Produto},
-                                {$set:{Estoque:estoqueDB+produtoNumero}}
+                                {_id:infoProduto._id},
+                                {$set:{estoque:produtoNumero+estoqueDB}}
                             
                             ).then(Estoque => {
                                 response.status(200).send('Estoque Inserido com sucesso')

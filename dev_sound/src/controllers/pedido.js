@@ -14,7 +14,6 @@ module.exports = app => {
             */
 
             const usuarioDB = app.src.models.schemaUsuarios
-            const produtoDB = app.src.models.schemaProdutos
             const infosUser = request.body
             const tokenLogin = request.headers.authorization
             const verifyLogin = jwt.verify(tokenLogin, app.constantes.constSec.chaveJWT)
@@ -65,7 +64,7 @@ module.exports = app => {
                                             numero:infosUser.numero,
                                             bairro:infosUser.bairro,
                                             cidade:infosUser.cidade,
-                                            UF:infosUser.uf
+                                            UF:infosUser.UF
                                         }}}
                                     )
                                     .then(infoEndereco => {
@@ -75,11 +74,10 @@ module.exports = app => {
                                     .catch(err => erroOp(err,response,'Cadastro Endereço'))
     
                                 }
-                                else { 
-                                  
+                                
+                                //   Inicio inserção de pedido..
                                     const PedidoDB = app.src.models.schemaPedido
-                                    const ProdutoDB = app.src.models.schemaProdutos
-
+                                
                                     const idClient = usuarioInfo.id
                                     const emailClient = usuarioInfo.email
                                     const DataCompra =  new Date()
@@ -87,10 +85,10 @@ module.exports = app => {
 
                                     const frete = 100
 
-                                    const produtos = request.body.Produto
+                                    const infosPedido = request.body
+                                    const produtos = request.body.Produtos
 
-                                    let Valor_Total_items = parseFloat(0.0)
-                    
+                                    let Valor_Total_items = 0          
                                     let valoresTotais = []
 
                                     for(let i = 0; i < produtos.length;i++){
@@ -109,13 +107,26 @@ module.exports = app => {
 
                                     console.log(typeof Valor_Total_items)
 
-                                    // console.log(request.body.Produto[0].valor_unitario)
+                                    infosPedido.id_cliente = idClient
+                                    infosPedido.EmailCliente = emailClient
+                                    infosPedido.data_compra = DataCompra
+                                    infosPedido.previsao_entrega = previsaoEntrega
+                                    infosPedido.Produtos = produtos
+                                    infosPedido.Frete = frete
+                                    infosPedido.Valor_Total_items = Valor_Total_items
+                                    infosPedido.Total_Valor = Total_Valor
+                                
 
-                                    // PedidoDB.update({})
-                                }
+                                    PedidoDB.create(infosPedido)
+                                        .then(Pedido => {
+                                            response.status(200).send('Pedido Cadastrado com Sucesso')
+                                            console.log(Pedido)
+                                        })
+                                        .catch(err => console.log(err))
+
                             }
                         })
-                        .catch(err => erroOp(err,response,'Cartão Credito'))//FIM Inserção de Cartão
+                        .catch(err => console.log(err))//FIM Inserção de Cartão
 
                 })
                 .catch(err => erroConnectBD(err,response))// Catch do Mongo

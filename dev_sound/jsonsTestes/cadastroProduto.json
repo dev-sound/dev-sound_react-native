@@ -1,0 +1,14 @@
+//localhost:3000/cadastroProdutos
+
+{
+    "nome": "GUITARRA FENDER® SIG SERIES JIMI HENDRIX STRATOCASTER®",
+    "descricao": "Honrando o eletrizante 'Voodoo Chile' que popularizou a guitarra Stratocaster® e sua enorme flexibilidade sônica, a Jimi Hendrix Stratocaster® te dá o mesmo som incendiário e o mesmo feeling das distintas Strats 'invertidas' que Hendrix usava, com visual clássico e timbre 'vintage'. ",
+    "categoria" : "corda",
+    "subCategoria":"guitarra",
+    "img": "../../assets/instrumentos/guitarra/fender-jimi-hendrix.png",
+    "fabricante": "fender",
+    "especificacao": "",
+    "modelo": "#014-5802-30w5",
+    "preco": "11242.50",
+    "estoque": 20
+}
