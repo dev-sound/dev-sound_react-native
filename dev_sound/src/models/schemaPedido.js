@@ -17,7 +17,7 @@ module.exports = app => {
                     valor_unitario:{type:Number},    
                     valor_total_produto:{type:Number}   
                 }
-            ],
+            ],  
 
             Forma_pagamento:{
                 ehBoleto:{type:Boolean},
