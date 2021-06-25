@@ -14,7 +14,6 @@ module.exports = app => {
             */
 
             const usuarioDB = app.src.models.schemaUsuarios
-            const produtoDB = app.src.models.schemaProdutos
             const infosUser = request.body
             const tokenLogin = request.headers.authorization
             const verifyLogin = jwt.verify(tokenLogin, app.constantes.constSec.chaveJWT)
@@ -65,7 +64,7 @@ module.exports = app => {
                                             numero:infosUser.numero,
                                             bairro:infosUser.bairro,
                                             cidade:infosUser.cidade,
-                                            UF:infosUser.uf
+                                            UF:infosUser.UF
                                         }}}
                                     )
                                     .then(infoEndereco => {

@@ -10,11 +10,11 @@ module.exports = app => {
             nome:{type:String,required:true},
             descricao:{type:String,required:true},
             categoria:{type:String,required:true},
-            serie:{type:String,required:true},
+            subCategoria:{type:String,required:true},
             img:{type:String},
             fabricante:{type:String,required:true},
             especificacao:{type:String},
-            modelo:{type:String,required:true},
+            modelo:{type:String,required:true,index:{unique:true}},
             preco:{type:Number,required:true},
             estoque:{type:Number,required:true},
             data:{type:Date}
@@ -26,5 +26,4 @@ module.exports = app => {
     return produtosDB
 }
 
-//Convenção Para ID'S de produto -> PROD01
 
