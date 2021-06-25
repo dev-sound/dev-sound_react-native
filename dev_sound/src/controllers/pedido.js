@@ -76,12 +76,47 @@ module.exports = app => {
     
                                 }
                                 else { 
-                                    console.log('Tem Cadastro')
-                                    response.send('Cadastro de Cartao e endereço finalizado')
+                                  
+                                    const PedidoDB = app.src.models.schemaPedido
+                                    const ProdutoDB = app.src.models.schemaProdutos
+
+                                    const idClient = usuarioInfo.id
+                                    const emailClient = usuarioInfo.email
+                                    const DataCompra =  new Date()
+                                    const previsaoEntrega = "7 Dias"
+
+                                    const frete = 100
+
+                                    const produtos = request.body.Produto
+
+                                    let Valor_Total_items = parseFloat(0.0)
+                    
+                                    let valoresTotais = []
+
+                                    for(let i = 0; i < produtos.length;i++){
+                                        let qtdProdValor = produtos[i].qtd_Produto *  produtos[i].valor_unitario
+                                        valoresTotais.push(qtdProdValor)
+                                    }
+
+                                    for(let i = 0; i < valoresTotais.length; i++){
+                                        Valor_Total_items += valoresTotais[i]
+                                        console.log(valoresTotais)
+                                    }
+
+                                    let Total_Valor = Valor_Total_items + frete
+
+                                    console.log(Total_Valor)
+
+                                    console.log(typeof Valor_Total_items)
+
+                                    // console.log(request.body.Produto[0].valor_unitario)
+
+                                    // PedidoDB.update({})
                                 }
                             }
                         })
                         .catch(err => erroOp(err,response,'Cartão Credito'))//FIM Inserção de Cartão
+
                 })
                 .catch(err => erroConnectBD(err,response))// Catch do Mongo
             }
