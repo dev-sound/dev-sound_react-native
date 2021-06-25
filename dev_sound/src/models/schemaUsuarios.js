@@ -11,7 +11,7 @@ module.exports = (app) => {
             email: { type: String, required: true, index: { unique: true } },
             telefone: { type: Number, required: true },
             senhaValida: { type: String, required: true },
-
+            cartaoCredito:{type:String},
             Endereco: {
                 cep: { type: String },
                 rua: { type: String },
@@ -20,6 +20,8 @@ module.exports = (app) => {
                 cidade: { type: String },
                 UF: { type: String }, 
             },
+
+           
 
             // Pedidos: [
             //     {

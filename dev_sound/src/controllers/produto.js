@@ -1,40 +1,143 @@
+const { text } = require('express')
 const mongoose =  require('mongoose')
 
 module.exports = app => {
 
     const ControllerProdutos = {
-        
+
         cadastro(request, response){
 
             const infoProduto =  request.body
-            let convertInt = parseInt(infoProduto.Estoque)
-            infoProduto.Estoque =  convertInt
+            let convertInt = parseInt(infoProduto.estoque)
+            const dataCadastro =  new  Date()
+            infoProduto.estoque =  convertInt
+            infoProduto.data = dataCadastro
+         
+            console.log(dataCadastro)
+            const ProdutosDB  = app.src.models.schemaProdutos
+
+
+                if(infoProduto.estoque > 0) { 
+               
+                mongoose.connect(
+                    app.constantes.constsDB.connectDB ,
+                    app.constantes.constsDB.connectParams
+                )
+                .then(()=> {
+
+                    ProdutosDB.create(infoProduto)
+                        .then(infosCadastradas => {
+
+                            response.status(200).send(`PRODUTOS CADASTRADOS -> ${infosCadastradas}`)
+                        })
+                        .catch(erro =>{
+                            response.status(401).send('PRODUTOS NÃO CADASTRADOS.')
+                            console.log(erro)
+                        })
+
+                })
+                .catch(erro => {
+                    console.log(erro)
+                    response.status(500).send('Erro ao conectar ao banco ')
+                })
+
+            }
+            else {
+                response.status(401).send('Estoque não pode ser 0')
+                console.log('Erro Estoque nao pode ser 0')
+            }
+
+        },
+
+
+        addEstoque(request,response){
+
+            const infoProduto = request.body
+            const ProdutosDB = app.src.models.schemaProdutos
+
+
+            console.log(infoProduto)
+            
+            if(infoProduto.estoque > 0){
+
+                mongoose.connect(
+                    app.constantes.constsDB.connectDB ,
+                    app.constantes.constsDB.connectParams
+                )
+                .then(()=> {
+
+                    ProdutosDB.findOne({_id:infoProduto._id})
+                        .then(Produto => {
+                            const estoqueDB = Produto.estoque
+                            const produtoNumero = parseInt(infoProduto.estoque)
+                            
+        
+                            ProdutosDB.updateOne(
+                                {_id:infoProduto._id},
+                                {$set:{estoque:produtoNumero+estoqueDB}}
+                            
+                            ).then(Estoque => {
+                                response.status(200).send('Estoque Inserido com sucesso')
+                                console.log(Estoque)
+                            })
+                            .catch(erro => {
+                                response.status(401).send('Erro que inserir novo Estoque')
+                                console.log(erro)
+                            })
+                        })
+                        .catch(erro => {
+                            response.send('erro')
+                            console.log(erro)
+                        })
+
+                })
+                .catch(erro => {
+                    response.status(500).send('Erro ao conectar ao Banco de dados')
+                    console.log(`Erro ao Conectar ao Banco ${erro}`)
+                })
+            }
+            else{
+                response.status(401).send('Estque invalido')
+            }
+
+        },
+
+        barraPesquisa(request, response){
 
             const ProdutosDB  = app.src.models.schemaProdutos
+             const nomePesquisa = request.params.nome
+             let pesquisa = `${nomePesquisa}`
+            console.log(request.params.nome)
+
+            // const regex = /[\s,\.;:\(\)\-'\+]/
+            // text.toUpperCase().split(regex) 
 
             mongoose.connect(
                 app.constantes.constsDB.connectDB ,
                 app.constantes.constsDB.connectParams
             )
-            .then(()=> {
-
-                ProdutosDB.create(infoProduto)
-                    .then(infosCadastradas => {
-                        response.status(200).send(`PRODUTOS CADASTRADOS -> ${infosCadastradas}`)
-                    })
-                    .catch(erro =>{
-                        response.status(401).send('PRODUTOS NÃO CADASTRADOS.')
-                        console.log(erro)
-                    })
-
+            .then(() =>{
+                console.log(request.params.nome)
+                ProdutosDB.find( { nome: { $regex: pesquisa, $options: 'i' }} )
+                .then((listaProdutos) => {
+                    // console.log(listaProdutos)
+                    mongoose.disconnect()
+                    response.status(200).send(listaProdutos)
+                })
+                .catch((erro) => {
+                    // console.log(erro)
+                    mongoose.disconnect()
+                    response.status(400).send('Produto não encontrado')
+                })
             })
             .catch(erro => {
                 console.log(erro)
-                response.status(500).send('Erro ao conectar ao banco ')
-            })
-
+                response.status(500).send('Erro ao conectar ao banco')
+            })  
         }
     }
 
     return ControllerProdutos
 }
+
+
