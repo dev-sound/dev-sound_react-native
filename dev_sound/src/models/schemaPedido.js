@@ -10,7 +10,7 @@ module.exports = app => {
             previsao_entrega:{type:String,required:true},
             Produtos:[
                 {
-                    id_produto:{type:String,index:{unique:true}},
+                    id_produto:{type:String},
                     nome:{type:String}, 
                     categoria:{type:String},
                     qtd_Produto:{type:Number},
