@@ -124,9 +124,9 @@ module.exports = app => {
                 app.constantes.constsDB.connectParams
             )
             .then(() => {
-                const Produto = app.src.models.schemaProdutos
-
-                Produto.find( { destaque: true } )
+                const ProdutosDB = app.src.models.schemaProdutos
+                console.log(`ProdutosDB.find( { destaque: true } )`)
+                ProdutosDB.find( { destaque: true } )
                 .then((itensProduto) => {
                     console.log(itensProduto)
                     response.status(200).send(itensProduto)
@@ -152,6 +152,10 @@ module.exports = app => {
 
                 .then((itensProduto) => {
                     console.log(itensProduto)
+                    console.log(itensProduto)
+                    console.log(itensProduto)
+                    console.log(itensProduto)
+
                     response.status(200).send(itensProduto)
                 })
                 .catch((erro) => {

@@ -16,10 +16,10 @@ module.exports = app => {
     ),
 
     app.get(
-        '/produtos/destaques',app.src.controllers.produto.buscaDestaque
+        '/produtosDestaque',app.src.controllers.produto.buscaDestaque
     ),
 
     app.get(
-        '/produtos/novidades/:novidades',app.src.controllers.produto.buscaNovidades
+        '/produtos/',app.src.controllers.produto.buscaNovidades
     )
 }
