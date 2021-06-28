@@ -21,23 +21,7 @@ module.exports = (app) => {
                 UF: { type: String }, 
             },
 
-           
-
-            // Pedidos: [
-            //     {
-            //         idPedido: { type: Number, required: true, index: { unique: true } },
-            //         dataPedido: { type: Date, required: true },
-            //         formaPagamento: { type: String, required: true },
-            //         status: { type: String },
-            //     }
-
-            //     , {
-            //         idPedido: { type: Number, required: true, index: { unique: true } },
-            //         dataPedido: { type: Date, required: true },
-            //         formaPagamento: { type: String, required: true },
-            //         status: { type: String },
-            //     }
-            // ]
+            Pedidos: []
 
         }
     );
