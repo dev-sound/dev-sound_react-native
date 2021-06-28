@@ -10,4 +10,9 @@ module.exports = (app) => {
         app.src.controllers.usuario.login
     );
 
+    app.get(
+        '/usuario/email/:email',
+        app.src.controllers.usuario.buscaUsuario
+    )
+
 }
