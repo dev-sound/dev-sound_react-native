@@ -176,7 +176,7 @@ module.exports = app => {
                                                                         if (produtoVendas.id_Produto == dbItem._id && produtoVendas.qtd_Produto > dbItem.estoque) {
                                                                             const PedidoClienteID = Pedido._id
                                                                             const produtoInv = produtoVendas.id_Produto
-
+                                                                                
                                                                             PedidoDB.update({
                                                                                 _id: PedidoClienteID
                                                                             }, {
