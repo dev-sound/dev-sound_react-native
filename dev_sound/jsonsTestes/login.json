@@ -1,0 +1,7 @@
+
+// localhost:3000/loginUsuarios
+
+{
+    "email":"user@user.com",
+    "senha":"123456"
+}

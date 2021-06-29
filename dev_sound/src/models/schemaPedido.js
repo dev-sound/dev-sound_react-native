@@ -10,9 +10,10 @@ module.exports = app => {
             previsao_entrega:{type:String,required:true},
             Produtos:[
                 {
-                    id_produto:{type:String,index:{unique:true}},
+                    id_Produto:{type:String},
                     nome:{type:String}, 
                     categoria:{type:String},
+                    modelo:{type:String},
                     qtd_Produto:{type:Number},
                     valor_unitario:{type:Number},    
                     valor_total_produto:{type:Number}   
@@ -21,7 +22,7 @@ module.exports = app => {
 
             Forma_pagamento:{
                 ehBoleto:{type:Boolean},
-                Numero_Boleto:{type:String}
+                numeroBoleto:{type:String}
             },
 
             Frete: {type:Number,required:true},

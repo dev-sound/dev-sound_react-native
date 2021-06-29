@@ -1,0 +1,9 @@
+// localhost:3000/cadastrarUsuarios
+
+{
+    "nome":"user",
+    "sobrenome":"user",
+    "email":"user@user.com",
+    "telefone":"099812341",
+    "senhaValida":"123456"
+}

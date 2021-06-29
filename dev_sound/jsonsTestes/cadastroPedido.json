@@ -1,0 +1,41 @@
+
+// localhost:3000/Pagamento
+
+{
+    "cartaoCredito":5250433559527774,
+     "cep":221341 ,
+     "rua":"Rua Cinco" ,
+     "numero": 5,
+     "bairro":"BairroCinco" ,
+     "cidade":"CIdade Cinco" ,
+     "UF":"CI",
+    
+ 
+    "Produtos": [ 
+         {
+         "id_produto":"PROD09",
+         "nome":"1. GUITARRA FENDER® SIG SERIES JIMI HENDRIX STRATOCASTER® ",
+         "categoria":"cordas",
+         "qtd_Produto":1,
+         "valor_unitario":5.150
+         },
+         {
+         "id_produto":"PROD09",
+         "nome":"1. GUITARRA FENDER® SIG SERIES JIMI HENDRIX STRATOCASTER® ",
+         "categoria":"cordas",
+         "qtd_Produto":2,
+         "valor_unitario":5.100
+         },
+          {
+         "id_produto":"PROD09",
+         "nome":"1. GUITARRA FENDER® SIG SERIES JIMI HENDRIX STRATOCASTER® ",
+         "categoria":"cordas",
+         "qtd_Produto":2,
+         "valor_unitario":5.100
+         }
+     ],
+      "Forma_pagamento":{
+           "ehBoleto":false,
+            "Numero_Boleto":null }
+    
+ }
