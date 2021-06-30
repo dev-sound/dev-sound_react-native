@@ -1,17 +1,22 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
-import Home from './src/Views/screens/Home';
+import { SafeAreaView, StyleSheet } from 'react-native';
+
+
+import Home from './src/Views/screens/Home'
+import Register from './src/Views/screens/Register'
 
 export default () => {
   return (
-     <SafeAreaView >
-        
-        {/* Begin Pagina Home   */}
-        <Home/>
-        {/* End Pagina Home   */}
-
-        
+     <SafeAreaView  style={styles.container}>
+         <Register/>
       </SafeAreaView>
     )
 
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#f1f1f1',
+    flex: 1,
+  }
+})
