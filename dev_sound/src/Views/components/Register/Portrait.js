@@ -18,17 +18,11 @@ const styles = StyleSheet.create({
         width: '90%',
         marginLeft: 20,
         height: 'auto',
-        
-    
     },
   teste:{
     padding: 10,
     borderWidth: 1,
     borderRadius: 20,
-    borderColor: '#000',
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    
+    borderColor: '#B8B8B8',    
   }
-    
 })

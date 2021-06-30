@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, ScrollView } from 'react-native'
+import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 
 import Logo from '../components/Header/logo'
 import Portrait from '../components/Register/Portrait'
@@ -16,21 +16,15 @@ export default class Register extends Component {
                     <Logo/> 
                 </View>
                 <Portrait>
-                   <Text style={styles.text}>Crie sua conta</Text>
+                   
                    <Text style={styles.label}>Nome</Text>
                     <Input/>
-                    <Text style={styles.label}>Sobrenome</Text>
-                    <Input/>
-                    <Text style={styles.label} >Email</Text>
-                    <Input/>
-                    <Text style={styles.label}>Telefone</Text>
-                    <Input typeKeyboard={'numeric'}/>
                     <Text style={styles.label}>Senha</Text>
                     <Input isPassword={true}/>
-                    <Text style={styles.label}>Confirme sua senha</Text>
-                    <Input isPassword={true}/>
                 </Portrait>
-            
+                <TouchableOpacity style={styles.buttons}>
+                    <Text style={styles.createAcc}>Crie sua Conta</Text>
+                </TouchableOpacity>
             </View>
             </ScrollView>
             
@@ -50,5 +44,13 @@ const styles = StyleSheet.create({
     label: {
         fontSize:25,
         fontWeight: '300'
+    },
+    buttons:{
+        alignItems:'center',
+        padding: 20,
+    },
+    createAcc:{
+        color: '#17133B',
+        fontSize: 19
     }
 })
