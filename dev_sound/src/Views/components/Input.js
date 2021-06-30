@@ -1,11 +1,18 @@
 import React from 'react'
-import { View, TextInput, StyleSheet,Text } from 'react-native'
+import { View, TextInput, StyleSheet,Text,Dimensions} from 'react-native'
 
 export default props => {
 
+    const stylesInput = [style.input]
+
+    if(props.medium) {
+        stylesInput.push(style.medium)
+    }
+
+
     return(
 
-        <View style={style.container}>
+        <View style={[style.container]}>
           
             <Text>{props.label}</Text>
             <TextInput
@@ -29,13 +36,20 @@ export default props => {
 const style = StyleSheet.create(
     {
         container:{
-            padding:10
+            marginBottom:8
         },
 
         input:{
             borderWidth:1,
             padding:7,
-            borderRadius:5
+            borderRadius:5,
+            borderWidth:1,
+          
+        },
+
+        medium:{
+          
+         
         }
     }
 )
