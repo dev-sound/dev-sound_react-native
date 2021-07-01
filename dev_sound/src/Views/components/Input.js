@@ -13,11 +13,9 @@ export default props => {
         <View style={style.container}>
           
             <Text>{props.label}</Text>
-            <TextInput
-                
+            <TextInput   
              {...props}
-
-                style={[stylesInput]}
+             style={[stylesInput]}
             />
 
         </View>
