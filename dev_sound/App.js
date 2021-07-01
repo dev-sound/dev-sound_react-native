@@ -2,8 +2,7 @@ import React from 'react';
 
 import { SafeAreaView,StyleSheet } from 'react-native';
 import Home from './src/Views/screens/Home';
-import Input from './src/Views/components/Input';
-
+import Payment from './src/Views/screens/Payment';
 
 
 
@@ -14,15 +13,8 @@ export default () => {
   return (
      <SafeAreaView style={style.container} >
         
-        {/* Begin Pagina Home   */}
+      <Payment/>
         
-        <Input
-          label='Número do Crédito '
-          placeholder='Insira o nome'
-
-        /> 
-        {/* End Pagina Home   */}
-
       </SafeAreaView>
     )
 
