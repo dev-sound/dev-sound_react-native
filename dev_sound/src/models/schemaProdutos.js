@@ -18,6 +18,10 @@ module.exports = app => {
             preco:{type:Number,required:true},
             estoque:{type:Number,required:true},
             data:{type:Date}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 26dbcece7ea99c1ec4831e69be880d0a3e12fe97
         }
     ) 
 

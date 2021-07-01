@@ -93,6 +93,7 @@ export default class Home extends Component{
                 data={ProductNews}
                 keyExtractor={item => `${item.id}`}
                 renderItem={this.renderProductSpotlight}
+               
               />
 
              </View>
