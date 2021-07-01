@@ -95,7 +95,7 @@ export default class Payment extends Component {
                 
                     <Input 
                         validInput={this.state.validStyleName}
-                        label = 'Numero Cartão'
+                        fieldLabel = 'Numero Cartão'
                         placeholder='Cartão de Credito'
                         keyboardType={'numeric'}
                         value={this.state.numberCard}
@@ -105,7 +105,7 @@ export default class Payment extends Component {
                     />
 
                     <Input          
-                        label = 'Nome do Cartão'
+                        fieldLabel = 'Nome do Cartão'
                         placeholder='Digite seu nome'
                         value={this.state.nameClient}
                         onChangeText={(nameClient) => this.setState({nameClient})}
@@ -118,7 +118,7 @@ export default class Payment extends Component {
 
                         <Input 
                             medium
-                            label = 'Mês de expiração'
+                            fieldLabel = 'Mês de expiração'
                             placeholder='12'
                             keyboardType={'numeric'}
                             value={this.state.monthCard}
@@ -126,7 +126,7 @@ export default class Payment extends Component {
                         />
 
                         <Input                         
-                            label = 'Ano de expiração'
+                            fieldLabel = 'Ano de expiração'
                             placeholder='2022'
                             keyboardType={'numeric'}
                             value={this.state.yearCard}
@@ -134,7 +134,7 @@ export default class Payment extends Component {
                         />
 
                         <Input 
-                            label = 'CVV'
+                            fieldLabel = 'CVV'
                             placeholder='987'
                             keyboardType={'numeric'}
                             value={this.state.cvv}
@@ -173,7 +173,7 @@ export default class Payment extends Component {
                 <View style={styles.areaForms}>
                     
                     <Input 
-                        label = 'CEP'
+                        fieldLabel = 'CEP'
                         keyboardType={'numeric'}
                         placeholder='0000000'
                         value={this.state.cep}
@@ -184,7 +184,7 @@ export default class Payment extends Component {
 
                         <Input 
                             setSize={290}
-                            label = 'Rua/Avenidade'
+                            fieldLabel = 'Rua/Avenidade'
                             placeholder='Rua Av. Paulista'
                             value={this.state.street}
                             onChangeText={(street) => this.setState({street})}   
@@ -192,7 +192,7 @@ export default class Payment extends Component {
 
                         <Input 
                             setSize={70}
-                            label = 'Numero'
+                            fieldLabel = 'Numero'
                             placeholder='987'
                             keyboardType={'numeric'}
                             value={this.state.numberHome}
@@ -202,7 +202,7 @@ export default class Payment extends Component {
                     </View>
                     
                     <Input 
-                        label = 'Bairro'
+                        fieldLabel = 'Bairro'
                         placeholder='Vila Orleans'
                         value={this.state.district}
                         onChangeText={(district) => this.setState({district})}   
@@ -212,7 +212,7 @@ export default class Payment extends Component {
 
                         <Input 
                             setSize={290}
-                            label = 'Cidade'
+                            fieldLabel = 'Cidade'
                             placeholder='São Paulo'
                             value={this.state.city}
                             onChangeText={(city) => this.setState({city})}   
