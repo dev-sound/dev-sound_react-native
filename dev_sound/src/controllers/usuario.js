@@ -98,7 +98,29 @@ module.exports = (app) => {
                 console.log(erro);
                 response.status(500).send(`Erro ao conectar no banco de dados: ${erro}`);
             });            
+        },
+        buscaUsuario (request, response) {
+                mongoose.connect(
+                    app.constantes.constsDB.connectDB,
+                    app.constantes.constsDB.connectParams
+                )
+
+                .then(() => {
+                    const Usuario = app.src.models.schemaUsuarios
+
+                    Usuario.find( { email: request.params.email } )
+                    .then((dadosCliente) => {
+                        console.log(dadosCliente)
+                        response.status(200).send(dadosCliente)
+                    })
+                    .catch((erro) => {
+                        response.status(500).send(`Erro ao consultar o cliente: ${erro}`)
+                    })
+                })
+                .catch((erro) => {
+                    response.status(500).send(`Erro ao conectar no banco de dados MongoDB: ${erro}`)
+                })
+            }
         }
-    }
     return UsuarioController
 }

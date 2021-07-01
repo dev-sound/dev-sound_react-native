@@ -1,0 +1,77 @@
+{
+    "data": "", // date required
+    "numeroNF": "", // string required
+    "tipoNota": "0", // boolean required ( 1 para entrada 0 para saida, não fazemos entrada)
+    "chaveAcesso": "", // string required
+    "naturezaOp": "", // string required
+    "protocoloDeAutorizacao": {
+        "dataHora": "", // date required
+        "numero": "" // number required
+    },
+    "remetente": {
+        "Endereço": {
+            "rua":"Av. São João",
+            "numero":"439",
+            "bairro": "República",
+            "cidade": "São Paulo",
+            "UF": "SP"        
+        }, 
+        "razaoSocial": "DEV.SOUND",
+        "inscricaoEstadual": "780.707.167.867",
+        "CNPJ": "82.960.909/0001-56"
+    },
+    "destinatario": {
+        "Nome":"nomeCliente", // string required
+        "Sobrenome":"sobrenomeCliente", // string required
+        "Telefone":"221232312", // string required
+        "Endereco":{ 
+        "Cep":"cepCliente", // string required
+        "Rua":"ruaCliente", // string required
+        "Numero":"numeroCliente",  // number required
+        "Barro":"bairroCliente",   // string required
+        "Cidade":"cidadeCliente",  // string required
+        "UF":"ufCliente" // string required max2 min 2
+        }
+    },
+    "transportadora" :{
+        "Endereço": {
+            "rua":"Av. São João",
+            "numero":"439",
+            "bairro": "República",
+            "cidade": "São Paulo",
+            "UF": "SP"        
+        }, 
+        "razaoSocial": "DEV.SOUND",
+        "inscricaoEstadual": "780.707.167.867",
+        "CNPJ": "82.960.909/0001-56"
+
+    },
+    "Produtos" : [
+        {
+            "id_produto":"",// --> number --> unique --> required 
+            "Descricao":"", // --> string --> required
+            "Qtd_Produto":"1",// --> number --> required --> Min: 1
+            "Valor_unitario":"", // --> number --> required
+            "ICMS" : "", // number required
+            "IPI": ""// number required
+        },
+        {
+            "id_produto":"",
+            "Descricao":"",
+            "Qtd_Produto":"1",
+            "Valor_unitario":"",
+            "ICMS" : "2%",
+            "IPI": "2%"
+        }
+    ],
+    "valorICMS": "",// number required
+    "valorIPI": "",// number required
+    "valorFrete": "100.00", // number required
+    "valorNota": "", //soma dos valores unitarios + impostos(icms e ipi) + frete 
+
+}
+
+        
+    
+    
+    
