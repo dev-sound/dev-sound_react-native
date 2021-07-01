@@ -5,26 +5,19 @@ export default props => {
 
     const stylesInput = [style.input]
 
-    if(props.medium) {
-        stylesInput.push(style.medium)
-    }
-
+    if(props.medium) stylesInput.push(style.medium)
+    if(props.setSize) stylesInput.push({width:props.setSize})
 
     return(
 
-        <View style={[style.container]}>
+        <View style={style.container}>
           
             <Text>{props.label}</Text>
             <TextInput
                 
-                placeholder ={props.placeholder}        
-                value={props.value}
-                onChangeText={props.func}
-                errorMessage={props.msgError}
-                secureTextEntry = {props.isPassword}
-                keyboardType={props.typeKeyboard}
+             {...props}
 
-                style={style.input}
+                style={[stylesInput]}
             />
 
         </View>
@@ -48,7 +41,7 @@ const style = StyleSheet.create(
         },
 
         medium:{
-          
+         width:200
          
         }
     }
