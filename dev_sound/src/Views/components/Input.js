@@ -7,6 +7,17 @@ export default props => {
 
     if(props.medium) stylesInput.push(style.medium)
     if(props.setSize) stylesInput.push({width:props.setSize})
+    
+    if(props.validInput == 'valid'){
+
+            stylesInput.push(style.correct)
+    }
+    
+    else if(props.validInput == 'noValid') {
+
+        stylesInput.push(style.incorrect)
+    }
+
 
     return(
 
@@ -41,6 +52,16 @@ const style = StyleSheet.create(
         medium:{
          width:200
          
+        },
+
+        correct:{
+            borderColor:'#C8F0A4',
+            backgroundColor:'#C8F0A4'
+        },
+
+        incorrect:{
+            borderColor:'#F0ACA4',
+            backgroundColor:'#F0ACA4'
         }
     }
 )
