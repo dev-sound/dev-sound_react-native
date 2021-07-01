@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Image, 
     ImageBackground, TouchableOpacity, 
-    Alert, FlatList } from 'react-native'
+    Alert, FlatList, Dimensions, ScrollView } from 'react-native'
 
 import Title from '../components/Title'
 import ProductOnly from '../components/ProductOnly'
+import violoes from '../screens/violoes'
+
+
 
 
 
@@ -15,39 +18,56 @@ import ProductOnly from '../components/ProductOnly'
 
         renderProductCategory = ({item}) =>  {
             return (
+                // <View >
                 <ProductOnly
                   imgProduct={item.img}
                   nameProduct={item.name}
                   price={item.price}
                 />
+                // </View>
             )
         }
         
 
         render() {
             return (
-                <>
-                <Title>
-                    Violões
-                </Title>
+                <View>
+                    <Title style={styles.title} title='Violoes'/>
+            
 
-                <View style={styles.container}>
-                <FlatList
-                    data={violoes}
-                    keyExtractor={item => `${item.id}`}
-                    renderItem={renderProductCategory}
-                />
+                    <ScrollView>
+                        <View style={styles.productCard}>
+                            <FlatList
+                                data={violoes}
+                                keyExtractor={item => `${item.id}`}
+                                renderItem={this.renderProductCategory}
+                                numColumns={2}
+                            />
+                    </View>
+                </ScrollView>
+
                 </View>
-
-                </>
             )
         }
     }
 
 
-    const style =  StyleSheet.create({
+    const styles =  StyleSheet.create({
         container: {
-            width: Dimensions.get('window').width / 2,
-            margin: 10
+
+        },
+
+        title: {
+            marginLeft: 10,
+            marginBottom: 10
+        },
+
+        productCard: {
+            borderWidth: 1
+            // justifyContent: 'space-between',
+            // marginBottom: 5,
+            // paddingBottom: 5,
+            // marginLeft: 30,
+            // marginTop: 10
         }
     })
