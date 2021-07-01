@@ -20,9 +20,11 @@ const styles = StyleSheet.create({
         height: 'auto',
     },
   teste:{
-    padding: 10,
+    paddingVertical:30,
+    paddingHorizontal: 20,
     borderWidth: 1,
     borderRadius: 20,
-    borderColor: '#B8B8B8',    
+    borderColor: '#B8B8B8', 
+
   }
 })

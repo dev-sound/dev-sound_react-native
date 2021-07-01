@@ -1,31 +1,25 @@
 import React from 'react'
-import { View, TextInput, StyleSheet,Text,Dimensions} from 'react-native'
-
+import { View, StyleSheet,Text,} from 'react-native'
+import { TextInput } from 'react-native-paper';
 export default props => {
 
     const stylesInput = [style.input]
 
-    if(props.medium) {
-        stylesInput.push(style.medium)
-    }
-
+    if(props.medium) stylesInput.push(style.medium)
+    if(props.setSize) stylesInput.push({width:props.setSize})
 
     return(
 
-        <View style={[style.container]}>
+        <View style={style.container}>
           
-            <Text>{props.label}</Text>
-            <TextInput
-                
-                placeholder ={props.placeholder}        
-                value={props.value}
-                onChangeText={props.func}
-                errorMessage={props.msgError}
-                secureTextEntry = {props.isPassword}
-                keyboardType={props.typeKeyboard}
-
-                style={style.input}
+            <Text style={props.style}>{props.fieldLabel}</Text>
+            <View>
+                <TextInput   
+                {...props}
+                style={[stylesInput]}
             />
+            </View>
+            
 
         </View>
     )
@@ -41,14 +35,16 @@ const style = StyleSheet.create(
 
         input:{
             borderWidth:1,
-            padding:7,
             borderRadius:5,
             borderWidth:1,
+            height:40,
+            lineHeight:60,
+            alignContent:'center'
           
         },
 
         medium:{
-          
+         width:200
          
         }
     }

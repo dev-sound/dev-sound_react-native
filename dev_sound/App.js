@@ -1,22 +1,17 @@
 import React from 'react';
-
 import { SafeAreaView,StyleSheet } from 'react-native';
-import Home from './src/Views/screens/Home';
-import Payment from './src/Views/screens/Payment';
-
 
 
 import Home from './src/Views/screens/Home'
-import Register from './src/Views/screens/Register'
-import Login from './src/Views/screens/Login'
+import Auth from './src/Views/screens/Auth';
+
 export default () => {
   return (
      <SafeAreaView style={style.container} >
-        
-      <Payment/>
-        
+        <Auth/>
+    
       </SafeAreaView>
-    )
+)
 
 }
 
