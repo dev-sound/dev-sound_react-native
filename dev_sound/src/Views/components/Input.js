@@ -1,21 +1,31 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { View, StyleSheet,Text,} from 'react-native'
 import { TextInput } from 'react-native-paper';
+
+
 export default props => {
 
     const stylesInput = [style.input]
+
+    let icon = '' 
+    
 
     if(props.medium) stylesInput.push(style.medium)
     if(props.setSize) stylesInput.push({width:props.setSize})
     
     if(props.validInput == 'valid'){
 
-            stylesInput.push(style.correct)
+        stylesInput.push(style.correct)
+        icon = <TextInput.Icon name="check-circle" color="green"/>
+
     }
     
     else if(props.validInput == 'noValid') {
 
         stylesInput.push(style.incorrect)
+        icon = <TextInput.Icon name="close-circle" color="red"/>
+        
+
     }
 
 
@@ -27,6 +37,7 @@ export default props => {
             <View>
                 <TextInput   
                 {...props}
+                right={icon}
                 style={[stylesInput]}
 
             />
@@ -61,13 +72,13 @@ const style = StyleSheet.create(
         },
 
         correct:{
-            borderColor:'#C8F0A4',
-            backgroundColor:'#C8F0A4'
+            borderColor:'#C4D5B3',
+            backgroundColor:'#C4D5B3'
         },
 
         incorrect:{
-            borderColor:'#F0ACA4',
-            backgroundColor:'#F0ACA4'
+            borderColor:'#D5B9B3',
+            backgroundColor:'#D5B9B3'
         }
     }
 )
