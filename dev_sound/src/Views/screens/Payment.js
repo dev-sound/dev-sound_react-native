@@ -225,9 +225,10 @@ export default class Payment extends Component {
     }
 
 
-    setDataPayment = ( ) => {
+    setDataPayment = ( ) => {   
 
-        console.warn(this.state.saveCard)
+        paymentsSaves.Products.push(...ProductPaymentDATA)
+        console.warn(paymentsSaves)
 
         if(this.state.saveCard){
             paymentsSaves.creditCard = this.state.numberCard
@@ -253,7 +254,7 @@ export default class Payment extends Component {
         }
 
 
-        console.warn(paymentsSaves)
+        
     }
 
     // end  validation  inputs
@@ -266,12 +267,52 @@ export default class Payment extends Component {
             return 'none'
         }
         
-        disabledInputs.disabledCep = false
         
     }
     
+
+    setSumItems = () => {
+        
+        const items = ProductPaymentDATA
+        let arr = []
+        let subtotal = parseFloat(0)
+        let shipping = parseFloat(100)
+
+        items.forEach((element => {
+             let sums = element.qtdUnit * element.priceUnit
+             arr.push(sums)
+        }))
+        
+
+        for(let i = 0; i < arr.length; i++){
+            subtotal += arr[i]
+        }
+
+        return(
+           <>
+
+            <View style={styles.areaPrice}>
+            <Text>Subtotal:</Text>
+            
+                <Text>R$ {(subtotal)}</Text>
+            
+            </View>
+
+            <View style={styles.areaPrice}>
+                <Text>Frete:</Text>
+                <Text>R$ 100</Text>  
+            </View>
+
+            <View style={styles.areaPrice}>
+                <Text style={styles.priceTotal}>Total: </Text>
+                <Text style={styles.priceTotal}>R$ {(parseFloat(subtotal + shipping))}</Text>
+            </View>
+        </>
+        )
+    }
+
     render(){   
-      
+    
         return (
         
             <ScrollView style={styles.container} > 
@@ -543,22 +584,7 @@ export default class Payment extends Component {
                 </View>
                 
                     <View style={styles.abstract}>
-                            
-                            <View style={styles.areaPrice}>
-                                <Text>Subtotal:</Text>
-                                <Text>R$ 6.900,00</Text>  
-                            </View>
-
-                            <View style={styles.areaPrice}>
-                                <Text>Frete:</Text>
-                                <Text>R$ 100,00</Text>  
-                            </View>
-
-                            <View style={styles.areaPrice}>
-                                <Text style={styles.priceTotal}>Total: </Text>
-                                <Text style={styles.priceTotal}>R$: 6.944,00</Text>
-                            </View>
-
+                            {this.setSumItems()}
                     </View>
             
 

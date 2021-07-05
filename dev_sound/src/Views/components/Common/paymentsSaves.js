@@ -13,5 +13,7 @@ export default {
         district:'',
         city:'',
         uf:''
-    }
+    },
+    Products:[]
+
 }
