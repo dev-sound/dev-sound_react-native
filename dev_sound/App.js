@@ -11,7 +11,7 @@ export default () => {
   return (
      <SafeAreaView style={style.container} >
 
-          <Payment/>
+          <Home/>
 
       </SafeAreaView>
 )

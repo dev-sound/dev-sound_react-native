@@ -53,15 +53,13 @@ const form = {
 }
 
 const initialStateForm ={
-    installments:'1x de R$ 5.999 Sem Juros' , 
     form:{...form},
     UF:'SP',
+    disabled:{...disabledInputs},
+    stylesInput:{...stylesInput},
     ehBoleto:false,
     saveCard:false,
     saveAdress:false,
-
-    disabled:{...disabledInputs},
-    stylesInput:{...stylesInput}
 }
 
 
@@ -261,10 +259,7 @@ export default class Payment extends Component {
             paymentsSaves.Adress.district =""
             paymentsSaves.Adress.city = ""
             paymentsSaves.Adress.uf =""
-        }
-
-
-        
+        }       
     }
 
     // end  validation  inputs

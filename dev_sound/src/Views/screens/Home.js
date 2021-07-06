@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View,Image,StyleSheet,ScrollView,Dimensions,FlatList} from 'react-native';
+import {View,Image,StyleSheet,ScrollView,Dimensions,FlatList,Text} from 'react-native';
 import Search  from '../components/Search';
 import Header from '../components/Header';
 import Carousel from 'react-native-banner-carousel';
@@ -8,6 +8,9 @@ import ProductOnly from '../components/ProductOnly';
 import ProductsSpotlight from '../components/Common/ProductsSpotlight';
 import ProductNews from '../components/Common/ProductNews';
 import ImagesProject from '../components/Common/ImagesProject';
+import { requests } from '../components/Common/ProductsSpotlight'
+import axios from 'axios';
+
 
 const BannerHeight = Dimensions.get('window').width/1.6;
 
@@ -18,7 +21,29 @@ const images = [
 ]
 
 
-export default class Home extends Component{
+export default class Home extends Component {
+
+  // respProdutos = []
+
+  async componentDidMount (){
+
+      await this.getProduct()
+
+    // this.respProdutos = await requests.getProduct() 
+    // this.setState({produtos:this.respProdutos})
+  }
+
+  getProduct = async () => {
+
+    await axios.get(`http://10.0.3.2:3000/produtos/`)
+        .then(infos => {
+           this.setState({ProdutosDB:infos.data})
+
+        })
+        .catch(erro => Alert.alert('Erro','Get error'))
+      
+  }
+
   
     renderPage = (image,index) => {
       return (
@@ -39,26 +64,37 @@ export default class Home extends Component{
       )
     }
 
-    renderProductNews = ({item}) => {
+    renderProductNews =  ({item}) => {
       return (
-        <ProductOnly
+      
+       <ProductOnly
           imgProduct={item.img}
-          nameProduct={item.name}
-          price={item.price}
-          func={()=> console.warn('coe')}
+          nameProduct={item.nome}
+          price={item.preco}
        />
       )
     }
 
-      state={}
+      state={
+        ProdutosDB :[]
+      }
+
+
+        
+   
  
     render(){ 
 
+      console.warn(this.state.ProdutosDB[0])
+  
       return(
 
         <ScrollView >
           
           <Header/>
+          
+            
+          
           <Search/>
           
           <View style={style.carouselBanner}>
@@ -93,9 +129,9 @@ export default class Home extends Component{
 
             <FlatList 
                 horizontal
-                data={ProductNews}
-                keyExtractor={item => `${item.id}`}
-                renderItem={this.renderProductSpotlight}
+                data={this.respProdutos}
+                keyExtractor={item => item._id}
+                renderItem={this.renderProductNews}
                
               />
 
