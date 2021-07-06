@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Image, 
-    ImageBackground, TouchableOpacity, 
-    Alert, FlatList, Dimensions, ScrollView } from 'react-native'
+import { View, StyleSheet, FlatList, Dimensions, ScrollView } from 'react-native'
 
 import Title from '../components/Title'
 import ProductOnly from '../components/ProductOnly'
-import violoes from '../screens/violoes'
+import ProductsCategory from '../components/Common/ProductsCategory'
 
 
 
@@ -18,56 +16,49 @@ import violoes from '../screens/violoes'
 
         renderProductCategory = ({item}) =>  {
             return (
-                // <View >
-                <ProductOnly
+                 <View style={styles.productCard}>
+                <ProductOnly style={styles.productCard}
                   imgProduct={item.img}
                   nameProduct={item.name}
                   price={item.price}
                 />
-                // </View>
+                 </View>
             )
         }
         
 
         render() {
             return (
-                <View>
-                    <Title style={styles.title} title='Violoes'/>
-            
-
-                    <ScrollView>
-                        <View style={styles.productCard}>
-                            <FlatList
-                                data={violoes}
-                                keyExtractor={item => `${item.id}`}
-                                renderItem={this.renderProductCategory}
-                                numColumns={2}
-                            />
+                <>
+                    <View style={styles.container}>
+                        <Title style={styles.text} title='Categorias'/>
                     </View>
-                </ScrollView>
-
-                </View>
+                    <ScrollView > 
+                                <FlatList
+                                    data={ProductsCategory}
+                                    keyExtractor={item => `${item.id}`}
+                                    renderItem={this.renderProductCategory}
+                                    numColumns={2}
+                                />
+                    </ScrollView>
+                </>
             )
         }
     }
 
 
     const styles =  StyleSheet.create({
+
         container: {
-
-        },
-
-        title: {
-            marginLeft: 10,
-            marginBottom: 10
+            padding: 10,
+            marginBottom: 10,
         },
 
         productCard: {
-            borderWidth: 1
-            // justifyContent: 'space-between',
-            // marginBottom: 5,
-            // paddingBottom: 5,
-            // marginLeft: 30,
-            // marginTop: 10
+            width: Dimensions.get('window').width / 2.7,
+            marginBottom: 5,
+            paddingBottom: 5,
+            marginLeft: 40,
+            marginTop: 10
         }
     })

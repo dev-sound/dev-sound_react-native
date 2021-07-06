@@ -1,15 +1,15 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 // import Home from './src/Views/screens/Home';
-import Category from './src/Views/screens/Category';
 import Header from './src/Views/components/Header/Header'
+import OrderDone from './src/Views/screens/OrderDone'
 
 export default () => {
   return (
-     <SafeAreaView >
+     <SafeAreaView style={styles.container} >
         <Header/>
         {/* Begin Pagina Home   */}
-        <Category/>
+        <OrderDone/>
         {/* End Pagina Home   */}
 
         
@@ -17,3 +17,13 @@ export default () => {
     )
 
 }
+
+const styles =  StyleSheet.create(
+  {
+    container:{
+      flex:1,
+      backgroundColor: "#F1F1F1",
+    }
+
+  }
+)
