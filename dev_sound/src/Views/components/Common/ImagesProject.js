@@ -4,7 +4,7 @@ import Banner3 from '../../../../assets/img/banner3.png'
 
 import saxImg from '../../../../assets/img/sax_.png'
 import violaoTakamine from '../../../../assets/img/violao_takamine.png'
-import guitarraFender from '../../../../assets/img/guitarra_fender.jpeg'
+import guitarraFender from '../../../../assets/instrumentos/guitarra/fender_vintera_70s_maple.png'
 import baixoFender from '../../../../assets/img/baixo_fender.jpeg'
 import pianoImg from '../../../../assets/img/piano.png'
 import pianoDigital from '../../../../assets/img/piano_digital.webp'

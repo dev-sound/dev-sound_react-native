@@ -13,36 +13,33 @@ export default class Product extends Component{
         return(
 
         <ScrollView >
-        {/* componentes */}
         <Header/>
         <Search style={styles.searchBar}/>
-        {/* componentes */}
-
-        {/* título e imagem */}
         <Text style={styles.productTitle}>GUITARRA FENDER VINTERA 70S STRATOCASTER® MAPLE</Text>
         <View style={styles.imageContainer}>
-            <Image style={styles.productImage} source={ImagesProject.ProductImages.saxImg} />
+            <Image style={styles.productImage} source={ImagesProject.ProductImages.guitarraFender} />
         </View>
-        {/* título e imagem */}
-        
-        {/* preço e botão comprar */}
         <View style={styles.priceContainer}>
             <View style={styles.collumnContainer}>
-                <Title title='Preço'/>
-                <Title title='R$12.900,00'/>
+                <Title title='Preço' />
+                <Title title='R$12.900,00' />
             </View>
             <View style={styles.inlineContainer}>
                 <Button label='Comprar' />
             </View>
         </View>
-        {/* preço e botão comprar */}
-        
-        {/* descrição */}
         <View style={styles.descriptionContainer}>
             <Title title='Descrição e Especificações'/>
-            <Text></Text>
+            <Text style={styles.descriptionText}>Honrando o eletrizante "Voodoo Chile" que popularizou a guitarra Stratocaster® e sua enorme flexibilidade sônica, a Jimi Hendrix Stratocaster® te dá o mesmo som incendiário e o mesmo feeling das distintas Strats "invertidas" que Hendrix usava, com visual clássico e timbre "vintage".</Text>
+            <Text style={styles.descriptionText}>
+                  Corpo em alder 
+                - Braço maple "C" shape c/ headstock invertido 
+                - Escala em maple com 25.5 (64.8 cm) 
+                - Escala com raio de 9.5 (241 mm) 
+                - 21 trastes medium jumbo 
+                - Acompanha Deluxe Gig Bag
+            </Text>
         </View>
-        {/* descrição */}
             
         </ScrollView>
         
@@ -62,7 +59,6 @@ const styles =  StyleSheet.create(
         },
         imageContainer:{
             width: '87%',
-            height: '35%',
             alignSelf: 'center',
             marginTop: 25,
             elevation: 7,
@@ -75,7 +71,6 @@ const styles =  StyleSheet.create(
         },
         descriptionContainer: {
             width: '87%',
-            height: 300,
             backgroundColor: '#BABABA',
             alignItems: 'flex-start',
             padding: 15,
@@ -97,6 +92,13 @@ const styles =  StyleSheet.create(
             alignSelf: 'center',
             justifyContent: 'space-between',
             marginBottom: 35,
+        },
+        descriptionText:{
+            width: '87%',
+            marginTop: 10,
+            marginLeft: 10,
+            alignSelf: 'flex-start',
+            fontSize: 21,
         }
     }
 )
