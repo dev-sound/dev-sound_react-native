@@ -9,23 +9,18 @@ export default () => {
   return (
      <SafeAreaView style={style.container} >
         <Auth/>
-    
       </SafeAreaView>
 )
 
 }
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#f1f1f1',
-    flex: 1,
-  }
-})
+
 const style =  StyleSheet.create(
   {
     container:{
       flex:1,
       backgroundColor: "#F1F1F1",
+      
     }
 
   }
