@@ -10,18 +10,18 @@ import { RadioButton,Checkbox } from 'react-native-paper';
 import paymentsSaves from '../components/Common/paymentsSaves'
 
 
-const disabledInputs = {
-    disabledName:false,
-    disabledMonth:false,
-    disabledYear:false,
-    diabledCvv : false,
-    disabledCep:false,
-    disabledStreet:false,
-    disabledNumber:false,
-    disabledDistrict:false,
-    disabledCity:false
-}
-
+const disabledInputs = [
+    {disabledName:false},
+    {disabledMonth:false},
+    {disabledYear:false},
+    {diabledCvv : false},
+    {disabledCep:false},
+    {disabledStreet:false},
+    {disabledNumber:false},
+    {disabledDistrict:false},
+    {disabledCity:false},
+    {disabledBtn:false}
+]
 
 const stylesInput = {
     validStyleCard:'',
@@ -59,6 +59,7 @@ const initialStateForm ={
     ehBoleto:false,
     saveCard:false,
     saveAdress:false,
+
     disabled:{...disabledInputs},
     stylesInput:{...stylesInput}
 }
@@ -82,45 +83,52 @@ export default class Payment extends Component {
         )
     }
     
+
+
+
     //  5392076388465820
     validInputCard = value => {
         const mastercardRegex = /^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/;
-      
+        
         if(mastercardRegex.test(value)){
-     
-            disabledInputs.disabledName = true
+            
+            disabledInputs[0].disabledName = true
             this.setState({validStyleCard:'valid'})
-
+            
         }else{
             paymentsSaves.creditCard = ""
-            disabledInputs.disabledName = false
+            disabledInputs[0].disabledName = false
             this.setState({validStyleCard:'noValid'})
         }
-    }
+     } 
 
-    validInputName = value => {
-        const nameRegex = /[A-Z][a-z].* [A-Z][a-z].*/
-
-        if(nameRegex.test(value)){
-            disabledInputs.disabledMonth = true
+        
+     validInputName = value => {
+            const nameRegex = /[A-Z][a-z].* [A-Z][a-z].*/
+            
+            if(nameRegex.test(value)){
+            disabledInputs[1].disabledMonth = true
             this.setState({validStyleName:'valid'})
-        }else{
-            disabledInputs.disabledMonth = false
+            }else{
+            disabledInputs[1].disabledMonth = false
             this.setState({validStyleName:'noValid'})
+            
+            }
+            
+        } 
 
-        }
-
-    }
 
     validMouthCard = value => {
 
         const regexCardName = /[1-9]/;
         if(regexCardName.test(value) && value <= 12 && value >= 1){
-            disabledInputs.disabledYear = true
+          
+            disabledInputs[2].disabledYear = true
             this.setState({validStyleMouth:'valid'})
 
         }else{
-            disabledInputs.disabledYear = false
+          
+            disabledInputs[2].disabledYear = false
             this.setState({validStyleMouth:'noValid'})
         }
     }
@@ -132,10 +140,10 @@ export default class Payment extends Component {
     
         if(regexNumber.test(value) && value >= year){
             
-            disabledInputs.diabledCvv = true
+            disabledInputs[3].diabledCvv = true
             this.setState({validStyleYear:'valid'})
         }else{
-            disabledInputs.diabledCvv = false
+            disabledInputs[3].diabledCvv = false
             this.setState({validStyleYear:'noValid'})
 
         }
@@ -146,12 +154,12 @@ export default class Payment extends Component {
     
         if(regexNumber.test(value)){
 
-            disabledInputs.disabledCep = true
+            disabledInputs[4].disabledCep = true
             this.setState({validStyleCvv:'valid'})
 
         }else{
 
-            disabledInputs.disabledCep = false
+            disabledInputs[4].disabledCep = false
             this.setState({validStyleCvv:'noValid'})
         }
     }
@@ -160,12 +168,12 @@ export default class Payment extends Component {
         const regexCep = /[0-9]{5}-[0-9]{3}/
 
         if(regexCep.test(value)){
-            disabledInputs.disabledStreet = true
+            disabledInputs[5].disabledStreet = true
             this.setState({validStyleCep:'valid'})      
 
         }else{
             paymentsSaves.Adress.cep = ""
-            disabledInputs.disabledStreet = false
+            disabledInputs[5].disabledStreet = false
             this.setState({validStyleCep:'noValid'})
 
         }
@@ -176,10 +184,10 @@ export default class Payment extends Component {
         const nameRegex = /[A-z][a-z ]/
     
         if(nameRegex.test(value)){
-            disabledInputs.disabledNumber = true
+            disabledInputs[6].disabledNumber = true
             this.setState({validStyleStreet:'valid'})    
         }else{
-            disabledInputs.disabledNumber = false
+            disabledInputs[6].disabledNumber = false
             this.setState({validStyleStreet:'noValid'})
         }
     }
@@ -188,11 +196,11 @@ export default class Payment extends Component {
         const regexNumber = /[1-9]/;
        
         if(regexNumber.test(value)){
-            disabledInputs.disabledDistrict = true
+            disabledInputs[7].disabledDistrict = true
             this.setState({validStyleNumber:'valid'})    
 
         }else{
-            disabledInputs.disabledDistrict = false
+            disabledInputs[7].disabledDistrict = false
             this.setState({validStyleNumber:'noValid'})
         }
     }
@@ -203,10 +211,10 @@ export default class Payment extends Component {
     
         if(nameRegex.test(value)){
           
-            disabledInputs.disabledCity = true
+            disabledInputs[8].disabledCity = true
             this.setState({validStyleDistrict:'valid'})    
         }else{
-            disabledInputs.disabledCity = false
+            disabledInputs[8].disabledCity = false
             this.setState({validStyleDistrict:'noValid'})
         }
     }
@@ -215,11 +223,11 @@ export default class Payment extends Component {
         const nameRegex = /[A-z][a-z ]/
     
         if(nameRegex.test(value)){
-
+            disabledInputs[9].disabledBtn = true
             this.setState({validStyleCity:'valid'})    
 
         }else{
-           
+            disabledInputs[9].disabledBtn = true
             this.setState({validStyleCity:'noValid'})
         }
     }
@@ -235,7 +243,9 @@ export default class Payment extends Component {
         }else{
             paymentsSaves.creditCard = ""
         }
-
+        
+        console.warn(paymentsSaves)
+        console.warn(this.state.saveAdress)
 
         if(this.state.saveAdress){
             paymentsSaves.Adress.cep = this.state.cep
@@ -262,7 +272,7 @@ export default class Payment extends Component {
     // alter layout when user press radio button ehBoleto
     setBoletoForm = () => {
         if(this.state.ehBoleto){
-            disabledInputs.disabledCep = true
+            disabledInputs[4].disabledCep = true
             this.state.saveCard = false
             return 'none'
         }
@@ -311,6 +321,37 @@ export default class Payment extends Component {
         )
     }
 
+    
+    buttonPayment = () => {
+
+        if(disabledInputs[9].disabledBtn){
+
+            return (
+
+                <>
+
+                <Button 
+                finishButton
+               label='FINALIZAR COMPRA'
+                onPress={() => this.setDataPayment()}
+                />
+                </>
+            )
+        }
+        
+    
+            return (
+                <Button 
+                finishButtonDisabled
+                label='FINALIZAR COMPRA' 
+                disabled={true}
+                />
+            )
+        
+
+    }
+
+
     render(){   
     
         return (
@@ -351,7 +392,7 @@ export default class Payment extends Component {
                             placeholder='Cartão de Credito'
                             keyboardType={'numeric'}
                             value={this.state.numberCard}
-                            onBlur={() => this.validInputCard(this.state.numberCard) }
+                            onBlur={() => this.validInputCard(this.state.numberCard)}
                             onChangeText={(numberCard) => { this.setState({numberCard:numberCard}) }}
 
                         />
@@ -363,7 +404,7 @@ export default class Payment extends Component {
                             value={this.state.nameClient}
                             onChangeText={(nameClient) => this.setState({nameClient})}
                             onBlur = {() => this.validInputName(this.state.nameClient)}
-                            editable={disabledInputs.disabledName}         
+                            editable={disabledInputs[0].disabledName}         
                         />
 
         
@@ -379,7 +420,7 @@ export default class Payment extends Component {
                                 value={this.state.monthCard}
                                 onChangeText={(monthCard) => this.setState({monthCard})}
                                 onBlur = {()=> this.validMouthCard(this.state.monthCard)}
-                                editable={disabledInputs.disabledMonth}      
+                                editable={disabledInputs[1].disabledMonth}      
                             />
 
                             <Input 
@@ -390,7 +431,7 @@ export default class Payment extends Component {
                                 value={this.state.yearCard}
                                 onBlur = {()=> this.validYearCard(this.state.yearCard)}
                                 onChangeText={(yearCard) => this.setState({yearCard})}
-                                editable={disabledInputs.disabledYear}   
+                                editable={disabledInputs[2].disabledYear}   
                             />
 
                             <Input 
@@ -401,7 +442,7 @@ export default class Payment extends Component {
                                 value={this.state.cvv}
                                 onBlur = {()=> this.validCvvCard(this.state.cvv)}
                                 onChangeText={(cvv) => this.setState({cvv})}
-                                editable={disabledInputs.diabledCvv}   
+                                editable={disabledInputs[3].diabledCvv}   
                             />
                                 
 
@@ -410,27 +451,6 @@ export default class Payment extends Component {
                         </View>
 
                 
-
-
-                    <Text>Parcelas</Text>
-                    <View style={styles.select}>
-                            <PickerSelect
-                            
-                                onValueChange ={(value) => this.setState({installments:value})}
-                                items ={[
-                                    {label:'2x de R$ 2.999 Sem Juros' , value:'2x de R$ 2.999 Sem Juros'},
-                                    {label:'3x de R$ 1.999 Sem Juros' , value:'3x de R$ 1.999 Sem Juros'},
-                                    {label:'4x de R$ 1.499 Sem Juros' , value:'4x de R$ 1.499 Sem Juros'},
-                                    {label:'5x de R$ 1.199 Sem Juros' , value:'5x de R$ 1.199 Sem Juros'},
-                                ]}         
-                                placeholder={{ label:"1x de R$ 5.999 Sem Juros ", value: '1x de R$ 5.999 Sem Juros' }}
-                            >   
-                        
-                            <Text>{this.state.installments}</Text>
-                            </PickerSelect>
-                        </View>
-                    
-
                                 
                         <View style={styles.checkboxArea}>
                             <View style={styles.checkbox}>
@@ -478,7 +498,7 @@ export default class Payment extends Component {
                         value={this.state.cep}
                         onBlur = {()=> this.validAdressCep(this.state.cep)}
                         onChangeText={(cep) => this.setState({cep})}
-                        editable={disabledInputs.disabledCep}
+                        editable={disabledInputs[4].disabledCep}
                     />
 
                     <View style={styles.areaInputsMins}>
@@ -491,7 +511,7 @@ export default class Payment extends Component {
                             value={this.state.street}
                             onChangeText={(street) => this.setState({street})}   
                             onBlur={()=> this.validAdressStreet(this.state.street)}
-                            editable={disabledInputs.disabledStreet}
+                            editable={disabledInputs[5].disabledStreet}
                         />
 
                         <Input 
@@ -503,7 +523,7 @@ export default class Payment extends Component {
                             value={this.state.numberHome}
                             onBlur={()=> this.validAdressNumber(this.state.numberHome)}
                             onChangeText={(numberHome) => this.setState({numberHome})}
-                            editable={disabledInputs.disabledNumber}  
+                            editable={disabledInputs[6].disabledNumber}  
                         />
                             
                     </View>
@@ -515,7 +535,7 @@ export default class Payment extends Component {
                         value={this.state.district}
                         onBlur={()=> this.validAdressDistrict(this.state.district)}
                         onChangeText={(district) => this.setState({district})}   
-                        editable={disabledInputs.disabledDistrict}
+                        editable={disabledInputs[7].disabledDistrict}
                     />
 
                     <View style={styles.areaInputsMins}>
@@ -528,7 +548,7 @@ export default class Payment extends Component {
                             value={this.state.city}
                             onBlur={()=> this.validAdressCity(this.state.city)}
                             onChangeText={(city) => this.setState({city})}   
-                            editable={disabledInputs.disabledCity}
+                            editable={disabledInputs[8].disabledCity}
                         />
 
                         <View style={styles.uf}>
@@ -588,7 +608,7 @@ export default class Payment extends Component {
                     </View>
             
 
-                <Button finishButtonDisabled label='FINALIZAR COMPRA' onPress={() => this.setDataPayment()}/>        
+                 {this.buttonPayment()}
             </ScrollView>
         )
     }
@@ -698,8 +718,12 @@ const styles = StyleSheet.create(
         },
 
 
-        infoPaymentArea:{
-            
+        buttonFinishPayment:{
+            fontSize:28,
+            position:'relative',
+            top:40,
+            zIndex:20,
+            textAlign:'center'
         }
 
    
