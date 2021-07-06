@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "consign": "^0.1.6",
     "expo": "~41.0.1",

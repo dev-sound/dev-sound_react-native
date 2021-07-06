@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Title from '../components/Title';
 import ImagesProject from '../components/Common/ImagesProject';
 import Button from '../components/Button';
+import axios from 'axios';
 
 export default class Product extends Component{
 
