@@ -1,4 +1,5 @@
 
+
 import Home from './src/Views/screens/Home'
 import Auth from './src/Views/screens/Auth';
 import Payment from './src/Views/screens/Payment';
@@ -29,10 +30,8 @@ const Navigator = createAppContainer(
       }
   }
  
-
-
   })
 )
 
-
 export default Navigator
+

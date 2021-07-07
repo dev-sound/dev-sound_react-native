@@ -68,8 +68,7 @@ export default class Home extends Component {
           imgProduct={item.img}
           nameProduct={item.nome}
           price={item.preco}
-          
-
+        
        />
       )
     }

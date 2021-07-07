@@ -47,3 +47,5 @@ export {requests}
         }
 
   ]
+
+export default ProductsSpotlight
