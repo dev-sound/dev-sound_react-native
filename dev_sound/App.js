@@ -14,6 +14,7 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 const Navigator = createAppContainer(
   createDrawerNavigator({
     Home,
+    Category
 
   },{
     initialRouteName:'Home',

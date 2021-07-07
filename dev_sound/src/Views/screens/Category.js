@@ -10,18 +10,24 @@ import ProductsCategory from '../components/Common/ProductsCategory'
 
 
 
-    export default class Category extends Component {
+
+
+export default class Category extends Component {
 
 
         async componentDidMount (){
 
+          
+
+            await this.setState({page:this.props.navigation.getParam('page')})
+
             await this.getProduct()  
+        
         } 
 
         getProduct = async () => {
             // const subCategoria = guitarra
-
-            await axios.get(`http://10.0.3.2:3000/produtos/subCategoria/guitarra`)
+            await axios.get(`http://10.0.3.2:3000/produtos/subCategoria/${this.state.page}`)
              .then(infos => {
            
                this.setState({respProdutos:infos.data})
@@ -32,8 +38,8 @@ import ProductsCategory from '../components/Common/ProductsCategory'
 
 
 
-
         state = {
+            page:'',
             respProdutos: []
         }
 
@@ -55,9 +61,9 @@ import ProductsCategory from '../components/Common/ProductsCategory'
         render() {
             return (
                 <>
-                    <Header/>
+                    <Header drawer={() => this.props.navigation.openDrawer()}/>
                     <View style={styles.container}>
-                        <Title style={styles.text} title='Guitarras'/>
+                        <Title style={styles.text} title={this.state.page}/>
                     </View>
                     <ScrollView > 
                                 <FlatList

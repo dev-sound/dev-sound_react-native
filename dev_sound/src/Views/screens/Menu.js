@@ -10,9 +10,25 @@ export default class Menu extends Component  {
     
     
     state = {
-        expanded:true
+        expanded:true,
+        page:''
     }
     
+
+        
+    setPageGuitar = async () =>{
+         await this.setState({page:'guitarra'})
+        this.props.navigation.navigate('Category',{page:this.state.page}) 
+    }
+
+    setPageViolao = async () =>{
+        await this.setState({page:'violao'})
+       this.props.navigation.navigate('Category',{page:this.state.page}) 
+   }
+
+
+  
+
 
     render() {
 
@@ -57,11 +73,11 @@ export default class Menu extends Component  {
                                 <List.Accordion title='CORDAS' style={styles.listCategStyle}  titleStyle={{color:'#000000'}}>
                                 
                                     <View style={styles.areaItemLayer}>
-                                        <TouchableOpacity>
-                                            <List.Item title="Guitarra" />
+                                        <TouchableOpacity onPress={() => this.setPageGuitar()} >
+                                            <List.Item title="Guitarra"  />
                                         </TouchableOpacity>
                                         
-                                        <TouchableOpacity>
+                                        <TouchableOpacity onPress={() => this.setPageViolao()}>
                                             <List.Item title="Violões" />
                                         </TouchableOpacity>
                                         
