@@ -23,25 +23,21 @@ const images = [
 
 export default class Home extends Component {
 
-  // respProdutos = []
 
   async componentDidMount (){
 
-      await this.getProduct()
-
-    // this.respProdutos = await requests.getProduct() 
-    // this.setState({produtos:this.respProdutos})
-  }
+      await this.getProduct()  
+  } 
 
   getProduct = async () => {
 
-    await axios.get(`http://10.0.3.2:3000/produtos/`)
+       await axios.get(`http://10.0.3.2:3000/produtos/`)
         .then(infos => {
-           this.setState({ProdutosDB:infos.data})
-
-        })
-        .catch(erro => Alert.alert('Erro','Get error'))
       
+          this.setState({respProdutos:infos.data})
+        })
+          .catch(erro => console.warn(erro))
+  
   }
 
   
@@ -58,8 +54,8 @@ export default class Home extends Component {
       return (
           <ProductOnly
             imgProduct={item.img}
-            nameProduct={item.name}
-            price={item.price}
+            nameProduct={item.nome}
+            price={item.preco}
           />
       )
     }
@@ -68,15 +64,19 @@ export default class Home extends Component {
       return (
       
        <ProductOnly
+          ProductId ={item._id}
           imgProduct={item.img}
           nameProduct={item.nome}
           price={item.preco}
+          
        />
       )
     }
 
       state={
-        ProdutosDB :[]
+        
+        respProdutos:[]
+
       }
 
 
@@ -85,8 +85,8 @@ export default class Home extends Component {
  
     render(){ 
 
-      console.warn(this.state.ProdutosDB[0])
-  
+     
+
       return(
 
         <ScrollView >
@@ -109,31 +109,36 @@ export default class Home extends Component {
           </View>
 
           <View style={style.productAreaContainer}>
-          
+
 
             <Title title="Destaques" style={style.fontText}/>
-            <View style={style.SpotlightProduct}> 
             
-              <FlatList 
-                horizontal
-                data={ProductsSpotlight}
-                keyExtractor={item => `${item.id}`}
-                renderItem={this.renderProductSpotlight}
-              />
             
-            </View>
+          <View style={style.SpotlightProduct}> 
+            
+            <FlatList 
+              horizontal
+              data={this.state.respProdutos}
+              keyExtractor={item => `${item._id}`}
+              renderItem={this.renderProductSpotlight}
+              
+            />
+          
+          </View>
+      
 
 
             <Title title="Novidades" style={style.fontText}/>
             <View style={style.newsProduct}>
 
-            <FlatList 
+              <FlatList 
                 horizontal
-                data={this.respProdutos}
-                keyExtractor={item => item._id}
-                renderItem={this.renderProductNews}
-               
+                data={this.state.respProdutos}
+                keyExtractor={item => `${item._id}`}
+                renderItem={this.renderProductSpotlight}
+                
               />
+
 
              </View>
              
