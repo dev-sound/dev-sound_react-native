@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, ScrollView, TouchableOpacity, Alert } from 'react-native'
+import {
+     Text, StyleSheet, View, ScrollView, 
+     TouchableOpacity, Alert, 
+} from 'react-native'
 import { TextInput } from 'react-native-paper';
 import axios from 'axios'
+import AsyncStorage from "@react-native-async-storage/async-storage"
+
+
 import Portrait from '../components/Register/Portrait'
 import Logo from '../components/Header/logo'
 import Input from '../components/Input'
@@ -13,6 +19,8 @@ let initialState = {
     password: '',
     number:'',
     email:'',
+    logEmail: 'trindadi13@gmail.com',
+    logSenha: 'trindade13',
     confirmPassword: '',
     register: false,
     login: true,
@@ -38,6 +46,29 @@ export default class Auth extends Component {
         ...initialState,
         
     }
+
+    signin = async () => {
+        try {
+           const resp = await axios.post ("http://10.0.3.2:3000/loginUsuarios", {
+                email: this.state.logEmail,
+                senha: this.state.logSenha
+            }) 
+            
+            const infosUser={
+                email: resp.data,
+                token: resp.headers.authorization
+            }
+            await AsyncStorage.setItem('userData', JSON.stringify(infosUser))
+            axios.defaults.headers.common['Authorization'] = `${infosUser.token}`
+            console.warn(infosUser)
+            // descomenta aqui em baixo pra poder navegar pra home
+            // this.props.navigation.navigate('Home', infosUser)
+        }
+        
+        catch(err){
+            console.warn(err)
+        }
+    }
     signup = async () => {
         try {
             await axios.post("http://10.0.3.2:3000/cadastrarUsuarios",{
@@ -49,9 +80,11 @@ export default class Auth extends Component {
                 
             })
             Alert.alert('Usuario cadastrado!')
+            this.setState({...initialState})
         }catch (err){
             console.warn(err)
         }
+        
     }
 
     regexName = (value)=>{
@@ -186,12 +219,14 @@ export default class Auth extends Component {
                     <Input  left={<TextInput.Icon name="account" />}
                         fieldLabel= 'Login' 
                         placeholder= 'Digite seu e-mail' 
+                        onChangeText={logEmail => this.setState({logEmail})}
                         style={styles.input} />}
                     {this.state.login &&                  
                     <Input fieldLabel= 'Senha' 
                         left={<TextInput.Icon name="lock" />} 
                         left={<TextInput.Icon name="lock" />} 
-                        placeholder= 'Crie uma senha' style={styles.input}  
+                        placeholder= 'Crie uma senha' style={styles.input} 
+                        onChangeText={logSenha => this.setState({logSenha})} 
                         secureTextEntry/>}
                 </Portrait>
 
@@ -210,7 +245,7 @@ export default class Auth extends Component {
                     
                     {/* btn login/signup start here */}
                 {this.state.login && 
-                <Btn label='ENTRAR'  disabled={this.state.disBtn}/>}
+                <Btn label='ENTRAR'  onPress={()=>this.signin()}/>}
                 {this.state.register && 
                 <Btn label='CADASTRAR' onPress={()=>this.signup()} disabled={this.state.disBtn}/>}
             </ScrollView>
