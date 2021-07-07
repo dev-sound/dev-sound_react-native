@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-import Header from '../components/Header/Header'
+import Header from '../components/Header/'
 import ProductOrder from '../components/ProductOrder/ProductOrder'
 import Title from '../components/Title'
 import Button from '../components/Button'

@@ -1,15 +1,41 @@
-import React from 'react'
-import {View, TouchableOpacity, Image} from 'react-native'
-import MenuIcon from '../../../../assets/icons/menu_icon.png'
+import React, { Component } from 'react'
+import {View, TouchableOpacity, Image,Text,StyleSheet} from 'react-native'
+import { DrawerItems } from 'react-navigation-drawer'
+import Logo from './logo'
 
 
-export default () => {
-    return (
-       <View>
-           <TouchableOpacity>
-               <Image source={MenuIcon}/>  
-           </TouchableOpacity>
-       </View>
-    )
+
+
+export default class Menu extends Component  {
+    
+    
+    state = {}
+    
+    
+    render() {
+
+
+
+        return (
+            
+            <View style={styles.containerMenu}>
+
+                <View style={styles.logoArea}>
+
+                </View>
+                <Text> Bem vindo </Text>
+
+                <DrawerItems {...this.props}/>
+            
+            </View>
+        )
+    }
 }
 
+
+
+const styles = StyleSheet.create({
+    containerMenu:{
+
+    }
+})

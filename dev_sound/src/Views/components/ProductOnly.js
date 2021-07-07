@@ -3,13 +3,14 @@ import { Text,StyleSheet ,TouchableOpacity,Image,View,Dimensions} from 'react-na
 
 export default props =>{
 
+
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} >
         
             <View style={styles.containerImgProduct}>
               <Image 
                 style={styles.img}
-                source={props.imgProduct}/>
+                source={{uri:`${props.imgProduct}`}}/>
             </View>
             
             <View style={styles.containerInfosProduct}>
