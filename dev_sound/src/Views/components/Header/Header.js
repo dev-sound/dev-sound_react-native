@@ -1,17 +1,16 @@
 import React from 'react';
 import {StyleSheet,Text,View,Image,TouchableOpacity} from 'react-native';
-import MenuIcon from '../../../../assets/icons/menu_icon.png'
 import Logo from './logo';
 import CartIcon from './Cart';
+import MenuIcon from '../../../../assets/icons/menu_icon.png'
 
-
-export default props => {
+export default () => {
 
     return (
         <View style={style.headerArea} >
-         
-            <TouchableOpacity onPress={props.drawer}>
-               <Image source={MenuIcon} />  
+       
+            <TouchableOpacity onPress={() => console.warn('coe')}>
+                    <Image source={MenuIcon}  style={style.test}/>  
             </TouchableOpacity>
             
             <TouchableOpacity>

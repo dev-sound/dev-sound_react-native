@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import { View, StyleSheet, FlatList, Dimensions, ScrollView } from 'react-native'
 
 
+
+import Header from '../components/Header'
 import Title from '../components/Title'
 import ProductOnly from '../components/ProductOnly'
 import ProductsCategory from '../components/Common/ProductsCategory'
@@ -11,9 +13,26 @@ import ProductsCategory from '../components/Common/ProductsCategory'
 
 
 
+
+
+
     export default class Category extends Component {
 
         state = {}
+
+        // loadTasks = async () => {
+        //     try {
+        //         const resp = await axios.get(`${server}/tasks`)
+        //         this.setState({tasks: resp.data}, this.filterTasks)
+        //     } catch(e) {
+        //         showError(e)
+        //     }
+        // }
+
+
+
+
+
 
 
         renderProductCategory = ({item}) =>  {
@@ -32,6 +51,7 @@ import ProductsCategory from '../components/Common/ProductsCategory'
         render() {
             return (
                 <>
+                    <Header/>
                     <View style={styles.container}>
                         <Title style={styles.text} title='Categorias'/>
                     </View>

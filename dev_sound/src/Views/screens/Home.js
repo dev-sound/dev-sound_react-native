@@ -69,6 +69,7 @@ export default class Home extends Component {
           nameProduct={item.nome}
           price={item.preco}
           
+
        />
       )
     }
@@ -96,14 +97,12 @@ export default class Home extends Component {
           <Search/>
           
           <View style={style.carouselBanner}>
-           
             <Carousel
               loop={false}
               autoplay={false}
             >
               {images.map((image, index) => this.renderPage(image, index))}
             </Carousel>
-        
           </View>
 
           <View style={style.productAreaContainer}>

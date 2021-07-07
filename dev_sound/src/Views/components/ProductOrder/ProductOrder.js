@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 import Button from '../Button'
 import ProductDetails from './ProductDetails'
+import ProductPayment from '../ProductPayment'
 
 
 
@@ -11,7 +12,7 @@ import ProductDetails from './ProductDetails'
 
 export default props => {
 
-    const [details, setDetails] = useState(true)
+    const [details, setDetails] = useState(false)
 
 
 
@@ -68,7 +69,9 @@ export default props => {
                     {btnDetails()}                    
             </View>
             {details &&
-                <ProductDetails/>
+                // implementar FlatList
+                <ProductPayment infos nameProduct='VIOLAO TAKAMINE TELECASTER BLACK'
+                modelProduct='054534' qtdProduct='1' priceUnit='3800,00'/>
             }
         </View>
     )
@@ -80,8 +83,8 @@ const styles = StyleSheet.create({
     },
     containerRow: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
-        marginLeft: 10,
+        justifyContent: 'space-between',
+        marginHorizontal: 10,
         alignItems: 'center',
         padding: 5
     },

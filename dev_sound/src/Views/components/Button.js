@@ -25,8 +25,7 @@ export default (props) => {
     return(
     <View>
 
-        <TouchableOpacity {...props}
-                        style={styles.container}>
+        <TouchableOpacity style={styles.container} {...props}>
             <Text style={stylesButton}>{props.label}</Text>
         </TouchableOpacity>
     </View>
@@ -54,7 +53,7 @@ const styles = StyleSheet.create({
         elevation: 5,
         textAlign: 'center',
         fontSize: 28,
-        fontWeight: 'normal',
+        fontWeight: '300',
         padding: 2
     },
 
