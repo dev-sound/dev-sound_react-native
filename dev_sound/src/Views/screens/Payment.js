@@ -354,7 +354,7 @@ export default class Payment extends Component {
             <ScrollView style={styles.container} > 
 
                 <View style={styles.logoArea}>
-                    <Logo/>
+                    <Logo comeBackHome={() => this.props.navigation.navigate('Home')}/>
                 </View>
 
                 <View style={styles.textTitles}>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Image, 
     ImageBackground, TouchableOpacity, 
-    Alert, FlatList } from 'react-native'
+    Alert, FlatList ,Dimensions} from 'react-native'
 
 import Title from '../components/Title'
 import ProductOnly from '../components/ProductOnly'

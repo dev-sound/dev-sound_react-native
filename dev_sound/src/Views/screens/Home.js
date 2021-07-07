@@ -91,7 +91,7 @@ export default class Home extends Component {
 
         <ScrollView >
           
-          <Header/>
+          <Header drawer={() => this.props.navigation.openDrawer()}  />
           
             
           
@@ -152,7 +152,12 @@ export default class Home extends Component {
 
   const style =  StyleSheet.create(
     {
-  
+      
+      container:{
+        flex:1,
+        backgroundColor: "#F1F1F1",
+      },
+
       carouselBanner:{ 
         position:'relative',
         left:6,
