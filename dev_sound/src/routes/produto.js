@@ -9,16 +9,16 @@ module.exports = app => {
     ),
 
     app.get(
-        '/produtos/categoria/:categoria',app.src.controllers.produto.buscaCategoria
+        '/produtos/subCategoria/:subCategoria',app.src.controllers.produto.buscaCategoria
     ),
 
     app.get(
         '/produtos/id/:id',app.src.controllers.produto.buscaId
     ),
 
-    app.get(
-        '/produtosDestaque',app.src.controllers.produto.buscaDestaque
-    ),
+    // app.get(
+    //     '/produtosDestaque',app.src.controllers.produto.buscaDestaque
+    // ),
 
     app.get(
         '/produtos/',app.src.controllers.produto.buscaNovidades

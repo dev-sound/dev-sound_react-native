@@ -165,7 +165,7 @@ module.exports = app => {
             .then(() => {
                 const ProdutosDB  = app.src.models.schemaProdutos
 
-                ProdutosDB.find( { categoria: request.params.categoria } )
+                ProdutosDB.find( { subCategoria: request.params.subCategoria } )
                 .then((itensProduto) => {
                     console.log(itensProduto)
                     response.status(200).send(itensProduto)
@@ -179,27 +179,27 @@ module.exports = app => {
             })
         },
 
-        buscaDestaque (request, response) {
-            mongoose.connect(
-                app.constantes.constsDB.connectDB,
-                app.constantes.constsDB.connectParams
-            )
-            .then(() => {
-                const ProdutosDB = app.src.models.schemaProdutos
-                console.log(`ProdutosDB.find( { destaque: true } )`)
-                ProdutosDB.find( { destaque: true } )
-                .then((itensProduto) => {
-                    console.log(itensProduto)
-                    response.status(200).send(itensProduto)
-                })
-                .catch((erro) => {
-                    response.status(400).send(`Erro ao consultar produtos: ${erro}`)
-                })
-            })
-            .catch((erro) => {
-                response.status(500).send(`Erro ao conectar no banco de dados MongoDB: ${erro}`)
-            })
-        },
+        // buscaDestaque (request, response) {
+        //     mongoose.connect(
+        //         app.constantes.constsDB.connectDB,
+        //         app.constantes.constsDB.connectParams
+        //     )
+        //     .then(() => {
+        //         const ProdutosDB = app.src.models.schemaProdutos
+        //         console.log(`ProdutosDB.find( { destaque: true } )`)
+        //         ProdutosDB.find( { destaque: true } )
+        //         .then((itensProduto) => {
+        //             console.log(itensProduto)
+        //             response.status(200).send(itensProduto)
+        //         })
+        //         .catch((erro) => {
+        //             response.status(400).send(`Erro ao consultar produtos: ${erro}`)
+        //         })
+        //     })
+        //     .catch((erro) => {
+        //         response.status(500).send(`Erro ao conectar no banco de dados MongoDB: ${erro}`)
+        //     })
+        // },
 
         buscaNovidades (request, response) {
             mongoose.connect(
@@ -212,10 +212,6 @@ module.exports = app => {
                 ProdutosDB.find().sort({dataCadastro: -1}).limit(5)
 
                 .then((itensProduto) => {
-                    console.log(itensProduto)
-                    console.log(itensProduto)
-                    console.log(itensProduto)
-                    console.log(itensProduto)
 
                     response.status(200).send(itensProduto)
                 })

@@ -10,9 +10,26 @@ import ProductsCategory from '../components/Common/ProductsCategory'
 
 
 
+
+
+
     export default class Category extends Component {
 
         state = {}
+
+        // loadTasks = async () => {
+        //     try {
+        //         const resp = await axios.get(`${server}/tasks`)
+        //         this.setState({tasks: resp.data}, this.filterTasks)
+        //     } catch(e) {
+        //         showError(e)
+        //     }
+        // }
+
+
+
+
+
 
 
         renderProductCategory = ({item}) =>  {
