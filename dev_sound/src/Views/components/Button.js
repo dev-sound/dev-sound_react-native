@@ -24,7 +24,9 @@ export default (props) => {
 
     return(
     <View>
-        <TouchableOpacity style={styles.container} {...props}>
+
+        <TouchableOpacity {...props}
+                        style={styles.container}>
             <Text style={stylesButton}>{props.label}</Text>
         </TouchableOpacity>
     </View>

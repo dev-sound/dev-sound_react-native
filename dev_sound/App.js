@@ -6,6 +6,7 @@ import Home from './src/Views/screens/Home'
 import Auth from './src/Views/screens/Auth';
 import Payment from './src/Views/screens/Payment';
 import Category from './src/Views/screens/Category';
+import Menu from './src/Views/components/Header/Menu';
 
 
 import { createAppContainer } from 'react-navigation';
@@ -19,7 +20,9 @@ const Navigator = createAppContainer(
     Payment
 
   },{
-    initialRouteName:'Home'
+    initialRouteName:'Home',
+    contentComponent: Menu
+
   })
 )
 

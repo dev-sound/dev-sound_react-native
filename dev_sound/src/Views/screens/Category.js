@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Image, 
-    ImageBackground, TouchableOpacity, 
-    Alert, FlatList ,Dimensions} from 'react-native'
+
+import { View, StyleSheet, FlatList, Dimensions, ScrollView } from 'react-native'
+
 
 import Title from '../components/Title'
 import ProductOnly from '../components/ProductOnly'
+import ProductsCategory from '../components/Common/ProductsCategory'
+
+
 
 
 
@@ -15,11 +18,13 @@ import ProductOnly from '../components/ProductOnly'
 
         renderProductCategory = ({item}) =>  {
             return (
-                <ProductOnly
+                 <View style={styles.productCard}>
+                <ProductOnly style={styles.productCard}
                   imgProduct={item.img}
                   nameProduct={item.name}
                   price={item.price}
                 />
+                 </View>
             )
         }
         
@@ -27,27 +32,35 @@ import ProductOnly from '../components/ProductOnly'
         render() {
             return (
                 <>
-                <Title>
-                    Violões
-                </Title>
-
-                <View style={styles.container}>
-                <FlatList
-                    data={violoes}
-                    keyExtractor={item => `${item.id}`}
-                    renderItem={renderProductCategory}
-                />
-                </View>
-
+                    <View style={styles.container}>
+                        <Title style={styles.text} title='Categorias'/>
+                    </View>
+                    <ScrollView > 
+                                <FlatList
+                                    data={ProductsCategory}
+                                    keyExtractor={item => `${item.id}`}
+                                    renderItem={this.renderProductCategory}
+                                    numColumns={2}
+                                />
+                    </ScrollView>
                 </>
             )
         }
     }
 
 
-    const style =  StyleSheet.create({
+    const styles =  StyleSheet.create({
+
         container: {
-            width: Dimensions.get('window').width / 2,
-            margin: 10
+            padding: 10,
+            marginBottom: 10,
+        },
+
+        productCard: {
+            width: Dimensions.get('window').width / 2.7,
+            marginBottom: 5,
+            paddingBottom: 5,
+            marginLeft: 40,
+            marginTop: 10
         }
     })
