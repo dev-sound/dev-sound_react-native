@@ -143,7 +143,7 @@ module.exports = app => {
             .then(() => {
                 const ProdutosDB  = app.src.models.schemaProdutos
 
-                ProdutosDB.find( { id: request.params.id } )
+                ProdutosDB.find( { id_Produto: request.params.id } )
                 .then((itensProduto) => {
                     console.log(itensProduto)
                     response.status(200).send(itensProduto)

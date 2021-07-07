@@ -1,18 +1,15 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 // import Home from './src/Views/screens/Home';
-import Header from './src/Views/components/Header/Header'
+import Category from './src/Views/screens/Category';
 import OrderDone from './src/Views/screens/OrderDone'
 
 
 export default () => {
   return (
      <SafeAreaView style={styles.container} >
-        <Header/>
-        {/* Begin Pagina Home   */}
-        <OrderDone/>
-        {/* End Pagina Home   */}
 
+        <Category/>
         
       </SafeAreaView>
 )

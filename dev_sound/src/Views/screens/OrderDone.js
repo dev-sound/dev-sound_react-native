@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-
+import Header from '../components/Header/Header'
 import ProductOrder from '../components/ProductOrder/ProductOrder'
 import Title from '../components/Title'
 import Button from '../components/Button'
@@ -10,39 +10,45 @@ import Button from '../components/Button'
 const initialState = {
 
 }
-export default class classname extends Component {
+export default class OrderDone extends Component {
 
     state = {...initialState}
 
     render() {
         return (
-            <ScrollView style={styles.container}>
-                <View style={styles.containerRow}>
-                    <Icon name='check' color='green' size={60}/>
-                    <View style={styles.containerCol}>
-                        <Text style={styles.textN}>SEU PEDIDO FOI CONFIRMADO!</Text>
-                        <Text style={styles.textSub}>Obrigado por comprar na DevSound.</Text>
-                    </View>
-                </View>
-                <View style={styles.containerGrey}>
+            <View>
+                <Header/>
+                <ScrollView style={styles.container}>
+                    {/* mensagem de confirmação */}
                     <View style={styles.containerRow}>
-                        <Text style={styles.text}>Número do pedido: </Text>
-                        <Text style={styles.textN}>2196976</Text>
+                        <Icon name='check' color='green' size={60}/>
+                        <View style={styles.containerCol}>
+                            <Text style={styles.textN}>SEU PEDIDO FOI CONFIRMADO!</Text>
+                            <Text style={styles.textSub}>Obrigado por comprar na DevSound.</Text>
+                        </View>
                     </View>
-                    <View style={styles.containerRow}>
-                        <Text style={styles.text}>Entrega prevista para: </Text>
-                        <Text style={styles.textN}>20/07</Text>
+                    {/* info pedido e botão para o perfil */}
+                    <View style={styles.containerGrey}>
+                        <View style={styles.containerRow}>
+                            <Text style={styles.text}>Número do pedido: </Text>
+                            <Text style={styles.textN}>2196976</Text>
+                        </View>
+                        <View style={styles.containerRow}>
+                            <Text style={styles.text}>Entrega prevista para: </Text>
+                            <Text style={styles.textN}>20/07</Text>
+                        </View>
+                        <View style={styles.containerRow}>
+                            <Text style={styles.textSub}>Veja mais em </Text>
+                            <Button smallButton label='MEU PERFIL'/>
+                        </View>    
                     </View>
-                    <View style={styles.containerRow}>
-                        <Text style={styles.textSub}>Veja mais em </Text>
-                        <Button smallButton label='MEU PERFIL'/>
-                    </View>    
-                </View>
-                <View style={styles.containerGrey}>
-                    <Title title='Resumo do pedido'/>
-                </View>
-                <ProductOrder/>
-            </ScrollView>
+                    {/* resumo pedido */}
+                    <View style={styles.containerGrey}>
+                        <Title title='Resumo do pedido'/>
+                    </View>
+                    <ProductOrder/>
+                </ScrollView>
+            </View>
         )
     }
 }

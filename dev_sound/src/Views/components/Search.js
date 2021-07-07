@@ -27,13 +27,12 @@ const styles = StyleSheet.create({
         width:'98%',
         alignItems:'center',
         justifyContent:'center',
-        marginLeft:'2%'
-        
+        marginLeft:'2%',
+        zIndex: 4,
     },
 
     container:{
-        justifyContent:'space-between'
-
+        justifyContent:'space-between',
     },
 
     image : {

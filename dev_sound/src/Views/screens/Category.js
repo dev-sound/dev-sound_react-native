@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, FlatList, Dimensions, ScrollView } from 'react-native'
 
+import Header from '../components/Header/Header'
 import Title from '../components/Title'
 import ProductOnly from '../components/ProductOnly'
 import ProductsCategory from '../components/Common/ProductsCategory'
@@ -30,6 +31,7 @@ import ProductsCategory from '../components/Common/ProductsCategory'
         render() {
             return (
                 <>
+                    <Header/>
                     <View style={styles.container}>
                         <Title style={styles.text} title='Categorias'/>
                     </View>
