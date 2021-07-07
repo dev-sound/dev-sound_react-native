@@ -16,12 +16,22 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 
 const Navigator = createAppContainer(
   createDrawerNavigator({
-    Home,
-    Payment
+    Home
 
   },{
     initialRouteName:'Home',
-    contentComponent: Menu
+    contentComponent: Menu,
+    contentOptions: {
+      labelStyles: { 
+          fontWeight: 'normal',
+          fontSize: 20
+      },
+      activeLabelStyle: {
+          color: '#FACC22',
+          fontWeight: 'bold'
+      }
+  }
+ 
 
   })
 )

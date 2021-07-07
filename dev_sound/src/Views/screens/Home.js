@@ -91,10 +91,8 @@ export default class Home extends Component {
 
         <ScrollView >
           
-          <Header drawer={() => this.props.navigation.openDrawer()}  />
-          
+          <Header drawer={() => this.props.navigation.openDrawer()}  />       
             
-          
           <Search/>
           
           <View style={style.carouselBanner}>
