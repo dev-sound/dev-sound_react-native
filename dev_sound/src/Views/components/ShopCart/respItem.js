@@ -8,10 +8,9 @@ export default [
         title: "VIOLÃO TAKAMINE", 
         model: "Modelo: 321 457 903",
         price: "Preço:",
-        priceValue: "R$ 3.800,00",
+        priceValue: 3800.00,
         quantity: "Quantidade:",
-        initial: 0,
-        stock: 10
+        stock: 10,
         
     },
     {
@@ -20,10 +19,9 @@ export default [
         title:'SAXOFONE STRAUSS',
         model: "Modelo: 321 457 903",
         price: "Preço:",
-        priceValue: "R$ 2.099,00",
+        priceValue: 2099.00,
         quantity: "Quantidade:",
-        initial: 0,
-        stock: 7
+        stock: 7,
 
     }
 ]
