@@ -2,11 +2,11 @@ import React from 'react';
 import {StyleSheet,Text,View,Image,TouchableOpacity} from 'react-native';
 import Logo from '../../../../assets/img/logo.png'
 
-export default () => {
+export default props => {
     return (
 
         <View style={style.headerArea} >      
-            <TouchableOpacity>
+            <TouchableOpacity onPress={props.comeBackHome}>
                     <View style={style.container}>
                         <Image source={Logo}/>
                         <Text style={style.textLogo}>INSTRUMENTOS</Text>

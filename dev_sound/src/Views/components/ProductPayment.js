@@ -49,13 +49,13 @@ export default props =>{
                     <View  style={styles.pricesInfos}>
 
                         <View style={styles.days}>
-                            <Text style={{fontWeight:'bold',marginLeft:20}}>Entrega</Text>
+                            <Text style={{fontWeight:'bold',marginLeft:20}}>Entrega:</Text>
                             <Text>7 Dias úteis</Text>
                         
                         </View>
 
 
-                        <View>
+                        <View style={{fontWeight:'bold', alignItems: 'flex-end' }}>
                             <Text>Subtotal : 3.800</Text>
                             <Text>Frete    : 100</Text>
                             <Text>Total    : 3.900</Text>
@@ -74,6 +74,7 @@ const styles = StyleSheet.create(
 
         container:{
             flexDirection:'row',
+            justifyContent: 'space-between'
         },
 
         containerImgQtd:{

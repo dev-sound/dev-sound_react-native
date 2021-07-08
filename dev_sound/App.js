@@ -1,46 +1,57 @@
-import React from 'react';
-import { SafeAreaView,StyleSheet } from 'react-native';
-import Home from './src/Views/screens/Home'
+import Home from './src/Views/screens/Home';
+import Product from './src/Views/screens/Product';
 import Auth from './src/Views/screens/Auth';
 import Payment from './src/Views/screens/Payment';
-import Product from './src/Views/screens/Product';
+import Menu from './src/Views/screens/Menu';
+import Category from './src/Views/screens/Category';
+import CategoryViolao from './src/Views/screens/Category'
+import { createAppContainer } from 'react-navigation';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 
+const Navigator = createAppContainer(
+  createDrawerNavigator({
+      Home: {
+        name: 'Home',
+        screen: Home
+     },
 
-export default () => {
-  return (
-     <SafeAreaView style={style.container} >
-        
-        {/* Begin Pagina Home   */}
-        {/* <Home/> */}
-        {/* End Pagina Home   */}
-        <Product/>
-        
-      </SafeAreaView>
-)
+     Product: {
+       name: 'Product',
+       screen: Product
+     }
 
-}
+     Auth:{
+      name:'Auth',
+      screen:Auth
+     },
+   
+    Category:{
+      name:'Category',
+      screen: Category
+    },
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#f1f1f1',
-    flex: 1,
-  }
-})
-const style =  StyleSheet.create(
-  {
-    container:{
-      flex:1,
-      backgroundColor: "#F1F1F1",
+    CategoryViolao:{
+      name:'CategoryViolao',
+      screen: CategoryViolao
     }
 
+  },{
+    initialRouteName:'Home',
+    contentComponent: Menu,
+   
+    contentOptions: {
+      labelStyles: { 
+          fontWeight: 'normal',
+      },
+      activeLabelStyle: {
+        fontSize: 20,
+          color: '#FACC22',
+          fontWeight: 'bold'
+      }
   }
+ 
+  })
 )
-{/* <List.Section style={styles.select}>
-     
-<List.Accordion title={this.state.installments} expanded={this.state.selecetOpen} onPress={() => this.setState({selecetOpen:true})} >
-    <List.Item title="1x 6.000  sem juros" onPress={() => this.setState({installments:'1x 6.000  sem juros' ,selecetOpen:false })}/>
-    <List.Item title="2x 3.000  sem juros" onPress={() => this.setState({installments:'2x 3.000  sem juros' ,selecetOpen:false })}/>
-    <List.Item title="3x 2.000  sem juros" onPress={() => this.setState({installments:'3x 2.000  sem juros' ,selecetOpen:false })}/>
-    
-</List.Accordion>
-</List.Section> */}
+
+export default Navigator
+

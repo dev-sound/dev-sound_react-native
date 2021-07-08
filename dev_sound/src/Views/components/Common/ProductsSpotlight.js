@@ -1,8 +1,6 @@
-import React, {useState} from 'react'
+
 import ImagesProject from './ImagesProject'
 import axios from 'axios'
-import serverAxios from '../Common/serverAxios'
-import { Alert } from 'react-native'
 
 
 const requests = {
