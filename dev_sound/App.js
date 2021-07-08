@@ -15,10 +15,10 @@ const Navigator = createAppContainer(
         screen: Home
      },
 
-     Product: {
-       name: 'Product',
-       screen: Product
-     }
+      Product: {
+        name: 'Product',
+        screen: Product
+      },
 
      Auth:{
       name:'Auth',
@@ -36,7 +36,7 @@ const Navigator = createAppContainer(
     }
 
   },{
-    initialRouteName:'Home',
+    initialRouteName:'Product',
     contentComponent: Menu,
    
     contentOptions: {

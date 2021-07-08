@@ -37,12 +37,9 @@ export default class Menu extends Component  {
    }
 
 
-  
-
-
     render() {
 
-        console.warn(this.state.infosUser)
+        // console.warn(this.state.infosUser)
 
         return (
             

@@ -9,58 +9,26 @@ import axios from 'axios';
 
 export default class Product extends Component{
 
-    state = {}
-
-    respProdutos = []
-
     async componentDidMount (){
 
-        await this.getProductSpecs()
-        await this.getProductDescription()
-        await this.getProductPrice()
-        await this.getProductImage()
-        await this.getProductTitle()
+        await this.getProduct()
     }
 
-    getProductTitle = async () => {
-        await axios.get(`http://10.0.3.2:3000/produtos/id/60da008b6f464a551422fbb0`)
-        .then(infos => {
-            this.setState({productTitle:infos.data.nome})
-        })
-            .catch(erro => Alert.alert('Erro ao puxar título'))
-    }
+    getProduct = async () => {
 
-      getProductImage = async () => {
-          await axios.get(`http://10.0.3.2:3000/produtos/id/60da008b6f464a551422fbb0`)
-          .then(infos => {
-              this.setState({produtos:infos.data})
-          })
-          .catch(erro => Alert.alert('Erro ao puxar imagem'))
-      }
+        await axios.get(`http://10.0.3.2:3000/produtos/id/60e746c462927f8fa179ceba`)
+         .then(infos => {
+           this.setState({resposta:infos.data})
+            console.warn(infos.data)
+         })
+           .catch(erro => console.warn(erro))
+   }
 
-      getProductPrice = async () => {
-          await axios.get(`http://10.0.3.2:3000/produtos/id/60da008b6f464a551422fbb0`)
-          .then(infos => {
-              this.setState({produtos:infos.data})
-          })
-          .catch(erro => Alert.alert('Erro ao puxar preço'))
-      }
+   state={
+        
+    respProdutos:[]
 
-      getProductDescription = async () => {
-        await axios.get(`http://10.0.3.2:3000/produtos/id/60da008b6f464a551422fbb0`)
-        .then(infos => {
-            this.setState({produtos:infos.data})
-        })
-        .catch(erro => Alert.alert('Erro ao puxar descrição'))
-    }
-
-    getProductSpecs = async () => {
-        await axios.get(`http://10.0.3.2:3000/produtos/id/60da008b6f464a551422fbb0`)
-        .then(infos => {
-            this.setState({produtos:infos.data})
-        })
-        .catch(erro => Alert.alert('Erro ao puxar especificações'))
-    }
+  }
 
     
     render(){ 
@@ -71,16 +39,15 @@ export default class Product extends Component{
             <Header/>
             <Search/>
 
-        <Text style={styles.productTitle}>{this.getProductTitle}</Text>
-
+        <Text style={styles.productTitle}></Text>
         <View style={styles.imageContainer}>
-                <Image style={styles.productImage} source={this.getProductByID}/>
+                <Image style={styles.productImage} source={this.getProduct()}/>
         </View>
 
         <View style={styles.priceContainer}>
             <View style={styles.collumnContainer}>
                 <Title title='Preço' />
-                <Text style={styles.price}>R${this.getProductPrice}</Text>
+                <Text style={styles.price}>R$</Text>
             </View>
             <View style={styles.inlineContainer}>
                 <Button label='Comprar' onPress={() => this.sentToCart} />
@@ -89,8 +56,8 @@ export default class Product extends Component{
 
         <View style={styles.descriptionContainer}>
             <Title title='Descrição e Especificações'/>
-            <Text style={styles.descriptionText}>{this.getProductDescription}</Text>
-            <Text style={styles.descriptionText}>{this.getProductSpecs}</Text>
+            <Text style={styles.descriptionText}></Text>
+            <Text style={styles.descriptionText}></Text>
         </View>
             
         </ScrollView>
