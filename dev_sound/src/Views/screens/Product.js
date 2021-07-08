@@ -1,53 +1,103 @@
 import React, { Component } from 'react';
-import {View,Image,StyleSheet,ScrollView,Dimensions,FlatList,Text} from 'react-native';
+import {StyleSheet, ScrollView, AsyncStorage, View, Text, Image, Alert, Dimensions} from 'react-native';
 import Search  from '../components/Search';
 import Header from '../components/Header';
 import Title from '../components/Title';
-import ImagesProject from '../components/Common/ImagesProject';
 import Button from '../components/Button';
+import ImagesProject from '../components/Common/ImagesProject';
 import axios from 'axios';
 
 export default class Product extends Component{
 
+    state = {}
+
+    respProdutos = []
+
+    async componentDidMount (){
+
+        await this.getProductSpecs()
+        await this.getProductDescription()
+        await this.getProductPrice()
+        await this.getProductImage()
+        await this.getProductTitle()
+    }
+
+    getProductTitle = async () => {
+        await axios.get(`http://10.0.3.2:3000/produtos/id/60da008b6f464a551422fbb0`)
+        .then(infos => {
+            this.setState({productTitle:infos.data.nome})
+        })
+            .catch(erro => Alert.alert('Erro ao puxar título'))
+    }
+
+      getProductImage = async () => {
+          await axios.get(`http://10.0.3.2:3000/produtos/id/60da008b6f464a551422fbb0`)
+          .then(infos => {
+              this.setState({produtos:infos.data})
+          })
+          .catch(erro => Alert.alert('Erro ao puxar imagem'))
+      }
+
+      getProductPrice = async () => {
+          await axios.get(`http://10.0.3.2:3000/produtos/id/60da008b6f464a551422fbb0`)
+          .then(infos => {
+              this.setState({produtos:infos.data})
+          })
+          .catch(erro => Alert.alert('Erro ao puxar preço'))
+      }
+
+      getProductDescription = async () => {
+        await axios.get(`http://10.0.3.2:3000/produtos/id/60da008b6f464a551422fbb0`)
+        .then(infos => {
+            this.setState({produtos:infos.data})
+        })
+        .catch(erro => Alert.alert('Erro ao puxar descrição'))
+    }
+
+    getProductSpecs = async () => {
+        await axios.get(`http://10.0.3.2:3000/produtos/id/60da008b6f464a551422fbb0`)
+        .then(infos => {
+            this.setState({produtos:infos.data})
+        })
+        .catch(erro => Alert.alert('Erro ao puxar especificações'))
+    }
+
+    
     render(){ 
 
         return(
 
         <ScrollView >
-        <Header/>
-        <Search style={styles.searchBar}/>
-        <Text style={styles.productTitle}>GUITARRA FENDER VINTERA 70S STRATOCASTER® MAPLE</Text>
+            <Header/>
+            <Search/>
+
+        <Text style={styles.productTitle}>{this.getProductTitle}</Text>
+
         <View style={styles.imageContainer}>
-            <Image style={styles.productImage} source={ImagesProject.ProductImages.guitarraFender} />
+                <Image style={styles.productImage} source={this.getProductByID}/>
         </View>
+
         <View style={styles.priceContainer}>
             <View style={styles.collumnContainer}>
                 <Title title='Preço' />
-                <Title title='R$12.900,00' />
+                <Text style={styles.price}>R${this.getProductPrice}</Text>
             </View>
             <View style={styles.inlineContainer}>
-                <Button label='Comprar' />
+                <Button label='Comprar' onPress={() => this.sentToCart} />
             </View>
         </View>
+
         <View style={styles.descriptionContainer}>
             <Title title='Descrição e Especificações'/>
-            <Text style={styles.descriptionText}>Honrando o eletrizante "Voodoo Chile" que popularizou a guitarra Stratocaster® e sua enorme flexibilidade sônica, a Jimi Hendrix Stratocaster® te dá o mesmo som incendiário e o mesmo feeling das distintas Strats "invertidas" que Hendrix usava, com visual clássico e timbre "vintage".</Text>
-            <Text style={styles.descriptionText}>
-                  Corpo em alder 
-                - Braço maple "C" shape c/ headstock invertido 
-                - Escala em maple com 25.5 (64.8 cm) 
-                - Escala com raio de 9.5 (241 mm) 
-                - 21 trastes medium jumbo 
-                - Acompanha Deluxe Gig Bag
-            </Text>
+            <Text style={styles.descriptionText}>{this.getProductDescription}</Text>
+            <Text style={styles.descriptionText}>{this.getProductSpecs}</Text>
         </View>
             
         </ScrollView>
-        
-            )
+                )
+            }
         }
-    }
-
+        
 const styles =  StyleSheet.create(
     {   
         productTitle: {
@@ -55,21 +105,30 @@ const styles =  StyleSheet.create(
             width: '86%',
             marginTop: 15,
             fontSize: 25,
-            fontWeight: "bold",
+            fontWeight: 'bold',
             marginLeft: 10,
         },
+
+        price: {
+            fontSize: 28,
+            marginLeft: 10,
+        },
+
         imageContainer:{
             width: '87%',
+            height: 412,
             alignSelf: 'center',
             marginTop: 25,
             elevation: 7,
             borderColor: '#000'
         },
+
         productImage: {
             width: '100%',
             height: 412,
             borderRadius: 11,
         },
+
         descriptionContainer: {
             width: '87%',
             backgroundColor: '#BABABA',
@@ -80,13 +139,16 @@ const styles =  StyleSheet.create(
             elevation: 6,
             marginBottom: 50,
         },
+
         collumnContainer:{
             marginTop: 40,
         },
+
         inlineContainer: {
             justifyContent: 'space-between',
             marginTop: 50,
         },
+
         priceContainer:{
             flexDirection: 'row',
             width: '86%',
@@ -94,6 +156,7 @@ const styles =  StyleSheet.create(
             justifyContent: 'space-between',
             marginBottom: 35,
         },
+
         descriptionText:{
             width: '87%',
             marginTop: 10,
