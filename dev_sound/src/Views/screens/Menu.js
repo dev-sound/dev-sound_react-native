@@ -37,7 +37,9 @@ export default class Menu extends Component  {
    }
 
 
-  
+   goToProfile = () => {
+       this.props.navigation.navigate('Profile', this.state.infosUser)
+   }
 
 
     render() {
@@ -64,7 +66,7 @@ export default class Menu extends Component  {
                                 <Text style={styles.HiUser}>Olá, faça o login</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress= {()=> this.goToProfile()}>
                                 <Text style={styles.AcessUserArea}>Acessar a aréa do usuário</Text>
                             </TouchableOpacity>
                         </View>

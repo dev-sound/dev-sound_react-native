@@ -50,14 +50,15 @@ module.exports = app => {
                 razaoSocialTransp: {type: String},
                 inscricaoEstadualTransp:{type: String} 
             },
-            produtos: [
+            Produtos:[
                 {
-                    id_produto: {type: String},
-                    nome: {type: String},
-                    qtd_produto: {type: Number},
-                    valor_unitario: {type: Number},
-                    icms: {type: Number},
-                    ipi: {type: Number},
+                    id_Produto:{type:String},
+                    nome:{type:String}, 
+                    categoria:{type:String},
+                    modelo:{type:String},
+                    qtd_Produto:{type:Number},
+                    valor_unitario:{type:Number},    
+                    valor_total_produto:{type:Number}   
                 }
             ],
             totalIcsm: {type: Number},

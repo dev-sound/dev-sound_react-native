@@ -236,8 +236,8 @@ module.exports = app => {
                                                             produtos.forEach((element)=> {
                                                                 element.icms = element.valor_unitario * 0.02
                                                                 element.ipi= element.valor_unitario * 0.02
-                                                                total_icms = total_icms + element.icms
-                                                                total_ipi = total_ipi + element.icms
+                                                                total_icms = (total_icms + element.icms) * element.qtd_Produto
+                                                                total_ipi = (total_ipi + element.icms)* element.qtd_Produto
                                                             }
                                                             )
                                                             const notaDB = app.src.models.schemaNotaFiscal
@@ -288,17 +288,15 @@ module.exports = app => {
                                                                 razaoSocialTransp: "DEV.SOUND",
                                                                 inscricaoEstadualTransp: "780.707.167.867"
                                                             },
-                                                            produtos: {
-                                                                ...produtos
-
-                                                            },
-                                                            totalIcms: total_icms,
+                                                            Produtos: produtos,
+                                                            totalIcsm: total_icms,
                                                             totalIpi:total_ipi,
                                                             valorFrete: frete,
                                                             totalNota: Total_Valor
                                                             } 
+                                                            
                                                             notaDB.create(dadosNf)
-                                                            .then(resultado => console.log('NF criada com sucesso'))
+                                                            .then(resultado => console.log(`NF criada com sucesso ${resultado}`))
                                                             .catch(err => console.log(err))
                                                         response.status(200).send('Pedido Cadastrado com Sucesso')
                                                     })
