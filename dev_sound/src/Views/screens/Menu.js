@@ -4,26 +4,25 @@ import { DrawerItems } from 'react-navigation-drawer'
 import Logo from '../components/Header/logo'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { List } from 'react-native-paper'
-
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default class Menu extends Component  {
     
     
     state = {
-        expanded:true,
-        page:''
+        page:'',
+       AuthLogin: '',
+       
     }
     
-
-        
     setPageGuitar = async () =>{
-         await this.setState({page:'guitarra'})
+        await this.setState({page:'guitarra'})
         this.props.navigation.navigate('Category',{page:this.state.page}) 
     }
 
     setPageViolao = async () =>{
-        await this.setState({page:'violao'})
-       this.props.navigation.navigate('Category',{page:this.state.page}) 
+    await this.setState({page:'violao'})
+    this.props.navigation.navigate('CategoryViolao',{page:this.state.page}) 
    }
 
 
@@ -50,7 +49,9 @@ export default class Menu extends Component  {
 
                         <View style={styles.areaTextsHeader}>
                            
-                            <Text style={styles.HiUser}>Olá, faça o login</Text>
+                            <TouchableOpacity>
+                                <Text style={styles.HiUser}>Olá, faça o login</Text>
+                            </TouchableOpacity>
                             <TouchableOpacity>
                                 <Text style={styles.AcessUserArea}>Acessar a aréa do usuário</Text>
                             </TouchableOpacity>
@@ -60,11 +61,13 @@ export default class Menu extends Component  {
                         
 
                 </View>
-{/*             
-                left={props => <List.Icon {...props} icon="folder" />} */}
 
-                <DrawerItems {...this.props}/>
                 <View style={styles.contentMenuOptions}>
+
+                  <TouchableOpacity style={styles.btnContact } onPress={() => this.props.navigation.navigate('Home')}>
+                       <Text style={styles.titleCategories}>Home</Text>
+                    </TouchableOpacity>    
+
 
                     <List.Accordion title="Categorias" titleStyle={styles.titleCategories} >
 
