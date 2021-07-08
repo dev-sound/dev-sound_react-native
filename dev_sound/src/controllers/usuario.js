@@ -65,14 +65,13 @@ module.exports = (app) => {
                         if (senhaValida) {
 
 
-                            const payload = { login: usuario.email,
-                                                nome: usuario.nome };
+                            const payload = { login: usuario.email
+                                                 };
                             const token = jwt.sign(
                                 payload,
                                 app.constantes.constSec.chaveJWT,
                                 { expiresIn: app.constantes.constSec.tempoExpiracaoToken }
                             );
-                            console.log(`token: ${token}`);
                             mongoose.disconnect();
                             response.set('Authorization', token)
                             response.status(200).send(payload);

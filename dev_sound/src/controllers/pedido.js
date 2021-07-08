@@ -97,7 +97,6 @@ module.exports = app => {
 
 
 
-
                                                 for (let i = 0; i < produtos.length; i++) {
                                                     let qtdProdValor = produtos[i].qtd_Produto * produtos[i].valor_unitario
                                                     valoresTotais.push(qtdProdValor)
@@ -231,7 +230,76 @@ module.exports = app => {
                                                             })
                                                             .then(setPedidoClienteDB => console.log(setPedidoClienteDB))
                                                             .catch(erro => console.log(erro))
+                                                            let numeroNF = Math.random() * 10000
+                                                           let total_icms = 0
+                                                           let total_ipi = 0
+                                                            produtos.forEach((element)=> {
+                                                                element.icms = element.valor_unitario * 0.02
+                                                                element.ipi= element.valor_unitario * 0.02
+                                                                total_icms = total_icms + element.icms
+                                                                total_ipi = total_ipi + element.icms
+                                                            }
+                                                            )
+                                                            const notaDB = app.src.models.schemaNotaFiscal
+                                                            const dadosNf= {
+                                                               data:  DataCompra,
+                                                               numeroNF: Math.trunc(numeroNF),
+                                                               tipoNota: 0,
+                                                               chaveAcesso: "3521.0653.1539.3800.1694.5500.2002.0997.7710.6368.0815",
+                                                               naturezaOp: "Venda ao Cliente",
+                                                               protooloDeAutorizacao: {
+                                                                   dataHora: DataCompra,
+                                                                   numeroProto: "135210658139737"
+                                                               },
+                                                               remetente: {
+                                                                    Endereço: {
+                                                                        rua:"Av. São João",
+                                                                        numero:"439",
+                                                                        bairro: "República",
+                                                                        cidade: "São Paulo",
+                                                                        cep:"05283-030",
+                                                                        uf: "SP"        
+                                                                    }, 
+                                                                    razaoSocial: "DEV.SOUND",
+                                                                    inscricaoEstadual: "780.707.167.867",
+                                                            },
+                                                            destinatario: {
+                                                                nomeCliente:usuarioInfo.nome,
+                                                                SobrenomeCliente: usuarioInfo.sobrenome,
+                                                                telefone:usuarioInfo.telefone,
+                                                                enderecoCliente: {
+                                                                    ruaCliente: infosUser.rua,
+                                                                    numeroCliente: infosUser.numero,
+                                                                    bairroCliente: infosUser.bairro,
+                                                                    cidadeCliente: infosUser.cidade,
+                                                                    cepCliente: infosUser.cep,
+                                                                    ufCliente: infosUser.UF
+                                                                },
+                                                            },
+                                                            transportadora:{
+                                                                enderecoTransp:{
+                                                                    ruaTransp:"Av. São João",
+                                                                    numeroTransp: "439",
+                                                                    bairroTransp: "República",
+                                                                    cidadeTransp: "São Paulo",
+                                                                    cepTransp: "05283-030",
+                                                                    ufTransp: "SP"
+                                                                },
+                                                                razaoSocialTransp: "DEV.SOUND",
+                                                                inscricaoEstadualTransp: "780.707.167.867"
+                                                            },
+                                                            produtos: {
+                                                                ...produtos
 
+                                                            },
+                                                            totalIcms: total_icms,
+                                                            totalIpi:total_ipi,
+                                                            valorFrete: frete,
+                                                            totalNota: Total_Valor
+                                                            } 
+                                                            notaDB.create(dadosNf)
+                                                            .then(resultado => console.log('NF criada com sucesso'))
+                                                            .catch(err => console.log(err))
                                                         response.status(200).send('Pedido Cadastrado com Sucesso')
                                                     })
                                                     .catch(err => console.log(err))
