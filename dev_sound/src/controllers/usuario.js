@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 
-
 module.exports = (app) => {
     const UsuarioController = {
 
@@ -44,7 +43,7 @@ module.exports = (app) => {
         login(request,response){
 
             mongoose.connect(
-                app.constantes.constsDB.connectDB ,
+                app.constantes.constsDB.connectDB,
                 app.constantes.constsDB.connectParams
             )
             .then(() => {
@@ -65,8 +64,7 @@ module.exports = (app) => {
                         if (senhaValida) {
 
 
-                            const payload = { login: usuario.email
-                                                 };
+                            const payload = { login: usuario.email , nome:usuario.nome};
                             const token = jwt.sign(
                                 payload,
                                 app.constantes.constSec.chaveJWT,

@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         elevation: 5,
         textAlign: 'center',
         fontSize: 28,
-        fontWeight: 'normal',
+        fontWeight: '300',
         padding: 2
     },
 
