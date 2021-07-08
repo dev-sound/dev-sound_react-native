@@ -25,8 +25,11 @@ export default class Home extends Component {
 
 
   async componentDidMount (){
-
-      await this.getProduct()  
+    
+    await console.warn(this.props.navigation.getParam('infos'))
+    await this.getProduct()  
+ 
+        
   } 
 
   getProduct = async () => {
@@ -74,7 +77,7 @@ export default class Home extends Component {
     }
 
       state={
-        
+        infos:'',
         respProdutos:[]
 
       }
@@ -85,7 +88,7 @@ export default class Home extends Component {
  
     render(){ 
 
-     
+
 
       return(
 

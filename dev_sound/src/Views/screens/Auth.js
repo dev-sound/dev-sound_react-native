@@ -13,14 +13,16 @@ import Logo from '../components/Header/logo'
 import Input from '../components/Input'
 import Btn from '../components/Button'
 
+
+
 let initialState = {
     name: '',
     lastName: '',
     password: '',
     number:'',
     email:'',
-    logEmail: 'trindadi13@gmail.com',
-    logSenha: 'trindade13',
+    logEmail: 'andry@andry.com',
+    logSenha: 'andry12345',
     confirmPassword: '',
     register: false,
     login: true,
@@ -54,15 +56,19 @@ export default class Auth extends Component {
                 senha: this.state.logSenha
             }) 
             
-            const infosUser={
+            const infosUser = {
                 email: resp.data,
                 token: resp.headers.authorization
             }
-            await AsyncStorage.setItem('userData', JSON.stringify(infosUser))
+
             axios.defaults.headers.common['Authorization'] = `${infosUser.token}`
-            console.warn(infosUser)
+            await AsyncStorage.setItem('userData', JSON.stringify(infosUser))
+            
             // descomenta aqui em baixo pra poder navegar pra home
-            this.props.navigation.navigate('Home', infosUser)
+ 
+                this.props.navigation.navigate('Home', {infos:'Jonas'})
+         
+            
         }
         
         catch(err){
