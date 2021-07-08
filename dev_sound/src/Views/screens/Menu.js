@@ -9,10 +9,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 export default class Menu extends Component  {
     
     
+
+   async componentDidMount(){
+        const userData = await AsyncStorage.getItem('userData')
+         const parseInfosUser = JSON.parse(userData)
+
+         this.setState({infosUser:parseInfosUser})
+        
+        
+    }
+
     state = {
-        page:'',
-       AuthLogin: '',
-       
+       page:'',
+       infosUser: '',
+      
+
     }
     
     setPageGuitar = async () =>{
@@ -31,7 +42,7 @@ export default class Menu extends Component  {
 
     render() {
 
-
+        console.warn(this.state.infosUser)
 
         return (
             
@@ -49,9 +60,10 @@ export default class Menu extends Component  {
 
                         <View style={styles.areaTextsHeader}>
                            
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate('Auth')}>
                                 <Text style={styles.HiUser}>Olá, faça o login</Text>
                             </TouchableOpacity>
+
                             <TouchableOpacity>
                                 <Text style={styles.AcessUserArea}>Acessar a aréa do usuário</Text>
                             </TouchableOpacity>

@@ -62,7 +62,7 @@ export default class Auth extends Component {
             axios.defaults.headers.common['Authorization'] = `${infosUser.token}`
             console.warn(infosUser)
             // descomenta aqui em baixo pra poder navegar pra home
-            // this.props.navigation.navigate('Home', infosUser)
+            this.props.navigation.navigate('Home', infosUser)
         }
         
         catch(err){
