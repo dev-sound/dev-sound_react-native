@@ -21,7 +21,9 @@ export default class Category extends Component {
 
             await this.setState({page:this.props.navigation.getParam('page')})
 
-            await this.getProduct()  
+            await this.getProduct() 
+            
+            await this.getTitle()
         
         } 
 
@@ -31,10 +33,30 @@ export default class Category extends Component {
              .then(infos => {
            
                this.setState({respProdutos:infos.data})
+
             })
             .catch(erro => console.warn(erro))
         }
 
+        getTitle = () => {
+            if (this.state.page == 'guitarra') {
+                return(<Title title='Guitarras'/>)
+            } else if (this.state.page == 'violao') {
+                return(<Title title='Violões'/>)
+            } else if (this.state.page == 'contrabaixo') {
+                return(<Title title='Contra Baixos'/>)
+            } else if (this.state.page == 'saxofone') {
+                return(<Title title='Saxofones'/>)
+            } else if (this.state.page == 'flautas') {
+                return(<Title title='Flautas'/>)
+            } else if (this.state.page == 'clarinete') {
+                return(<Title title='Clarinetes'/>)
+            } else if (this.state.page == 'piano') {
+                return(<Title title='Pianos'/>)
+            } else if (this.state.page == 'teclado') {
+                return(<Title title='Teclados'/>)
+            }          
+        }
 
 
 
@@ -63,7 +85,7 @@ export default class Category extends Component {
                 <>
                     <Header drawer={() => this.props.navigation.openDrawer()}/>
                     <View style={styles.container}>
-                        <Title style={styles.text} title={this.state.page}/>
+                        {this.getTitle()}
                     </View>
                     <ScrollView > 
                                 <FlatList

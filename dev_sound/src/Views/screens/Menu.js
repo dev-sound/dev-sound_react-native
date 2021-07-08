@@ -17,13 +17,13 @@ export default class Menu extends Component  {
 
         
     setPageGuitar = async () =>{
-         await this.setState({page:'guitarra'})
+        await this.setState({page:'guitarra'})
         this.props.navigation.navigate('Category',{page:this.state.page}) 
     }
 
     setPageViolao = async () =>{
         await this.setState({page:'violao'})
-       this.props.navigation.navigate('Category',{page:this.state.page}) 
+       this.props.navigation.push('Category',{page:this.state.page}) 
    }
 
 
