@@ -1,6 +1,5 @@
-
-
-import Home from './src/Views/screens/Home'
+import Home from './src/Views/screens/Home';
+import Product from './src/Views/screens/Product';
 import Auth from './src/Views/screens/Auth';
 import Payment from './src/Views/screens/Payment';
 import Menu from './src/Views/screens/Menu';
@@ -10,14 +9,17 @@ import Profile from './src/Views/screens/Profile';
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
-
-
 const Navigator = createAppContainer(
   createDrawerNavigator({
       Home: {
         name: 'Home',
         screen: Home
      },
+
+      Product: {
+        name: 'Product',
+        screen: Product
+      },
 
      Auth:{
       name:'Auth',
@@ -36,7 +38,7 @@ const Navigator = createAppContainer(
     Profile
 
   },{
-    initialRouteName:'Profile',
+    initialRouteName:'Home',
     contentComponent: Menu,
    
     contentOptions: {

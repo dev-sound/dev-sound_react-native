@@ -11,7 +11,6 @@ import ImagesProject from '../components/Common/ImagesProject';
 import { requests } from '../components/Common/ProductsSpotlight'
 import axios from 'axios';
 
-
 const BannerHeight = Dimensions.get('window').width/1.6;
 
 const images = [

@@ -37,14 +37,17 @@ export default class Menu extends Component  {
    }
 
 
+<<<<<<< HEAD
    goToProfile = () => {
        this.props.navigation.navigate('Profile', this.state.infosUser)
    }
 
 
+=======
+>>>>>>> 0b53e71f534a9cc253e698b5a5e3e58947f670d4
     render() {
 
-        console.warn(this.state.infosUser)
+        // console.warn(this.state.infosUser)
 
         return (
             
