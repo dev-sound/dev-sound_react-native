@@ -26,7 +26,7 @@ export default class Home extends Component {
 
   async componentDidMount (){
     
-    await console.warn(this.props.navigation.getParam('infos'))
+    
     await this.getProduct()  
  
         
@@ -97,7 +97,6 @@ export default class Home extends Component {
           <Header drawer={() => this.props.navigation.openDrawer()}  />       
             
           <Search/>
-          
           <View style={style.carouselBanner}>
             <Carousel
               loop={false}

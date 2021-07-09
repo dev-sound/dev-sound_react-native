@@ -66,7 +66,7 @@ export default class Auth extends Component {
             
             // descomenta aqui em baixo pra poder navegar pra home
  
-                this.props.navigation.navigate('Home', {infos:'Jonas'})
+            this.props.navigation.navigate('Home', {infos:infosUser})
          
             
         }
@@ -162,7 +162,7 @@ export default class Auth extends Component {
         return(
             <ScrollView style={styles.container}>
                 <View style={styles.logoArea}>
-                    <Logo/>
+                    <Logo comeBackHome={() => this.props.navigation.navigate('Home')}/>
                 </View>
                 <Portrait>
                     <Text style={styles.text}>
@@ -225,12 +225,14 @@ export default class Auth extends Component {
                     <Input  left={<TextInput.Icon name="account" />}
                         fieldLabel= 'Login' 
                         placeholder= 'Digite seu e-mail' 
+                        value={this.state.logEmail}
                         onChangeText={logEmail => this.setState({logEmail})}
                         style={styles.input} />}
                     {this.state.login &&                  
                     <Input fieldLabel= 'Senha' 
                         left={<TextInput.Icon name="lock" />} 
                         left={<TextInput.Icon name="lock" />} 
+                        value={this.state.logSenha}
                         placeholder= 'Crie uma senha' style={styles.input} 
                         onChangeText={logSenha => this.setState({logSenha})} 
                         secureTextEntry/>}

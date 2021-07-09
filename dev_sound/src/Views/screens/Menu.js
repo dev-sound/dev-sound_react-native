@@ -14,19 +14,20 @@ export default class Menu extends Component  {
         page:'',
         infosUser: '',
         userNameLogin:'Faça seu login',
-        carregou:false
+
      }
       
     
 
-//    async componentDidMount(){
+   async componentDidMount(){
 
-//     const userData = await AsyncStorage.getItem('userData')
-//     const parseInfosUser = await JSON.parse(userData)
-//     this.setState({infosUser:parseInfosUser})
-//     this.setState({userNameLogin:parseInfosUser.email.nome})
-//     this.setState({carregou:true})
-//    }   
+    const userData = await AsyncStorage.getItem('userData')
+    const parseInfosUser = await JSON.parse(userData)
+    this.setState({infosUser:parseInfosUser})
+    this.setState({userNameLogin:parseInfosUser.email.nome})
+
+   
+    }   
 
  
     setPageGuitar = async () =>{
@@ -48,8 +49,8 @@ export default class Menu extends Component  {
 
     render() {
 
-
-
+    
+       
         return (
             
           
@@ -67,7 +68,7 @@ export default class Menu extends Component  {
                         <View style={styles.areaTextsHeader}>
                            
                             <TouchableOpacity onPress={() => this.state.infosUser ? '': this.props.navigation.navigate('Auth')}>
-                                <Text style={styles.HiUser}>Olá, </Text>
+                                <Text style={styles.HiUser}>Olá,{this.state.userNameLogin} </Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity>

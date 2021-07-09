@@ -7,49 +7,51 @@ import Menu from './src/Views/screens/Menu';
 import Category from './src/Views/screens/Category';
 import CategoryViolao from './src/Views/screens/Category';
 
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer,createSwitchNavigator } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
 
 
-const Navigator = createAppContainer(
-  createDrawerNavigator({
-      Home: {
-        name: 'Home',
-        screen: Home
-     },
 
-     Auth:{
+
+
+const Navigator = createAppContainer(
+  createSwitchNavigator({
+    Auth:{
       name:'Auth',
       screen:Auth
      },
-   
-    Category:{
-      name:'Category',
-      screen: Category
-    },
 
-    CategoryViolao:{
-      name:'CategoryViolao',
-      screen: CategoryViolao
-    }
+     Home: {
+      name: 'Home',
+      screen: createDrawerNavigator({
+       
+        Home:{
+          name:'Home',
+          screen:Home
+        },
+   
+        Category:{
+          name:'Category',
+          screen: Category
+        },
+    
+        CategoryViolao:{
+          name:'CategoryViolao',
+          screen: CategoryViolao
+        }
+    
+      },{
+        contentComponent: Menu,
+      })
+   },
+
 
   },{
-    initialRouteName:'Home',
-    contentComponent: Menu,
-   
-    contentOptions: {
-      labelStyles: { 
-          fontWeight: 'normal',
-      },
-      activeLabelStyle: {
-        fontSize: 20,
-          color: '#FACC22',
-          fontWeight: 'bold'
-      }
-  }
- 
+    initialRouteName:'Home'
   })
+
+  
 )
 
 export default Navigator
