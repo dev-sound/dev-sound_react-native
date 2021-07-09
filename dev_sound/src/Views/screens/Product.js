@@ -19,7 +19,6 @@ export default class Product extends Component{
         await axios.get(`http://10.0.3.2:3000/produtos/id/60e746c462927f8fa179ceba`)
          .then(infos => {
            this.setState({resposta:infos.data})
-            console.warn(infos.data)
          })
            .catch(erro => console.warn(erro))
    }
