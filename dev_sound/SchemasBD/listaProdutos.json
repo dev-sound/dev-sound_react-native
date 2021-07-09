@@ -37,6 +37,9 @@
     "estoque": 20
 }
 
+
+
+
 {
     "nome": "VIOLÃO RANCHER FALCON JUMBO CUTAWAY GRETSCH",
     "descricao": "Os violões Gretsch Rancher estão de volta e melhores do que nunca! O G5022CBFE Rancher Falcon Jumbo tem o som cheio, encorpado, e todo o estilo Gretsch Falcon com detalhes únicos, como o friso, o escudo e as tarraxas douradas. Com o tampo maciço em Spruce, as laterais e o fundo em Maple, este violão tem um timbre poderoso, que se destaca ainda mais quando plugado, devido ao seu captador Fishman Sonicore com preamp Isys +. Se você busca algo 'diferente', então o Gretsch G5022CBFE Rancher Falcon Jumbo é o que você precisa.",
@@ -75,6 +78,10 @@
     "preco": 752.99,
     "estoque": 20
 }
+
+
+
+
 
 {
     "nome": "BAIXO FENDER® SQUIER® CLASSIC VIBE 60'S JAZZ BASS",
@@ -231,3 +238,57 @@
     "preco": ,
     "estoque": 20
 }
+
+
+{
+    "nome": "SAXOFONE ALTO YAMAHA YAS26-ID LAQUEADO",
+    "descricao": "Novo receptor de tudel com parafuso durável. O novo projeto do receptor de tudel permite uma resposta rápida e uma facilidade de tocar, ao mesmo tempo que aumenta a durabilidade do mecanismo",
+    "categoria": "sopro",
+    "subCategoria": "saxofone",
+    "img": "https://i.ibb.co/KwY3LDt/saxofone-alto-yamaha-yas26-id-laqueado.png",
+    "fabricante": "Yamaha",
+    "especificacao": "- Afinação: Eb
+    - Cor: Laqueado dourado com chaves niqueladas.
+    - Apoio de polegar: Apoio para mão direita ajustável.
+    - Boquilha: #4C Standard de plástico.
+    - Chaves: Limitador de abertura das chaves na campana, regulável.
+    - Mecanismo de F frontal, F agudo.
+    - Modelo Standard profissional.
+    - Acompanha estojo.",
+    "modelo": "YAS26ID",
+    "preco": 7980.90,
+    "estoque": 20
+}
+{
+    "nome": "SAXOFONE TENOR MICHAEL WTSM30N Bb",
+    "descricao": "O Saxofone Tenor Michael é um instrumento de sopro com visual enctador e sonoridade expressiva, que irá atender a musicos de todos os estilos. O Sax Tenor foi desenvolvido com alto padrão de construção e matérias-primas de excelente qualidade.",
+    "categoria": "sopro",
+    "subCategoria": "saxofone",
+    "img": "https://i.ibb.co/qm1wHRC/saxofone-tenor-michael-wtsm30n-bb-si-bemol.png",
+    "fabricante": "MICHAEL",
+    "especificacao": "- Afinação Bb Si -bemol-
+    - Apoio de polegar Direito metálico regulável
+    - Acabamento Laqueado
+    - Campana Removível e com ornamentação
+    - Parafusos de micro regulagem nas chaves B -Si-  A -Lá-  F -Fá-  E -Mi- D -Ré-
+    - Pad Save -desumidificador-, boquilha e palheta, abraçadeira de metal, cobre boquilha, kit de limpeza e case.",
+    "modelo": "WTSM30N",
+    "preco": 3417.90,
+    "estoque": 20
+}
+{
+    "nome": "SAXOFONE TENOR EAGLE ST 503 LAQUEADO Bb",
+    "descricao": "O ST 503 é um dos saxofones mais tradicionais da linha de metais da Eagle. Ele se destaca pela qualidade de sua construção e pelos materiais que o compõe. Ajustadas manualmente, as chaves ergonômicas oferecem maior conforto, respostas rápidas e afinação precisa. Este modelo apresenta um belíssimo visual e uma excepcional sonoridade.",
+    "categoria": "sopro",
+    "subCategoria": "saxofone",
+    "img": "https://i.ibb.co/nz2HZXX/saxofone-tenor-eagle-st-503-laqueado-bb.png",
+    "fabricante": "Eagle",
+    "especificacao": "Apoio de polegar: Regulável
+    Dimensão: Fa# agudo Si b articulado
+    Recursos: Porta Lira
+    Acabamento Finish: Laquer laqueado",
+    "modelo": "ST 503",
+    "preco": 3417.90,
+    "estoque": 20
+}
+
