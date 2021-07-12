@@ -5,7 +5,7 @@ export default props =>{
 
 
     return (
-        <TouchableOpacity style={styles.container} >
+        <TouchableOpacity style={styles.container} {...props}>
         
             <View style={styles.containerImgProduct}>
               <Image 

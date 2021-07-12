@@ -32,6 +32,16 @@ export default class Home extends Component {
         
   } 
 
+
+
+
+  state={
+    infos:'',
+    respProdutos:[]
+
+  }
+
+
   getProduct = async () => {
 
        await axios.get(`http://10.0.3.2:3000/produtos/`)
@@ -56,6 +66,7 @@ export default class Home extends Component {
     renderProductSpotlight = ({item}) =>  {
       return (
           <ProductOnly
+
             imgProduct={item.img}
             nameProduct={item.nome}
             price={item.preco}
@@ -63,10 +74,13 @@ export default class Home extends Component {
       )
     }
 
+    
+    
     renderProductNews =  ({item}) => {
       return (
       
        <ProductOnly
+    
           ProductId ={item._id}
           imgProduct={item.img}
           nameProduct={item.nome}
@@ -75,12 +89,6 @@ export default class Home extends Component {
        />
       )
     }
-
-      state={
-        infos:'',
-        respProdutos:[]
-
-      }
 
 
         
