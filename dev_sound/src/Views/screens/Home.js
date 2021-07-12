@@ -24,9 +24,22 @@ export default class Home extends Component {
 
 
   async componentDidMount (){
-
-      await this.getProduct()  
+    
+    
+    await this.getProduct()  
+ 
+        
   } 
+
+
+
+
+  state={
+    infos:'',
+    respProdutos:[]
+
+  }
+
 
   getProduct = async () => {
 
@@ -52,6 +65,7 @@ export default class Home extends Component {
     renderProductSpotlight = ({item}) =>  {
       return (
           <ProductOnly
+
             imgProduct={item.img}
             nameProduct={item.nome}
             price={item.preco}
@@ -59,10 +73,13 @@ export default class Home extends Component {
       )
     }
 
+    
+    
     renderProductNews =  ({item}) => {
       return (
       
        <ProductOnly
+    
           ProductId ={item._id}
           imgProduct={item.img}
           nameProduct={item.nome}
@@ -72,19 +89,13 @@ export default class Home extends Component {
       )
     }
 
-      state={
-        
-        respProdutos:[]
-
-      }
-
 
         
    
  
     render(){ 
 
-     
+
 
       return(
 
@@ -93,7 +104,6 @@ export default class Home extends Component {
           <Header drawer={() => this.props.navigation.openDrawer()}  />       
             
           <Search/>
-          
           <View style={style.carouselBanner}>
             <Carousel
               loop={false}
