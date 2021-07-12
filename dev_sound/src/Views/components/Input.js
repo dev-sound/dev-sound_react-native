@@ -12,7 +12,7 @@ export default props => {
 
     if(props.medium) stylesInput.push(style.medium)
     if(props.setSize) stylesInput.push({width:props.setSize})
-    
+
     if(props.validInput == ''){
         stylesInput.push(style.input)
     }
@@ -62,7 +62,6 @@ const style = StyleSheet.create(
         input:{
             borderWidth:1,
             borderRadius:5,
-            borderWidth:1,
             height:40,
             lineHeight:60,
             alignContent:'center'
@@ -82,6 +81,7 @@ const style = StyleSheet.create(
         incorrect:{
             borderColor:'#D5B9B3',
             backgroundColor:'#D5B9B3'
-        }
+        },
+
     }
 )

@@ -13,6 +13,8 @@ import Logo from '../components/Header/logo'
 import Input from '../components/Input'
 import Btn from '../components/Button'
 
+
+
 let initialState = {
     name: '',
     lastName: '',
@@ -54,15 +56,19 @@ export default class Auth extends Component {
                 senha: this.state.logSenha
             }) 
             
-            const infosUser={
+            const infosUser = {
                 email: resp.data,
                 token: resp.headers.authorization
             }
-            await AsyncStorage.setItem('userData', JSON.stringify(infosUser))
+
             axios.defaults.headers.common['Authorization'] = `${infosUser.token}`
-            console.warn(infosUser)
+            await AsyncStorage.setItem('userData', JSON.stringify(infosUser))
+            
             // descomenta aqui em baixo pra poder navegar pra home
-            this.props.navigation.navigate('Home', infosUser)
+ 
+            this.props.navigation.navigate('Home', {infos:infosUser})
+         
+            
         }
         
         catch(err){
@@ -156,7 +162,7 @@ export default class Auth extends Component {
         return(
             <ScrollView style={styles.container}>
                 <View style={styles.logoArea}>
-                    <Logo/>
+                    <Logo comeBackHome={() => this.props.navigation.navigate('Home')}/>
                 </View>
                 <Portrait>
                     <Text style={styles.text}>
@@ -219,12 +225,14 @@ export default class Auth extends Component {
                     <Input  left={<TextInput.Icon name="account" />}
                         fieldLabel= 'Login' 
                         placeholder= 'Digite seu e-mail' 
+                        value={this.state.logEmail}
                         onChangeText={logEmail => this.setState({logEmail})}
                         style={styles.input} />}
                     {this.state.login &&                  
                     <Input fieldLabel= 'Senha' 
                         left={<TextInput.Icon name="lock" />} 
                         left={<TextInput.Icon name="lock" />} 
+                        value={this.state.logSenha}
                         placeholder= 'Crie uma senha' style={styles.input} 
                         onChangeText={logSenha => this.setState({logSenha})} 
                         secureTextEntry/>}

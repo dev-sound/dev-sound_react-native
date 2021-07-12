@@ -1,31 +1,35 @@
 import React, { Component } from 'react'
-import {View, TouchableOpacity, Image,Text,StyleSheet,ScrollView} from 'react-native'
-import { DrawerItems } from 'react-navigation-drawer'
+import {View, TouchableOpacity, Image,Text,StyleSheet,ScrollView,RefreshControl} from 'react-native'
 import Logo from '../components/Header/logo'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { List } from 'react-native-paper'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
+
+
+
 export default class Menu extends Component  {
     
+    state = {
+        page:'',
+        infosUser: '',
+        userNameLogin:'Faça seu login',
+
+     }
+      
     
     guitarra
    async componentDidMount(){
-        const userData = await AsyncStorage.getItem('userData')
-         const parseInfosUser = JSON.parse(userData)
 
-         this.setState({infosUser:parseInfosUser})
-        
-        
-    }
+    const userData = await AsyncStorage.getItem('userData')
+    const parseInfosUser = await JSON.parse(userData)
+    this.setState({infosUser:parseInfosUser})
+    this.setState({userNameLogin:parseInfosUser.email.nome})
 
-    state = {
-       page:'',
-       infosUser: '',
-      
+   
+    }   
 
-    }
-    
+ 
     setPageGuitar = async () =>{
         await this.setState({page:'Guitarras'})
         this.props.navigation.navigate('Category',{page:this.state.page}) 
@@ -37,14 +41,24 @@ export default class Menu extends Component  {
    }
 
 
-    render() {
+   goToProfile = () => {
+       this.props.navigation.navigate('Profile', this.state.infosUser)
+   }
 
-        // console.warn(this.state.infosUser)
+
+   sairTesteMenu = () => {
+        AsyncStorage.removeItem('userData')
+   }
+
+
+
+
+    render() {
 
         return (
             
+          
             <ScrollView style={styles.containerMenu}>
-
                 <View style={styles.areaLogo}>
                         <Logo /> 
                 </View>
@@ -57,12 +71,12 @@ export default class Menu extends Component  {
 
                         <View style={styles.areaTextsHeader}>
                            
-                            <TouchableOpacity onPress={() => this.props.navigation.navigate('Auth')}>
-                                <Text style={styles.HiUser}>Olá, faça o login</Text>
+                            <TouchableOpacity onPress={() => this.state.infosUser ? '': this.props.navigation.navigate('Auth')}>
+                                <Text style={styles.HiUser}>Olá,{this.state.userNameLogin} </Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity onPress= {()=> this.goToProfile()}>
-                                <Text style={styles.AcessUserArea}>Acessar a área do usuário</Text>
+                            <TouchableOpacity onPress= {()=> this.state.infosUser ? this.props.navigation.navigate('Profile') : this.props.navigation.navigate('Auth')}>
+                                <Text style={styles.AcessUserArea}>Acessar a aréa do usuário</Text>
                             </TouchableOpacity>
                         </View>
 
@@ -138,7 +152,7 @@ export default class Menu extends Component  {
                         
                     </List.Accordion>
 
-                    <TouchableOpacity style={styles.btnContact}>
+                    <TouchableOpacity style={styles.btnContact} onPress = {()=> this.props.navigation.navigate('Contact', this.state.infosUser) }>
                        <Text style={styles.titleCategories}>Contato</Text>
                     </TouchableOpacity>    
                            
