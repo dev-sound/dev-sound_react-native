@@ -4,23 +4,54 @@ import {
 } 
 from 'react-native'
 import  Icon  from 'react-native-vector-icons/FontAwesome5'
-
+import axios from 'axios'
 import Header from '../components/Header'
 import Button from '../components/Button'
 import ProductOrder from '../components/ProductOrder/ProductOrder'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+const initialState = {
+    userLogOn: '',
+    clientName: '',
+    clientLastName: '',
+    clientAdress: '',
+    clientNumber: '',
+    clientCEP:'',
 
+}
 export default class Profile extends Component {
-
+    state = {
+        ...initialState
+    }
+    async componentDidMount(){
+        const userData  = await AsyncStorage.getItem('userData')
+        const parseUserData = JSON.parse(userData)
+       let resp =  await axios.get(`http://10.0.3.2:3000/usuario/email/${parseUserData.email.login}`)
+        this.setState({clientName: resp.data[0].nome, 
+            clientLastName: resp.data[0].sobrenome
+        })
+        console.warn(resp)
+       
+        console.warn(this.state.clientName)
+        console.warn(parseUserData.email.login)
+    }
+    logOut = async () => {
+        delete axios.defaults.headers.common['Authorization']
+        await AsyncStorage.removeItem('userData')
+        this.setState({...initialState}) 
+        this.props.navigation.navigate('Auth')
+        
+    }
     
     render(){
         return(
+            
             <ScrollView>
                 <Header drawer={() => this.props.navigation.openDrawer()}/>
                 <View style= {styles.clientArea}>
                     <Icon name='user-circle'  size={50} color={'#c1c1c1'}/>
                     <View style = {styles.iconArea}>
-                        <Text style = {styles.name}>NOME DO CLIENTE</Text>
-                        <TouchableOpacity style ={styles.logOutContainer}>
+                        <Text style = {styles.name}>{this.state.clientName} {this.state.clientLastName}</Text>
+                        <TouchableOpacity  onPress={()=> this.logOut()} style ={styles.logOutContainer}>
                             <Icon name= 'door-open' size= {13} />
                             <Text style={styles.exit}>SAIR</Text>
                         </TouchableOpacity>
@@ -47,14 +78,6 @@ export default class Profile extends Component {
                     </Text>
                     <Text>
                         05314-011
-                    </Text>
-                </View>
-                <View style = {styles.fields}>
-                    <Text style = {styles.adress}>
-                    Complemento: 
-                    </Text>
-                    <Text>
-                        apt 22
                     </Text>
                 </View>
             </View>
