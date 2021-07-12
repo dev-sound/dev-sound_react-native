@@ -3,7 +3,7 @@ import {Text, StyleSheet, TouchableOpacity, Image, View, Dimensions} from 'react
 
 export default props =>{
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} {...props}>
             <View style={styles.imageContainer}>
                 <Image style={styles.image} source={{uri: `${props.imgProduct}`}}></Image>
             </View>

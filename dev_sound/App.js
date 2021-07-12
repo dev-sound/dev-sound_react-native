@@ -38,7 +38,7 @@ const Navigator = createAppContainer(
     Profile
 
   },{
-    initialRouteName:'Product',
+    initialRouteName:'Home',
     contentComponent: Menu,
    
     contentOptions: {

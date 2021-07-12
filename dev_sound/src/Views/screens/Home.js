@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import {View,Image,StyleSheet,ScrollView,Dimensions,FlatList,Text,TouchableWithoutFeedback} from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage" 
 import Search  from '../components/Search';
 import Header from '../components/Header';
 import Carousel from 'react-native-banner-carousel';
 import Title from '../components/Title';
 import ProductOnly from '../components/ProductOnly';
-import ProductsSpotlight from '../components/Common/ProductsSpotlight';
-import ProductNews from '../components/Common/ProductNews';
 import ImagesProject from '../components/Common/ImagesProject';
-import { requests } from '../components/Common/ProductsSpotlight'
 import axios from 'axios';
 
 const BannerHeight = Dimensions.get('window').width/1.6;
@@ -38,7 +36,6 @@ export default class Home extends Component {
           .catch(erro => console.warn(erro))
   
   }
-
   
     renderPage = (image,index) => {
       return (
@@ -52,13 +49,14 @@ export default class Home extends Component {
     renderProductSpotlight = ({item}) =>  {
       return (
           <ProductOnly
-            onPress= {() => this.sendProduct (item._id)}
+            onPress={() => this.props.navigation.navigate('Product', {id: item._id})}
             imgProduct={item.img}
             nameProduct={item.nome}
             price={item.preco}
           />
       )
     }
+
 
     renderProductNews =  ({item}) => {
       return (
@@ -80,8 +78,6 @@ export default class Home extends Component {
       }
 
 
-   
- 
     render(){ 
 
      

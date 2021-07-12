@@ -14,21 +14,23 @@ const initialState = {
     productSpecs: "",
 }
 
-console.log(initialState)
-
 export default class Product extends Component{
 
     state={...initialState}
 
     async componentDidMount (){
-
-        await this.getProduct()  
-    } 
-  
-    getProduct = async () => {
-  
-         let resp = await axios.get(`http://10.0.3.2:3000/produtos/id/60e8e11f3f648551d7c267eb`)
-        console.warn(resp.data[0])
+        let productId = this.props.navigation.getParam('id')
+        await axios.get(`http://10.0.3.2:3000/produtos/id/${productId}`)
+        .then((infos) => {
+        this.setState({
+            productName: infos.data[0].nome,
+            productImage: infos.data[0].img,
+            productPrice: infos.data[0].preco,
+            productDescription: infos.data[0].descricao,
+            productSpecs: infos.data[0].especificacao
+            })
+        })
+        console.warn(this.state.productImage)
     }
 
     render(){ 
@@ -41,7 +43,7 @@ export default class Product extends Component{
 
         <Text style={styles.productTitle}>{this.state.productName}</Text>
         <View style={styles.imageContainer}>
-                <Image style={styles.productImage} source={this.state.productImage}/>
+                <Image style={styles.productImage} source={{uri: `${this.state.productImage}`}}/>
         </View>
 
         <View style={styles.priceContainer}>
@@ -55,8 +57,9 @@ export default class Product extends Component{
         </View>
 
         <View style={styles.descriptionContainer}>
-            <Title title='Descrição e Especificações'/>
+            <Title title='Descrição do produto'/>
             <Text style={styles.descriptionText}>{this.state.productDescription}</Text>
+            <Title title='Especificações'/>
             <Text style={styles.descriptionText}>{this.state.productSpecs}</Text>
         </View>
             

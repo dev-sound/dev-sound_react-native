@@ -136,14 +136,17 @@ module.exports = app => {
         },
 
         buscaId (request, response) {
+            console.log(request.params)
+            const ProdutosDB  = app.src.models.schemaProdutos
+            console.log(ProdutosDB)
             mongoose.connect(
                 app.constantes.constsDB.connectDB,
                 app.constantes.constsDB.connectParams
             )
+        
             .then(() => {
-                const ProdutosDB  = app.src.models.schemaProdutos
 
-                ProdutosDB.find( { id_Produto: request.params._id } )
+                ProdutosDB.find({_id: request.params.id})
                 .then((itensProduto) => {
                     console.log(itensProduto)
                     response.status(200).send(itensProduto)
