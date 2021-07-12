@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, SafeAreaView, Text, StyleSheet, FlatList, ScrollView } from 'react-native';
-import Header from '../components/Header/Header';
+import Header from '../components/Header';
 import GridProd from '../components/ShopCart/GridProd';
-import Title from '../components/Title'
+import Title from '../components/Title';
 import respItem from '../components/ShopCart/respItem';
 import Button from '../components/Button';
 

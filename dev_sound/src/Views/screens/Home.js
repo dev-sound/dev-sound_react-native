@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {View,Image,StyleSheet,ScrollView,Dimensions,FlatList,Text,TouchableWithoutFeedback} from 'react-native';
-import AsyncStorage from "@react-native-async-storage/async-storage" 
 import Search  from '../components/Search';
 import Header from '../components/Header';
 import Carousel from 'react-native-banner-carousel';

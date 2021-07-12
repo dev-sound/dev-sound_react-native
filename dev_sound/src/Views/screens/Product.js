@@ -23,6 +23,7 @@ export default class Product extends Component{
         await axios.get(`http://10.0.3.2:3000/produtos/id/${productId}`)
         .then((infos) => {
         this.setState({
+            productID: infos.data[0]._id,
             productName: infos.data[0].nome,
             productImage: infos.data[0].img,
             productPrice: infos.data[0].preco,
@@ -30,7 +31,6 @@ export default class Product extends Component{
             productSpecs: infos.data[0].especificacao
             })
         })
-        console.warn(this.state.productImage)
     }
 
     render(){ 
@@ -52,7 +52,7 @@ export default class Product extends Component{
                 <Text style={styles.price}>R${this.state.productPrice}</Text>
             </View>
             <View style={styles.inlineContainer}>
-                <Button label='Comprar'/>
+                <Button onPress={() => this.props.navigation.navigate('ShopCart', {id: this.state.productID})} label='Comprar'/>
             </View>
         </View>
 

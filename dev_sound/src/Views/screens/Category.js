@@ -39,7 +39,8 @@ export default class Category extends Component {
         renderProductCategory = ({item}) =>  {
             return (
                  <View style={styles.productCard}>
-                <ProductOnly style={styles.productCard}
+                <ProductOnly
+                    onPress={() => this.props.navigation.navigate('Product', {id: item._id})}
                     productId ={item._id}
                     imgProduct={item.img}
                     nameProduct={item.nome}
@@ -54,7 +55,7 @@ export default class Category extends Component {
 
 
             return (
-                <ScrollView> 
+                <ScrollView style={styles.scrollContainer}> 
                     <Header drawer={() => this.props.navigation.openDrawer()}/>
                     <View style={styles.container}>
                         <Title style={styles.text} title={this.state.page}/>
@@ -82,6 +83,10 @@ export default class Category extends Component {
         productCard: {
             width: Dimensions.get('window').width / 2.7,
             paddingBottom: 5,
-            marginLeft: 26,
+            marginLeft: 29,
         },
+
+        scrollContainer: {
+            backgroundColor: '#F1F1F1'
+        }
     })
