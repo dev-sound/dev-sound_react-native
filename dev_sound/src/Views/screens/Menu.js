@@ -41,15 +41,16 @@ export default class Menu extends Component  {
    }
 
 
+
    sairTesteMenu = () => {
         AsyncStorage.removeItem('userData')
    }
 
 
 
+
     render() {
 
-  
         return (
             
           
@@ -70,7 +71,7 @@ export default class Menu extends Component  {
                                 <Text style={styles.HiUser}>Olá,{this.state.userNameLogin} </Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress= {()=> this.state.infosUser ? this.props.navigation.navigate('Profile') : this.props.navigation.navigate('Auth')}>
                                 <Text style={styles.AcessUserArea}>Acessar a aréa do usuário</Text>
                             </TouchableOpacity>
                         </View>
@@ -164,13 +165,14 @@ export default class Menu extends Component  {
 
 const styles = StyleSheet.create({
     containerMenu:{
-
+        flex:1,
+        backgroundColor:'#f1f1f1'
     },
 
     btnContact:{
         padding:20,
         marginTop:5,
-        backgroundColor:'#f1f1f1'
+     
     },
 
     areaItemLayer:{
@@ -178,7 +180,7 @@ const styles = StyleSheet.create({
     },
 
     listCategStyle:{
-        backgroundColor:'#fff'
+    
     },
 
 
