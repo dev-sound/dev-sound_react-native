@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TextInput, Alert } from 'react-native'
 
-import Header from '../components/Header/Header'
+import Header from '../components/Header/index'
 import Title from '../components/Title'
 import Input from '../components/Input'
 import Button from '../components/Button'
@@ -143,7 +143,6 @@ export default class Contact extends Component {
                     <Input
                         fieldLabel='Assunto'
                         placeholder='Insira o assunto do seu contato'
-                        style={styles.label}
                         setSize={420}
                         onChangeText={(caractere) => this.captureTopic(caractere)}
                         value={this.state.assunto}
@@ -153,7 +152,8 @@ export default class Contact extends Component {
                 </View>
                 <View style={styles.textareaContainer}>
                     <Text style={styles.label}>Mensagem</Text>
-                    <InputAreaContact
+             
+                   <InputAreaContact
                         multiline={true}
                         numberOfLines={10}
                         focus={this.state.focus}

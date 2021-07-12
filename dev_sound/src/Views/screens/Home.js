@@ -103,7 +103,8 @@ export default class Home extends Component {
           
           <Header
            drawer={() => this.props.navigation.openDrawer()} 
-           cart={() => this.props.navigation.navigate('ShopCart')} />       
+           cart={() => this.props.navigation.navigate('ShopCart')} 
+           />       
             
           <Search/>
           <View style={style.carouselBanner}>
