@@ -10,15 +10,15 @@ export default props => {
     return (
         <View style={style.headerArea} >
          
-            <TouchableOpacity onPress={props.drawer}>
+            <TouchableOpacity onPress={props.drawer} >
                <Image source={MenuIcon} />  
             </TouchableOpacity>
             
-            <TouchableOpacity>
-                    <Logo/>
+            <TouchableOpacity onPress={props.comeBackHome}>
+                    <Logo />
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress ={props.cart}>
                     <View style={style.elipse}>
                         <Text style={style.textElipse}>0</Text>
                     </View>
