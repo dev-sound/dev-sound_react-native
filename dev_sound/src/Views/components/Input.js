@@ -81,8 +81,7 @@ const style = StyleSheet.create(
         incorrect:{
             borderColor:'#D5B9B3',
             backgroundColor:'#D5B9B3'
-        }
-      
-          
+        },
+
     }
 )
