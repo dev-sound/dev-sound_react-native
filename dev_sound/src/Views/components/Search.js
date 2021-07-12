@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {StyleSheet, TextInput, Image, View, TouchableOpacity} from 'react-native';
-// import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import searchIcon from '../../../assets/icons/search_icon.png'
 
@@ -8,19 +8,23 @@ import searchIcon from '../../../assets/icons/search_icon.png'
 export default props => {
 
     const [search, setSearch] = useState('')
-    // const navigation = useNavigation()
 
-
+    buscar =  ()  => {
+        let pesquisa = search
+        setSearch('')
+        props.navigation.navigate('SearchResult', {search: pesquisa})
+    }
 
     return (
         <View style = {styles.container}>
            <View style = {styles.containerInput}>
-                <TextInput onChangeText={(search) => setSearch({search})}
+                <TextInput value={search}
+                onChangeText={(search) => setSearch({search})}
                 style = {styles.input} 
                 placeholder = 'O que você procura hoje?'/>
              
                 <View  style = {styles.image}>
-                    <TouchableOpacity onPress={() => props.navigation.navigate('SearchResult', {search: search})}
+                    <TouchableOpacity onPress={() => buscar()}
                         style={styles.ImagePosition}>
                         <Image source = {searchIcon}/>
                     </TouchableOpacity>

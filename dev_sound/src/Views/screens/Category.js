@@ -110,10 +110,10 @@ export default class Category extends Component {
         },
 
         productCard: {
-            width: Dimensions.get('window').width / 2.7,
+            width: Dimensions.get('window').width / 2.5,
             marginBottom: 5,
             paddingBottom: 5,
-            marginLeft: 40,
+            marginLeft: 20,
             marginTop: 10
         },
     })

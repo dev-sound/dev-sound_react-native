@@ -1,31 +1,35 @@
 import React, { Component } from 'react'
-import {View, TouchableOpacity, Image,Text,StyleSheet,ScrollView} from 'react-native'
-import { DrawerItems } from 'react-navigation-drawer'
+import {View, TouchableOpacity, Image,Text,StyleSheet,ScrollView,RefreshControl} from 'react-native'
 import Logo from '../components/Header/logo'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { List } from 'react-native-paper'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
+
+
+
 export default class Menu extends Component  {
     
+    state = {
+        page:'',
+        infosUser: '',
+        userNameLogin:'Faça seu login',
+
+     }
+      
     
 
    async componentDidMount(){
-        const userData = await AsyncStorage.getItem('userData')
-         const parseInfosUser = JSON.parse(userData)
 
-         this.setState({infosUser:parseInfosUser})
-        
-        
-    }
+    const userData = await AsyncStorage.getItem('userData')
+    const parseInfosUser = await JSON.parse(userData)
+    this.setState({infosUser:parseInfosUser})
+    this.setState({userNameLogin:parseInfosUser.email.nome})
 
-    state = {
-       page:'',
-       infosUser: '',
-      
+   
+    }   
 
-    }
-    
+ 
     setPageGuitar = async () =>{
         await this.setState({page:'guitarra'})
         this.props.navigation.navigate('Category',{page:this.state.page}) 
@@ -37,17 +41,20 @@ export default class Menu extends Component  {
    }
 
 
-  
+
+   sairTesteMenu = () => {
+        AsyncStorage.removeItem('userData')
+   }
+
+
 
 
     render() {
 
-        console.warn(this.state.infosUser)
-
         return (
             
+          
             <ScrollView style={styles.containerMenu}>
-
                 <View style={styles.areaLogo}>
                         <Logo /> 
                 </View>
@@ -60,11 +67,11 @@ export default class Menu extends Component  {
 
                         <View style={styles.areaTextsHeader}>
                            
-                            <TouchableOpacity onPress={() => this.props.navigation.navigate('Auth')}>
-                                <Text style={styles.HiUser}>Olá, faça o login</Text>
+                            <TouchableOpacity onPress={() => this.state.infosUser ? '': this.props.navigation.navigate('Auth')}>
+                                <Text style={styles.HiUser}>Olá,{this.state.userNameLogin} </Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress= {()=> this.state.infosUser ? this.props.navigation.navigate('Profile') : this.props.navigation.navigate('Auth')}>
                                 <Text style={styles.AcessUserArea}>Acessar a aréa do usuário</Text>
                             </TouchableOpacity>
                         </View>
@@ -158,23 +165,19 @@ export default class Menu extends Component  {
 
 const styles = StyleSheet.create({
     containerMenu:{
-
+        flex:1,
+        backgroundColor:'#f1f1f1'
     },
 
     btnContact:{
         padding:20,
         marginTop:5,
-        backgroundColor:'#f1f1f1'
+     
     },
 
     areaItemLayer:{
         paddingLeft:20
     },
-
-    listCategStyle:{
-        backgroundColor:'#fff'
-    },
-
 
     firstLayerMenu:{
         paddingLeft:22

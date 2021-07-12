@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { View, StyleSheet, FlatList, Dimensions, ScrollView } from 'react-native'
 import axios from 'axios'
-import { CommonActions } from '@react-navigation/native';
+
 
 
 import Header from '../components/Header'
@@ -13,20 +13,27 @@ import ProductOnly from '../components/ProductOnly'
 
 
 
+// const initialState = {
+//     search:'',
+//     respProdutos: []
+// }
 
 export default class SearchResult extends Component {
 
-
-        async componentDidMount (){          
+        customDidMount = async () => {
 
             await this.setState({search: this.props.navigation.getParam('search')})
 
             await this.getProduct() 
+        }
 
-            // await console.warn(this.state.search.search)
-
-   
+        componentDidMount () {    
+            this.customDidMount()
         } 
+
+        willFocus = this.props.navigation.addListener('willFocus',
+            () => {this.customDidMount()}
+        )
 
         getProduct = async () => {
             await axios.get(`http://10.0.3.2:3000/produtos/${this.state.search.search}`)
@@ -37,7 +44,7 @@ export default class SearchResult extends Component {
             .catch(erro => console.warn(erro))
         }
 
- 
+
 
         state = {
             search:'',
@@ -65,7 +72,9 @@ export default class SearchResult extends Component {
             return (
                 <>
                     <Header drawer={() => this.props.navigation.openDrawer()}/>
+                    {/* <Search navigation={this.props.navigation}/> */}
                     <View style={styles.container}>
+                        <Title title='Você pesquisou por:'/>
                     <Title title={this.state.search.search}/>
                     </View>
                     <ScrollView> 
@@ -75,7 +84,7 @@ export default class SearchResult extends Component {
                             renderItem={this.renderProductSearch}
                             numColumns={2}
                         />
-                        {this.props.navigation.reset()}
+
                     </ScrollView>
                 </>
             )
@@ -86,15 +95,16 @@ export default class SearchResult extends Component {
     const styles =  StyleSheet.create({
 
         container: {
+            flexDirection: 'row',
             padding: 10,
             marginBottom: 10,
         },
 
         productCard: {
-            width: Dimensions.get('window').width / 2.7,
+            width: Dimensions.get('window').width / 2.5,
             marginBottom: 5,
             paddingBottom: 5,
-            marginLeft: 40,
+            marginLeft: 20,
             marginTop: 10
         },
     })
