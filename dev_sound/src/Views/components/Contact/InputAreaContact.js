@@ -1,6 +1,7 @@
 import React from 'react'
 import {TextInput, StyleSheet } from 'react-native'
 
+
 export default props => {
 
     const styleInput = [styles.textinputArea]
@@ -11,9 +12,7 @@ export default props => {
 
     if(props.validInput == 'valid'){
         styleInput.push(styles.valid)
-        
     }
-    console.log(styleInput)
 
     if(props.validInput == 'noValid'){
         styleInput.push(styles.noValid)
@@ -32,7 +31,6 @@ const styles = StyleSheet.create({
         height: 220,
         width: 420,
         fontSize: 16,
-        lineHeight:60,
         borderRadius: 5,
         borderWidth: 1,
         flexDirection: 'row',
