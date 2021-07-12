@@ -12,11 +12,11 @@ module.exports = app => {
             .then((resultado)=>{
                 Contato.create(contato)
                 .then((resultado)=> {
-                    response.status(200).send(`Contato realizado: ${resultado} `)
+                    response.status(200).send(`Contato realizado: ${resultado}`)
                 })
                 .catch((erro)=> {
                     console.log(erro)
-                    response.status(500).send(`Erro ao realizar o contato ${erro}` )
+                    response.status(500).send(`Erro ao realizar o contato ${erro}`)
                 })
             })
             .catch((erro)=> {

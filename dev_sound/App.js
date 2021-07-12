@@ -1,20 +1,21 @@
 import React from 'react';
 import { SafeAreaView,StyleSheet } from 'react-native';
-
-
-import Home from './src/Views/screens/Home'
-import Auth from './src/Views/screens/Auth';
-import Payment from './src/Views/screens/Payment';
-import ShopCart from './src/Views/screens/ShopCart'
 import Contact from './src/Views/screens/Contact';
-
+// import Home from './src/Views/screens/Home';
+// import Product from './src/Views/screens/Product';
+// import ShopCart from './src/Views/screens/ShopCart'
 
 export default () => {
   return (
      <SafeAreaView style={style.container} >
-        {/* <Auth/> */}
+        
+        {/* Begin Pagina Home   */}
+        {/* <Home/> */}
+        {/* End Pagina Home   */}
+        {/* <Product/> */}
         {/* <ShopCart/> */}
         <Contact/>
+        
       </SafeAreaView>
 )
 
