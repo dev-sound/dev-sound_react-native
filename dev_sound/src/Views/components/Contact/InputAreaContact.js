@@ -28,13 +28,14 @@ export default props => {
 
 const styles = StyleSheet.create({
     textinputArea: {
+        marginHorizontal: 10,
         height: 220,
-        width: 420,
+        width: 390,
         fontSize: 16,
         borderRadius: 5,
         borderWidth: 1,
         flexDirection: 'row',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         alignContent:'center',
         padding: 15,
     },

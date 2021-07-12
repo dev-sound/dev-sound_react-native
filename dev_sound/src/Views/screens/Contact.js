@@ -111,7 +111,7 @@ export default class Contact extends Component {
 
         return (
             <View style={styles.container}>
-                <Header />
+                <Header drawer={() => this.props.navigation.openDrawer()} />
                 <View style={styles.titleContainer}>
                     <Title title='Contato' />
                 </View>
@@ -120,7 +120,7 @@ export default class Contact extends Component {
                         fieldLabel='Nome completo'
                         placeholder='Insira seu nome completo'
                         style={styles.label}
-                        setSize={420}
+                        setSize={390}
                         onChangeText={(caractere) => this.captureName(caractere)}
                         value={this.state.nome}
                         validInput={this.state.validNome}
@@ -133,7 +133,7 @@ export default class Contact extends Component {
                         fieldLabel='Email'
                         placeholder='Insira seu e-mail'
                         style={styles.label}
-                        setSize={420}
+                        setSize={390}
                         onChangeText={(caractere) => this.captureEmail(caractere)}
                         value={this.state.email}
                         validInput={this.state.validEmail}
@@ -141,20 +141,11 @@ export default class Contact extends Component {
                     />
                 </View>
                 <View style={styles.inputContainer}>
-                <Input
-                        fieldLabel='Assunto'
-                        placeholder='Insira o assunto do seu contato'
-                        setSize={420}
-                        onChangeText={(caractere) => this.captureTopic(caractere)}
-                        value={this.state.assunto}
-                        validInput = {this.state.validAssunto}
-                        onBlur={() => this.validTopic()}
-                    />
                     <Input
                         fieldLabel='Assunto'
                         placeholder='Insira o assunto do seu contato'
                         style={styles.label}
-                        setSize={420}
+                        setSize={390}
                         onChangeText={(caractere) => this.captureTopic(caractere)}
                         value={this.state.assunto}
                         validInput={this.state.validAssunto}
@@ -162,7 +153,7 @@ export default class Contact extends Component {
                     />
                 </View>
                 <View style={styles.textareaContainer}>
-                    <Text style={styles.label}>Mensagem</Text>
+                    <Text style={styles.mensagem}>Mensagem</Text>
                     <InputAreaContact
                         multiline={true}
                         numberOfLines={10}
@@ -209,13 +200,22 @@ const styles = StyleSheet.create({
         marginHorizontal: 120
     },
     textareaContainer: {
-        alignItems: 'center',
-        padding: 5
+        alignContent: 'center',
+        justifyContent: 'center',
+        
     },
     icon: {
         position: 'absolute',
         left: 420,
         top: 60
+    },
+    mensagem:{
+        fontSize: 22,
+        fontStyle: 'normal',
+        fontWeight: '300',
+        marginLeft:15,
+        paddingBottom: 10
+        
     }
 
 
