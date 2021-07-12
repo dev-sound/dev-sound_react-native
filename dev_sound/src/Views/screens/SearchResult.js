@@ -2,10 +2,13 @@ import React, { Component } from 'react'
 
 import { View, StyleSheet, FlatList, Dimensions, ScrollView } from 'react-native'
 import axios from 'axios'
+import { CommonActions } from '@react-navigation/native';
+
 
 import Header from '../components/Header'
 import Title from '../components/Title'
 import ProductOnly from '../components/ProductOnly'
+
 
 
 
@@ -20,18 +23,21 @@ export default class SearchResult extends Component {
 
             await this.getProduct() 
 
-            await console.warn(this.state.search.search)
+            // await console.warn(this.state.search.search)
+
+   
         } 
 
         getProduct = async () => {
             await axios.get(`http://10.0.3.2:3000/produtos/${this.state.search.search}`)
              .then(infos => {
            
-               this.setState({respProdutos:infos.data})
-
+                this.setState({respProdutos:infos.data})
             })
             .catch(erro => console.warn(erro))
         }
+
+ 
 
         state = {
             search:'',
@@ -69,6 +75,7 @@ export default class SearchResult extends Component {
                             renderItem={this.renderProductSearch}
                             numColumns={2}
                         />
+                        {this.props.navigation.reset()}
                     </ScrollView>
                 </>
             )
