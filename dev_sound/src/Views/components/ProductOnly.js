@@ -1,91 +1,61 @@
 import React from 'react'
-import { Text,StyleSheet ,TouchableOpacity,Image,View,Dimensions} from 'react-native'
+import {Text, StyleSheet, TouchableOpacity, Image, View, Dimensions} from 'react-native'
 
 export default props =>{
-
-
     return (
-        <TouchableOpacity style={styles.container} >
-        
-            <View style={styles.containerImgProduct}>
-              <Image 
-                style={styles.img}
-                source={{uri:`${props.imgProduct}`}}/>
+        <TouchableOpacity style={styles.container}>
+            <View style={styles.imageContainer}>
+                <Image style={styles.image} source={{uri: `${props.imgProduct}`}}></Image>
             </View>
-            
-            <View style={styles.containerInfosProduct}>
-                
-                <View style={styles.nameConteiner}>
-                    <Text style={styles.textProduc}>{props.nameProduct} </Text>
-                </View>
-
-                <View>
-                    <Text style={styles.priceProduc}>R$ {props.price}    </Text>
-                </View>
+            <View>
+                <Text style={styles.title} numberOfLines={3}>{props.nameProduct}</Text>
             </View>
-
-
+            <View>
+                <Text style={styles.price}>R${props.price}</Text>
+            </View>
         </TouchableOpacity>
     )
-
 }
 
-
 const styles = StyleSheet.create(
-
     {
-        container:{
-            width:Dimensions.get('window').width/3,
-            padding:10,
-            marginLeft:10,
-            backgroundColor:'#fff',
-            borderRadius:17,
-            shadowColor: "#000",
-            shadowOffset: {
-                width: 3,
-                height: 3,
-            },
-             shadowOpacity: 0.27,
-             shadowRadius: 4.65,
-             elevation: 6,
+        container: {
+            width: Dimensions.get('window').width/2.5,
+            height: Dimensions.get('window').height/3.3,
+            margin: 10,
+            justifyContent: 'space-between',
+            backgroundColor: '#FFF',
+            borderRadius: 11,
+            padding: 10,
+            elevation: 4,
         },
 
-        containerImgProduct:{
-
-        },
-        
-        containerInfosProduct:{
-            width:'115%',
-            margin:10,
-            alignItems:'center',
-            position:'relative',
-            left:-19
+        imageContainer: {
+            width: '100%',
+            height: 170,
+            borderRadius: 17,
         },
 
-        nameConteiner:{
-            padding:2,
-            margin:5
+        image: {
+            width: 170,
+            height: 170,
+            borderRadius: 17,
         },
 
-        img:{
-            width:'90%',
-            height:150
+        title: {
+            fontSize: 17,
+            fontWeight: 'bold',
+            textAlign: 'left',
+            opacity: 1,
+            marginTop: 10,
+            marginLeft: 3,
+            marginBottom: 6
         },
 
-        textProduc:{
-            textTransform:'uppercase',
-            fontFamily:'Roboto',
-            fontWeight:'bold',
-            fontSize:13.7
-        },
-
-
-        priceProduc:{
-            textTransform:'uppercase',
-            fontFamily:'Roboto',
-            fontWeight:'bold',
-            fontSize:14
+        price: {
+            fontSize: 22,
+            textAlign: 'center',
+            fontWeight: 'normal',
         }
-
     }
 )

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View,Image,StyleSheet,ScrollView,Dimensions,FlatList,Text} from 'react-native';
+import {View,Image,StyleSheet,ScrollView,Dimensions,FlatList,Text,TouchableWithoutFeedback} from 'react-native';
 import Search  from '../components/Search';
 import Header from '../components/Header';
 import Carousel from 'react-native-banner-carousel';
@@ -42,9 +42,9 @@ export default class Home extends Component {
   
     renderPage = (image,index) => {
       return (
-        <View key={index}>
-            <Image style={{width:'97%', height: BannerHeight}} source={image} />
-        </View>
+        <TouchableWithoutFeedback key={index}>
+            <Image style={{width:'97%', height: BannerHeight, borderRadius: 10}} source={image} />
+        </TouchableWithoutFeedback>
       )
     }
 
@@ -52,6 +52,7 @@ export default class Home extends Component {
     renderProductSpotlight = ({item}) =>  {
       return (
           <ProductOnly
+            onPress= {() => this.sendProduct (item._id)}
             imgProduct={item.img}
             nameProduct={item.nome}
             price={item.preco}
@@ -87,7 +88,7 @@ export default class Home extends Component {
 
       return(
 
-        <ScrollView >
+        <ScrollView style={style.scrollcontainer}>
           
           <Header drawer={() => this.props.navigation.openDrawer()}  />       
             
@@ -146,7 +147,10 @@ export default class Home extends Component {
 
   const style =  StyleSheet.create(
     {
-      
+      scrollcontainer: {
+        backgroundColor: "#F1F1F1",
+      },
+
       container:{
         flex:1,
         backgroundColor: "#F1F1F1",
@@ -171,6 +175,10 @@ export default class Home extends Component {
       ,
       newsProduct:{
         paddingVertical:10
+      },
+
+      fontText: {
+        fontWeight: 'bold'
       }
       
     }

@@ -1,71 +1,76 @@
 import React, { Component } from 'react';
-import {StyleSheet, ScrollView, AsyncStorage, View, Text, Image, Alert, Dimensions} from 'react-native';
+import {StyleSheet, ScrollView, AsyncStorage, View, Text, Image} from 'react-native';
 import Search  from '../components/Search';
 import Header from '../components/Header';
 import Title from '../components/Title';
 import Button from '../components/Button';
-import ImagesProject from '../components/Common/ImagesProject';
 import axios from 'axios';
+
+const initialState = {
+    productName: "",
+    productImage: "",
+    productPrice: "",
+    productDescription: "",
+    productSpecs: "",
+}
+
+console.log(initialState)
 
 export default class Product extends Component{
 
+    state={...initialState}
+
     async componentDidMount (){
 
-        await this.getProduct()
+        await this.getProduct()  
+    } 
+  
+    getProduct = async () => {
+  
+         let resp = await axios.get(`http://10.0.3.2:3000/produtos/id/60e8e11f3f648551d7c267eb`)
+        console.warn(resp.data[0])
     }
 
-    getProduct = async () => {
-
-        await axios.get(`http://10.0.3.2:3000/produtos/id/60e746c462927f8fa179ceba`)
-         .then(infos => {
-           this.setState({resposta:infos.data})
-         })
-           .catch(erro => console.warn(erro))
-   }
-
-   state={
-        
-    respProdutos:[]
-
-  }
-
-    
     render(){ 
 
-        return(
+    return(
 
-        <ScrollView >
+        <ScrollView style={styles.scrollviewContainer}>
             <Header/>
             <Search/>
 
-        <Text style={styles.productTitle}></Text>
+        <Text style={styles.productTitle}>{this.state.productName}</Text>
         <View style={styles.imageContainer}>
-                <Image style={styles.productImage} source={this.getProduct()}/>
+                <Image style={styles.productImage} source={this.state.productImage}/>
         </View>
 
         <View style={styles.priceContainer}>
             <View style={styles.collumnContainer}>
                 <Title title='Preço' />
-                <Text style={styles.price}>R$</Text>
+                <Text style={styles.price}>R${this.state.productPrice}</Text>
             </View>
             <View style={styles.inlineContainer}>
-                <Button label='Comprar' onPress={() => this.sentToCart} />
+                <Button label='Comprar'/>
             </View>
         </View>
 
         <View style={styles.descriptionContainer}>
             <Title title='Descrição e Especificações'/>
-            <Text style={styles.descriptionText}></Text>
-            <Text style={styles.descriptionText}></Text>
+            <Text style={styles.descriptionText}>{this.state.productDescription}</Text>
+            <Text style={styles.descriptionText}>{this.state.productSpecs}</Text>
         </View>
             
         </ScrollView>
                 )
             }
-        }
+    }
         
 const styles =  StyleSheet.create(
     {   
+        scrollviewContainer: {
+            backgroundColor: '#F1F1F1'
+        },
+
         productTitle: {
             alignSelf: 'center',
             width: '86%',

@@ -9,7 +9,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 export default class Menu extends Component  {
     
     
-
+    guitarra
    async componentDidMount(){
         const userData = await AsyncStorage.getItem('userData')
          const parseInfosUser = JSON.parse(userData)
@@ -27,24 +27,16 @@ export default class Menu extends Component  {
     }
     
     setPageGuitar = async () =>{
-        await this.setState({page:'guitarra'})
+        await this.setState({page:'Guitarras'})
         this.props.navigation.navigate('Category',{page:this.state.page}) 
     }
 
     setPageViolao = async () =>{
-    await this.setState({page:'violao'})
+    await this.setState({page:'Violões'})
     this.props.navigation.navigate('CategoryViolao',{page:this.state.page}) 
    }
 
 
-<<<<<<< HEAD
-   goToProfile = () => {
-       this.props.navigation.navigate('Profile', this.state.infosUser)
-   }
-
-
-=======
->>>>>>> 0b53e71f534a9cc253e698b5a5e3e58947f670d4
     render() {
 
         // console.warn(this.state.infosUser)
@@ -70,7 +62,7 @@ export default class Menu extends Component  {
                             </TouchableOpacity>
 
                             <TouchableOpacity onPress= {()=> this.goToProfile()}>
-                                <Text style={styles.AcessUserArea}>Acessar a aréa do usuário</Text>
+                                <Text style={styles.AcessUserArea}>Acessar a área do usuário</Text>
                             </TouchableOpacity>
                         </View>
 
@@ -86,7 +78,7 @@ export default class Menu extends Component  {
                     </TouchableOpacity>    
 
 
-                    <List.Accordion title="Categorias" titleStyle={styles.titleCategories} >
+                    <List.Accordion title="Categorias" titleStyle={styles.titleCategories} style={styles.accordion} >
 
                         <View style={styles.firstLayerMenu}>
 
@@ -94,7 +86,7 @@ export default class Menu extends Component  {
                                 
                                     <View style={styles.areaItemLayer}>
                                         <TouchableOpacity onPress={() => this.setPageGuitar()} >
-                                            <List.Item title="Guitarra"  />
+                                            <List.Item title="Guitarras"  />
                                         </TouchableOpacity>
                                         
                                         <TouchableOpacity onPress={() => this.setPageViolao()}>
@@ -102,7 +94,7 @@ export default class Menu extends Component  {
                                         </TouchableOpacity>
                                         
                                         <TouchableOpacity>
-                                            <List.Item title="Contrabaixo" />
+                                            <List.Item title="Contrabaixos" />
                                         </TouchableOpacity>
                                         
                                     </View> 
@@ -122,7 +114,7 @@ export default class Menu extends Component  {
                                     </TouchableOpacity>
                                     
                                     <TouchableOpacity>
-                                        <List.Item title="Clarinete" />
+                                        <List.Item title="Clarinetes" />
                                     </TouchableOpacity> 
                                   </View>
                                 </List.Accordion>
@@ -132,11 +124,11 @@ export default class Menu extends Component  {
                                
                                 <View style={styles.areaItemLayer}> 
                                     <TouchableOpacity>
-                                    <List.Item title="Piano" />
+                                    <List.Item title="Pianos" />
                                     </TouchableOpacity>
                                 
                                     <TouchableOpacity>
-                                    <List.Item title="Teclado" />
+                                    <List.Item title="Teclados" />
                                     </TouchableOpacity>
                                   </View>
                                 </List.Accordion>
@@ -163,13 +155,13 @@ export default class Menu extends Component  {
 
 const styles = StyleSheet.create({
     containerMenu:{
-
+        backgroundColor: '#F1F1F1'
     },
 
     btnContact:{
         padding:20,
         marginTop:5,
-        backgroundColor:'#f1f1f1'
+        backgroundColor:'#F1F1F1'
     },
 
     areaItemLayer:{
@@ -177,18 +169,21 @@ const styles = StyleSheet.create({
     },
 
     listCategStyle:{
-        backgroundColor:'#fff'
+        backgroundColor:'#F1F1F1'
     },
 
-
     firstLayerMenu:{
-        paddingLeft:22
+        paddingLeft:22,
     },  
 
     areaLogo:{
         padding:20,
         paddingTop:45,
         paddingBottom:35
+    },
+
+    accordion: {
+        backgroundColor: '#F1F1F1'
     },
 
     headerMenu:{
@@ -220,7 +215,7 @@ const styles = StyleSheet.create({
     },
 
     contentMenuOptions:{
-        marginLeft:2
+        marginLeft:2,
     },
 
     titleCategories:{
@@ -228,7 +223,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         letterSpacing:0.06,
         color:'#000000',
-        fontWeight:'bold'
+        fontWeight:'bold',
 
     }
 })
