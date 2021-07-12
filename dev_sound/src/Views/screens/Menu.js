@@ -21,17 +21,10 @@ export default class Menu extends Component  {
 
    async componentDidMount(){
 
-<<<<<<< HEAD
-         this.setState({infosUser:parseInfosUser})  
-        
-        
-    }
-=======
     const userData = await AsyncStorage.getItem('userData')
     const parseInfosUser = await JSON.parse(userData)
     this.setState({infosUser:parseInfosUser})
     this.setState({userNameLogin:parseInfosUser.email.nome})
->>>>>>> b46c6dc0d4a44243ea49d9ba4a21184fbf287436
 
    
     }   
@@ -48,21 +41,16 @@ export default class Menu extends Component  {
    }
 
 
-<<<<<<< HEAD
    goToProfile = () => {
        this.props.navigation.navigate('Profile', this.state.infosUser)
    }
 
-
-    render() {
-=======
 
    sairTesteMenu = () => {
         AsyncStorage.removeItem('userData')
    }
 
 
->>>>>>> b46c6dc0d4a44243ea49d9ba4a21184fbf287436
 
 
     render() {

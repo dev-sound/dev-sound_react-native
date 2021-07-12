@@ -3,19 +3,28 @@ import {
     Text, ScrollView, View, TouchableOpacity, StyleSheet 
 } 
 from 'react-native'
+
+
 import  Icon  from 'react-native-vector-icons/FontAwesome5'
 import axios from 'axios'
 import Header from '../components/Header'
 import Button from '../components/Button'
 import ProductOrder from '../components/ProductOrder/ProductOrder'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { FlatList } from 'react-native-gesture-handler'
+
+
 const initialState = {
-    userLogOn: '',
     clientName: '',
     clientLastName: '',
-    clientAdress: '',
+    clientCity: '',
+    clientUF: '',
+    clientStreet: '',
     clientNumber: '',
     clientCEP:'',
+    clientDistrict: '',
+    clientCreditCard: '',
+    clientOrders: ''
 
 }
 export default class Profile extends Component {
@@ -27,19 +36,24 @@ export default class Profile extends Component {
         const parseUserData = JSON.parse(userData)
        let resp =  await axios.get(`http://10.0.3.2:3000/usuario/email/${parseUserData.email.login}`)
         this.setState({clientName: resp.data[0].nome, 
-            clientLastName: resp.data[0].sobrenome
+            clientLastName: resp.data[0].sobrenome,
+            clientCEP: resp.data[0].Endereco.cep,
+            clientStreet: resp.data[0].Endereco.rua,
+            clientNumber: resp.data[0].Endereco.numero,
+            clientDistrict: resp.data[0].Endereco.bairro,
+            clientCity: resp.data[0].Endereco.cidade,
+            clientUF: resp.data[0].Endereco.UF,
+            clientCreditCard: resp.data[0].cartaoCredito,
+            clientOrders: resp.data[0].Pedidos
         })
-        console.warn(resp)
        
-        console.warn(this.state.clientName)
-        console.warn(parseUserData.email.login)
+        console.warn(JSON.stringify(this.state.clientOrders))
     }
     logOut = async () => {
         delete axios.defaults.headers.common['Authorization']
         await AsyncStorage.removeItem('userData')
         this.setState({...initialState}) 
         this.props.navigation.navigate('Auth')
-        
     }
     
     
@@ -56,7 +70,7 @@ export default class Profile extends Component {
                         <TouchableOpacity  onPress={()=> this.logOut()} style ={styles.logOutContainer}>
                             <Icon name= 'door-open' size= {13} />
                             <Text style={styles.exit}>SAIR</Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> 
                     </View>
                 </View>
             <View style = {styles.title}>
@@ -64,14 +78,14 @@ export default class Profile extends Component {
             </View>
             <View  style = {styles.adressField}>
                 <Text style = {styles.adress}>
-                Lorem ipsum dolor sit, Butantã, São Paulo, SP
+                {this.state.clientStreet}, {this.state.clientCity}, {this.state.clientUF}
                 </Text> 
                 <View style = {styles.fields}>
                     <Text style = {styles.adress}>
                         Número: 
                     </Text>
                     <Text>
-                         88
+                         {this.state.clientNumber}
                     </Text>
                 </View>
                 <View style = {styles.fields}>
@@ -79,7 +93,7 @@ export default class Profile extends Component {
                         CEP: 
                     </Text>
                     <Text>
-                        05314-011
+                       {this.state.clientCEP}
                     </Text>
                 </View>
             </View>
@@ -100,7 +114,7 @@ export default class Profile extends Component {
                     </Text>
                 <View style = {styles.cardArea}> 
                     <Text style = {styles.card}>
-                            *** **** **** XXXX
+                        XXXX XXXX XXXX {this.state.clientCreditCard.substring(this.state.clientCreditCard.length -4,)}
                     </Text>
                     <Button smallButton label= "EXCLUIR"/>
                 </View>
@@ -108,6 +122,7 @@ export default class Profile extends Component {
             <View style = {styles.title}>
                 <Text style = {styles.name}>Meus pedidos</Text>
             </View>
+            <FlatList />
             <ProductOrder/>
             </ScrollView>
          )
@@ -136,7 +151,7 @@ const styles = StyleSheet.create({
         width: 60
     },
     exit:{
-        fontSize: 13,
+        fontSize: 17,
         paddingLeft: 10
     },
     title:{
