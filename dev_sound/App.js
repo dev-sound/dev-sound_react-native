@@ -3,7 +3,6 @@ import Product from './src/Views/screens/Product';
 import Auth from './src/Views/screens/Auth';
 import Payment from './src/Views/screens/Payment';
 import Menu from './src/Views/screens/Menu';
-import Product from './src/Views/screens/Product';
 import Contact from './src/Views/screens/Contact';
 import Category from './src/Views/screens/Category';
 import CategoryViolao from './src/Views/screens/Category';
@@ -11,6 +10,7 @@ import Profile from './src/Views/screens/Profile';
 import ShopCart from './src/Views/screens/ShopCart'
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
+import { createSwitchNavigator } from 'react-navigation';
 
 
 const Navigator = createAppContainer(
@@ -18,6 +18,11 @@ const Navigator = createAppContainer(
     Auth:{
       name:'Auth',
       screen:Auth
+     },
+
+     Contact: {
+       name: 'Contact',
+       screen: Contact
      },
 
      Home: {
