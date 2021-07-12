@@ -6,6 +6,7 @@ import Menu from './src/Views/screens/Menu';
 import Category from './src/Views/screens/Category';
 import CategoryViolao from './src/Views/screens/Category';
 import Profile from './src/Views/screens/Profile'
+import Contact from './src/Views/screens/Contact';
 import { createAppContainer,createSwitchNavigator } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
@@ -43,6 +44,10 @@ const Navigator = createAppContainer(
         Profile:{
           name:'Profile',
           screen:Profile
+        },
+        Contact: {
+          name: 'Contact',
+          screen: Contact
         }
     
       },{

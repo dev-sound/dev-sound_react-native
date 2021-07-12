@@ -152,7 +152,7 @@ export default class Menu extends Component  {
                         
                     </List.Accordion>
 
-                    <TouchableOpacity style={styles.btnContact}>
+                    <TouchableOpacity style={styles.btnContact} onPress = {()=> this.props.navigation.navigate('Contact', this.state.infosUser) }>
                        <Text style={styles.titleCategories}>Contato</Text>
                     </TouchableOpacity>    
                            

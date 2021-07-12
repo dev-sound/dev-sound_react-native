@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { 
-    Text, ScrollView, View, TouchableOpacity, StyleSheet 
+    Text, ScrollView, View, TouchableOpacity, StyleSheet, FlatList
 } 
 from 'react-native'
 
@@ -11,7 +11,6 @@ import Header from '../components/Header'
 import Button from '../components/Button'
 import ProductOrder from '../components/ProductOrder/ProductOrder'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { FlatList } from 'react-native-gesture-handler'
 
 
 const initialState = {

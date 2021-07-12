@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TextInput, Alert } from 'react-native'
+import { View, Text, StyleSheet, Alert } from 'react-native'
 
-import Header from '../components/Header/Header'
+import Header from '../components/Header/index'
 import Title from '../components/Title'
 import Input from '../components/Input'
 import Button from '../components/Button'
@@ -140,6 +140,15 @@ export default class Contact extends Component {
                     />
                 </View>
                 <View style={styles.inputContainer}>
+                <Input
+                        fieldLabel='Assunto'
+                        placeholder='Insira o assunto do seu contato'
+                        setSize={420}
+                        onChangeText={(caractere) => this.captureTopic(caractere)}
+                        value={this.state.assunto}
+                        validInput = {this.state.validAssunto}
+                        onBlur={() => this.validTopic()}
+                    />
                     <Input
                         fieldLabel='Assunto'
                         placeholder='Insira o assunto do seu contato'
@@ -181,9 +190,6 @@ export default class Contact extends Component {
 
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
     titleContainer: {
         paddingTop: 25,
         paddingBottom: 15
