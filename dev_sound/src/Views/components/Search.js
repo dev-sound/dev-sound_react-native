@@ -1,16 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {StyleSheet, TextInput, Image, View, TouchableOpacity} from 'react-native';
+// import { useNavigation } from '@react-navigation/native';
+
 import searchIcon from '../../../assets/icons/search_icon.png'
 
 
 export default props => {
+
+    const [search, setSearch] = useState('')
+    // const navigation = useNavigation()
+
+
+
     return (
         <View style = {styles.container}>
            <View style = {styles.containerInput}>
-                <TextInput style = {styles.input} placeholder = 'O que você procura hoje?'/>
+                <TextInput onChangeText={(search) => setSearch({search})}
+                style = {styles.input} 
+                placeholder = 'O que você procura hoje?'/>
              
                 <View  style = {styles.image}>
-                    <TouchableOpacity style={styles.ImagePosition}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('SearchResult', {search: search})}
+                        style={styles.ImagePosition}>
                         <Image source = {searchIcon}/>
                     </TouchableOpacity>
                 </View>

@@ -24,7 +24,7 @@ export default (props) => {
 
     return(
     <View>
-        <TouchableOpacity style={styles.container} {...props}>
+        <TouchableOpacity {...props} style={styles.container}>
             <Text style={stylesButton}>{props.label}</Text>
         </TouchableOpacity>
     </View>
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FACC22',
         borderRadius: 14,
         width: Dimensions.get('window').width / 2,
-        height: 50,
+        height:50,
 
         shadowColor: "#000",
         shadowOffset: {

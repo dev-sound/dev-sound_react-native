@@ -5,6 +5,8 @@ import Auth from './src/Views/screens/Auth';
 import Payment from './src/Views/screens/Payment';
 import Menu from './src/Views/screens/Menu';
 import Category from './src/Views/screens/Category';
+import CategoryViolao from './src/Views/screens/Category';
+import SearchResult from './src/Views/screens/SearchResult';
 
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
@@ -13,8 +15,30 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 
 const Navigator = createAppContainer(
   createDrawerNavigator({
-    Home,
-    Category
+      Home: {
+        name: 'Home',
+        screen: Home
+     },
+
+     Auth:{
+      name:'Auth',
+      screen:Auth
+     },
+   
+    Category:{
+      name:'Category',
+      screen: Category
+    },
+
+    CategoryViolao:{
+      name:'CategoryViolao',
+      screen: CategoryViolao
+    },
+
+    SearchResult: {
+      name: 'SearchResult',
+      screen: SearchResult
+    }
 
   },{
     initialRouteName:'Home',

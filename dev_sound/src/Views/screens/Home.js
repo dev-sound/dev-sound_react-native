@@ -11,7 +11,6 @@ import ImagesProject from '../components/Common/ImagesProject';
 import { requests } from '../components/Common/ProductsSpotlight'
 import axios from 'axios';
 
-
 const BannerHeight = Dimensions.get('window').width/1.6;
 
 const images = [
@@ -78,10 +77,8 @@ export default class Home extends Component {
         respProdutos:[]
 
       }
-
-
-        
-   
+      
+      
  
     render(){ 
 
@@ -93,7 +90,7 @@ export default class Home extends Component {
           
           <Header drawer={() => this.props.navigation.openDrawer()}  />       
             
-          <Search/>
+          <Search navigation={this.props.navigation}/>
           
           <View style={style.carouselBanner}>
             <Carousel

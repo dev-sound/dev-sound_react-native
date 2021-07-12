@@ -13,6 +13,9 @@ export default props => {
     if(props.medium) stylesInput.push(style.medium)
     if(props.setSize) stylesInput.push({width:props.setSize})
     
+    if(props.validInput == ''){
+        stylesInput.push(style.input)
+    }
     if(props.validInput == 'valid'){
 
         stylesInput.push(style.correct)

@@ -7,6 +7,7 @@ import Header from '../components/Header'
 import Title from '../components/Title'
 import ProductOnly from '../components/ProductOnly'
 import ProductsCategory from '../components/Common/ProductsCategory'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 
 
@@ -15,9 +16,7 @@ import ProductsCategory from '../components/Common/ProductsCategory'
 export default class Category extends Component {
 
 
-        async componentDidMount (){
-
-          
+        async componentDidMount (){          
 
             await this.setState({page:this.props.navigation.getParam('page')})
 
@@ -41,7 +40,7 @@ export default class Category extends Component {
         getTitle = () => {
             if (this.state.page == 'guitarra') {
                 return(<Title title='Guitarras'/>)
-            } else if (this.state.page == 'violao') {
+            } else if (this.state.page == 'violao' || this.state.page == 'violão' ) {
                 return(<Title title='Violões'/>)
             } else if (this.state.page == 'contrabaixo') {
                 return(<Title title='Contra Baixos'/>)
@@ -81,6 +80,8 @@ export default class Category extends Component {
         
 
         render() {
+
+
             return (
                 <>
                     <Header drawer={() => this.props.navigation.openDrawer()}/>
@@ -114,5 +115,5 @@ export default class Category extends Component {
             paddingBottom: 5,
             marginLeft: 40,
             marginTop: 10
-        }
+        },
     })
