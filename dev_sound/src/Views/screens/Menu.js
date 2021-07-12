@@ -179,11 +179,6 @@ const styles = StyleSheet.create({
         paddingLeft:20
     },
 
-    listCategStyle:{
-    
-    },
-
-
     firstLayerMenu:{
         paddingLeft:22
     },  

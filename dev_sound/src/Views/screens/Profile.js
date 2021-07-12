@@ -11,10 +11,10 @@ import ProductOrder from '../components/ProductOrder/ProductOrder'
 
 export default class Profile extends Component {
 
-    
-    
+
 
     render(){
+
         return(
             <ScrollView>
                 <Header drawer={() => this.props.navigation.openDrawer()}/>

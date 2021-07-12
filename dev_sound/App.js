@@ -43,6 +43,11 @@ const Navigator = createAppContainer(
         Profile:{
           name:'Profile',
           screen:Profile
+        },
+
+        Payment:{
+          name:'Payment',
+          screen:Payment
         }
     
       },{
