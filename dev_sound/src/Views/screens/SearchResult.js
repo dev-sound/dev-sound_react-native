@@ -55,7 +55,7 @@ export default class SearchResult extends Component {
         renderProductSearch = ({item}) =>  {
             return (
                  <View style={styles.productCard}>
-                <ProductOnly style={styles.productCard}
+                <ProductOnly
                     productId ={item._id}
                     imgProduct={item.img}
                     nameProduct={item.nome}
@@ -70,7 +70,7 @@ export default class SearchResult extends Component {
 
 
             return (
-                <>
+                <ScrollView style={styles.scrollContainer}>
                     <Header drawer={() => this.props.navigation.openDrawer()}
                         cart={() => this.props.navigation.navigate('ShopCart')}/>
                     <Search navigation={this.props.navigation}
@@ -79,7 +79,7 @@ export default class SearchResult extends Component {
                         <Title title='Você pesquisou por:'/>
                     <Title title={this.state.search.search}/>
                     </View>
-                    <ScrollView> 
+                    <View>  
                         <FlatList
                             data={this.state.respProdutos}
                             keyExtractor={item => `${item._id}`}
@@ -87,8 +87,8 @@ export default class SearchResult extends Component {
                             numColumns={2}
                         />
 
-                    </ScrollView>
-                </>
+                    </View>
+                </ScrollView>
             )
         }
     }
@@ -106,7 +106,11 @@ export default class SearchResult extends Component {
             width: Dimensions.get('window').width / 2.5,
             marginBottom: 5,
             paddingBottom: 5,
-            marginLeft: 20,
+            marginLeft: 25,
             marginTop: 10
         },
+        
+        scrollContainer: {
+            backgroundColor: '#F1F1F1',
+        }
     })
