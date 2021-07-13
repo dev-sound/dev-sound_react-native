@@ -241,6 +241,8 @@ module.exports = app => {
                                                             }
                                                             )
                                                             const notaDB = app.src.models.schemaNotaFiscal
+
+                                                            
                                                             const dadosNf= {
                                                                data:  DataCompra,
                                                                numeroNF: Math.trunc(numeroNF),
@@ -314,7 +316,30 @@ module.exports = app => {
             } else {
                 response.status(401).send('Token expirado.. ')
             }
+        },
+        buscaPedido(request, response) {
+            mongoose.connect(
+                app.constantes.constsDB.connectDB,
+                app.constantes.constsDB.connectParams
+            )
+            .then((pedidos)=>{
+                const PedidoDB = app.src.models.schemaPedido
+                PedidoDB.findOne({_id: request.params._id})
+                .then((pedidos)=>{
+                    console.log(pedidos)
+                    response.status(200).send(pedidos)
+                })
+                .catch((erro) => {
+                    console.log(erro)
+                    response.status(400).send(`Erro ao consultar pedidos: ${erro}`)
+                })
+                
+            })
+            .catch((erro) => {
+                response.status(500).send(`Erro ao conectar no banco de dados MongoDB: ${erro}`)
+            })
         }
+
     }
 
     return ControllerPagamento

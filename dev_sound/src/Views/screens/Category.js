@@ -27,7 +27,6 @@ export default class Category extends Component {
             // const subCategoria = guitarra
             await axios.get(`http://10.0.3.2:3000/produtos/subCategoria/${this.state.page}`)
              .then(infos => {
-           
                this.setState({respProdutos:infos.data})
             })
             .catch(erro => console.warn(erro))

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TextInput, Alert } from 'react-native'
+import { View, Text, StyleSheet, Alert } from 'react-native'
 
 import Header from '../components/Header/index'
 import Title from '../components/Title'
@@ -111,7 +111,7 @@ export default class Contact extends Component {
 
         return (
             <View style={styles.container}>
-                <Header />
+                <Header drawer={() => this.props.navigation.openDrawer()} />
                 <View style={styles.titleContainer}>
                     <Title title='Contato' />
                 </View>
@@ -120,7 +120,7 @@ export default class Contact extends Component {
                         fieldLabel='Nome completo'
                         placeholder='Insira seu nome completo'
                         style={styles.label}
-                        setSize={420}
+                        setSize={390}
                         onChangeText={(caractere) => this.captureName(caractere)}
                         value={this.state.nome}
                         validInput={this.state.validNome}
@@ -133,7 +133,7 @@ export default class Contact extends Component {
                         fieldLabel='Email'
                         placeholder='Insira seu e-mail'
                         style={styles.label}
-                        setSize={420}
+                        setSize={390}
                         onChangeText={(caractere) => this.captureEmail(caractere)}
                         value={this.state.email}
                         validInput={this.state.validEmail}
@@ -144,7 +144,8 @@ export default class Contact extends Component {
                     <Input
                         fieldLabel='Assunto'
                         placeholder='Insira o assunto do seu contato'
-                        setSize={420}
+                        style={styles.label}
+                        setSize={390}
                         onChangeText={(caractere) => this.captureTopic(caractere)}
                         value={this.state.assunto}
                         validInput={this.state.validAssunto}
@@ -152,9 +153,8 @@ export default class Contact extends Component {
                     />
                 </View>
                 <View style={styles.textareaContainer}>
-                    <Text style={styles.label}>Mensagem</Text>
-             
-                   <InputAreaContact
+                    <Text style={styles.mensagem}>Mensagem</Text>
+                    <InputAreaContact
                         multiline={true}
                         numberOfLines={10}
                         focus={this.state.focus}
@@ -182,9 +182,6 @@ export default class Contact extends Component {
 
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
     titleContainer: {
         paddingTop: 25,
         paddingBottom: 15
@@ -203,13 +200,22 @@ const styles = StyleSheet.create({
         marginHorizontal: 120
     },
     textareaContainer: {
-        alignItems: 'center',
-        padding: 5
+        alignContent: 'center',
+        justifyContent: 'center',
+        
     },
     icon: {
         position: 'absolute',
         left: 420,
         top: 60
+    },
+    mensagem:{
+        fontSize: 22,
+        fontStyle: 'normal',
+        fontWeight: '300',
+        marginLeft:15,
+        paddingBottom: 10
+        
     }
 
 

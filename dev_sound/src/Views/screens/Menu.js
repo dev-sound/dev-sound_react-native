@@ -41,6 +41,10 @@ export default class Menu extends Component  {
    }
 
 
+   goToProfile = () => {
+       this.props.navigation.navigate('Profile', this.state.infosUser)
+   }
+
 
    sairTesteMenu = () => {
         AsyncStorage.removeItem('userData')

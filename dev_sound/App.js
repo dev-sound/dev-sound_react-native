@@ -6,9 +6,8 @@ import Menu from './src/Views/screens/Menu';
 import Category from './src/Views/screens/Category';
 import CategoryViolao from './src/Views/screens/Category';
 import Profile from './src/Views/screens/Profile'
-import ShopCart from './src/Views/screens/ShopCart'
-import Contact from './src/Views/screens/Contact'
-
+import Contact from './src/Views/screens/Contact';
+import ShopCart from './src/Views/screens/ShopCart';
 import { createAppContainer,createSwitchNavigator } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
