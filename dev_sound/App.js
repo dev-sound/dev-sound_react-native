@@ -5,8 +5,9 @@ import Payment from './src/Views/screens/Payment';
 import Menu from './src/Views/screens/Menu';
 import Category from './src/Views/screens/Category';
 import CategoryViolao from './src/Views/screens/Category';
-import Profile from './src/Views/screens/Profile'
+import Profile from './src/Views/screens/Profile';
 import Contact from './src/Views/screens/Contact';
+import ShopCart from './src/Views/screens/ShopCart';
 import { createAppContainer,createSwitchNavigator } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
@@ -45,10 +46,16 @@ const Navigator = createAppContainer(
           name:'Profile',
           screen:Profile
         },
+
         Contact: {
           name: 'Contact',
           screen: Contact
-        }
+        },
+        
+        ShopCart: {
+          name: 'ShopCart',
+          screen: ShopCart
+        },
     
       },{
         contentComponent: Menu,
