@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {StyleSheet, ScrollView, AsyncStorage, View, Text, Image} from 'react-native';
+import {StyleSheet, ScrollView, View, Text, Image} from 'react-native';
 import Search  from '../components/Search';
 import Header from '../components/Header';
 import Title from '../components/Title';
 import Button from '../components/Button';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const initialState = {
     productName: "",
@@ -20,10 +21,42 @@ export default class Product extends Component{
 
     async componentDidMount (){
    
-        await this.ProductDBImports()
+     await this.ProductDBImports()
    
+
     }
 
+
+    saveStorage = async () => {
+
+        const dataProduct = {
+            productName:this.state.productName,
+            productImage:this.state.productImage,
+            productPrice:this.state.productPrice
+        }
+
+        let arrProduct = []
+        
+        let responseAsync = await  AsyncStorage.getItem('product')
+        let parse =  JSON.parse(responseAsync)
+
+        if(parse){
+            arrProduct = [...parse] 
+        }
+
+        arrProduct.push(dataProduct)
+
+        await AsyncStorage.setItem('product',JSON.stringify(arrProduct))
+
+        
+    }
+
+
+
+    envProduct  = async () => {
+        await this.saveStorage()
+        this.props.navigation.navigate('ShopCart')
+    }
 
 
     ProductDBImports = async () => {
@@ -47,41 +80,45 @@ export default class Product extends Component{
 
     render(){ 
 
-    return(
+        return(
 
-        <ScrollView style={styles.scrollviewContainer}>
-            <Header
-                drawer={() => this.props.navigation.openDrawer()} 
-                cart={() => this.props.navigation.navigate('ShopCart')} 
-            />   
-            <Search/>
+            <ScrollView style={styles.scrollviewContainer}>
+                
+                <Header
+                    drawer={() => this.props.navigation.openDrawer()} 
+                    cart={() => this.props.navigation.navigate('ShopCart')} 
+                />   
 
-        <Text style={styles.productTitle}>{this.state.productName}</Text>
-        <View style={styles.imageContainer}>
-                <Image style={styles.productImage} source={{uri: `${this.state.productImage}`}}/>
-        </View>
+                <Search/>
 
-        <View style={styles.priceContainer}>
-            <View style={styles.collumnContainer}>
-                <Title title='Preço' />
-                <Text style={styles.price}>R${this.state.productPrice}</Text>
+            <Text style={styles.productTitle}>{this.state.productName}</Text>
+            <View style={styles.imageContainer}>
+                    <Image style={styles.productImage} source={{uri: `${this.state.productImage}`}}/>
             </View>
-            <View style={styles.inlineContainer}>
-                <Button onPress={() => this.props.navigation.navigate('ShopCart', {id: this.state.productID})} label='Comprar'/>
-            </View>
-        </View>
 
-        <View style={styles.descriptionContainer}>
-            <Title title='Descrição do produto'/>
-            <Text style={styles.descriptionText}>{this.state.productDescription}</Text>
-            <Title title='Especificações'/>
-            <Text style={styles.descriptionText}>{this.state.productSpecs}</Text>
-        </View>
-            
-        </ScrollView>
-                )
-            }
-    }
+            <View style={styles.priceContainer}>
+                <View style={styles.collumnContainer}>
+                    <Title title='Preço' />
+                    <Text style={styles.price}>R${this.state.productPrice}</Text>
+                </View>
+                <View style={styles.inlineContainer}>
+                    <Button 
+                    onPress={() => this.envProduct()}
+                    label='Comprar'/>
+                </View>
+            </View>
+
+            <View style={styles.descriptionContainer}>
+                <Title title='Descrição do produto'/>
+                <Text style={styles.descriptionText}>{this.state.productDescription}</Text>
+                <Title title='Especificações'/>
+                <Text style={styles.descriptionText}>{this.state.productSpecs}</Text>
+            </View>
+                
+            </ScrollView>
+         )
+        }
+}
         
 const styles =  StyleSheet.create(
     {   

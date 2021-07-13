@@ -21,7 +21,6 @@ const Navigator = createAppContainer(
       screen:Auth
      },
 
- 
      Home: {
       name: 'Home',
       screen: createDrawerNavigator({

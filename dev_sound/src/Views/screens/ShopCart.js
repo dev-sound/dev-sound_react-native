@@ -1,75 +1,121 @@
-import React, { useState } from 'react';
+import React,{Component}  from 'react';
 import { View, SafeAreaView, Text, StyleSheet, FlatList, ScrollView } from 'react-native';
 import Header from '../components/Header/';
 import GridProd from '../components/ShopCart/GridProd';
 import Title from '../components/Title';
 import respItem from '../components/ShopCart/respItem';
 import Button from '../components/Button';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-export default props => {
- 
-  //soma do preço dos itens
-  let valueInitial = 0
-  if (respItem.length == 1) {
-    valueInitial = respItem[0].priceValue
-  } else {
-    valueInitial = respItem.reduce((acumulador, itemValue) => {
-      return acumulador + itemValue.priceValue
-    }, 0);
+export default class ShopCart extends Component {
+
+  state ={
+    valueTotal:0,
+    valueTotal:0,
+    items:[]
   }
 
 
-  const [items, setItems] = useState(respItem) 
-  const [valueTotal, setValueTotal] = useState(valueInitial)
-
-  //função para deletar os itens
-  function deleteItem(id){
-    const newArray = items.filter( (item) => { 
-      return item.id != id
-    })
-    setItems(newArray)
-    changeValueTotal()
+  async componentDidMount(){
+    await this.captureProduct()
   }
 
-  //funcão em andamento para mudar o valor do total conforme deleta os itens
-  function changeValueTotal(){
-    const valueTotal = 0
-    if (respItem.length == 1) {
-      valueTotal = respItem[0].priceValue
-    } else {
-      valueTotal = respItem.reduce((acumulador, itemValue) => {
-        setValueTotal(acumulador + itemValue.priceValue)
-      }, 0);
+
+  //Captura produto da tela de produto, e inseri no carrinho..
+   captureProduct = async () =>  {
+      const productImport = await AsyncStorage.getItem('product')
+      const productParse = JSON.parse(productImport)
+      this.setState({items:productParse})
+
     }
-  
-  }
 
-  return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <View>
-          <Header drawer={() => props.navigation.openDrawer()}/>
-          <Title title="Seu carrinho" />
-          <FlatList
-            data={items}
-            keyExtractor={(item) => `${item.id}`}
-            renderItem={(item) => <GridProd database={item} 
-            valueTotal={valueTotal} 
-            deleteItem={deleteItem} 
-            changeValueTotal={changeValueTotal}
-            setValueTotal={setValueTotal} />} />
-        </View>
-        <View style={styles.totalPrice}>
-          <Text style={styles.total}>Total: </Text>
-          <Text style={[styles.total, { fontWeight: "500", }]}>{`R$ ${valueTotal}`}</Text>
-        </View>
-        <Button label="Finalizar compra" onPress={() => props.navigation.navigate('Payment')} />
-      </ScrollView>
-    </SafeAreaView>
-  )
+
+  
+  kill = () => {
+    AsyncStorage.removeItem('product')
+    
+  }  
+
+
+
+  willFocus = this.props.navigation.addListener('willFocus', () => {this.captureProduct()})
+
+  render(){
+
+    return(
+      <SafeAreaView style={styles.container}>
+         
+          <ScrollView>
+              <Button label='limpar' onPress={() => this.kill() }/> 
+           <View>
+             <Header drawer={() => this.props.navigation.openDrawer()}/>
+              <Title title="Seu carrinho" />
+             
+            <FlatList
+                 data={this.state.items}
+                 keyExtractor={(item) => `${item.id}`}
+                 renderItem={(item) =>
+                  <GridProd 
+                  database={item} 
+                  // valueTotal={valueTotal} 
+                   //  changeValueTotal={changeValueTotal}
+                 // setValueTotal={setValueTotal} 
+               /> } />
+            
+             </View>
+             
+           <View style={styles.totalPrice}>
+                <Text style={styles.total}>Total: </Text>
+               <Text style={[styles.total, { fontWeight: "500", }]}>{`R$ ${this.state.valueTotal}`}</Text>
+               </View>
+               <Button label="Finalizar compra" onPress={() => this.props.navigation.navigate('Payment')} />
+            </ScrollView>
+      
+      </SafeAreaView>
+    )
+  }
 
 }
+ 
+
+
+
+//   //soma do preço dos itens
+//   let valueInitial = 0
+//   if (respItem.length == 1) {
+//     valueInitial = respItem[0].priceValue
+//   } else {
+//     valueInitial = respItem.reduce((acumulador, itemValue) => {
+//       return acumulador + itemValue.priceValue
+//     }, 0);
+//   }
+
+
+//   //função para deletar os itens
+//   function deleteItem(id){
+//     const newArray = items.filter( (item) => { 
+//       return item.id != id
+//     })
+//     setItems(newArray)
+//     changeValueTotal()
+//   }
+
+//   //funcão em andamento para mudar o valor do total conforme deleta os itens
+//   function changeValueTotal(){
+//     const valueTotal = 0
+//     if (respItem.length == 1) {
+//       valueTotal = respItem[0].priceValue
+//     } else {
+//       valueTotal = respItem.reduce((acumulador, itemValue) => {
+//         setValueTotal(acumulador + itemValue.priceValue)
+//       }, 0);
+//     }
+  
+//   }
+
+
+
 
 const styles = StyleSheet.create(
   {
