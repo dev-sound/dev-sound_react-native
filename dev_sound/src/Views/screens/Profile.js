@@ -23,7 +23,7 @@ const initialState = {
     clientCEP:'',
     clientDistrict: '',
     clientCreditCard: '',
-    clientOrders: ''
+    clientOrders: '',
 
 }
 export default class Profile extends Component {
@@ -46,7 +46,7 @@ export default class Profile extends Component {
             clientOrders: resp.data[0].Pedidos
         })
        
-        console.warn(JSON.stringify(this.state.clientOrders))
+        
     }
     logOut = async () => {
         delete axios.defaults.headers.common['Authorization']
@@ -58,6 +58,7 @@ export default class Profile extends Component {
     
 
     render(){
+        console.warn(this.state.clientOrders[0])
         return(
             
             <ScrollView>
@@ -121,8 +122,23 @@ export default class Profile extends Component {
             <View style = {styles.title}>
                 <Text style = {styles.name}>Meus pedidos</Text>
             </View>
-            <FlatList />
-            <ProductOrder/>
+            <View style={styles.orders}>
+                <Text>
+                    Número do Pedido
+                </Text>
+                <Text>
+                    Data
+                </Text>
+                <Text>
+                    Pagamento
+                </Text>
+            </View>
+            <View>
+                <Text>
+                   
+                </Text>
+            </View>
+
             </ScrollView>
          )
     }
@@ -183,5 +199,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginRight: 20
     },
-    
+    orders: {
+        justifyContent: 'space-around',
+        flexDirection: 'row'
+    }
 })
