@@ -37,6 +37,44 @@
     "estoque": 20
 }
 
+{
+    "nome": "GUITARRA FENDER® SIG SERIES ERIC CLAPTON STRATOCASTER®",
+    "descricao": "Experimente o estilo incomparável da Fender® Strat® do 'Slowhand' com a Stratocaster® Signature Eric Clapton, um dos nossos modelos 'assinatura' mais aclamados e duradouros. Com design clássico (inspirado na famosa 'Blackie®') e características especiais que te dão uma enorme versatilidade em timbres (captadores Vintage Noiseless, atenuador TBX de presença e brilho no primeiro Knob de tonalidade, Boost de frequências médias e graves no segundo knob de tonalidade)   e uma tocabilidade sem igual (braço em 'soft V', inspirado nos '50s 'V', porém mais arredondado e confortável, escala com raio de 9.5 polegadas, um pouco menos curva do que as escalas vintage-style, para facilitar os bends), essa Stratocaster® é a pura vibe Clapton em suas mãos!",
+    "categoria" : "corda",
+    "subCategoria": "Guitarras",
+    "img": "https://i.ibb.co/7vhMcZ7/guitarra-fender-sig-series-eric-clapton-stratocaster-black.png",
+    "fabricante": "fender",
+    "especificacao": "Corpo em alder. Braço em maple soft 'V' shape. Escala em maple com 25,5 polegadas. Escala com raio de 9,5 polegadas. 22 trastes estilo vintage. Largura do nut de 42mm. Tarraxas American Vintage. Ferragem cromada.",
+    "modelo": "#011-7602-806",
+    "preco": 17843.63,
+    "estoque": 20
+}
+
+{
+    "nome": "GUITARRA FENDER® SIG SERIES JIMMY PAGE TELECASTER®",
+    "descricao": "Em 31 de janeiro de 1969, o Led Zeppelin tocou no Fillmore East de Nova York pela primeira vez. O álbum de estreia tinha acabado de ser lançado, e a Big Apple estava cheia de promessas desse novo grupo britânico. Mas eles ainda não haviam sido testados diante de um público americano, então o empresário do Fillmore, Bill Graham, os contratou como banda de abertura do Iron Butterfly. Seu primeiro set naquela noite foi matador, destruindo a casa tão completamente que Iron Butterfly se recusou a tocar depois deles. Então o Led Zeppelin encabeçou o show das 11:30 e nunca mais foi uma banda de abertura. Jimmy Page tocou com sua Telecaster® naquela noite, a mesma que ele usou no primeiro álbum, e usou com bastante frequência a partir de então.",
+    "categoria" : "corda",
+    "subCategoria": "Guitarras",
+    "img": "https://i.ibb.co/61L6M3Y/guitarra-fender-sig-series-telecaster-jimmy-page.png",
+    "fabricante": "fender",
+    "especificacao": "Corpo em ash. Braço maple Jimmy Page Custom 'C' shape (envernizado). Escala em rosewood com 25.5 polegadas. Escala com raio de 7.25 polegadas. 21 trastes estilo vintage. Largura do nut de 42mm. Tarraxas estilo vintage. Ferragem cromada.",
+    "modelo": "#014-6230-721",
+    "preco": 11724.91,
+    "estoque": 20
+}
+
+{
+    "nome": "GUITARRA FENDER® SIG SERIES RICHIE BLACKMORE STRATOCASTER®",
+    "descricao": "Um mestre pioneiro do Rock Neo Clássico e padrinho do Heavy Metal, Richie Blackmore é o homem que deu ao mundo o riff de 'Smoke on the water', o riff de Stratocaster® mais imitado de todos os tempos. Seu fraseado hábil e inconfundível, além de seu timbre único, ajudaram a fazer com que solos extensos de guitarra se tornassem uma forma de arte. A Ritchie Blackmore Stratocaster® é baseada na sua 70's Strat® favorita e apresenta algumas características e modificações distintas como a escala escalopada gradualmente (começando bem leve a partir da quarta ou quinta casa e ficando mais acentuada nas casas mais agudas), os captadores Seymour Duncan Quarter Pound Flat SSL-4 single-coil na ponte (enrolado ao contrário e com polaridade reversa para cancelamento de ruídos) e no braço, a chave de 3 posições para combinação dos captadores (o captador do meio não existe), os Strap Locks Dunlop e o neck plate tradicional de 3 parafusos do início dos anos 70 com o mecanismo Micro-Tilt para ajuste do braço.",
+    "categoria" : "corda",
+    "subCategoria": "Guitarras",
+    "img": "https://i.ibb.co/JBQBTn6/guitarra-fender-sig-series-ritchie-blackmore-stratocaster-white.png",
+    "fabricante": "fender",
+    "especificacao": "Corpo em alder. Braço em maple 'U' shape. Escala em rosewood gradativamente escalopada com 25.5 polegadas. Escala com raio de 7.25 polegadas. 21 trastes vintage. Largura do nut de 42mm. Tarraxas estilo vintage com 'F' estampado. Ferragem cromada.",
+    "modelo": "#013-9010-305",
+    "preco": 12993.49,
+    "estoque": 20
+}
 
 
 
