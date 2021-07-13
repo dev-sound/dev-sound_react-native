@@ -51,8 +51,6 @@ export default class Menu extends Component  {
    }
 
 
-
-
     render() {
 
         return (
@@ -152,7 +150,7 @@ export default class Menu extends Component  {
                         
                     </List.Accordion>
 
-                    <TouchableOpacity style={styles.btnContact} onPress = {()=> this.props.navigation.navigate('Contact', this.state.infosUser) }>
+                    <TouchableOpacity style={styles.btnContact} onPress={()  => this.props.navigation.navigate('Contact')}>
                        <Text style={styles.titleCategories}>Contato</Text>
                     </TouchableOpacity>    
                            
@@ -182,11 +180,6 @@ const styles = StyleSheet.create({
     areaItemLayer:{
         paddingLeft:20
     },
-
-    listCategStyle:{
-    
-    },
-
 
     firstLayerMenu:{
         paddingLeft:22

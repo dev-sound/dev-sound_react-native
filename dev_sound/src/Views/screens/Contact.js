@@ -144,8 +144,7 @@ export default class Contact extends Component {
                     <Input
                         fieldLabel='Assunto'
                         placeholder='Insira o assunto do seu contato'
-                        style={styles.label}
-                        setSize={390}
+                        setSize={420}
                         onChangeText={(caractere) => this.captureTopic(caractere)}
                         value={this.state.assunto}
                         validInput={this.state.validAssunto}
@@ -153,8 +152,9 @@ export default class Contact extends Component {
                     />
                 </View>
                 <View style={styles.textareaContainer}>
-                    <Text style={styles.mensagem}>Mensagem</Text>
-                    <InputAreaContact
+                    <Text style={styles.label}>Mensagem</Text>
+             
+                   <InputAreaContact
                         multiline={true}
                         numberOfLines={10}
                         focus={this.state.focus}
