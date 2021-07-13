@@ -7,7 +7,7 @@ import respItem from '../components/ShopCart/respItem';
 import Button from '../components/Button';
 
 
-export default () => {
+export default props => {
  
   //soma do preço dos itens
   let valueInitial = 0
@@ -49,7 +49,7 @@ export default () => {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View>
-          <Header />
+          <Header drawer={() => props.navigation.openDrawer()}/>
           <Title title="Seu carrinho" />
           <FlatList
             data={items}
@@ -64,7 +64,7 @@ export default () => {
           <Text style={styles.total}>Total: </Text>
           <Text style={[styles.total, { fontWeight: "500", }]}>{`R$ ${valueTotal}`}</Text>
         </View>
-        <Button label="Finalizar compra" />
+        <Button label="Finalizar compra" onPress={() => props.navigation.navigate('Payment')} />
       </ScrollView>
     </SafeAreaView>
   )

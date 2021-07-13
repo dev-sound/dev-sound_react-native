@@ -3,8 +3,6 @@ import {
     Text, ScrollView, View, TouchableOpacity, StyleSheet, FlatList
 } 
 from 'react-native'
-
-
 import  Icon  from 'react-native-vector-icons/FontAwesome5'
 import axios from 'axios'
 import Header from '../components/Header'
@@ -58,6 +56,7 @@ export default class Profile extends Component {
     
 
     render(){
+
         return(
             
             <ScrollView>

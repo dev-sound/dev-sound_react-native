@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View,Text,ScrollView,StyleSheet,FlatList} from 'react-native'
+import {View,Text,ScrollView,StyleSheet,FlatList, TouchableOpacity} from 'react-native'
 import Input from '../components/Input'
 import Logo from '../components/Header/logo'
 import PickerSelect from 'react-native-picker-select'
@@ -81,8 +81,6 @@ export default class Payment extends Component {
         )
     }
     
-
-
 
     //  5392076388465820
     validInputCard = value => {
@@ -220,7 +218,7 @@ export default class Payment extends Component {
     validAdressCity = value => {
         const nameRegex = /[A-z][a-z ]/
     
-        if(nameRegex.test(value)){
+        if(nameRegex.test(value) ){
             disabledInputs[9].disabledBtn = true
             this.setState({validStyleCity:'valid'})    
 
@@ -234,7 +232,7 @@ export default class Payment extends Component {
     setDataPayment = ( ) => {   
 
         paymentsSaves.Products.push(...ProductPaymentDATA)
-        console.warn(paymentsSaves)
+
 
         if(this.state.saveCard){
             paymentsSaves.creditCard = this.state.numberCard
@@ -242,8 +240,6 @@ export default class Payment extends Component {
             paymentsSaves.creditCard = ""
         }
         
-        console.warn(paymentsSaves)
-        console.warn(this.state.saveAdress)
 
         if(this.state.saveAdress){
             paymentsSaves.Adress.cep = this.state.cep
@@ -604,6 +600,9 @@ export default class Payment extends Component {
             
 
                  {this.buttonPayment()}
+                    <TouchableOpacity onPress={() => console.warn(paymentsSaves)}>
+                        <Text>TESTE</Text>
+                    </TouchableOpacity>
             </ScrollView>
         )
     }
