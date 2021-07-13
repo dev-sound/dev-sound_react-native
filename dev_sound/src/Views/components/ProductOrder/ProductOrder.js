@@ -55,14 +55,17 @@ export default props => {
             <View style={styles.containerRow}>
 
                     <Text style={styles.text}>
+                    {/* props do banco */}
                         2196976
                     </Text>
 
                     <Text style={styles.text}>
-                        18/06/21
+                        {/* props do banco */}
+                        18/06/21 
                     </Text>
 
                     <Text style={styles.text}>
+                    {/* props do banco */}
                         Boleto
                     </Text>
 

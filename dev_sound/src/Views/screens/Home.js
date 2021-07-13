@@ -96,7 +96,8 @@ export default class Home extends Component {
           
           <Header drawer={() => this.props.navigation.openDrawer()}  />       
             
-          <Search/>
+          <Search navigation={this.props.navigation}/>
+          
           <View style={style.carouselBanner}>
             <Carousel
               loop={false}
