@@ -3,13 +3,13 @@ import Product from './src/Views/screens/Product';
 import Auth from './src/Views/screens/Auth';
 import Payment from './src/Views/screens/Payment';
 import Menu from './src/Views/screens/Menu';
-import Contact from './src/Views/screens/Contact';
 import Category from './src/Views/screens/Category';
 import CategoryViolao from './src/Views/screens/Category';
+import SearchResult from './src/Views/screens/SearchResult';
 import Profile from './src/Views/screens/Profile'
 import ShopCart from './src/Views/screens/ShopCart';
 
-import { createAppContainer,createSwitchNavigator } from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
 

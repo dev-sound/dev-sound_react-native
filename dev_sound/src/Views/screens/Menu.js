@@ -70,7 +70,7 @@ export default class Menu extends Component  {
                         <View style={styles.areaTextsHeader}>
                            
                             <TouchableOpacity onPress={() => this.state.infosUser ? '': this.props.navigation.navigate('Auth')}>
-                                <Text style={styles.HiUser}>Olá,{this.state.userNameLogin} </Text>
+                                <Text style={styles.HiUser}>Olá, {this.state.userNameLogin} </Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity onPress= {()=> this.state.infosUser ? this.props.navigation.navigate('Profile') : this.props.navigation.navigate('Auth')}>
@@ -150,7 +150,7 @@ export default class Menu extends Component  {
                         
                     </List.Accordion>
 
-                    <TouchableOpacity style={styles.btnContact} onPress={()  => this.props.navigation.navigate('Contact')}>
+                    <TouchableOpacity style={styles.btnContact} onPress = {()=> this.props.navigation.navigate('Contact', this.state.infosUser) }>
                        <Text style={styles.titleCategories}>Contato</Text>
                     </TouchableOpacity>    
                            
@@ -178,6 +178,10 @@ const styles = StyleSheet.create({
 
     areaItemLayer:{
         paddingLeft:20
+    },
+
+    listCategStyle:{
+        backgroundColor:'#F1F1F1'
     },
 
     firstLayerMenu:{

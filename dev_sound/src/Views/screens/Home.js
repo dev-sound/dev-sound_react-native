@@ -81,12 +81,10 @@ export default class Home extends Component {
 
         <ScrollView style={style.scrollcontainer}>
           
-          <Header
-           drawer={() => this.props.navigation.openDrawer()} 
-           cart={() => this.props.navigation.navigate('ShopCart')} 
-           />       
+          <Header drawer={() => this.props.navigation.openDrawer()}  />       
             
-          <Search/>
+          <Search navigation={this.props.navigation}/>
+          
           <View style={style.carouselBanner}>
             <Carousel
               loop={false}
@@ -167,7 +165,9 @@ export default class Home extends Component {
       }
       ,
       newsProduct:{
-        paddingVertical:10
+        paddingVertical:10,
+        padding:10,
+        marginBottom: 30
       },
 
       fontText: {
