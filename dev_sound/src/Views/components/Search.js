@@ -25,6 +25,7 @@ export default props => {
              
                 <View  style = {styles.image}>
                     <TouchableOpacity onPress={() => buscar()}
+                        // onPress={() => props.refresh}
                         style={styles.ImagePosition}>
                         <Image source = {searchIcon}/>
                     </TouchableOpacity>

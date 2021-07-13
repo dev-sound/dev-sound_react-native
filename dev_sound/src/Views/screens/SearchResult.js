@@ -8,15 +8,11 @@ import axios from 'axios'
 import Header from '../components/Header'
 import Title from '../components/Title'
 import ProductOnly from '../components/ProductOnly'
+import Search from '../components/Search'
 
 
 
 
-
-// const initialState = {
-//     search:'',
-//     respProdutos: []
-// }
 
 export default class SearchResult extends Component {
 
@@ -42,6 +38,10 @@ export default class SearchResult extends Component {
                 this.setState({respProdutos:infos.data})
             })
             .catch(erro => console.warn(erro))
+        }
+
+        insideSearch = () => {
+            this.customDidMount()
         }
 
 
@@ -71,8 +71,10 @@ export default class SearchResult extends Component {
 
             return (
                 <>
-                    <Header drawer={() => this.props.navigation.openDrawer()}/>
-                    {/* <Search navigation={this.props.navigation}/> */}
+                    <Header drawer={() => this.props.navigation.openDrawer()}
+                        cart={() => this.props.navigation.navigate('ShopCart')}/>
+                    <Search navigation={this.props.navigation}
+                        onPress = {() => this.insideSearch()}/>
                     <View style={styles.container}>
                         <Title title='Você pesquisou por:'/>
                     <Title title={this.state.search.search}/>
