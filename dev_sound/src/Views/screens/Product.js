@@ -19,6 +19,12 @@ export default class Product extends Component{
     state={...initialState}
 
     async componentDidMount (){
+        
+        await this.ProductDBImports()
+
+    }
+
+    ProductDBImports = async () => {
         let productId = this.props.navigation.getParam('id')
         await axios.get(`http://10.0.3.2:3000/produtos/id/${productId}`)
         .then((infos) => {
@@ -32,6 +38,10 @@ export default class Product extends Component{
             })
         })
     }
+
+    willFocus = this.props.navigation.addListener('willFocus', () => {this.ProductDBImports()})
+
+
 
     render(){ 
 

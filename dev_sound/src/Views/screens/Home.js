@@ -94,10 +94,7 @@ export default class Home extends Component {
 
         <ScrollView style={style.scrollcontainer}>
           
-          <Header
-           drawer={() => this.props.navigation.openDrawer()} 
-           cart={() => this.props.navigation.navigate('ShopCart')} 
-           />       
+          <Header drawer={() => this.props.navigation.openDrawer()}  />       
             
           <Search/>
           <View style={style.carouselBanner}>
