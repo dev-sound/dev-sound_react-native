@@ -182,6 +182,10 @@ export default class Contact extends Component {
 
 
 const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#F1F1F1'
+    },
+
     titleContainer: {
         paddingTop: 25,
         paddingBottom: 15
@@ -202,7 +206,7 @@ const styles = StyleSheet.create({
     textareaContainer: {
         alignContent: 'center',
         justifyContent: 'center',
-        
+        alignSelf: 'center'
     },
     icon: {
         position: 'absolute',
@@ -214,8 +218,7 @@ const styles = StyleSheet.create({
         fontStyle: 'normal',
         fontWeight: '300',
         marginLeft:15,
-        paddingBottom: 10
-        
+        paddingBottom: 10,
     }
 
 

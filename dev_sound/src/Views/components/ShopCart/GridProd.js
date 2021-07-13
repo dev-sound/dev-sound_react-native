@@ -27,7 +27,7 @@ export default (props) => {
 
     return (
         <View style={styles.containerInline}>
-            <View>
+            <View style={styles.imageContainer}>
                 <Image source={props.database.item.img} style={styles.imgProd} />
                 <TouchableOpacity onPress={() => props.deleteItem(props.database.item.id)}> 
                     <Text style={styles.Delete}>Excluir</Text>
@@ -62,6 +62,7 @@ export default (props) => {
 const styles = StyleSheet.create({
     containerInline: {
         flexDirection: "row",
+        elevation: 4
 
     },
     imgProd: {
@@ -70,8 +71,13 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         shadowColor: "rgba(0, 0, 0, 0.25)",
         margin: 15,
-
+        elevation: 4
     },
+
+    imageContainer: {
+        elevation: 4
+    },
+
     Delete: {
         fontSize: 16,
         marginLeft: 15,

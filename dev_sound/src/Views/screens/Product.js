@@ -1,72 +1,94 @@
 import React, { Component } from 'react';
-import {StyleSheet, ScrollView, AsyncStorage, View, Text, Image, Alert, Dimensions} from 'react-native';
+import {StyleSheet, ScrollView, AsyncStorage, View, Text, Image} from 'react-native';
 import Search  from '../components/Search';
 import Header from '../components/Header';
 import Title from '../components/Title';
 import Button from '../components/Button';
-import ImagesProject from '../components/Common/ImagesProject';
 import axios from 'axios';
+
+const initialState = {
+    productName: "",
+    productImage: "",
+    productPrice: "",
+    productDescription: "",
+    productSpecs: "",
+}
 
 export default class Product extends Component{
 
-    async componentDidMount (){
+    state={...initialState}
 
-        await this.getProduct()
+    async componentDidMount (){
+   
+        await this.ProductDBImports()
+   
     }
 
-    getProduct = async () => {
 
-        await axios.get(`http://10.0.3.2:3000/produtos/id/60e746c462927f8fa179ceba`)
-         .then(infos => {
-           this.setState({resposta:infos.data})
-            console.warn(infos.data)
-         })
-           .catch(erro => console.warn(erro))
-   }
 
-   state={
-        
-    respProdutos:[]
+    ProductDBImports = async () => {
+        let productId = this.props.navigation.getParam('id')
+        await axios.get(`http://10.0.3.2:3000/produtos/id/${productId}`)
+        .then((infos) => {
+        this.setState({
+            productID: infos.data[0]._id,
+            productName: infos.data[0].nome,
+            productImage: infos.data[0].img,
+            productPrice: infos.data[0].preco,
+            productDescription: infos.data[0].descricao,
+            productSpecs: infos.data[0].especificacao
+            })
+        })
+    }
 
-  }
 
-    
+    willFocus = this.props.navigation.addListener('willFocus', () => {this.ProductDBImports()})
+
+
     render(){ 
 
-        return(
+    return(
 
-        <ScrollView >
-            <Header/>
+        <ScrollView style={styles.scrollviewContainer}>
+            <Header
+                drawer={() => this.props.navigation.openDrawer()} 
+                cart={() => this.props.navigation.navigate('ShopCart')} 
+            />   
             <Search/>
 
-        <Text style={styles.productTitle}></Text>
+        <Text style={styles.productTitle}>{this.state.productName}</Text>
         <View style={styles.imageContainer}>
-                <Image style={styles.productImage} source={this.getProduct()}/>
+                <Image style={styles.productImage} source={{uri: `${this.state.productImage}`}}/>
         </View>
 
         <View style={styles.priceContainer}>
             <View style={styles.collumnContainer}>
                 <Title title='Preço' />
-                <Text style={styles.price}>R$</Text>
+                <Text style={styles.price}>R${this.state.productPrice}</Text>
             </View>
             <View style={styles.inlineContainer}>
-                <Button label='Comprar' onPress={() => this.sentToCart} />
+                <Button onPress={() => this.props.navigation.navigate('ShopCart', {id: this.state.productID})} label='Comprar'/>
             </View>
         </View>
 
         <View style={styles.descriptionContainer}>
-            <Title title='Descrição e Especificações'/>
-            <Text style={styles.descriptionText}></Text>
-            <Text style={styles.descriptionText}></Text>
+            <Title title='Descrição do produto'/>
+            <Text style={styles.descriptionText}>{this.state.productDescription}</Text>
+            <Title title='Especificações'/>
+            <Text style={styles.descriptionText}>{this.state.productSpecs}</Text>
         </View>
             
         </ScrollView>
                 )
             }
-        }
+    }
         
 const styles =  StyleSheet.create(
     {   
+        scrollviewContainer: {
+            backgroundColor: '#F1F1F1'
+        },
+
         productTitle: {
             alignSelf: 'center',
             width: '86%',

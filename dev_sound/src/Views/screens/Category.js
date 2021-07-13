@@ -1,17 +1,11 @@
 import React, { Component } from 'react'
-
 import { View, StyleSheet, FlatList, Dimensions, ScrollView } from 'react-native'
 import axios from 'axios'
-
 import Header from '../components/Header'
 import Title from '../components/Title'
 import ProductOnly from '../components/ProductOnly'
 import ProductsCategory from '../components/Common/ProductsCategory'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-
-
-
-
 
 export default class Category extends Component {
 
@@ -44,7 +38,8 @@ export default class Category extends Component {
         renderProductCategory = ({item}) =>  {
             return (
                  <View style={styles.productCard}>
-                <ProductOnly style={styles.productCard}
+                <ProductOnly
+                    onPress={() => this.props.navigation.navigate('Product', {id: item._id})}
                     productId ={item._id}
                     imgProduct={item.img}
                     nameProduct={item.nome}
@@ -59,20 +54,19 @@ export default class Category extends Component {
 
 
             return (
-                <>
+                <ScrollView style={styles.scrollContainer}> 
                     <Header drawer={() => this.props.navigation.openDrawer()}/>
                     <View style={styles.container}>
                         <Title style={styles.text} title={this.state.page}/>
                     </View>
-                    <ScrollView > 
                                 <FlatList
                                     data={this.state.respProdutos}
                                     keyExtractor={item => `${item._id}`}
                                     renderItem={this.renderProductCategory}
                                     numColumns={2}
                                 />
-                    </ScrollView>
-                </>
+            
+                </ScrollView>
             )
         }
     }
@@ -87,9 +81,11 @@ export default class Category extends Component {
 
         productCard: {
             width: Dimensions.get('window').width / 2.7,
-            marginBottom: 5,
             paddingBottom: 5,
-            marginLeft: 40,
-            marginTop: 10
+            marginLeft: 29,
         },
+
+        scrollContainer: {
+            backgroundColor: '#F1F1F1'
+        }
     })
