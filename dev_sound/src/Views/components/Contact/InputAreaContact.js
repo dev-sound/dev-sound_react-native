@@ -28,16 +28,15 @@ export default props => {
 
 const styles = StyleSheet.create({
     textinputArea: {
-        marginHorizontal: 10,
         height: 220,
-        width: 390,
+        width: '95%',
         fontSize: 16,
         borderRadius: 5,
         borderWidth: 1,
         flexDirection: 'row',
         justifyContent: 'center',
-        alignContent:'center',
-        padding: 15,
+        alignItems:'center',
+        padding: 10
     },
     borderBottom: {
         borderBottomWidth: 3,

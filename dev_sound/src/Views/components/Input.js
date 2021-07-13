@@ -34,10 +34,10 @@ export default props => {
 
     return(
 
-        <View style={style.container}>
+        <View style={props.inputContainer}>
           
             <Text style={props.style}>{props.fieldLabel}</Text>
-            <View>
+            <View style={props.styleInput}>
                 <TextInput   
                 {...props}
                 right={icon}
@@ -55,9 +55,6 @@ export default props => {
 
 const style = StyleSheet.create(
     {
-        container:{
-            marginBottom:8
-        },
 
         input:{
             borderWidth:1,

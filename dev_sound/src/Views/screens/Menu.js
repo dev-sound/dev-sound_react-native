@@ -24,7 +24,7 @@ export default class Menu extends Component  {
     const userData = await AsyncStorage.getItem('userData')
     const parseInfosUser = await JSON.parse(userData)
     this.setState({infosUser:parseInfosUser})
-    this.setState({userNameLogin:parseInfosUser.email.nome})
+    // this.setState({userNameLogin:parseInfosUser.email.nome})
 
    
     }   
@@ -150,7 +150,11 @@ export default class Menu extends Component  {
                         
                     </List.Accordion>
 
+<<<<<<< HEAD
                     <TouchableOpacity style={styles.btnContact} onPress = {()=> this.props.navigation.navigate('Contact', this.state.infosUser) }>
+=======
+                    <TouchableOpacity style={styles.btnContact} onPress={()  => this.props.navigation.navigate('Contact')}>
+>>>>>>> 639932278420b00e7e809d2989558853422d4476
                        <Text style={styles.titleCategories}>Contato</Text>
                     </TouchableOpacity>    
                            
