@@ -44,7 +44,7 @@ export default class Profile extends Component {
             clientUF: resp.data[0].Endereco.UF,
             clientCreditCard: resp.data[0].cartaoCredito,
             clientOrders: resp.data[0].Pedidos
-        })
+        }, console.warn(this.state.clientOrders[0]))
        
         
     }
@@ -56,9 +56,10 @@ export default class Profile extends Component {
     }
     
     
+    
 
     render(){
-        console.warn(this.state.clientOrders[0])
+        // console.log(this.state.clientOrders[0].dataPedido)
         return(
             
             <ScrollView>
@@ -99,10 +100,10 @@ export default class Profile extends Component {
             </View>
             <View style = {styles.btnAdress}>
                 <View style = {styles.oneBtn}>
-                    <Button smallButton label= "EXCLUIR"/>
+                    {/* <Button smallButton label= "EXCLUIR"/> */}
                 </View>
                 <View>
-                    <Button smallButton label= "ALTERAR"/>
+                    {/* <Button smallButton label= "ALTERAR"/> */}
                 </View>
             </View>
             <View style = {styles.title}>
@@ -116,7 +117,7 @@ export default class Profile extends Component {
                     <Text style = {styles.card}>
                         XXXX XXXX XXXX {this.state.clientCreditCard.substring(this.state.clientCreditCard.length -4,)}
                     </Text>
-                    <Button smallButton label= "EXCLUIR"/>
+                    {/* <Button smallButton label= "EXCLUIR"/> */}
                 </View>
             </View>
             <View style = {styles.title}>
@@ -134,9 +135,17 @@ export default class Profile extends Component {
                 </Text>
             </View>
             <View>
-                <Text>
-                   
-                </Text>
+                <FlatList
+                data = {this.state.clientOrders}
+                keyExtractor = {(item)=> `${item.idPedido}`}
+                renderItem= {({item})=>{
+                    return(
+                        <>
+                        <Text style={{color:'black'}}>{item.idPedido}</Text>
+                        <Text style={{color:'black'}}>{item.dataPedido}</Text>
+                        </>
+                        )
+                    }}/>
             </View>
 
             </ScrollView>
