@@ -24,7 +24,7 @@ export default class Menu extends Component  {
     const userData = await AsyncStorage.getItem('userData')
     const parseInfosUser = await JSON.parse(userData)
     this.setState({infosUser:parseInfosUser})
-    this.setState({userNameLogin:parseInfosUser.email.nome})
+    // this.setState({userNameLogin:parseInfosUser.email.nome})
 
    
     }   

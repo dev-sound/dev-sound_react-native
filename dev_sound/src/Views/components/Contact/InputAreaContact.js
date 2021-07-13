@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     textinputArea: {
         marginHorizontal: 10,
         height: 220,
-        width: 390,
+        width: '90%',
         fontSize: 16,
         borderRadius: 5,
         borderWidth: 1,

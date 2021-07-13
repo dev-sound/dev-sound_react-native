@@ -115,46 +115,49 @@ export default class Contact extends Component {
                 <View style={styles.titleContainer}>
                     <Title title='Contato' />
                 </View>
-                <View style={styles.inputContainer}>
-                    <Input
-                        fieldLabel='Nome completo'
-                        placeholder='Insira seu nome completo'
-                        style={styles.label}
-                        setSize={390}
-                        onChangeText={(caractere) => this.captureName(caractere)}
-                        value={this.state.nome}
-                        validInput={this.state.validNome}
-                        onBlur={() => this.validName()}
 
-                    />
-                </View>
-                <View style={styles.inputContainer}>
-                    <Input
-                        fieldLabel='Email'
-                        placeholder='Insira seu e-mail'
-                        style={styles.label}
-                        setSize={390}
-                        onChangeText={(caractere) => this.captureEmail(caractere)}
-                        value={this.state.email}
-                        validInput={this.state.validEmail}
-                        onBlur={() => this.validEmail()}
-                    />
-                </View>
-                <View style={styles.inputContainer}>
-                    <Input
-                        fieldLabel='Assunto'
-                        placeholder='Insira o assunto do seu contato'
-                        setSize={420}
-                        onChangeText={(caractere) => this.captureTopic(caractere)}
-                        value={this.state.assunto}
-                        validInput={this.state.validAssunto}
-                        onBlur={() => this.validTopic()}
-                    />
-                </View>
+                <Input
+                    styleInput={styles.styleInput}
+                    inputContainer={styles.inputContainer}
+                    fieldLabel='Nome completo'
+                    placeholder='Insira seu nome completo'
+                    style={styles.label}
+                    setSize='90%'
+                    onChangeText={(caractere) => this.captureName(caractere)}
+                    value={this.state.nome}
+                    validInput={this.state.validNome}
+                    onBlur={() => this.validName()}
+
+                />
+                <Input
+                    styleInput={styles.styleInput}
+                    inputContainer={styles.inputContainer}
+                    fieldLabel='Email'
+                    placeholder='Insira seu e-mail'
+                    style={styles.label}
+                    setSize='90%'
+                    onChangeText={(caractere) => this.captureEmail(caractere)}
+                    value={this.state.email}
+                    validInput={this.state.validEmail}
+                    onBlur={() => this.validEmail()}
+                />
+                <Input
+                    styleInput={styles.styleInput}
+                    inputContainer={styles.inputContainer}
+                    fieldLabel='Assunto'
+                    placeholder='Insira o assunto do seu contato'
+                    setSize='90%'
+                    style={styles.label}
+                    onChangeText={(caractere) => this.captureTopic(caractere)}
+                    value={this.state.assunto}
+                    validInput={this.state.validAssunto}
+                    onBlur={() => this.validTopic()}
+                />
+
                 <View style={styles.textareaContainer}>
                     <Text style={styles.label}>Mensagem</Text>
-             
-                   <InputAreaContact
+
+                    <InputAreaContact
                         multiline={true}
                         numberOfLines={10}
                         focus={this.state.focus}
@@ -182,6 +185,9 @@ export default class Contact extends Component {
 
 
 const styles = StyleSheet.create({
+    container: {
+        width: '100%'
+    },
     titleContainer: {
         paddingTop: 25,
         paddingBottom: 15
@@ -189,11 +195,17 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 22,
         fontStyle: 'normal',
+        marginLeft: '5%',
         fontWeight: '300',
         padding: 5,
     },
-    inputContainer: {
+    styleInput: {
+        justifyContent: 'center',
         alignItems: 'center'
+    },
+    inputContainer: {
+        justifyContent: 'center',
+
     },
     buttonContainer: {
         paddingTop: 25,
@@ -202,20 +214,20 @@ const styles = StyleSheet.create({
     textareaContainer: {
         alignContent: 'center',
         justifyContent: 'center',
-        
+
     },
     icon: {
         position: 'absolute',
         left: 420,
         top: 60
     },
-    mensagem:{
+    mensagem: {
         fontSize: 22,
         fontStyle: 'normal',
         fontWeight: '300',
-        marginLeft:15,
+        marginLeft: 15,
         paddingBottom: 10
-        
+
     }
 
 
