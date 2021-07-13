@@ -115,7 +115,7 @@ export default class Contact extends Component {
                 <View style={styles.titleContainer}>
                     <Title title='Contato' />
                 </View>
-                <View style={styles.inputContainer}>
+                
                     <Input
                         fieldLabel='Nome completo'
                         placeholder='Insira seu nome completo'
@@ -127,8 +127,8 @@ export default class Contact extends Component {
                         onBlur={() => this.validName()}
 
                     />
-                </View>
-                <View style={styles.inputContainer}>
+                
+               
                     <Input
                         fieldLabel='Email'
                         placeholder='Insira seu e-mail'
@@ -139,8 +139,8 @@ export default class Contact extends Component {
                         validInput={this.state.validEmail}
                         onBlur={() => this.validEmail()}
                     />
-                </View>
-                <View style={styles.inputContainer}>
+                
+                
                     <Input
                         fieldLabel='Assunto'
                         placeholder='Insira o assunto do seu contato'
@@ -151,8 +151,8 @@ export default class Contact extends Component {
                         validInput={this.state.validAssunto}
                         onBlur={() => this.validTopic()}
                     />
-                </View>
-                <View style={styles.textareaContainer}>
+                
+                
                     <Text style={styles.mensagem}>Mensagem</Text>
                     <InputAreaContact
                         multiline={true}
@@ -166,7 +166,7 @@ export default class Contact extends Component {
                         validInput={this.state.validMensagem}
                         onBlur={() => this.validMessage()}
                     />
-                </View>
+               
                 <View style={styles.buttonContainer}>
                     <Button
                         label='ENVIAR'
