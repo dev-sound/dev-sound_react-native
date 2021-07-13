@@ -155,7 +155,7 @@ export default class Contact extends Component {
                 />
 
                 <View style={styles.textareaContainer}>
-                    <Text style={styles.label}>Mensagem</Text>
+                    <Text style={styles.mensagem}>Mensagem</Text>
 
                     <InputAreaContact
                         multiline={true}
@@ -170,6 +170,7 @@ export default class Contact extends Component {
                         onBlur={() => this.validMessage()}
                     />
                 </View>
+
                 <View style={styles.buttonContainer}>
                     <Button
                         label='ENVIAR'
@@ -199,21 +200,22 @@ const styles = StyleSheet.create({
         fontWeight: '300',
         padding: 5,
     },
-    styleInput: {
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
     inputContainer: {
         justifyContent: 'center',
 
+    },
+    styleInput: {
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     buttonContainer: {
         paddingTop: 25,
         marginHorizontal: 120
     },
     textareaContainer: {
-        alignContent: 'center',
         justifyContent: 'center',
+        alignContent: 'center',
+        marginLeft: '5%'
 
     },
     icon: {
@@ -225,8 +227,7 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontStyle: 'normal',
         fontWeight: '300',
-        marginLeft: 15,
-        paddingBottom: 10
+        padding: 5
 
     }
 
