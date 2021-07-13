@@ -35,18 +35,17 @@ export default class Profile extends Component {
         const parseUserData = JSON.parse(userData)
        let resp =  await axios.get(`http://10.0.3.2:3000/usuario/email/${parseUserData.email.login}`)
         this.setState({clientName: resp.data[0].nome, 
-            clientLastName: resp.data[0].sobrenome,
-            clientCEP: resp.data[0].Endereco.cep,
-            clientStreet: resp.data[0].Endereco.rua,
-            clientNumber: resp.data[0].Endereco.numero,
-            clientDistrict: resp.data[0].Endereco.bairro,
-            clientCity: resp.data[0].Endereco.cidade,
-            clientUF: resp.data[0].Endereco.UF,
-            clientCreditCard: resp.data[0].cartaoCredito,
-            clientOrders: resp.data[0].Pedidos
-        }, console.warn(this.state.clientOrders[0]))
-       
-        
+            clientLastName: resp.data[0].sobrenome})
+        if(resp.data[0].Endereco.cep){
+            this.setState({clientCEP: resp.data[0].Endereco.cep,
+                clientStreet: resp.data[0].Endereco.rua,
+                clientNumber: resp.data[0].Endereco.numero,
+                clientDistrict: resp.data[0].Endereco.bairro,
+                clientCity: resp.data[0].Endereco.cidade,
+                clientUF: resp.data[0].Endereco.UF,
+                clientCreditCard: resp.data[0].cartaoCredito,
+                clientOrders: resp.data[0].Pedidos})
+        }
     }
     logOut = async () => {
         delete axios.defaults.headers.common['Authorization']
@@ -140,10 +139,15 @@ export default class Profile extends Component {
                 keyExtractor = {(item)=> `${item.idPedido}`}
                 renderItem= {({item})=>{
                     return(
-                        <>
-                        <Text style={{color:'black'}}>{item.idPedido}</Text>
-                        <Text style={{color:'black'}}>{item.dataPedido}</Text>
-                        </>
+                        <View style={styles.flatlist}>
+                            <Text style={{color:'black'}}>{item.idPedido.substring(2,14)}</Text>
+                            <Text style={{color:'black'}}>{item.dataPedido.substring(0,10)}</Text>
+                            {item.formaPagamento.ehBoleto&& 
+                            <Text style={{color:'black'}}>Boleto</Text>}
+                            {!item.formaPagamento.ehBoleto&& 
+                            <Text style={{color:'black'}}>Cartão</Text>}
+                            
+                        </View>
                         )
                     }}/>
             </View>
@@ -211,5 +215,14 @@ const styles = StyleSheet.create({
     orders: {
         justifyContent: 'space-around',
         flexDirection: 'row'
+    },
+    flatlist:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginVertical: '1%',
+        paddingHorizontal: '10%',
+        height: 50,
+        backgroundColor: '#c1c1c1'
     }
 })
