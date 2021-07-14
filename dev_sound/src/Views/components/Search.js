@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {StyleSheet, TextInput, Image, View, TouchableOpacity} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 import searchIcon from '../../../assets/icons/search_icon.png'
 
@@ -25,7 +25,7 @@ export default props => {
              
                 <View  style = {styles.image}>
                     <TouchableOpacity onPress={() => buscar()}
-                        // onPress={() => props.refresh}
+
                         style={styles.ImagePosition}>
                         <Image source = {searchIcon}/>
                     </TouchableOpacity>
