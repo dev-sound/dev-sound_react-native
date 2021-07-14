@@ -24,7 +24,7 @@ const initialState = {
     clientDistrict: '',
     clientCreditCard: '',
     clientOrders: '',
-
+    switch: false
 }
 export default class Profile extends Component {
     state = {
@@ -53,7 +53,13 @@ export default class Profile extends Component {
         this.setState({...initialState}) 
         this.props.navigation.navigate('Auth')
     }
-    
+    orderDetails = async (id) => {
+        let resp = await axios.get(`http://10.0.3.2:3000/Pagamento/${id}`)
+        console.warn(resp.data)
+        
+
+       
+    }
     
     
 
@@ -139,15 +145,14 @@ export default class Profile extends Component {
                 keyExtractor = {(item)=> `${item.idPedido}`}
                 renderItem= {({item})=>{
                     return(
-                        <View style={styles.flatlist}>
-                            <Text style={{color:'black'}}>{item.idPedido.substring(2,14)}</Text>
-                            <Text style={{color:'black'}}>{item.dataPedido.substring(0,10)}</Text>
-                            {item.formaPagamento.ehBoleto&& 
-                            <Text style={{color:'black'}}>Boleto</Text>}
-                            {!item.formaPagamento.ehBoleto&& 
-                            <Text style={{color:'black'}}>Cartão</Text>}
-                            
-                        </View>
+                            <View style={styles.flatlist}>
+                                <Text style={{color:'black'}}>{item.idPedido.substring(2,14)}</Text>
+                                <Text style={{color:'black'}}>{item.dataPedido.substring(0,10)}</Text>
+                                {item.formaPagamento.ehBoleto&& 
+                                <Text style={{color:'black'}}>Boleto</Text>}
+                                {!item.formaPagamento.ehBoleto&& 
+                                <Text style={{color:'black'}}>Cartão</Text>}
+                            </View>
                         )
                     }}/>
             </View>
