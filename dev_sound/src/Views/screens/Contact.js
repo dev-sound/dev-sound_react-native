@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Alert } from 'react-native'
-
 import Header from '../components/Header/index'
 import Title from '../components/Title'
 import Input from '../components/Input'
 import Button from '../components/Button'
 import axios from 'axios'
 import Icon from 'react-native-vector-icons/FontAwesome'
-
 import InputAreaContact from '../components/Contact/InputAreaContact'
 import { ScrollView } from 'react-native-gesture-handler'
-
 const initialState = {
     nome: '',
     email: '',
@@ -23,23 +20,16 @@ const initialState = {
     validMensagem: '',
     validInput: ''
 }
-
-
 export default class Contact extends Component {
-
     state = { ...initialState }
-
     //Função focus textarea
     inputFocus = () => {
         this.setState({ focus: true })
     }
-
     inputArea = () => {
         this.setState({focus: false})
         this.validMessage()
     }
-  
-
     //funções para capturar caracteres dos inputs
     captureName = (caractere) => {
         this.setState({ nome: caractere })
@@ -53,8 +43,6 @@ export default class Contact extends Component {
     captureMessage = (caractere) => {
         this.setState({ mensagem: caractere })
     }
-
-
     //validações do Input
     validName = () => {
         const regexname = /[A-Z][a-z]* [A-Z][a-z]*/
@@ -64,7 +52,6 @@ export default class Contact extends Component {
             this.setState({ validNome: 'noValid' })
         }
     }
-
     validEmail = () => {
         const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
         if (regexEmail.test(this.state.email)) {
@@ -73,7 +60,6 @@ export default class Contact extends Component {
             this.setState({ validEmail: 'noValid' })
         }
     }
-
     validTopic = () => {
         if (this.state.assunto != '') {
             this.setState({ validAssunto: 'valid' })
@@ -81,7 +67,6 @@ export default class Contact extends Component {
             this.setState({ validAssunto: 'noValid' })
         }
     }
-
     validMessage = () => {
         if (this.state.mensagem != '') {
             this.setState({ validMensagem: 'valid' })
@@ -89,8 +74,6 @@ export default class Contact extends Component {
             this.setState({ validMensagem: 'noValid' })
         }
     }
-
-
     contact = async () => {
         try {
             await axios.post("http://10.0.3.2:3000/contato", {
@@ -98,7 +81,6 @@ export default class Contact extends Component {
                 email: this.state.email,
                 assunto: this.state.assunto,
                 mensagem: this.state.mensagem,
-
             })
             Alert.alert('Mensagem enviada!')
             this.setState({ ...initialState })
@@ -108,14 +90,9 @@ export default class Contact extends Component {
             this.validTopic()
             this.validMessage()
             Alert.alert('Verifique se todos os campos foram preenchidos.')
-
         }
     }
-
-
-
     render() {
-
         return (
             <View style={styles.container}>
                 <Header drawer={() => this.props.navigation.openDrawer()} />
@@ -135,53 +112,17 @@ export default class Contact extends Component {
                         validInput={this.state.validNome}
                         onBlur={() => this.validName()}
                     />
-                
-                <View style={styles.inputContainer}>
                     <Input
+                        styleInput={styles.styleInput}
+                        inputContainer={styles.inputContainer}
                         fieldLabel='Email'
                         placeholder='Insira seu e-mail'
                         style={styles.label}
-                        setSize={390}
+                        setSize='90%'
                         onChangeText={(caractere) => this.captureEmail(caractere)}
                         value={this.state.email}
                         validInput={this.state.validEmail}
                         onBlur={() => this.validEmail()}
-                    />
-                
-                
-                    <Input
-                        fieldLabel='Assunto'
-                        placeholder='Insira o assunto do seu contato'
-                        style={styles.label}
-                        setSize={390}
-                        onChangeText={(caractere) => this.captureTopic(caractere)}
-                        value={this.state.assunto}
-                        validInput={this.state.validAssunto}
-                        onBlur={() => this.validTopic()}
-                    />
-                
-                
-                    <Text style={styles.mensagem}>Mensagem</Text>
-
-                    <InputAreaContact
-                        multiline={true}
-                        numberOfLines={10}
-                        focus={this.state.focus}
-                        onFocus={() => this.inputFocus()}
-                        onBlur={() => this.setState({ focus: false })}
-                        selectionColor={'#311b92'}
-                        onChangeText={(caractere) => this.captureMessage(caractere)}
-                        value={this.state.mensagem}
-                        validInput={this.state.validMensagem}
-                        onBlur={() => this.validMessage()}
-
-
-                    />
-               
-                <View style={styles.buttonContainer}>
-                    <Button
-                        label='ENVIAR'
-                        onPress={() => this.contact()}
                     />
                     <Input
                         styleInput={styles.styleInput}
@@ -195,10 +136,8 @@ export default class Contact extends Component {
                         validInput={this.state.validAssunto}
                         onBlur={() => this.validTopic()}
                     />
-
                     <View style={styles.textareaContainer}>
                         <Text style={styles.mensagem}>Mensagem</Text>
-
                         <InputAreaContact
                             multiline={true}
                             numberOfLines={10}
@@ -211,25 +150,17 @@ export default class Contact extends Component {
                             validInput={this.state.validMensagem}
                         />
                     </View>
-
                     <View style={styles.buttonContainer}>
                         <Button
                             label='ENVIAR'
                             onPress={() => this.contact()}
                         />
                     </View>
-                </View>
-                </View>
                 </ScrollView>
             </View>
-
         )
     }
-
 }
-
-
-
 const styles = StyleSheet.create({
     container: {
         width: '100%'
@@ -247,7 +178,6 @@ const styles = StyleSheet.create({
     },
     inputContainer: {
         justifyContent: 'center',
-
     },
     styleInput: {
         justifyContent: 'center',
@@ -261,7 +191,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignContent: 'center',
         marginLeft: '5%'
-
     },
     icon: {
         position: 'absolute',
@@ -273,8 +202,5 @@ const styles = StyleSheet.create({
         fontStyle: 'normal',
         fontWeight: '300',
         padding: 5
-
     }
-
-
 })

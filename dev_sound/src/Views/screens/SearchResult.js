@@ -56,6 +56,7 @@ export default class SearchResult extends Component {
             return (
                  <View style={styles.productCard}>
                 <ProductOnly
+                    onPress={() => this.props.navigation.navigate('Product', {id: item._id})}
                     productId ={item._id}
                     imgProduct={item.img}
                     nameProduct={item.nome}
