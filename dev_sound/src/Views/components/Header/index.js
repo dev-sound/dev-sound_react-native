@@ -1,32 +1,55 @@
-import React from 'react';
+import React,{useState,useEffect, Component} from 'react';
 import {StyleSheet,Text,View,Image,TouchableOpacity} from 'react-native';
 import MenuIcon from '../../../../assets/icons/menu_icon.png'
 import Logo from './logo';
 import CartIcon from './Cart';
 
 
-export default props => {
+export default class Header  extends Component {
 
-    return (
-        <View style={style.headerArea} >
-         
-            <TouchableOpacity onPress={props.drawer} >
-               <Image source={MenuIcon} />  
-            </TouchableOpacity>
+    // async componentDidUpdate(){
+    //     await this.captureCartQuant()
+
+    // }
+
+    // captureCartQuant = async () =>  {
+    //     const productImport = await AsyncStorage.getItem('product')
+    //     const productParse = JSON.parse(productImport)
+    //     console.warn(productParse)
+    //     this.setState({Cart:6})
+    // }
+
+    // state = {
+    //     Cart:0
+    // }
+
+
+
+    render(){
+
+        return (
+            <View style={style.headerArea} >
             
-            <TouchableOpacity onPress={props.comeBackHome}>
-                    <Logo />
-            </TouchableOpacity>
+                <TouchableOpacity onPress={this.props.drawer} >
+                
+                  <Image source={MenuIcon} />  
+               
+                </TouchableOpacity>
+                
+                <TouchableOpacity onPress={this.props.comeBackHome}>
+                        <Logo />
+                </TouchableOpacity>
 
-            <TouchableOpacity onPress ={props.cart}>
-                    <View style={style.elipse}>
-                        <Text style={style.textElipse}>0</Text>
-                    </View>
-                    <CartIcon/>
-            </TouchableOpacity>
+                <TouchableOpacity onPress ={this.props.cart}>
 
-        </View>
-    )
+                        <CartIcon/>
+           
+                </TouchableOpacity>
+
+            </View>
+        )
+
+    }
 
 }
 

@@ -30,6 +30,7 @@ export default class Product extends Component{
     saveStorage = async () => {
 
         const dataProduct = {
+            _id:(Math.random()*1000),
             productName:this.state.productName,
             productImage:this.state.productImage,
             productPrice:this.state.productPrice
