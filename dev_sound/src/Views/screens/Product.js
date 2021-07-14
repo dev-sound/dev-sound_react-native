@@ -15,19 +15,11 @@ const initialState = {
     productSpecs: "",
 }
 
-
 export default class Product extends Component{
 
     state={...initialState}
 
     async componentDidMount (){
-<<<<<<< HEAD
-        
-        await this.ProductDBImports()
-        await this.BannersImports()
-
-    }
-=======
    
      await this.ProductDBImports()
    
@@ -66,11 +58,9 @@ export default class Product extends Component{
         this.props.navigation.navigate('ShopCart')
     }
 
->>>>>>> 45c7dfe8f4248accfe852c6c2a52f1ce4719cb74
 
     ProductDBImports = async () => {
         let productId = this.props.navigation.getParam('id')
-
         await axios.get(`http://10.0.3.2:3000/produtos/id/${productId}`)
         .then((infos) => {
         this.setState({
@@ -86,23 +76,6 @@ export default class Product extends Component{
 
     willFocus = this.props.navigation.addListener('willFocus', () => {this.ProductDBImports()})
 
-    BannersImports = async () => {
-        let productName = this.props.navigation.getParam('nome')
-
-        await axios.get(`http://10.0.3.2:3000/produtos/${productName}`)
-        .then((infos) => {
-            this.setState({
-                productID: infos.data[0]._id,
-                productName: infos.data[0].nome,
-                productImage: infos.data[0].img,
-                productPrice: infos.data[0].preco,
-                productDescription: infos.data[0].descricao,
-                productSpecs: infos.data[0].especificacao
-                })
-            })
-    }
-
-    willFocus = this.props.navigation.addListener('willFocus', () => {this.BannersImports()})
 
 
     render(){ 
