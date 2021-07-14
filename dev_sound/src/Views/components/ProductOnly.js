@@ -21,8 +21,6 @@ const styles = StyleSheet.create(
     {
         container: {
             width: Dimensions.get('window').width/2.5,
-            height: Dimensions.get('window').width/1.4,
-            margin: 10,
             backgroundColor: '#FFF',
             borderRadius: 11,
             padding: 10,
@@ -31,12 +29,9 @@ const styles = StyleSheet.create(
 
         imageContainer: {
             alignSelf: 'center',
-            width: '100%',
-<<<<<<< HEAD
-            height: '50%',
-=======
-            height: '60%',
->>>>>>> 21c2d085cc965cdef9db154cfccceacc40078a8e
+            padding: 5,
+            width: Dimensions.get('window').width/2.5,
+            height: Dimensions.get('window').width/2.5,
             borderRadius: 17,
             },
             
