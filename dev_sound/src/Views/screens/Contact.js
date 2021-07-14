@@ -147,8 +147,8 @@ export default class Contact extends Component {
                         validInput={this.state.validEmail}
                         onBlur={() => this.validEmail()}
                     />
-                </View>
-                <View style={styles.inputContainer}>
+                
+                
                     <Input
                         fieldLabel='Assunto'
                         placeholder='Insira o assunto do seu contato'
@@ -159,47 +159,8 @@ export default class Contact extends Component {
                         validInput={this.state.validAssunto}
                         onBlur={() => this.validTopic()}
                     />
-                </View>
-
-                <Input
-                    styleInput={styles.styleInput}
-                    inputContainer={styles.inputContainer}
-                    fieldLabel='Nome completo'
-                    placeholder='Insira seu nome completo'
-                    style={styles.label}
-                    setSize='90%'
-                    onChangeText={(caractere) => this.captureName(caractere)}
-                    value={this.state.nome}
-                    validInput={this.state.validNome}
-                    onBlur={() => this.validName()}
-
-                />
-                <Input
-                    styleInput={styles.styleInput}
-                    inputContainer={styles.inputContainer}
-                    fieldLabel='Email'
-                    placeholder='Insira seu e-mail'
-                    style={styles.label}
-                    setSize='90%'
-                    onChangeText={(caractere) => this.captureEmail(caractere)}
-                    value={this.state.email}
-                    validInput={this.state.validEmail}
-                    onBlur={() => this.validEmail()}
-                />
-                <Input
-                    styleInput={styles.styleInput}
-                    inputContainer={styles.inputContainer}
-                    fieldLabel='Assunto'
-                    placeholder='Insira o assunto do seu contato'
-                    setSize='90%'
-                    style={styles.label}
-                    onChangeText={(caractere) => this.captureTopic(caractere)}
-                    value={this.state.assunto}
-                    validInput={this.state.validAssunto}
-                    onBlur={() => this.validTopic()}
-                />
-
-                <View style={styles.textareaContainer}>
+                
+                
                     <Text style={styles.mensagem}>Mensagem</Text>
 
                     <InputAreaContact
@@ -216,17 +177,11 @@ export default class Contact extends Component {
 
 
                     />
-                    <Input
-                        styleInput={styles.styleInput}
-                        inputContainer={styles.inputContainer}
-                        fieldLabel='Email'
-                        placeholder='Insira seu e-mail'
-                        style={styles.label}
-                        setSize='90%'
-                        onChangeText={(caractere) => this.captureEmail(caractere)}
-                        value={this.state.email}
-                        validInput={this.state.validEmail}
-                        onBlur={() => this.validEmail()}
+               
+                <View style={styles.buttonContainer}>
+                    <Button
+                        label='ENVIAR'
+                        onPress={() => this.contact()}
                     />
                     <Input
                         styleInput={styles.styleInput}
@@ -263,7 +218,7 @@ export default class Contact extends Component {
                             onPress={() => this.contact()}
                         />
                     </View>
-                    
+                </View>
                 </View>
                 </ScrollView>
             </View>
