@@ -21,8 +21,8 @@ const initialState = {
     clientCEP:'',
     clientDistrict: '',
     clientCreditCard: '',
-    clientOrders: ''
-
+    clientOrders: '',
+    switch: false
 }
 export default class Profile extends Component {
     state = {
@@ -33,18 +33,17 @@ export default class Profile extends Component {
         const parseUserData = JSON.parse(userData)
        let resp =  await axios.get(`http://10.0.3.2:3000/usuario/email/${parseUserData.email.login}`)
         this.setState({clientName: resp.data[0].nome, 
-            clientLastName: resp.data[0].sobrenome,
-            clientCEP: resp.data[0].Endereco.cep,
-            clientStreet: resp.data[0].Endereco.rua,
-            clientNumber: resp.data[0].Endereco.numero,
-            clientDistrict: resp.data[0].Endereco.bairro,
-            clientCity: resp.data[0].Endereco.cidade,
-            clientUF: resp.data[0].Endereco.UF,
-            clientCreditCard: resp.data[0].cartaoCredito,
-            clientOrders: resp.data[0].Pedidos
-        })
-       
-        console.warn(JSON.stringify(this.state.clientOrders))
+            clientLastName: resp.data[0].sobrenome})
+        if(resp.data[0].Endereco.cep){
+            this.setState({clientCEP: resp.data[0].Endereco.cep,
+                clientStreet: resp.data[0].Endereco.rua,
+                clientNumber: resp.data[0].Endereco.numero,
+                clientDistrict: resp.data[0].Endereco.bairro,
+                clientCity: resp.data[0].Endereco.cidade,
+                clientUF: resp.data[0].Endereco.UF,
+                clientCreditCard: resp.data[0].cartaoCredito,
+                clientOrders: resp.data[0].Pedidos})
+        }
     }
     logOut = async () => {
         delete axios.defaults.headers.common['Authorization']
@@ -52,11 +51,18 @@ export default class Profile extends Component {
         this.setState({...initialState}) 
         this.props.navigation.navigate('Auth')
     }
+    orderDetails = async (id) => {
+        let resp = await axios.get(`http://10.0.3.2:3000/Pagamento/${id}`)
+        console.warn(resp.data)
+        
+
+       
+    }
     
     
 
     render(){
-
+        // console.log(this.state.clientOrders[0].dataPedido)
         return(
             
             <ScrollView>
@@ -97,10 +103,10 @@ export default class Profile extends Component {
             </View>
             <View style = {styles.btnAdress}>
                 <View style = {styles.oneBtn}>
-                    <Button smallButton label= "EXCLUIR"/>
+                    {/* <Button smallButton label= "EXCLUIR"/> */}
                 </View>
                 <View>
-                    <Button smallButton label= "ALTERAR"/>
+                    {/* <Button smallButton label= "ALTERAR"/> */}
                 </View>
             </View>
             <View style = {styles.title}>
@@ -114,14 +120,41 @@ export default class Profile extends Component {
                     <Text style = {styles.card}>
                         XXXX XXXX XXXX {this.state.clientCreditCard.substring(this.state.clientCreditCard.length -4,)}
                     </Text>
-                    <Button smallButton label= "EXCLUIR"/>
+                    {/* <Button smallButton label= "EXCLUIR"/> */}
                 </View>
             </View>
             <View style = {styles.title}>
                 <Text style = {styles.name}>Meus pedidos</Text>
             </View>
-            <FlatList />
-            <ProductOrder/>
+            <View style={styles.orders}>
+                <Text>
+                    Número do Pedido
+                </Text>
+                <Text>
+                    Data
+                </Text>
+                <Text>
+                    Pagamento
+                </Text>
+            </View>
+            <View>
+                <FlatList
+                data = {this.state.clientOrders}
+                keyExtractor = {(item)=> `${item.idPedido}`}
+                renderItem= {({item})=>{
+                    return(
+                            <View style={styles.flatlist}>
+                                <Text style={{color:'black'}}>{item.idPedido.substring(2,14)}</Text>
+                                <Text style={{color:'black'}}>{item.dataPedido.substring(0,10)}</Text>
+                                {item.formaPagamento.ehBoleto&& 
+                                <Text style={{color:'black'}}>Boleto</Text>}
+                                {!item.formaPagamento.ehBoleto&& 
+                                <Text style={{color:'black'}}>Cartão</Text>}
+                            </View>
+                        )
+                    }}/>
+            </View>
+
             </ScrollView>
          )
     }
@@ -182,5 +215,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginRight: 20
     },
-    
+    orders: {
+        justifyContent: 'space-around',
+        flexDirection: 'row'
+    },
+    flatlist:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginVertical: '1%',
+        paddingHorizontal: '10%',
+        height: 50,
+        backgroundColor: '#c1c1c1'
+    }
 })

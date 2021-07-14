@@ -32,15 +32,19 @@ const styles = StyleSheet.create(
         imageContainer: {
             alignSelf: 'center',
             width: '100%',
+<<<<<<< HEAD
             height: '50%',
+=======
+            height: '60%',
+>>>>>>> 21c2d085cc965cdef9db154cfccceacc40078a8e
             borderRadius: 17,
-        },
-
+            },
+            
         image: {
             width: '100%',
             height: '100%',
             borderRadius: 17,
-        },
+        }, 
 
         title: {
             fontSize: 17,

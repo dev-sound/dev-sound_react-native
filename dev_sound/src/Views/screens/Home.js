@@ -63,19 +63,6 @@ export default class Home extends Component {
 
     
     
-    renderProductNews =  ({item}) => {
-      return (
-      
-       <ProductOnly
-    
-          ProductId ={item._id}
-          imgProduct={item.img}
-          nameProduct={item.nome}
-          price={item.preco}
-        
-       />
-      )
-    }
 
 
     render(){ 
@@ -86,7 +73,10 @@ export default class Home extends Component {
 
         <ScrollView style={style.scrollcontainer}>
           
-          <Header drawer={() => this.props.navigation.openDrawer()}  />       
+          <Header
+            drawer={() => this.props.navigation.openDrawer()} 
+            cart={() => this.props.navigation.navigate('ShopCart')} 
+            />        
             
           <Search navigation={this.props.navigation}/>
           

@@ -10,9 +10,9 @@ import Profile from './src/Views/screens/Profile'
 import ShopCart from './src/Views/screens/ShopCart'
 import Contact from './src/Views/screens/Contact'
 
-import { createAppContainer } from 'react-navigation';
+
+import { createAppContainer,createSwitchNavigator } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
-import { createSwitchNavigator } from 'react-navigation';
 
 
 const Navigator = createAppContainer(
@@ -20,11 +20,6 @@ const Navigator = createAppContainer(
     Auth:{
       name:'Auth',
       screen:Auth
-     },
-
-     Contact: {
-       name: 'Contact',
-       screen: Contact
      },
 
      Home: {
@@ -75,7 +70,6 @@ const Navigator = createAppContainer(
           name:'Contact',
           screen:Contact
         },
-        
         SearchResult: {
           name: 'SearchResult',
           screen: SearchResult

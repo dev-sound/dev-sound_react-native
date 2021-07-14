@@ -4,8 +4,6 @@ import axios from 'axios'
 import Header from '../components/Header'
 import Title from '../components/Title'
 import ProductOnly from '../components/ProductOnly'
-import ProductsCategory from '../components/Common/ProductsCategory'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default class Category extends Component {
 
@@ -24,7 +22,6 @@ export default class Category extends Component {
             // const subCategoria = guitarra
             await axios.get(`http://10.0.3.2:3000/produtos/subCategoria/${this.state.page}`)
              .then(infos => {
-           
                this.setState({respProdutos:infos.data})
 
             })
@@ -104,9 +101,11 @@ export default class Category extends Component {
         },
 
         productCard: {
-            width: Dimensions.get('window').width / 2.7,
+            width: Dimensions.get('window').width / 2.5,
+            marginBottom: 5,
             paddingBottom: 5,
-            marginLeft: 29,
+            marginLeft: 20,
+            marginTop: 10
         },
 
         scrollContainer: {

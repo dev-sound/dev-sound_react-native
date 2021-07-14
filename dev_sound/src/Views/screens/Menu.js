@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View, TouchableOpacity, Image,Text,StyleSheet,ScrollView,RefreshControl} from 'react-native'
+import {View, TouchableOpacity, Image,Text,StyleSheet,ScrollView} from 'react-native'
 import Logo from '../components/Header/logo'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { List } from 'react-native-paper'
@@ -17,8 +17,7 @@ export default class Menu extends Component  {
 
      }
       
-    
-    guitarra
+
    async componentDidMount(){
 
     const userData = await AsyncStorage.getItem('userData')
@@ -38,11 +37,6 @@ export default class Menu extends Component  {
     setPageViolao = async () =>{
     await this.setState({page:'Violões'})
     this.props.navigation.navigate('CategoryViolao',{page:this.state.page}) 
-   }
-
-
-   goToProfile = () => {
-       this.props.navigation.navigate('Profile', this.state.infosUser)
    }
 
 
@@ -70,7 +64,7 @@ export default class Menu extends Component  {
                         <View style={styles.areaTextsHeader}>
                            
                             <TouchableOpacity onPress={() => this.state.infosUser ? '': this.props.navigation.navigate('Auth')}>
-                                <Text style={styles.HiUser}>Olá, {this.state.userNameLogin} </Text>
+                                <Text style={styles.HiUser}>Olá,{this.state.userNameLogin} </Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity onPress= {()=> this.state.infosUser ? this.props.navigation.navigate('Profile') : this.props.navigation.navigate('Auth')}>
@@ -150,7 +144,7 @@ export default class Menu extends Component  {
                         
                     </List.Accordion>
 
-                    <TouchableOpacity style={styles.btnContact} onPress = {()=> this.props.navigation.navigate('Contact', this.state.infosUser) }>
+                    <TouchableOpacity style={styles.btnContact} onPress={()  => this.props.navigation.navigate('Contact')}>
                        <Text style={styles.titleCategories}>Contato</Text>
                     </TouchableOpacity>    
                            
@@ -178,10 +172,6 @@ const styles = StyleSheet.create({
 
     areaItemLayer:{
         paddingLeft:20
-    },
-
-    listCategStyle:{
-        backgroundColor:'#F1F1F1'
     },
 
     firstLayerMenu:{

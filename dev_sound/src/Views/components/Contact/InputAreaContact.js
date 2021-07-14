@@ -1,15 +1,20 @@
 import React from 'react'
 import {TextInput, StyleSheet } from 'react-native'
+import { enableScreens } from 'react-native-screens'
 
 
 export default props => {
 
     const styleInput = [styles.textinputArea]
 
-    if(props.focus){
+    if(props.focus == true){
         styleInput.push(styles.borderBottom)
     }
 
+    if(props.focus == false){
+        styleInput.push(styles.borderBottom2)
+    }  
+  
     if(props.validInput == 'valid'){
         styleInput.push(styles.valid)
     }
@@ -17,7 +22,7 @@ export default props => {
     if(props.validInput == 'noValid'){
         styleInput.push(styles.noValid)
     }
-    
+
     return (
      <TextInput
         {...props}
@@ -28,20 +33,19 @@ export default props => {
 
 const styles = StyleSheet.create({
     textinputArea: {
-        marginHorizontal: 10,
         height: 220,
-        width: 390,
+        width: '95%',
         fontSize: 16,
         borderRadius: 5,
         borderWidth: 1,
         flexDirection: 'row',
         justifyContent: 'center',
-        alignContent:'center',
-        padding: 15,
+        alignItems:'center',
+        padding: 10,
     },
     borderBottom: {
         borderBottomWidth: 3,
-        borderBottomColor: '#311b92'
+        borderBottomColor: '#673ab7'
     },
     valid:{
         borderColor:'#C4D5B3',
@@ -50,5 +54,9 @@ const styles = StyleSheet.create({
     noValid:{
         borderColor:'#D5B9B3',
         backgroundColor:'#D5B9B3'
+    },
+    borderBottom2: {
+        borderBottomWidth: 1,
+        borderBottomColor: 'black'
     }
 })
