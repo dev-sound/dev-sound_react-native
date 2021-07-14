@@ -2,6 +2,10 @@ import React from 'react'
 import {Text, StyleSheet, TouchableOpacity, Image, View, Dimensions} from 'react-native'
 
 export default props =>{
+    const tratarPreco = (preco) => {
+        let precoConvertido = parseFloat(preco).toFixed(2)
+        return `R$${precoConvertido.replace('.', ',')}`
+    }
     return (
         <TouchableOpacity style={styles.container} {...props}>
             <View style={styles.imageContainer}>
@@ -11,7 +15,7 @@ export default props =>{
                 <Text style={styles.title} numberOfLines={3}>{props.nameProduct}</Text>
             </View>
             <View>
-                <Text style={styles.price}>R${props.price}</Text>
+                <Text style={styles.price}>{tratarPreco(props.price)}</Text>
             </View>
         </TouchableOpacity>
     )
