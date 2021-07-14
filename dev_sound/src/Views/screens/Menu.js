@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View, TouchableOpacity, Image,Text,StyleSheet,ScrollView,RefreshControl} from 'react-native'
+import {View, TouchableOpacity, Image,Text,StyleSheet,ScrollView} from 'react-native'
 import Logo from '../components/Header/logo'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { List } from 'react-native-paper'
@@ -17,8 +17,7 @@ export default class Menu extends Component  {
 
      }
       
-    
-    guitarra
+
    async componentDidMount(){
 
     const userData = await AsyncStorage.getItem('userData')
@@ -31,19 +30,14 @@ export default class Menu extends Component  {
 
  
     setPageGuitar = async () =>{
-        await this.setState({page:'Guitarras'})
+        await this.setState({page:'guitarra'})
         this.props.navigation.navigate('Category',{page:this.state.page}) 
     }
 
     setPageViolao = async () =>{
-    await this.setState({page:'Violões'})
-    this.props.navigation.navigate('CategoryViolao',{page:this.state.page}) 
-   }
-
-
-   goToProfile = () => {
-       this.props.navigation.navigate('Profile', this.state.infosUser)
-   }
+        await this.setState({page:'violão'})
+        this.props.navigation.navigate('CategoryViolao',{page:this.state.page}) 
+     }
 
 
    sairTesteMenu = () => {
