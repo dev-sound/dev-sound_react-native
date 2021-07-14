@@ -212,7 +212,7 @@ module.exports = app => {
             .then(() => {
                 const ProdutosDB = app.src.models.schemaProdutos
 
-                ProdutosDB.find().sort({dataCadastro: -1}).limit(5)
+                ProdutosDB.find().sort({data: -1}).limit(5)
 
                 .then((itensProduto) => {
 

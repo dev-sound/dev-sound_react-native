@@ -19,7 +19,7 @@ export default class Category extends Component {
         } 
 
         getProduct = async () => {
-            // const subCategoria = guitarra
+
             await axios.get(`http://10.0.3.2:3000/produtos/subCategoria/${this.state.page}`)
              .then(infos => {
                this.setState({respProdutos:infos.data})
@@ -27,27 +27,6 @@ export default class Category extends Component {
             })
             .catch(erro => console.warn(erro))
         }
-
-        getTitle = () => {
-            if (this.state.page == 'guitarra') {
-                return(<Title title='Guitarras'/>)
-            } else if (this.state.page == 'violao' || this.state.page == 'violão' ) {
-                return(<Title title='Violões'/>)
-            } else if (this.state.page == 'contrabaixo') {
-                return(<Title title='Contra Baixos'/>)
-            } else if (this.state.page == 'saxofone') {
-                return(<Title title='Saxofones'/>)
-            } else if (this.state.page == 'flautas') {
-                return(<Title title='Flautas'/>)
-            } else if (this.state.page == 'clarinete') {
-                return(<Title title='Clarinetes'/>)
-            } else if (this.state.page == 'piano') {
-                return(<Title title='Pianos'/>)
-            } else if (this.state.page == 'teclado') {
-                return(<Title title='Teclados'/>)
-            }          
-        }
-
 
 
         state = {
@@ -78,7 +57,7 @@ export default class Category extends Component {
                 <ScrollView style={styles.scrollContainer}> 
                     <Header drawer={() => this.props.navigation.openDrawer()}/>
                     <View style={styles.container}>
-                        {this.getTitle()}
+                        <Title title={this.state.page}/>
                     </View>
                                 <FlatList
                                     data={this.state.respProdutos}

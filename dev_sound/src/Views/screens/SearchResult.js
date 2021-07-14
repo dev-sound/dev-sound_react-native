@@ -73,7 +73,8 @@ export default class SearchResult extends Component {
             return (
                 <ScrollView style={styles.scrollContainer}>
                     <Header drawer={() => this.props.navigation.openDrawer()}
-                        cart={() => this.props.navigation.navigate('ShopCart')}/>
+                        cart={() => this.props.navigation.navigate('ShopCart')}
+                    />
                     <Search navigation={this.props.navigation}
                         onPress = {() => this.insideSearch()}/>
                     <View style={styles.container}>
