@@ -21,9 +21,6 @@ const styles = StyleSheet.create(
     {
         container: {
             width: Dimensions.get('window').width/2.5,
-            height: Dimensions.get('window').height/3.3,
-            margin: 10,
-            justifyContent: 'space-between',
             backgroundColor: '#FFF',
             borderRadius: 11,
             padding: 10,
@@ -31,8 +28,10 @@ const styles = StyleSheet.create(
         },
 
         imageContainer: {
-            width: '100%',
-            height: '60%',
+            alignSelf: 'center',
+            padding: 5,
+            width: Dimensions.get('window').width/2.5,
+            height: Dimensions.get('window').width/2.5,
             borderRadius: 17,
             },
             

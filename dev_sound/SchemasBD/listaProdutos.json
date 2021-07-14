@@ -162,7 +162,7 @@
 
 
 {
-    "nome": "TECLADO CASIOTONE CT-S300 61 TECLAS SENSITIVAS",
+    "nome": "TECLADO CASIO CT-S300 61 TECLAS",
     "descricao": "Com o CT-S300, você curte sua música quando e onde quiser. Com tamanho compacto, de 930 mm x 256 mm x 73 mm, ele apresenta um volume 30% menor do que o modelo CTK-3500 e oferece aproximadamente 19 horas de autonomia com pilhas alcalinas*. A alça na parte superior do teclado oferece maior praticidade para transporte do instrumento, que pesa somente 3,3 kg. Graças ao design arredondado das suas bordas e arestas, carregá-lo também é muito seguro. O CT-S300 conta com uma interface simples e intuitiva, oferecendo um layout organizado com menos botões graças à tela LCD e o mostrador de pontos. Os alto-falantes ovais de 13 cm x 6 cm com ímãs reforçados proporcionam qualidade de som acima das expectativas para um instrumento tão compacto.",
     "categoria": "teclas",
     "subCategoria": "Teclados",
@@ -175,7 +175,7 @@
 }
 
 {
-    "nome": "TECLADO ARRANJADOR KORG PA300 61 TECLAS SENSITIVAS",
+    "nome": "TECLADO KORG ARRANJADOR PA300 61 TECLAS",
     "descricao": "O Teclado Pa300 é o mais recente teclado na série KORG® Pa, aclamada internacionalmente e recordista de vendas entre os arranjadores musicais. Usando os Estilos internos, você pode tocar rapidamente e com facilidade, acompanhado por uma banda de apoio ou até mesmo criar suas próprias músicas. O Pa300 não é somente divertido de tocar onde você desejar, é também ideal para pessoas de todas as idades em seus momentos de composição e performance! É um Arranjador Profissional brilhante e fácil de usar que distila a essência sonora e a funcionalidade da altamente aclamada série Pa em um instrumento musical acessível e compacto. Assim como seus irmãos maiores - o Pa900 e o Pa600 - o Pa300 usa nossa tecnologia RX (Real eXperience) para proporcionar um som sem precedentes em um teclado arranjador. Com seu design de gabinete compacto, display TFT TouchView colorido, ampla memória PCM de fábrica, banco de dados de Estilo diversificado e poderoso sistema de amplificação, a KORG® eleva o padrão de excelência na extensão de preço de teclados de entrada.",
     "categoria": "teclas",
     "subCategoria": "Teclados",
@@ -188,7 +188,7 @@
 }
 
 {
-    "nome": "TECLADO ARRANJADOR YAMAHA PSR-SX600 61 TECLAS SENSITIVAS",
+    "nome": "TECLADO YAMAHA ARRANJADOR PSR-SX600 61 TECLAS",
     "descricao": "O PSR-SX600 é um arranjador workstation profissional que traz uma extraordinária liberdade para performances ao vivo. Toque com suas próprias bases enquanto canta, ou utilize seus poderosos recursos de ajustes em tempo real, melhorando ainda mais sua performance ao vivo. Você pode até mesmo organizar listas personalizadas chamadas Playlists, para usar como seu setlist de apresentações, permitindo que você se concentre em sua performance musical. O PSR-SX600 traz um novo recurso chamado 'Unison & Accent' (Uníssono e acentuação) que permite você aplicar acentuações, alterando o sincopado dos ritmos para uma maior liberdade enquanto você toca. O recurso Style Section Reset (volta ao tempo 1 do compasso) e o 'Half Bar Fil in' (viradas de meio compasso) permitem que você mude a fórmula de compasso de uma música em tempo real, proporcionando uma grande flexibilidade as suas performances musicais. PSR-SX600, modelo padrão da série PSR-SX, oferece vários conteúdos e funcionalidades que fazem dele perfeito para apresentações em casa ou no palco. Com controle intuitivo e excelente qualidade de som, o PSR-SX600 tem o controle expressivo exigido pelos profissionais.",
     "categoria": "teclas",
     "subCategoria": "Teclados",
@@ -203,11 +203,24 @@
 
 
 {
-    "nome": "",
+    "nome": "PIANO DIGITAL YAMAHA CLP-785 88 TECLAS",
+    "descricao": "A série de piano digitais CLP da Yamaha utilizam tecnologia de ponta que recriam com excelência a sonoridade dos pianos de cauda. Com vários recursos expressivos similares aos do piano de cauda, o CLP-785 se torna prazeroso ao toque de cada nota. Com design elegante e sofisticado o piano CLP ira se adaptar muito bem a qualquer ambiente da sua casa com perfeição e elegância.",
+    "categoria": "teclas",
+    "subCategoria": "Pianos",
+    "img": "https://i.ibb.co/1YCXLZR/piano-digital-yamaha-clp-785-preto-polido-88-teclas-sensitivas-com-fonte-bivolt-ms.png",
+    "fabricante": "Yamaha",
+    "especificacao": "Altura: 102,70cm. Largura: 146,10cm. Profundidade: 47,60cm. Peso aproximado: 87kg. Polifonia máxima: 256. Timbres: 547. Ritmos: 20. Oitavas: 7. Alto-Falantes: 50W + 50W + 50W x 2. Alimentação: Fonte PA-500",
+    "modelo": "CLP785",
+    "preco": 37499.31,
+    "estoque": 20
+}
+
+{
+    "nome": "PIANO DIGITAL YAMAHA CLP-725 88 TECLAS",
     "descricao": "",
     "categoria": "teclas",
     "subCategoria": "Pianos",
-    "img": "",
+    "img": "https://i.ibb.co/YZhRwx7/piano-digital-yamaha-clp-725-88-teclas-sensiveis-com-adaptador-bivolt-rosewood-ms.png",
     "fabricante": "",
     "especificacao": "",
     "modelo": "",
@@ -216,24 +229,11 @@
 }
 
 {
-    "nome": "",
+    "nome": "PIANO DIGITAL ROLAND HP702 88 TECLAS",
     "descricao": "",
     "categoria": "teclas",
     "subCategoria": "Pianos",
-    "img": "",
-    "fabricante": "",
-    "especificacao": "",
-    "modelo": "",
-    "preco": ,
-    "estoque": 20
-}
-
-{
-    "nome": "",
-    "descricao": "",
-    "categoria": "teclas",
-    "subCategoria": "Pianos",
-    "img": "",
+    "img": "https://i.ibb.co/gVbD5LC/piano-digital-hp702-dr-com-ksh-704-2dr.png",
     "fabricante": "",
     "especificacao": "",
     "modelo": "",
@@ -244,40 +244,40 @@
 
 
 {
-    "nome": "",
+    "nome": "FLAUTA YAMAHA TENOR BARROCA YRT-304 BII",
     "descricao": "",
     "categoria": "sopro",
     "subCategoria": "Flautas",
-    "img": "",
-    "fabricante": "",
+    "img": "https://i.ibb.co/zbXMb0D/flauta-yamaha-tenor-barroca-yrt-304-bii-afinacao-em-do-c-e-corpo-abs.png",
+    "fabricante": "Yamaha",
     "especificacao": "",
-    "modelo": "",
+    "modelo": "YRT304",
     "preco": ,
     "estoque": 20
 }
 
 {
-    "nome": "",
+    "nome": "FLAUTA TENOR YAMAHA YRT-30 BII",
     "descricao": "",
     "categoria": "sopro",
     "subCategoria": "Flautas",
-    "img": "",
-    "fabricante": "",
+    "img": "https://i.ibb.co/zfj2KV3/flauta-tenor-yamaha-yrt-30-bii.png",
+    "fabricante": "Yamaha",
     "especificacao": "",
-    "modelo": "",
+    "modelo": "YRT30",
     "preco": ,
     "estoque": 20
 }
 
 {
-    "nome": "",
+    "nome": "FLAUTA PÍFANO YAMAHA YRF-21",
     "descricao": "",
     "categoria": "sopro",
     "subCategoria": "Flautas",
-    "img": "",
-    "fabricante": "",
+    "img": "https://i.ibb.co/6nxw02K/flauta-pifaro-yamaha-yrf-21.png",
+    "fabricante": "Yamaha",
     "especificacao": "",
-    "modelo": "",
+    "modelo": "YRF21",
     "preco": ,
     "estoque": 20
 }

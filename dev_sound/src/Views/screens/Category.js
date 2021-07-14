@@ -59,13 +59,14 @@ export default class Category extends Component {
                     <View style={styles.container}>
                         <Title title={this.state.page}/>
                     </View>
+                    <View style={styles.flatContainer}>
                                 <FlatList
                                     data={this.state.respProdutos}
                                     keyExtractor={item => `${item._id}`}
                                     renderItem={this.renderProductCategory}
                                     numColumns={2}
                                 />
-            
+                    </View>
                 </ScrollView>
             )
         }
@@ -81,13 +82,16 @@ export default class Category extends Component {
 
         productCard: {
             width: Dimensions.get('window').width / 2.5,
-            marginBottom: 5,
-            paddingBottom: 5,
-            marginLeft: 20,
-            marginTop: 10
+            margin: 10,
         },
 
         scrollContainer: {
             backgroundColor: '#F1F1F1'
+        },
+
+        flatContainer: {
+            width: '100%',
+            alignItems: 'center',
+            marginBottom: 30
         }
     })
