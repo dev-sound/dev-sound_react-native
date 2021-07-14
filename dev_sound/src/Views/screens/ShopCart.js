@@ -1,5 +1,5 @@
 import React,{Component}  from 'react';
-import { View, SafeAreaView, Text, StyleSheet, FlatList, ScrollView } from 'react-native';
+import { View, SafeAreaView, Text, StyleSheet, FlatList, ScrollView, Touchable, TouchableOpacity } from 'react-native';
 import Header from '../components/Header';
 import GridProd from '../components/ShopCart/GridProd';
 import Title from '../components/Title';
@@ -12,13 +12,14 @@ export default class ShopCart extends Component {
 
   state ={
     valueTotal:0,
-    valueTotal:0,
-    items:[]
+    items:[],
+    number:1
   }
 
 
   async componentDidMount(){
     await this.captureProduct()
+    
   }
 
 
@@ -30,12 +31,38 @@ export default class ShopCart extends Component {
 
     }
 
-
-  
-  kill = () => {
-    AsyncStorage.removeItem('product')
+  sumItems = () => {
     
-  }  
+    let items = this.state.items
+    let arrPrice = []
+    let sumsItem = 0
+
+    if(items){
+      items.forEach(element => arrPrice.push(element.productPrice))
+      for (let i = 0; i < arrPrice.length; i++ ) { sumsItem += arrPrice[i] }
+    }    
+
+    return (
+      <Text style={[styles.total, { fontWeight: "500", }]}>{`R$ ${(sumsItem).toFixed(2)}`}</Text>
+    )
+    
+  }
+
+
+  excluir = async (params) => {
+
+    let itemsExclude = params.item._id
+    let items = this.state.items
+
+    let newArr =  items.filter(value => {
+        return value._id != itemsExclude
+    })
+  
+  
+    this.setState({items:newArr})
+    await AsyncStorage.setItem('product',JSON.stringify(newArr))
+ 
+  }
 
 
 
@@ -47,31 +74,40 @@ export default class ShopCart extends Component {
       <SafeAreaView style={styles.container}>
          
           <ScrollView>
-              <Button label='limpar' onPress={() => this.kill() }/> 
+           
            <View>
-             <Header drawer={() => this.props.navigation.openDrawer()}/>
+             <Header 
+             drawer={() => this.props.navigation.openDrawer()}
+              //  cartQuant={this.state.items.length}
+             />
               <Title title="Seu carrinho" />
              
             <FlatList
                  data={this.state.items}
                  keyExtractor={(item) => `${item.id}`}
-                 renderItem={(item) =>
-                  <GridProd 
-                  database={item} 
-                  // valueTotal={valueTotal} 
-                   //  changeValueTotal={changeValueTotal}
-                 // setValueTotal={setValueTotal} 
-               /> } />
+                 renderItem={ (item) =>
+                    <GridProd 
+                     excluir={() => this.excluir(item)}
+                     database={item}
+                     quant={this.state.number}
+                    
+                    /> 
+                 
+                 } 
+              
+            />
             
              </View>
              
            <View style={styles.totalPrice}>
                 <Text style={styles.total}>Total: </Text>
-               <Text style={[styles.total, { fontWeight: "500", }]}>{`R$ ${this.state.valueTotal}`}</Text>
+            
+                  {this.sumItems()}
+            
                </View>
                <Button label="Finalizar compra" onPress={() => this.props.navigation.navigate('Payment')} />
             </ScrollView>
-      
+              
       </SafeAreaView>
     )
   }

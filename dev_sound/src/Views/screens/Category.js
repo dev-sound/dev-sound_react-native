@@ -23,7 +23,6 @@ export default class Category extends Component {
             await axios.get(`http://10.0.3.2:3000/produtos/subCategoria/${this.state.page}`)
              .then(infos => {
                this.setState({respProdutos:infos.data})
-
             })
             .catch(erro => console.warn(erro))
         }
@@ -36,6 +35,8 @@ export default class Category extends Component {
 
 
         renderProductCategory = ({item}) =>  {
+
+            console.warn(this.state.page)
             return (
                  <View style={styles.productCard}>
                 <ProductOnly

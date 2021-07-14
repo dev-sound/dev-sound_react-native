@@ -70,10 +70,6 @@ export default class Menu extends Component  {
     }
 
 
-   sairTesteMenu = () => {
-        AsyncStorage.removeItem('userData')
-   }
-
 
     render() {
 
