@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import {View,Image,StyleSheet,ScrollView,Dimensions,FlatList,Text} from 'react-native';
+import {View,Image,StyleSheet,ScrollView,Dimensions,FlatList,Text,TouchableWithoutFeedback} from 'react-native';
 import Search  from '../components/Search';
 import Header from '../components/Header';
 import Carousel from 'react-native-banner-carousel';
 import Title from '../components/Title';
 import ProductOnly from '../components/ProductOnly';
-import ProductsSpotlight from '../components/Common/ProductsSpotlight';
-import ProductNews from '../components/Common/ProductNews';
 import ImagesProject from '../components/Common/ImagesProject';
-import { requests } from '../components/Common/ProductsSpotlight'
 import axios from 'axios';
 
 const BannerHeight = Dimensions.get('window').width/1.6;
@@ -51,13 +48,12 @@ export default class Home extends Component {
           .catch(erro => console.warn(erro))
   
   }
-
   
     renderPage = (image,index) => {
       return (
-        <View key={index}>
-            <Image style={{width:'97%', height: BannerHeight}} source={image} />
-        </View>
+        <TouchableWithoutFeedback key={index}>
+            <Image style={{width:'97%', height: BannerHeight, borderRadius: 10}} source={image} />
+        </TouchableWithoutFeedback>
       )
     }
 
@@ -65,7 +61,7 @@ export default class Home extends Component {
     renderProductSpotlight = ({item}) =>  {
       return (
           <ProductOnly
-
+            onPress={() => this.props.navigation.navigate('Product', {id: item._id})}
             imgProduct={item.img}
             nameProduct={item.nome}
             price={item.preco}
@@ -75,35 +71,20 @@ export default class Home extends Component {
 
     
     
-    renderProductNews =  ({item}) => {
-      return (
-      
-       <ProductOnly
-    
-          ProductId ={item._id}
-          imgProduct={item.img}
-          nameProduct={item.nome}
-          price={item.preco}
-        
-       />
-      )
-    }
 
 
-        
-   
- 
     render(){ 
 
 
 
       return(
 
-        <ScrollView >
+        <ScrollView style={style.scrollcontainer}>
           
           <Header
            drawer={() => this.props.navigation.openDrawer()} 
-           cart={() => this.props.navigation.navigate('ShopCart')} />       
+           cart={() => this.props.navigation.navigate('ShopCart')} 
+           />       
             
           <Search navigation={this.props.navigation}/>
           
@@ -160,7 +141,10 @@ export default class Home extends Component {
 
   const style =  StyleSheet.create(
     {
-      
+      scrollcontainer: {
+        backgroundColor: "#F1F1F1",
+      },
+
       container:{
         flex:1,
         backgroundColor: "#F1F1F1",
@@ -185,6 +169,10 @@ export default class Home extends Component {
       ,
       newsProduct:{
         paddingVertical:10
+      },
+
+      fontText: {
+        fontWeight: 'bold'
       }
       
     }

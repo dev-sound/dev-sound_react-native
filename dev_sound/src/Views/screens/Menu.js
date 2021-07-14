@@ -18,7 +18,7 @@ export default class Menu extends Component  {
      }
       
     
-
+    guitarra
    async componentDidMount(){
 
     const userData = await AsyncStorage.getItem('userData')
@@ -31,22 +31,24 @@ export default class Menu extends Component  {
 
  
     setPageGuitar = async () =>{
-        await this.setState({page:'guitarra'})
+        await this.setState({page:'Guitarras'})
         this.props.navigation.navigate('Category',{page:this.state.page}) 
     }
 
     setPageViolao = async () =>{
-    await this.setState({page:'violao'})
+    await this.setState({page:'Violões'})
     this.props.navigation.navigate('CategoryViolao',{page:this.state.page}) 
    }
 
+
+   goToProfile = () => {
+       this.props.navigation.navigate('Profile', this.state.infosUser)
+   }
 
 
    sairTesteMenu = () => {
         AsyncStorage.removeItem('userData')
    }
-
-
 
 
     render() {
@@ -88,7 +90,7 @@ export default class Menu extends Component  {
                     </TouchableOpacity>    
 
 
-                    <List.Accordion title="Categorias" titleStyle={styles.titleCategories} >
+                    <List.Accordion title="Categorias" titleStyle={styles.titleCategories} style={styles.accordion} >
 
                         <View style={styles.firstLayerMenu}>
 
@@ -96,7 +98,7 @@ export default class Menu extends Component  {
                                 
                                     <View style={styles.areaItemLayer}>
                                         <TouchableOpacity onPress={() => this.setPageGuitar()} >
-                                            <List.Item title="Guitarra"  />
+                                            <List.Item title="Guitarras"  />
                                         </TouchableOpacity>
                                         
                                         <TouchableOpacity onPress={() => this.setPageViolao()}>
@@ -104,7 +106,7 @@ export default class Menu extends Component  {
                                         </TouchableOpacity>
                                         
                                         <TouchableOpacity>
-                                            <List.Item title="Contrabaixo" />
+                                            <List.Item title="Contrabaixos" />
                                         </TouchableOpacity>
                                         
                                     </View> 
@@ -124,7 +126,7 @@ export default class Menu extends Component  {
                                     </TouchableOpacity>
                                     
                                     <TouchableOpacity>
-                                        <List.Item title="Clarinete" />
+                                        <List.Item title="Clarinetes" />
                                     </TouchableOpacity> 
                                   </View>
                                 </List.Accordion>
@@ -134,11 +136,11 @@ export default class Menu extends Component  {
                                
                                 <View style={styles.areaItemLayer}> 
                                     <TouchableOpacity>
-                                    <List.Item title="Piano" />
+                                    <List.Item title="Pianos" />
                                     </TouchableOpacity>
                                 
                                     <TouchableOpacity>
-                                    <List.Item title="Teclado" />
+                                    <List.Item title="Teclados" />
                                     </TouchableOpacity>
                                   </View>
                                 </List.Accordion>
@@ -148,7 +150,7 @@ export default class Menu extends Component  {
                         
                     </List.Accordion>
 
-                    <TouchableOpacity style={styles.btnContact}>
+                    <TouchableOpacity style={styles.btnContact} onPress={()  => this.props.navigation.navigate('Contact')}>
                        <Text style={styles.titleCategories}>Contato</Text>
                     </TouchableOpacity>    
                            
@@ -165,14 +167,13 @@ export default class Menu extends Component  {
 
 const styles = StyleSheet.create({
     containerMenu:{
-        flex:1,
-        backgroundColor:'#f1f1f1'
+        backgroundColor: '#F1F1F1'
     },
 
     btnContact:{
         padding:20,
         marginTop:5,
-     
+        backgroundColor:'#F1F1F1'
     },
 
     areaItemLayer:{
@@ -180,13 +181,17 @@ const styles = StyleSheet.create({
     },
 
     firstLayerMenu:{
-        paddingLeft:22
+        paddingLeft:22,
     },  
 
     areaLogo:{
         padding:20,
         paddingTop:45,
         paddingBottom:35
+    },
+
+    accordion: {
+        backgroundColor: '#F1F1F1'
     },
 
     headerMenu:{
@@ -218,7 +223,7 @@ const styles = StyleSheet.create({
     },
 
     contentMenuOptions:{
-        marginLeft:2
+        marginLeft:2,
     },
 
     titleCategories:{
@@ -226,7 +231,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         letterSpacing:0.06,
         color:'#000000',
-        fontWeight:'bold'
+        fontWeight:'bold',
 
     }
 })

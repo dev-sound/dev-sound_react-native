@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TextInput, Alert } from 'react-native'
+import { View, Text, StyleSheet, Alert } from 'react-native'
 
-import Header from '../components/Header/Header'
+import Header from '../components/Header/index'
 import Title from '../components/Title'
 import Input from '../components/Input'
 import Button from '../components/Button'
-import InputAreaContact from '../components/Contact/InputAreaContact'
 import axios from 'axios'
+import Icon from 'react-native-vector-icons/FontAwesome'
+
+import InputAreaContact from '../components/Contact/InputAreaContact'
 
 const initialState = {
     nome: '',
@@ -17,14 +19,14 @@ const initialState = {
     validNome: '',
     validEmail: '',
     validAssunto: '',
-    validMensagem: ''
+    validMensagem: '',
+    validInput: ''
 }
 
 
 export default class Contact extends Component {
 
     state = { ...initialState }
-
 
     //Função focus textarea
     inputFocus = () => {
@@ -49,39 +51,39 @@ export default class Contact extends Component {
     //validações do Input
     validName = () => {
         const regexname = /[A-Z][a-z]* [A-Z][a-z]*/
-        if(regexname.test(this.state.nome)){
-            this.setState({validNome: 'valid'})
-        }else{
-            this.setState({validNome: 'noValid'})
+        if (regexname.test(this.state.nome)) {
+            this.setState({ validNome: 'valid' })
+        } else {
+            this.setState({ validNome: 'noValid' })
         }
     }
 
     validEmail = () => {
-        const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/ 
-        if(regexEmail.test(this.state.email)){
-            this.setState({validEmail: 'valid'})
-        }else{
-            this.setState({validEmail: 'noValid'})
+        const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+        if (regexEmail.test(this.state.email)) {
+            this.setState({ validEmail: 'valid' })
+        } else {
+            this.setState({ validEmail: 'noValid' })
         }
     }
 
     validTopic = () => {
-        if(this.state.assunto != ''){
-            this.setState({validAssunto: 'valid'})
-        }else{
-            this.setState({validAssunto: 'noValid'})
+        if (this.state.assunto != '') {
+            this.setState({ validAssunto: 'valid' })
+        } else {
+            this.setState({ validAssunto: 'noValid' })
         }
     }
 
     validMessage = () => {
-        if(this.state.mensagem != ''){
-            this.setState({validMensagem: 'valid'})
-        }else{
-            this.setState({validMensagem: 'noValid'})
+        if (this.state.mensagem != '') {
+            this.setState({ validMensagem: 'valid' })
+        } else {
+            this.setState({ validMensagem: 'noValid' })
         }
     }
 
-    
+
     contact = async () => {
         try {
             await axios.post("http://10.0.3.2:3000/contato", {
@@ -91,16 +93,15 @@ export default class Contact extends Component {
                 mensagem: this.state.mensagem,
 
             })
-            Alert.alert('Mensagem enviada!') 
-            this.setState({...initialState})
+            Alert.alert('Mensagem enviada!')
+            this.setState({ ...initialState })
         } catch (err) {
             this.validName()
             this.validEmail()
             this.validTopic()
             this.validMessage()
-            console.warn(err)
             Alert.alert('Verifique se todos os campos foram preenchidos.')
-            
+
         }
     }
 
@@ -110,7 +111,7 @@ export default class Contact extends Component {
 
         return (
             <View style={styles.container}>
-                <Header />
+                <Header drawer={() => this.props.navigation.openDrawer()} />
                 <View style={styles.titleContainer}>
                     <Title title='Contato' />
                 </View>
@@ -119,12 +120,12 @@ export default class Contact extends Component {
                         fieldLabel='Nome completo'
                         placeholder='Insira seu nome completo'
                         style={styles.label}
-                        setSize={420}
+                        setSize={390}
                         onChangeText={(caractere) => this.captureName(caractere)}
                         value={this.state.nome}
-                        validInput = {this.state.validNome}
+                        validInput={this.state.validNome}
                         onBlur={() => this.validName()}
-                        
+
                     />
                 </View>
                 <View style={styles.inputContainer}>
@@ -132,10 +133,10 @@ export default class Contact extends Component {
                         fieldLabel='Email'
                         placeholder='Insira seu e-mail'
                         style={styles.label}
-                        setSize={420}
+                        setSize={390}
                         onChangeText={(caractere) => this.captureEmail(caractere)}
                         value={this.state.email}
-                        validInput = {this.state.validEmail}
+                        validInput={this.state.validEmail}
                         onBlur={() => this.validEmail()}
                     />
                 </View>
@@ -144,15 +145,15 @@ export default class Contact extends Component {
                         fieldLabel='Assunto'
                         placeholder='Insira o assunto do seu contato'
                         style={styles.label}
-                        setSize={420}
+                        setSize={390}
                         onChangeText={(caractere) => this.captureTopic(caractere)}
                         value={this.state.assunto}
-                        validInput = {this.state.validAssunto}
+                        validInput={this.state.validAssunto}
                         onBlur={() => this.validTopic()}
                     />
                 </View>
                 <View style={styles.textareaContainer}>
-                    <Text style={styles.label}>Mensagem</Text>
+                    <Text style={styles.mensagem}>Mensagem</Text>
                     <InputAreaContact
                         multiline={true}
                         numberOfLines={10}
@@ -162,7 +163,7 @@ export default class Contact extends Component {
                         selectionColor={'#311b92'}
                         onChangeText={(caractere) => this.captureMessage(caractere)}
                         value={this.state.mensagem}
-                        validInput = {this.state.validMensagem}
+                        validInput={this.state.validMensagem}
                         onBlur={() => this.validMessage()}
                     />
                 </View>
@@ -182,8 +183,9 @@ export default class Contact extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        backgroundColor: '#F1F1F1'
     },
+
     titleContainer: {
         paddingTop: 25,
         paddingBottom: 15
@@ -202,9 +204,22 @@ const styles = StyleSheet.create({
         marginHorizontal: 120
     },
     textareaContainer: {
-        alignItems: 'center',
-        padding: 5
+        alignContent: 'center',
+        justifyContent: 'center',
+        alignSelf: 'center'
     },
+    icon: {
+        position: 'absolute',
+        left: 420,
+        top: 60
+    },
+    mensagem:{
+        fontSize: 22,
+        fontStyle: 'normal',
+        fontWeight: '300',
+        marginLeft:15,
+        paddingBottom: 10,
+    }
 
 
 })

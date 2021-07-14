@@ -2,7 +2,7 @@
     "nome": "GUITARRA FENDER® SIG SERIES JIMI HENDRIX STRATOCASTER®",
     "descricao": "Honrando o eletrizante 'Voodoo Chile' que popularizou a guitarra Stratocaster® e sua enorme flexibilidade sônica, a Jimi Hendrix Stratocaster® te dá o mesmo som incendiário e o mesmo feeling das distintas Strats 'invertidas' que Hendrix usava, com visual clássico e timbre 'vintage'. ",
     "categoria" : "corda",
-    "subCategoria": "guitarra",
+    "subCategoria": "Guitarras",
     "img": "https://i.ibb.co/X5bL8HN/guitarra-fender-mex-artist-signatures-sig-series-jimi-hendrix-stratocaster-3-color-sunburst.png",
     "fabricante": "fender",
     "especificacao": "Corpo em alder, Braço em maple 'c', Shape c/ headstock invertido, Escala em maple com 64.8cm, Escala com raio de 241mm",
@@ -15,7 +15,7 @@
     "nome": "GUITARRA IBANEZ RG370 HSH BLUE MOON BURST",
     "descricao": "Os modelos da linha RG foram desenvolvidos para serem tocados, e muito. Dentre as diversas linhas, a RG é reconhecida como o modelo final para os guitarristas atuais. A combinação da nova ponte tremolo Ibanez Edge-Zero II, e o elaborado processo de construção, dão ao usuário um perfeita estabilidade da afinação e conforto. Há também a presença dos captadores Quantum na configuração HSH.",
     "categoria" : "corda",
-    "subCategoria": "guitarra",
+    "subCategoria": "Guitarras",
     "img": "https://i.ibb.co/wsgHNvb/guitarra-ibanez-rg370ahmz-blue-moon-burst.png",
     "fabricante": "ibanez",
     "especificacao": "Corpo em madeira Ash, Braço Wizard 3, Trastes 24 Jumbo, Escala com comprimento 648mm / 25.5 polegadas e largura 43mm no nut e 58mm na casa 24",
@@ -28,7 +28,7 @@
     "nome": "GUITARRA FENDER® VINTERA® 70S STRATOCASTER® MAPLE",
     "descricao": "Para guitarristas que desejam o estilo e o timbre dos anos clássicos da Fender®, criamos o Vintera® 70s Stratocaster®. Equipada com os recursos cobiçados que definiram a década, incluindo o perfil do braço e a sensação de tocar, além de captadores com maior ganho. Esta guitarra tem todo o feeling e a vibração, que fizeram da Stratocaster® uma lenda.",
     "categoria" : "corda",
-    "subCategoria": "guitarra",
+    "subCategoria": "Guitarras",
     "img": "https://i.ibb.co/ctS4vhV/guitarra-fender-vintera-70s-maple.png",
     "fabricante": "fender",
     "especificacao": "Corpo em ash, Braço Maple Early '70s, 'C' shape (envernizado), Escala em maple com 64.8cm, Escala com raio de 184.1mm",
@@ -44,7 +44,7 @@
     "nome": "VIOLÃO RANCHER FALCON JUMBO CUTAWAY GRETSCH",
     "descricao": "Os violões Gretsch Rancher estão de volta e melhores do que nunca! O G5022CBFE Rancher Falcon Jumbo tem o som cheio, encorpado, e todo o estilo Gretsch Falcon com detalhes únicos, como o friso, o escudo e as tarraxas douradas. Com o tampo maciço em Spruce, as laterais e o fundo em Maple, este violão tem um timbre poderoso, que se destaca ainda mais quando plugado, devido ao seu captador Fishman Sonicore com preamp Isys +. Se você busca algo 'diferente', então o Gretsch G5022CBFE Rancher Falcon Jumbo é o que você precisa.",
     "categoria" : "corda",
-    "subCategoria": "violão",
+    "subCategoria": "Violões",
     "img": "https://i.ibb.co/GF6ggMn/violao-gretsch-rancher-falcon-jumbo.png",
     "fabricante": "gretsch",
     "especificacao": "6 Cordas de aço, Corpo Jumbo, Tampo em spruce maciço com friso gold sparkle, Acabamento brilhante, Fundo e faixas laterais em maple laminado, Braço em mahogany, Escala em Rosewood com 25 polegadas, Largura do nut 42.5mm",
@@ -57,7 +57,7 @@
     "nome": "VIOLÃO FOLK GIANNINI GF1D HONEY BURST CUTWAY AÇO",
     "descricao": "O violão Serie Performance da Giannini modelo GF-1D é um instrumento incrivelmente rico em detalhes, tanto visualmente como sonoramente. A Serie performance é uma das mais procuradas quando falamos de violões Giannini. Seu corpo folk cutaway proporciona um som encorpado com ótima definições de graves médios e agudos. Tem seu corpo disponível na cor Honey Burst.",
     "categoria" : "corda",
-    "subCategoria": "violão",
+    "subCategoria": "Violões",
     "img": "https://i.ibb.co/t3MKQPD/violao-folk-giannini.png",
     "fabricante": "giannini",
     "especificacao": "",
@@ -70,7 +70,7 @@
     "nome": "VIOLÃO HARMONICS GE21 ELETROACÚSTICO CUTWAY AÇO",
     "descricao": "O instrumento perfeito para músicos que não abrem mão do som tradicional em um violão de qualidade e ótimo custo-benefício. Com um acabamento sofisticado que traz o selo Harmonics, sendo uma ótima opção, confiável e produzida nos mais rigorosos padrões de qualidade. Trastes polidos de baixa espessura e o encordoamento em aço, facilitando as notas, com maciez para os dedos e ótima tocabilidade. Um Violão leve, com uma sonoridade magnífica.",
     "categoria": "cordas",
-    "subCategoria": "violões",
+    "subCategoria": "Violões",
     "img": "https://i.ibb.co/njLqjDX/violao-harmonics-ge21.png",
     "fabricante": "harmonics",
     "especificacao": "6 Cordas em aço, Tampo/Faixa/Fundo Linden, Acabamento brilhante, Braço Nato, Escala Acer Plywood, Dimensões 39 polegadas",
@@ -82,12 +82,11 @@
 
 
 
-
 {
     "nome": "BAIXO FENDER® SQUIER® CLASSIC VIBE 60'S JAZZ BASS",
     "descricao": "O Squier® Classic Vibe 60s Jazz Bass é um tributo à década de seu nascimento, combinando a tocabilidade macia, a versatilidade e o timbre maciço de seus captadores single-coil de alnico projetados pela Fender. Outras características incluem o confortável braço com perfil 'C', a escala em laurel indiano com raio de curvatura de 9,5 polegadas, muito fácil de tocar, os novos trastes 'narrow tall', que são mais altos e mais estreitos, além de uma ponte estilo vintage com 4 saddles. Este modelo também apresenta o logo no headstock inspirado nos anos 60, ferragens niqueladas e o acabamento do braço com verniz brilhante, com toda a vibe dos anos 60.",
     "categoria": "cordas",
-    "subCategoria": "contrabaixos",
+    "subCategoria": "Contrabaixos",
     "img": "https://i.ibb.co/7JqkT5m/baixo-4-cordas-passivo-fender-squier-classic-vibe-60s-jazz-bass.png",
     "fabricante": "fender",
     "especificacao": "4 Cordas, Altura 133cm, Largura 44cm, Profundidade 11cm, Braço 'C' shape com friso preto, Escala com 34 polegadas, Raia da escala 9.5 polegadas, Calibre .045-.105",
@@ -100,7 +99,7 @@
     "nome": "BAIXO FENDER® SQUIER® CLASSIC VIBE P BASS 60'S",
     "descricao": "O contrabaixo Classic Vibe '60s Precision Bass vai te oferecer a real experiência da essência do Precision Bass. O equilibrado corpo em basswood somado ao captador Custom split coil e a ponte Hi Mass resultam em um contrabaixo com uma sonoridade sólida. Uma verdadeira usina de graves. O fino acabamento em Fiesta Red e o braço em maple (1 peça) com escala em rosewood, dão o toque final a esse maravilhoso instrumento.",
     "categoria": "cordas",
-    "subCategoria": "contrabaixos",
+    "subCategoria": "Contrabaixos",
     "img": "https://i.ibb.co/zHrFKnr/baixo-fender-030-3070-squier-classic-vibe-p-bass-60s-red.png",
     "fabricante": "fender",
     "especificacao": "Corpo em basswood, Braço em maple modern 'C' shape, Escala em rosewood com 34 polegadas,20 trastes estilo vintage, Escala com raio de 9.5 polegadas, Largura do nut 1.65 polegadas",
@@ -113,7 +112,7 @@
     "nome": "BAIXO FENDER® SQUIER® CLASSIC VIBE 70'S JAZZ BASS",
     "descricao": "Desde o seu lançamento em 1960, o Jazz Bass tem resistido ao teste do tempo, para se tornar um dos instrumentos mais tocados e gravados da história da música moderna. À medida que os timbres mais fortes e mais graves foram se tornaram populares na década de 1970, diversas modificações foram feitas no Jazz Bass, para atender as exigências dos músicos e das músicas da época. As alterações mais notáveis foram: a escala em maple e o captador mais próximo da ponte, para um timbre com mais brilho. O Jazz Bass do Squier® Classic Vibe dos anos 70 captura toda a vibe, porém em um instrumento incrivelmente acessível com o clássico corpo, o braço de ação rápida e 2 captadores single-coil. O Squier® Classic Vibe Jass Bass 70's é extremamente confortável de tocar e obviamente, ele também oferece o timbre lendário que você só pode obter de um Jazz Bass.",
     "categoria": "cordas",
-    "subCategoria": "contrabaixos",
+    "subCategoria": "Contrabaixos",
     "img": "https://i.ibb.co/4V7kdHY/baixo-5-cordas-passivo-fender-squier-classic-vibe-70s-jazz-bass.png",
     "fabricante": "fender",
     "especificacao": "Corpo em poplar, Braço em Maple 'C' shape com friso preto, Escala em maple com 34 polegadas, 20 trastes narrow tall, Escala com raio de 9.5 polegadas",
@@ -125,54 +124,164 @@
 
 
 {
+    "nome": "TECLADO CASIOTONE CT-S300 61 TECLAS SENSITIVAS",
+    "descricao": "Com o CT-S300, você curte sua música quando e onde quiser. Com tamanho compacto, de 930 mm x 256 mm x 73 mm, ele apresenta um volume 30% menor do que o modelo CTK-3500 e oferece aproximadamente 19 horas de autonomia com pilhas alcalinas*. A alça na parte superior do teclado oferece maior praticidade para transporte do instrumento, que pesa somente 3,3 kg. Graças ao design arredondado das suas bordas e arestas, carregá-lo também é muito seguro. O CT-S300 conta com uma interface simples e intuitiva, oferecendo um layout organizado com menos botões graças à tela LCD e o mostrador de pontos. Os alto-falantes ovais de 13 cm x 6 cm com ímãs reforçados proporcionam qualidade de som acima das expectativas para um instrumento tão compacto.",
+    "categoria": "teclas",
+    "subCategoria": "Teclados",
+    "img": "https://i.ibb.co/r63JQwc/teclado-casio-casiotone-ct-s300-61-teclas-sensitivas-com-fonte-bivolt-preto.png",
+    "fabricante": "casio",
+    "especificacao": "Altura 7,30cm. Largura 93cm, Profundidade 25,60cm, Peso aproximado 3,30kg. 60 Músicas integradas. 77 Ritmos integrados. Chordana Play. MIDI: 16 multitimbres recebidos, GM nível 1 padrão. Roda de altura de tons: 0 a 12 semitons. 400 timbres. Polifonia máxima 48. Alto-falantes: 2x ovais (2,5W + 2,5W), Alimentação: 6 pilhas alcalinas AA",
+    "modelo": "CT-S300",
+    "preco": 1349.99,
+    "estoque": 20
+}
+
+{
+    "nome": "TECLADO ARRANJADOR KORG PA300 61 TECLAS SENSITIVAS",
+    "descricao": "O Teclado Pa300 é o mais recente teclado na série KORG® Pa, aclamada internacionalmente e recordista de vendas entre os arranjadores musicais. Usando os Estilos internos, você pode tocar rapidamente e com facilidade, acompanhado por uma banda de apoio ou até mesmo criar suas próprias músicas. O Pa300 não é somente divertido de tocar onde você desejar, é também ideal para pessoas de todas as idades em seus momentos de composição e performance! É um Arranjador Profissional brilhante e fácil de usar que distila a essência sonora e a funcionalidade da altamente aclamada série Pa em um instrumento musical acessível e compacto. Assim como seus irmãos maiores - o Pa900 e o Pa600 - o Pa300 usa nossa tecnologia RX (Real eXperience) para proporcionar um som sem precedentes em um teclado arranjador. Com seu design de gabinete compacto, display TFT TouchView colorido, ampla memória PCM de fábrica, banco de dados de Estilo diversificado e poderoso sistema de amplificação, a KORG® eleva o padrão de excelência na extensão de preço de teclados de entrada.",
+    "categoria": "teclas",
+    "subCategoria": "Teclados",
+    "img": "https://i.ibb.co/4KspKNh/teclado-arranjador-korg-pa300-61-teclas-sensitivas-com-fonte-bivolt-ms.png",
+    "fabricante": "korg",
+    "especificacao": "Altura 37,70cm. Largura 130,90cm. Profundidade 12,70cm. Peso aproximado 8,40kg. Sistema RX (Real eXperience). Gerador de som com 128 vozes e 128 osciladores. 126 tipos de Master Effects. Mais de 950 conjuntos de bateria, incluindo compatibilidade de som GM2. Mais de 310 estilos pré-carregados. 4 pistas Pad + Tecla Stop. Alto-falantes: 2 x 13W. Alimentação: Fonte de energia AC 100-240V",
+    "modelo": "PA300",
+    "preco": 6399.81,
+    "estoque": 20
+}
+
+{
+    "nome": "TECLADO ARRANJADOR YAMAHA PSR-SX600 61 TECLAS SENSITIVAS",
+    "descricao": "O PSR-SX600 é um arranjador workstation profissional que traz uma extraordinária liberdade para performances ao vivo. Toque com suas próprias bases enquanto canta, ou utilize seus poderosos recursos de ajustes em tempo real, melhorando ainda mais sua performance ao vivo. Você pode até mesmo organizar listas personalizadas chamadas Playlists, para usar como seu setlist de apresentações, permitindo que você se concentre em sua performance musical. O PSR-SX600 traz um novo recurso chamado 'Unison & Accent' (Uníssono e acentuação) que permite você aplicar acentuações, alterando o sincopado dos ritmos para uma maior liberdade enquanto você toca. O recurso Style Section Reset (volta ao tempo 1 do compasso) e o 'Half Bar Fil in' (viradas de meio compasso) permitem que você mude a fórmula de compasso de uma música em tempo real, proporcionando uma grande flexibilidade as suas performances musicais. PSR-SX600, modelo padrão da série PSR-SX, oferece vários conteúdos e funcionalidades que fazem dele perfeito para apresentações em casa ou no palco. Com controle intuitivo e excelente qualidade de som, o PSR-SX600 tem o controle expressivo exigido pelos profissionais.",
+    "categoria": "teclas",
+    "subCategoria": "Teclados",
+    "img": "https://i.ibb.co/TLF7rgf/teclado-arranjador-yamaha-psr-sx600-61-teclas-sensitivas-entrada-para-microfone-e-fonte-bivolt-ms.png",
+    "fabricante": "yamaha",
+    "especificacao": "Altura 13,40cm. Largura 100,40cm. Profundidade 41cm. Peso aproximado 8,10kg. 850 sons, incluindo 73 sons Super Articulation, 27 MegaVoice e 43 Kits de Bateria/SFX. 415 ritmos, incluindo 372 Pro, 32 Session, 10 DJ e 1 Estilo Livre. Expansibilidade de Voices e Styles com o Yamaha Expansion Manager. Polifonia máxima 128. Alto-falantes 2 x 15W. Alimentação: Fonte de energia AC 100-240V",
+    "modelo": "PSR-SX600",
+    "preco": 4899.51,
+    "estoque": 20
+}
+
+
+
+{
+    "nome": "",
+    "descricao": "",
+    "categoria": "teclas",
+    "subCategoria": "Pianos",
+    "img": "",
+    "fabricante": "",
+    "especificacao": "",
+    "modelo": "",
+    "preco": ,
+    "estoque": 20
+}
+
+{
+    "nome": "",
+    "descricao": "",
+    "categoria": "teclas",
+    "subCategoria": "Pianos",
+    "img": "",
+    "fabricante": "",
+    "especificacao": "",
+    "modelo": "",
+    "preco": ,
+    "estoque": 20
+}
+
+{
+    "nome": "",
+    "descricao": "",
+    "categoria": "teclas",
+    "subCategoria": "Pianos",
+    "img": "",
+    "fabricante": "",
+    "especificacao": "",
+    "modelo": "",
+    "preco": ,
+    "estoque": 20
+}
+
+
+
+{
+    "nome": "",
+    "descricao": "",
+    "categoria": "sopro",
+    "subCategoria": "Flautas",
+    "img": "",
+    "fabricante": "",
+    "especificacao": "",
+    "modelo": "",
+    "preco": ,
+    "estoque": 20
+}
+
+{
+    "nome": "",
+    "descricao": "",
+    "categoria": "sopro",
+    "subCategoria": "Flautas",
+    "img": "",
+    "fabricante": "",
+    "especificacao": "",
+    "modelo": "",
+    "preco": ,
+    "estoque": 20
+}
+
+{
+    "nome": "",
+    "descricao": "",
+    "categoria": "sopro",
+    "subCategoria": "Flautas",
+    "img": "",
+    "fabricante": "",
+    "especificacao": "",
+    "modelo": "",
+    "preco": ,
+    "estoque": 20
+}
+
+
+
+{
     "nome": "SAXOFONE ALTO YAMAHA YAS26-ID LAQUEADO",
     "descricao": "Novo receptor de tudel com parafuso durável. O novo projeto do receptor de tudel permite uma resposta rápida e uma facilidade de tocar, ao mesmo tempo que aumenta a durabilidade do mecanismo",
     "categoria": "sopro",
-    "subCategoria": "saxofone",
+    "subCategoria": "Saxofones",
     "img": "https://i.ibb.co/KwY3LDt/saxofone-alto-yamaha-yas26-id-laqueado.png",
     "fabricante": "Yamaha",
-    "especificacao": "- Afinação: Eb
-    - Cor: Laqueado dourado com chaves niqueladas.
-    - Apoio de polegar: Apoio para mão direita ajustável.
-    - Boquilha: #4C Standard de plástico.
-    - Chaves: Limitador de abertura das chaves na campana, regulável.
-    - Mecanismo de F frontal, F agudo.
-    - Modelo Standard profissional.
-    - Acompanha estojo.",
+    "especificacao": "Afinação Eb, Cor laqueado dourado com chaves niqueladas, Apoio para mão direita ajustável, Boquilha #4C Standard de plástico, Limitador de abertura das chaves na campana, regulável.Mecanismo de F frontal, F agudo, Modelo Standard profissional, Acompanha estojo",
     "modelo": "YAS26ID",
-    "preco": 7980.90,
+    "preco": 7980.99,
     "estoque": 20
 }
+
 {
     "nome": "SAXOFONE TENOR MICHAEL WTSM30N Bb",
-    "descricao": "O Saxofone Tenor Michael é um instrumento de sopro com visual enctador e sonoridade expressiva, que irá atender a musicos de todos os estilos. O Sax Tenor foi desenvolvido com alto padrão de construção e matérias-primas de excelente qualidade.",
+    "descricao": "O Saxofone Tenor Michael é um instrumento de sopro com visual encantador e sonoridade expressiva, que irá atender a músicos de todos os estilos. O Sax Tenor foi desenvolvido com alto padrão de construção e matérias-primas de excelente qualidade.",
     "categoria": "sopro",
-    "subCategoria": "saxofone",
+    "subCategoria": "Saxofones",
     "img": "https://i.ibb.co/qm1wHRC/saxofone-tenor-michael-wtsm30n-bb-si-bemol.png",
     "fabricante": "MICHAEL",
-    "especificacao": "- Afinação Bb Si -bemol-
-    - Apoio de polegar Direito metálico regulável
-    - Acabamento Laqueado
-    - Campana Removível e com ornamentação
-    - Parafusos de micro regulagem nas chaves B -Si-  A -Lá-  F -Fá-  E -Mi- D -Ré-
-    - Pad Save -desumidificador-, boquilha e palheta, abraçadeira de metal, cobre boquilha, kit de limpeza e case.",
+    "especificacao": "Afinação Bb Si. Apoio de polegar Direito metálico regulável. Acabamento Laqueado.Campana Removível e com ornamentação, Parafusos de micro regulagem nas chaves B -Si-  A -Lá-  F -Fá-  E -Mi- D -Ré-. Pad Save desumidificador. Boquilha e palheta. Abraçadeira de metal. Cobre boquilha. Kit de limpeza e case.",
     "modelo": "WTSM30N",
-    "preco": 3417.90,
+    "preco": 3417.99,
     "estoque": 20
 }
+
 {
     "nome": "SAXOFONE TENOR EAGLE ST 503 LAQUEADO Bb",
     "descricao": "O ST 503 é um dos saxofones mais tradicionais da linha de metais da Eagle. Ele se destaca pela qualidade de sua construção e pelos materiais que o compõe. Ajustadas manualmente, as chaves ergonômicas oferecem maior conforto, respostas rápidas e afinação precisa. Este modelo apresenta um belíssimo visual e uma excepcional sonoridade.",
     "categoria": "sopro",
-    "subCategoria": "saxofone",
+    "subCategoria": "Saxofones",
     "img": "https://i.ibb.co/nz2HZXX/saxofone-tenor-eagle-st-503-laqueado-bb.png",
     "fabricante": "Eagle",
-    "especificacao": "Apoio de polegar: Regulável
-    Dimensão: Fa# agudo Si b articulado
-    Recursos: Porta Lira
-    Acabamento Finish: Laquer laqueado",
+    "especificacao": "Apoio de polegar regulável. Dimensão Fa# agudo Si b articulado. Recursos Porta Lira.Acabamento Finish: Laquer laqueado",
     "modelo": "ST 503",
-    "preco": 3417.90,
+    "preco": 3417.99,
     "estoque": 20
 }
 
