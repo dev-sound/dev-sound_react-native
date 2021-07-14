@@ -27,19 +27,25 @@ export default (props) => {
 
     return (
         <View style={styles.containerInline}>
+           
             <View style={styles.imageContainer}>
-                <Image source={props.database.item.img} style={styles.imgProd} />
+           
+                <Image source={{uri:props.database.item.productImage}} style={styles.imgProd} />
                 <TouchableOpacity onPress={() => props.deleteItem(props.database.item.id)}> 
                     <Text style={styles.Delete}>Excluir</Text>
                 </TouchableOpacity>
+           
             </View>
+           
             <View style={styles.containerItemDesc}>
+       
                 <View style={styles.desc}> 
-                    <Title title={props.database.item.title} />
+                    <Title title={props.database.item.productName} />
                     <Text style={styles.model}>{props.database.item.model}</Text>
                     <Text style={styles.price}>{props.database.item.price}</Text>
-                    <Text style={styles.priceValue}>{`R$ ${props.database.item.priceValue}`}</Text>
+                    <Text style={styles.priceValue}>{`R$ ${props.database.item.productPrice}`}</Text>
                 </View>
+       
                 <View style={styles.containerQuant}>
                     <Text style={styles.quantity}>{props.database.item.quantity}</Text>
                     <TouchableOpacity onPress={decrement}>
@@ -51,8 +57,11 @@ export default (props) => {
                     <TouchableOpacity onPress={increment}>
                         <Text style={styles.plusMinus}>+</Text>
                     </TouchableOpacity>
+       
                 </View>
+       
             </View>
+       
         </View>
 
 
