@@ -9,6 +9,7 @@ import axios from 'axios'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 import InputAreaContact from '../components/Contact/InputAreaContact'
+import { ScrollView } from 'react-native-gesture-handler'
 
 const initialState = {
     nome: '',
@@ -32,6 +33,12 @@ export default class Contact extends Component {
     inputFocus = () => {
         this.setState({ focus: true })
     }
+
+    inputArea = () => {
+        this.setState({focus: false})
+        this.validMessage()
+    }
+  
 
     //funções para capturar caracteres dos inputs
     captureName = (caractere) => {
@@ -115,10 +122,20 @@ export default class Contact extends Component {
                 <View style={styles.titleContainer}>
                     <Title title='Contato' />
                 </View>
-
-<<<<<<< HEAD
+                <ScrollView>
+                    <Input
+                        styleInput={styles.styleInput}
+                        inputContainer={styles.inputContainer}
+                        fieldLabel='Nome completo'
+                        placeholder='Insira seu nome completo'
+                        style={styles.label}
+                        setSize='90%'
+                        onChangeText={(caractere) => this.captureName(caractere)}
+                        value={this.state.nome}
+                        validInput={this.state.validNome}
+                        onBlur={() => this.validName()}
                     />
-                </View>
+                
                 <View style={styles.inputContainer}>
                     <Input
                         fieldLabel='Email'
@@ -143,7 +160,7 @@ export default class Contact extends Component {
                         onBlur={() => this.validTopic()}
                     />
                 </View>
-=======
+
                 <Input
                     styleInput={styles.styleInput}
                     inputContainer={styles.inputContainer}
@@ -182,7 +199,6 @@ export default class Contact extends Component {
                     onBlur={() => this.validTopic()}
                 />
 
->>>>>>> 639932278420b00e7e809d2989558853422d4476
                 <View style={styles.textareaContainer}>
                     <Text style={styles.mensagem}>Mensagem</Text>
 
@@ -197,16 +213,61 @@ export default class Contact extends Component {
                         value={this.state.mensagem}
                         validInput={this.state.validMensagem}
                         onBlur={() => this.validMessage()}
-                    />
-                </View>
 
-                <View style={styles.buttonContainer}>
-                    <Button
-                        label='ENVIAR'
-                        onPress={() => this.contact()}
+
                     />
+                    <Input
+                        styleInput={styles.styleInput}
+                        inputContainer={styles.inputContainer}
+                        fieldLabel='Email'
+                        placeholder='Insira seu e-mail'
+                        style={styles.label}
+                        setSize='90%'
+                        onChangeText={(caractere) => this.captureEmail(caractere)}
+                        value={this.state.email}
+                        validInput={this.state.validEmail}
+                        onBlur={() => this.validEmail()}
+                    />
+                    <Input
+                        styleInput={styles.styleInput}
+                        inputContainer={styles.inputContainer}
+                        fieldLabel='Assunto'
+                        placeholder='Insira o assunto do seu contato'
+                        setSize='90%'
+                        style={styles.label}
+                        onChangeText={(caractere) => this.captureTopic(caractere)}
+                        value={this.state.assunto}
+                        validInput={this.state.validAssunto}
+                        onBlur={() => this.validTopic()}
+                    />
+
+                    <View style={styles.textareaContainer}>
+                        <Text style={styles.mensagem}>Mensagem</Text>
+
+                        <InputAreaContact
+                            multiline={true}
+                            numberOfLines={10}
+                            focus={this.state.focus}
+                            onFocus={() => this.inputFocus()}
+                            onBlur={() => this.inputArea()}
+                            selectionColor={'#673ab7'}
+                            onChangeText={(caractere) => this.captureMessage(caractere)}
+                            value={this.state.mensagem}
+                            validInput={this.state.validMensagem}
+                        />
+                    </View>
+
+                    <View style={styles.buttonContainer}>
+                        <Button
+                            label='ENVIAR'
+                            onPress={() => this.contact()}
+                        />
+                    </View>
+                    
                 </View>
+                </ScrollView>
             </View>
+
         )
     }
 
@@ -216,14 +277,8 @@ export default class Contact extends Component {
 
 const styles = StyleSheet.create({
     container: {
-<<<<<<< HEAD
-        backgroundColor: '#F1F1F1'
-    },
-
-=======
         width: '100%'
     },
->>>>>>> 639932278420b00e7e809d2989558853422d4476
     titleContainer: {
         paddingTop: 25,
         paddingBottom: 15
@@ -249,13 +304,9 @@ const styles = StyleSheet.create({
     },
     textareaContainer: {
         justifyContent: 'center',
-<<<<<<< HEAD
-        alignSelf: 'center'
-=======
         alignContent: 'center',
         marginLeft: '5%'
 
->>>>>>> 639932278420b00e7e809d2989558853422d4476
     },
     icon: {
         position: 'absolute',
@@ -266,13 +317,8 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontStyle: 'normal',
         fontWeight: '300',
-<<<<<<< HEAD
-        marginLeft:15,
-        paddingBottom: 10,
-=======
         padding: 5
 
->>>>>>> 639932278420b00e7e809d2989558853422d4476
     }
 
 
