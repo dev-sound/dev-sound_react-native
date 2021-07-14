@@ -4,8 +4,6 @@ import axios from 'axios'
 import Header from '../components/Header'
 import Title from '../components/Title'
 import ProductOnly from '../components/ProductOnly'
-import ProductsCategory from '../components/Common/ProductsCategory'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default class Category extends Component {
 
@@ -13,9 +11,11 @@ export default class Category extends Component {
         async componentDidMount (){          
 
             await this.setState({page:this.props.navigation.getParam('page')})
-            await this.getProduct()  
 
-
+            await this.getProduct() 
+            
+            await this.getTitle()
+        
         } 
 
         getProduct = async () => {
@@ -23,11 +23,29 @@ export default class Category extends Component {
             await axios.get(`http://10.0.3.2:3000/produtos/subCategoria/${this.state.page}`)
              .then(infos => {
                this.setState({respProdutos:infos.data})
-            
             })
             .catch(erro => console.warn(erro))
         }
 
+        getTitle = () => {
+            if (this.state.page == 'guitarra') {
+                return(<Title title='Guitarras'/>)
+            } else if (this.state.page == 'violao' || this.state.page == 'violão' ) {
+                return(<Title title='Violões'/>)
+            } else if (this.state.page == 'contrabaixo') {
+                return(<Title title='Contra Baixos'/>)
+            } else if (this.state.page == 'saxofone') {
+                return(<Title title='Saxofones'/>)
+            } else if (this.state.page == 'flautas') {
+                return(<Title title='Flautas'/>)
+            } else if (this.state.page == 'clarinete') {
+                return(<Title title='Clarinetes'/>)
+            } else if (this.state.page == 'piano') {
+                return(<Title title='Pianos'/>)
+            } else if (this.state.page == 'teclado') {
+                return(<Title title='Teclados'/>)
+            }          
+        }
 
 
 
@@ -61,7 +79,7 @@ export default class Category extends Component {
                 <ScrollView style={styles.scrollContainer}> 
                     <Header drawer={() => this.props.navigation.openDrawer()}/>
                     <View style={styles.container}>
-                        <Title style={styles.text} title={this.state.page}/>
+                        {this.getTitle()}
                     </View>
                                 <FlatList
                                     data={this.state.respProdutos}
@@ -84,9 +102,11 @@ export default class Category extends Component {
         },
 
         productCard: {
-            width: Dimensions.get('window').width / 2.7,
+            width: Dimensions.get('window').width / 2.5,
+            marginBottom: 5,
             paddingBottom: 5,
-            marginLeft: 29,
+            marginLeft: 20,
+            marginTop: 10
         },
 
         scrollContainer: {

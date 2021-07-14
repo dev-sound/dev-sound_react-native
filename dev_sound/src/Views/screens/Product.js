@@ -74,8 +74,8 @@ export default class Product extends Component{
         })
     }
 
-
     willFocus = this.props.navigation.addListener('willFocus', () => {this.ProductDBImports()})
+
 
 
     render(){ 

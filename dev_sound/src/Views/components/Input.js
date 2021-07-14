@@ -12,7 +12,7 @@ export default props => {
 
     if(props.medium) stylesInput.push(style.medium)
     if(props.setSize) stylesInput.push({width:props.setSize})
-
+    
     if(props.validInput == ''){
         stylesInput.push(style.input)
     }
@@ -34,10 +34,10 @@ export default props => {
 
     return(
 
-        <View style={style.container}>
+        <View style={props.inputContainer}>
           
             <Text style={props.style}>{props.fieldLabel}</Text>
-            <View>
+            <View style={props.styleInput}>
                 <TextInput   
                 {...props}
                 right={icon}
@@ -55,13 +55,11 @@ export default props => {
 
 const style = StyleSheet.create(
     {
-        container:{
-            marginBottom:8
-        },
 
         input:{
             borderWidth:1,
             borderRadius:5,
+            borderWidth:1,
             height:40,
             lineHeight:60,
             alignContent:'center'
@@ -81,7 +79,6 @@ const style = StyleSheet.create(
         incorrect:{
             borderColor:'#D5B9B3',
             backgroundColor:'#D5B9B3'
-        },
-
+        }
     }
 )

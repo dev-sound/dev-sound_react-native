@@ -32,15 +32,15 @@ const styles = StyleSheet.create(
 
         imageContainer: {
             width: '100%',
-            height: 170,
+            height: '60%',
             borderRadius: 17,
-        },
-
+            },
+            
         image: {
-            width: 170,
-            height: 170,
+            width: '100%',
+            height: '100%',
             borderRadius: 17,
-        },
+        }, 
 
         title: {
             fontSize: 17,

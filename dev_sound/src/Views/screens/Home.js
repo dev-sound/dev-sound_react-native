@@ -48,14 +48,6 @@ export default class Home extends Component {
           .catch(erro => console.warn(erro))
   
   }
-  
-    renderPage = (image,index) => {
-      return (
-        <TouchableWithoutFeedback key={index}>
-            <Image style={{width:'97%', height: BannerHeight, borderRadius: 10}} source={image} />
-        </TouchableWithoutFeedback>
-      )
-    }
 
    
     renderProductSpotlight = ({item}) =>  {
@@ -82,17 +74,28 @@ export default class Home extends Component {
         <ScrollView style={style.scrollcontainer}>
           
           <Header
-           drawer={() => this.props.navigation.openDrawer()} 
-           cart={() => this.props.navigation.navigate('ShopCart')} 
-           />       
+            drawer={() => this.props.navigation.openDrawer()} 
+            cart={() => this.props.navigation.navigate('ShopCart')} 
+            />        
             
-          <Search/>
+          <Search navigation={this.props.navigation}/>
+          
           <View style={style.carouselBanner}>
             <Carousel
               loop={false}
               autoplay={false}
             >
-              {images.map((image, index) => this.renderPage(image, index))}
+              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Product', {nome: 'GUITARRA FENDER® SIG SERIES JIMI HENDRIX STRATOCASTER®'})} >
+              <Image style={{width:'97%', height: BannerHeight, borderRadius: 10}} source={ImagesProject.BannerImg.Banner1} />
+              </TouchableWithoutFeedback>
+
+              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Product', {nome: 'GUITARRA FENDER® SIG SERIES JIMMY PAGE TELECASTER®'})}>
+              <Image style={{width:'97%', height: BannerHeight, borderRadius: 10}} source={ImagesProject.BannerImg.Banner2} />
+              </TouchableWithoutFeedback>
+
+              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Product', {nome: 'GUITARRA FENDER® SIG SERIES RICHIE BLACKMORE STRATOCASTER®'})}>
+              <Image style={{width:'97%', height: BannerHeight, borderRadius: 10}} source={ImagesProject.BannerImg.Banner3} />
+              </TouchableWithoutFeedback>
             </Carousel>
           </View>
 
@@ -167,7 +170,9 @@ export default class Home extends Component {
       }
       ,
       newsProduct:{
-        paddingVertical:10
+        paddingVertical:10,
+        padding:10,
+        marginBottom: 30
       },
 
       fontText: {
