@@ -4,8 +4,6 @@ import axios from 'axios'
 import Header from '../components/Header'
 import Title from '../components/Title'
 import ProductOnly from '../components/ProductOnly'
-import ProductsCategory from '../components/Common/ProductsCategory'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default class Category extends Component {
 
