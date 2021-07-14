@@ -120,7 +120,7 @@ const styles =  StyleSheet.create(
 
         imageContainer:{
             width: '87%',
-            height: 412,
+            height: '31%',
             alignSelf: 'center',
             marginTop: 25,
             elevation: 7,
@@ -129,7 +129,6 @@ const styles =  StyleSheet.create(
 
         productImage: {
             width: '100%',
-            height: 412,
             borderRadius: 11,
         },
 
