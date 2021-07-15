@@ -5,7 +5,7 @@
     "subCategoria": "Guitarras",
     "img": "https://i.ibb.co/X5bL8HN/guitarra-fender-mex-artist-signatures-sig-series-jimi-hendrix-stratocaster-3-color-sunburst.png",
     "fabricante": "fender",
-    "especificacao": "Corpo em alder, Braço em maple 'c', Shape c/ headstock invertido, Escala em maple com 64.8cm, Escala com raio de 241mm",
+    "especificacao": "Cor: Sunburst. Corpo em alder. Braço maple 'C' shape com headstock invertido. Escala em maple com 25,5 polegadas. Escala com raio de 9.5 polegadas. 21 trastes medium jumbo. Largura do nut de 42mm. Tarraxas estilo vintage. Ponte estilo vintage com 6 saddles. Ferragem cromada. 3 captadores American Vintage '54 Gray-Bottom Strat. Chave de 5 posições. Encordoamento Fender USA 250R (.010-.046). Acompanha Deluxe Gig Bag.",
     "modelo": "#014-5802-305",
     "preco": 11242.49,
     "estoque": 20
@@ -18,7 +18,7 @@
     "subCategoria": "Guitarras",
     "img": "https://i.ibb.co/wsgHNvb/guitarra-ibanez-rg370ahmz-blue-moon-burst.png",
     "fabricante": "ibanez",
-    "especificacao": "Corpo em madeira Ash, Braço Wizard 3, Trastes 24 Jumbo, Escala com comprimento 648mm / 25.5 polegadas e largura 43mm no nut e 58mm na casa 24",
+    "especificacao": "Cor: Azul. Corpo em ash. Braço maple Wizard 3. Escala em maple com 25,5 polegadas. Escala com raio de 15 polegadas. 24 trastes jumbo. Largura do nut de 43mm. Ponte Edge Zero 2 W/ZPS3FE. Ferragem cosmo black. 3 captadores Quantum. Chave de 5 posições.",
     "modelo": "RG370AHMZ",
     "preco": 6998.99,
     "estoque": 20
@@ -31,7 +31,7 @@
     "subCategoria": "Guitarras",
     "img": "https://i.ibb.co/ctS4vhV/guitarra-fender-vintera-70s-maple.png",
     "fabricante": "fender",
-    "especificacao": "Corpo em ash, Braço Maple Early '70s, 'C' shape (envernizado), Escala em maple com 64.8cm, Escala com raio de 184.1mm",
+    "especificacao": "Cor: Mocha. Corpo em ash. Braço maple Early 70's 'C' shape envernizado. Escala em maple com 25,5 polegadas. Escala com raio de 7,25 polegadas. 21 trastes estilo vintage. Largura do nut de 42mm. Tarraxas schaller 'F' estilo vintage. Ponte stratocaster estilo vintage com 6 saddles. Ferragem cromada. 3 captadores Vintage-Style 70's Single-Coil Strat. Chave de 5 posições. Encordoamento Fender USA 250R (.009-.042). Acompanha Deluxe Gig Bag.",
     "modelo": "#014-9842-329",
     "preco": 10068.49,
     "estoque": 20
@@ -44,7 +44,7 @@
     "subCategoria": "Guitarras",
     "img": "https://i.ibb.co/7vhMcZ7/guitarra-fender-sig-series-eric-clapton-stratocaster-black.png",
     "fabricante": "fender",
-    "especificacao": "Corpo em alder. Braço em maple soft 'V' shape. Escala em maple com 25,5 polegadas. Escala com raio de 9,5 polegadas. 22 trastes estilo vintage. Largura do nut de 42mm. Tarraxas American Vintage. Ferragem cromada.",
+    "especificacao": "Cor: Preto. Corpo em alder. Braço em maple soft 'V' shape. Escala em maple com 25,5 polegadas. Escala com raio de 9,5 polegadas. 22 trastes estilo vintage. Largura do nut de 42mm. Tarraxas american vintage. Ponte american vintage com 6 saddles. Ferragem cromada. 3 captadores Vintage Noiseless Single-Coil Strat. Chave de 5 posições. Encordoamento Fender USA 250R (.010-.046). Acompanha Case Deluxe (tweed).",
     "modelo": "#011-7602-806",
     "preco": 17843.63,
     "estoque": 20
@@ -57,7 +57,7 @@
     "subCategoria": "Guitarras",
     "img": "https://i.ibb.co/61L6M3Y/guitarra-fender-sig-series-telecaster-jimmy-page.png",
     "fabricante": "fender",
-    "especificacao": "Corpo em ash. Braço maple Jimmy Page Custom 'C' shape (envernizado). Escala em rosewood com 25.5 polegadas. Escala com raio de 7.25 polegadas. 21 trastes estilo vintage. Largura do nut de 42mm. Tarraxas estilo vintage. Ferragem cromada.",
+    "especificacao": "Cor: Natural com Arte por Jimmy Page. Corpo em ash. Braço maple Jimmy Page Custom 'C' shape envernizado. Escala em rosewood com 25,5 polegadas. Escala com raio de 7,25 polegadas. 21 trastes estilo vintage. Largura do nut de 42mm. Tarraxas estilo vintage. Ponte american vintage 'string-thru-body' com 3 saddles. Ferragem cromada. 2 captadores Jimmy Page Custom Tele. Chave de 3 posições. Escudo transparente com camada refletiva customizada. Encordoamento Fender USA 250R (.010-.046). Acompanha Hard Case Deluxe.",
     "modelo": "#014-6230-721",
     "preco": 11724.91,
     "estoque": 20
@@ -70,9 +70,22 @@
     "subCategoria": "Guitarras",
     "img": "https://i.ibb.co/JBQBTn6/guitarra-fender-sig-series-ritchie-blackmore-stratocaster-white.png",
     "fabricante": "fender",
-    "especificacao": "Corpo em alder. Braço em maple 'U' shape. Escala em rosewood gradativamente escalopada com 25.5 polegadas. Escala com raio de 7.25 polegadas. 21 trastes vintage. Largura do nut de 42mm. Tarraxas estilo vintage com 'F' estampado. Ferragem cromada.",
+    "especificacao": "Cor: Branco. Corpo em alder. Braço em maple 'U' shape. Escala em rosewood gradativamente escalopada com 25,5 polegadas. Escala com raio de 7,25 polegadas. 21 trastes estilo vintage. Largura do nut de 42mm. Tarraxas estilo vintage com 'F' estampado. Ponte estilo vintage com 6 saddles. Ferragem cromada. 2 captadores Seymour Duncan Quarter Pound Flat SSL-4 Single-Coil Strat. Captador do meio sem bobina (desativado). Chave de 3 posições. Encordoamento Fender USA 3250L (.009-.042). Acompanha Deluxe Gig Bag.",
     "modelo": "#013-9010-305",
     "preco": 12993.49,
+    "estoque": 20
+}
+
+{
+    "nome": "GUITARRA FENDER® SIG SERIES BRAD PAISLEY TELECASTER®",
+    "descricao": "A Brad Paisley Road Worn Telecaster® é tão exclusiva como o seu homônimo. Quando se trata de guitarristas icônicos de Telecaster®, Brad Paisley fica tranquilamente entre os principais. A Fender® Brad Paisley Road Worn Telecaster® combina um corpo feito com um 'sanduiche' das seguintes madeiras: Spruce / Paulownia / Spruce. Você descobrirá que esse emparelhamento ajuda a manter a guitarra leve e ressonante. Além disso, um conjunto personalizado de captadores single-Coil, para produzir os timbres matadores que fizeram de Paisley uma lenda da guitarra. A Road Worn Paisley Tele® também possui o acabamento em nitrocelulose relic® (envelhecido) e o braço em maple com raio de curvatura de 9,5 polegadas para uma tocabilidade muito equilibrada.",
+    "categoria" : "corda",
+    "subCategoria": "Guitarras",
+    "img": "https://i.ibb.co/y5pzcQs/guitarra-fender-sig-series-brad-paisley-telecaster.png",
+    "fabricante": "fender",
+    "especificacao": "Cor: Cinza. Corpo com um sanduíche de madeiras (Spruce/Paulownia/Spruce). Acabamento 'Road Worn' em nitrocelulose. Braço maple enhanced 'V' shape. Escala em maple com 25,5 polegadas. Escala com raio de 9,5 polegadas. 21 trastes medium jumbo. Largura do nut de 42mm. Tarraxas estilo vintage. Ponte estilo vintage 'string-thru-body' com 3 saddles. Ferragem cromada. 1 captador Custom Brad Paisley Single-Coil estilo vintage. 1 captador 'Twisted' Tele® Single-coil. Chave de 3 posições. Encordoamento Fender USA 250L (.009-.042). Acompanha Deluxe Gig Bag. ",
+    "modelo": "#014-5902-317",
+    "preco": 12743.63,
     "estoque": 20
 }
 
@@ -85,7 +98,7 @@
     "subCategoria": "Violões",
     "img": "https://i.ibb.co/GF6ggMn/violao-gretsch-rancher-falcon-jumbo.png",
     "fabricante": "gretsch",
-    "especificacao": "6 Cordas de aço, Corpo Jumbo, Tampo em spruce maciço com friso gold sparkle, Acabamento brilhante, Fundo e faixas laterais em maple laminado, Braço em mahogany, Escala em Rosewood com 25 polegadas, Largura do nut 42.5mm",
+    "especificacao": "Cor: Preto. 6 cordas de aço. Corpo Jumbo. Tampo em spruce maciço com friso gold sparkle. Acabamento brilhante. Fundo e faixas laterais em maple laminado. Braço em mahogany com friso gold sparkle. Escala em rosewood com 25 polegadas. Largura do nut de 42.5mm. 21 trastes estilo vintage. Ponte em rosewood com saddle em osso sintético. Tarraxas deluxe die-cast (douradas). Captação Fishman Sonicore com preamp lsys+. Encordoamento D'addaria EJ16 Phosphor Bronze (.012-.053).",
     "modelo": "#271-4024-506",
     "preco": 4933.49,
     "estoque": 20
@@ -98,7 +111,7 @@
     "subCategoria": "Violões",
     "img": "https://i.ibb.co/t3MKQPD/violao-folk-giannini.png",
     "fabricante": "giannini",
-    "especificacao": "",
+    "especificacao": "Cor: Honey Burst. 6 cordas de aço. Tampo em linden. Acabamento acetinado. Fundo e faixas laterais em linden. Braço em catalpa. Escala em rosewood. 20 trastes em alpaca. Tarraxas blindadas cromadas, 3+3 com botões plásticos pretos. Captação k-8100 para rastilho. Saída P-10.",
     "modelo": "GF-1D CEQHB",
     "preco": 638.11,
     "estoque": 20
@@ -111,7 +124,7 @@
     "subCategoria": "Violões",
     "img": "https://i.ibb.co/njLqjDX/violao-harmonics-ge21.png",
     "fabricante": "harmonics",
-    "especificacao": "6 Cordas em aço, Tampo/Faixa/Fundo Linden, Acabamento brilhante, Braço Nato, Escala Acer Plywood, Dimensões 39 polegadas",
+    "especificacao": "Cor: Preto. 6 cordas de aço. Tampo em linden. Acabamento em verniz brilhante. Fundos e faixas laterias em linden. Braço nato. Escala em acer plywood. 20 trastes em cobre. Tarraxas 3+3 cromadas. Captação ativa com afinador. ",
     "modelo": "GE-21",
     "preco": 752.99,
     "estoque": 20
@@ -127,7 +140,7 @@
     "subCategoria": "Contrabaixos",
     "img": "https://i.ibb.co/7JqkT5m/baixo-4-cordas-passivo-fender-squier-classic-vibe-60s-jazz-bass.png",
     "fabricante": "fender",
-    "especificacao": "4 Cordas, Altura 133cm, Largura 44cm, Profundidade 11cm, Braço 'C' shape com friso preto, Escala com 34 polegadas, Raia da escala 9.5 polegadas, Calibre .045-.105",
+    "especificacao": "Cor: Sunburst. Corpo em poplar. Braço em maple 'C' shape envernizado. Escala em laurel indiano com 34 polegadas. 20 trastes narrow tall. Escala com raio de 9.5 polegadas. Nut em osso com largura de 42.8mm. Tarraxas estilo vintage abertas. Ponte estilo vintage com 4 saddles. Ferragem niquelada. 1 captador Fender designed Alnico Split-Coil Precision Bass. Escudo sanduíche tortoise (4ply). Controles de MV/MT. Encordoamento (.045-.105).",
     "modelo": "#037-4510-500",
     "preco": 3959.99,
     "estoque": 20
@@ -140,7 +153,7 @@
     "subCategoria": "Contrabaixos",
     "img": "https://i.ibb.co/zHrFKnr/baixo-fender-030-3070-squier-classic-vibe-p-bass-60s-red.png",
     "fabricante": "fender",
-    "especificacao": "Corpo em basswood, Braço em maple modern 'C' shape, Escala em rosewood com 34 polegadas,20 trastes estilo vintage, Escala com raio de 9.5 polegadas, Largura do nut 1.65 polegadas",
+    "especificacao": "Cor: Vermelho. Corpo em basswood. Braço em maple modern 'C' shape. Escala em rosewood com 34 polegadas. 20 trastes estilo vintage. Escala com raio de 9.5 polegadas. Largura do nut 42mm. Tarraxas standard abertas. Ponte HiMass com 4 saddles em bass. Ferragem cromada. 1 captador Custom Split Single-Coil Precision Bass. Escudo sanduíche (3ply). Controles de MV/MT. Encordoamento Fender USA Bass 7250ML (.045-.100)",
     "modelo": "#030-3070-540",
     "preco": 4625.99,
     "estoque": 20
@@ -153,7 +166,7 @@
     "subCategoria": "Contrabaixos",
     "img": "https://i.ibb.co/4V7kdHY/baixo-5-cordas-passivo-fender-squier-classic-vibe-70s-jazz-bass.png",
     "fabricante": "fender",
-    "especificacao": "Corpo em poplar, Braço em Maple 'C' shape com friso preto, Escala em maple com 34 polegadas, 20 trastes narrow tall, Escala com raio de 9.5 polegadas",
+    "especificacao": "Cor: Preto. Corpo em poplar. Braço em maple 'C' shape. Escala em maple com 34 polegadas. Escala com marcação em 'block' e frisos pretos. 20 trastes narrow tall. Escala com raio de 9.5 polegadas. Nut em osso com largura de 42.8mm. Tarraxas estilo vintage. Ponte estilo vintage com 4 saddles. Ferragem niquelada. 1 captador Fender designed Alnico Split-Coil. Escudo sanduíche (3ply). Controles de MV/MT. Encordoamento (.045-,105).",
     "modelo": "#037-4540-500",
     "preco": 4792.99,
     "estoque": 20
@@ -162,13 +175,13 @@
 
 
 {
-    "nome": "TECLADO CASIO CT-S300 61 TECLAS",
+    "nome": "TECLADO CASIO CASIOTONE CT-S300 61 TECLAS SENSITIVAS ",
     "descricao": "Com o CT-S300, você curte sua música quando e onde quiser. Com tamanho compacto, de 930 mm x 256 mm x 73 mm, ele apresenta um volume 30% menor do que o modelo CTK-3500 e oferece aproximadamente 19 horas de autonomia com pilhas alcalinas*. A alça na parte superior do teclado oferece maior praticidade para transporte do instrumento, que pesa somente 3,3 kg. Graças ao design arredondado das suas bordas e arestas, carregá-lo também é muito seguro. O CT-S300 conta com uma interface simples e intuitiva, oferecendo um layout organizado com menos botões graças à tela LCD e o mostrador de pontos. Os alto-falantes ovais de 13 cm x 6 cm com ímãs reforçados proporcionam qualidade de som acima das expectativas para um instrumento tão compacto.",
     "categoria": "teclas",
     "subCategoria": "Teclados",
     "img": "https://i.ibb.co/r63JQwc/teclado-casio-casiotone-ct-s300-61-teclas-sensitivas-com-fonte-bivolt-preto.png",
     "fabricante": "casio",
-    "especificacao": "Altura 7,30cm. Largura 93cm, Profundidade 25,60cm, Peso aproximado 3,30kg. 60 Músicas integradas. 77 Ritmos integrados. Chordana Play. MIDI: 16 multitimbres recebidos, GM nível 1 padrão. Roda de altura de tons: 0 a 12 semitons. 400 timbres. Polifonia máxima 48. Alto-falantes: 2x ovais (2,5W + 2,5W), Alimentação: 6 pilhas alcalinas AA",
+    "especificacao": "Cor: Preto. Altura 7,30cm. Largura 93cm, Profundidade 25,60cm, Peso aproximado 3,30kg. 60 Músicas integradas. 77 Ritmos integrados. Chordana Play. MIDI: 16 multitimbres recebidos, GM nível 1 padrão. Roda de altura de tons: 0 a 12 semitons. 400 timbres. Polifonia máxima 48. Alto-falantes: 2x ovais (2,5W + 2,5W), Alimentação: 6 pilhas alcalinas AA",
     "modelo": "CT-S300",
     "preco": 1349.99,
     "estoque": 20
@@ -181,7 +194,7 @@
     "subCategoria": "Teclados",
     "img": "https://i.ibb.co/4KspKNh/teclado-arranjador-korg-pa300-61-teclas-sensitivas-com-fonte-bivolt-ms.png",
     "fabricante": "korg",
-    "especificacao": "Altura 37,70cm. Largura 130,90cm. Profundidade 12,70cm. Peso aproximado 8,40kg. Sistema RX (Real eXperience). Gerador de som com 128 vozes e 128 osciladores. 126 tipos de Master Effects. Mais de 950 conjuntos de bateria, incluindo compatibilidade de som GM2. Mais de 310 estilos pré-carregados. 4 pistas Pad + Tecla Stop. Alto-falantes: 2 x 13W. Alimentação: Fonte de energia AC 100-240V",
+    "especificacao": "Cor: Preto. Altura 37,70cm. Largura 130,90cm. Profundidade 12,70cm. Peso aproximado 8,40kg. Sistema RX (Real eXperience). Gerador de som com 128 vozes e 128 osciladores. 126 tipos de Master Effects. Mais de 950 conjuntos de bateria, incluindo compatibilidade de som GM2. Mais de 310 estilos pré-carregados. 4 pistas Pad + Tecla Stop. Alto-falantes: 2 x 13W. Alimentação: Fonte de energia AC 100-240V",
     "modelo": "PA300",
     "preco": 6399.81,
     "estoque": 20
@@ -194,7 +207,7 @@
     "subCategoria": "Teclados",
     "img": "https://i.ibb.co/TLF7rgf/teclado-arranjador-yamaha-psr-sx600-61-teclas-sensitivas-entrada-para-microfone-e-fonte-bivolt-ms.png",
     "fabricante": "yamaha",
-    "especificacao": "Altura 13,40cm. Largura 100,40cm. Profundidade 41cm. Peso aproximado 8,10kg. 850 sons, incluindo 73 sons Super Articulation, 27 MegaVoice e 43 Kits de Bateria/SFX. 415 ritmos, incluindo 372 Pro, 32 Session, 10 DJ e 1 Estilo Livre. Expansibilidade de Voices e Styles com o Yamaha Expansion Manager. Polifonia máxima 128. Alto-falantes 2 x 15W. Alimentação: Fonte de energia AC 100-240V",
+    "especificacao": "Cor: Preto. Altura 13,40cm. Largura 100,40cm. Profundidade 41cm. Peso aproximado 8,10kg. 850 sons, incluindo 73 sons Super Articulation, 27 MegaVoice e 43 Kits de Bateria/SFX. 415 ritmos, incluindo 372 Pro, 32 Session, 10 DJ e 1 Estilo Livre. Expansibilidade de Voices e Styles com o Yamaha Expansion Manager. Polifonia máxima 128. Alto-falantes 2 x 15W. Alimentação: Fonte de energia AC 100-240V",
     "modelo": "PSR-SX600",
     "preco": 4899.51,
     "estoque": 20
@@ -209,7 +222,7 @@
     "subCategoria": "Pianos",
     "img": "https://i.ibb.co/1YCXLZR/piano-digital-yamaha-clp-785-preto-polido-88-teclas-sensitivas-com-fonte-bivolt-ms.png",
     "fabricante": "Yamaha",
-    "especificacao": "Altura: 102,70cm. Largura: 146,10cm. Profundidade: 47,60cm. Peso aproximado: 87kg. Polifonia máxima: 256. Timbres: 547. Ritmos: 20. Oitavas: 7. Alto-Falantes: 50W + 50W + 50W x 2. Alimentação: Fonte PA-500",
+    "especificacao": "Cor: Preto. Altura: 102,70cm. Largura: 146,10cm. Profundidade: 47,60cm. Peso aproximado: 87kg. Polifonia máxima: 256. Timbres: 547. Ritmos: 20. Oitavas: 7. Alto-Falantes: 50W + 50W + 50W x 2. Alimentação: Fonte PA-500",
     "modelo": "CLP785",
     "preco": 37499.31,
     "estoque": 20
@@ -217,68 +230,120 @@
 
 {
     "nome": "PIANO DIGITAL YAMAHA CLP-725 88 TECLAS",
-    "descricao": "",
+    "descricao": "Deseja a beleza e elegância de um piano de cauda mas com toda a modernidade de um piano digital? O Piano Digital Yamaha CLP-725 é o produto ideal para você! Suas 88 teclas apresentam a tecnologia GranTouch, a qual reproduz as ilimitadas e exclusivas variações de um piano de cauda, dando outra dimensão na hora de se expressar musicalmente. Graves densos e agudos leves são facilmente alcançados aqui, deixando as músicas mais refinadas e emocionantes. Outro destaque é sua capacidade de simular a ressonância criada pelas cordas de um piano tradicional através do VRM (Virtual Resonance Modeling), assimilando ainda mais com a experiência de tocar um piano agudo na sua casa.",
     "categoria": "teclas",
     "subCategoria": "Pianos",
     "img": "https://i.ibb.co/YZhRwx7/piano-digital-yamaha-clp-725-88-teclas-sensiveis-com-adaptador-bivolt-rosewood-ms.png",
-    "fabricante": "",
-    "especificacao": "",
-    "modelo": "",
-    "preco": ,
+    "fabricante": "Yamaha",
+    "especificacao": "Cor: Preto. Altura: 84,90cm. Largura: 135cm. Profundidade: 41,40. Peso aproximado: 43kg. Polifonia máxima: 256. Timbres: 10. 3 pedais. Teclado GrandTouch-S. REV - X Leadpipe. Gravação MIDI em 16 pistas. Alto-falantes: 30W x2. Alimentação: PA-300C.",
+    "modelo": "CLP-725",
+    "preco": 11999.99,
     "estoque": 20
 }
 
 {
     "nome": "PIANO DIGITAL ROLAND HP702 88 TECLAS",
-    "descricao": "",
+    "descricao": "O HP702 é um piano digital vertical de alto desempenho e estilo elegante. Equipado com a conceituada tecnologia de teclado PHA-4 da Roland, mecanismo de som SuperNATURAL de última geração e recurso Headphones 3D Ambience para prática privada imersiva, é um piano que leva a experiência de um instrumento premium para sua casa. Além dos sons de piano, O HP702 tem uma grande biblioteca de sons como piano elétrico, cordas, órgão e outros. Com o sistema Bluetooth é possível reproduzir suas músicas favoritas ou utilizar os tutoriais a bordo para melhorar sua execução. Entre os recursos de aprendizagem estão metrônomo, gravador de três pistas e o TwinPiano da Roland. Também é compatível com os aplicativos Piano Designer e Piano Every Day iOS / Android da Roland.",
     "categoria": "teclas",
     "subCategoria": "Pianos",
     "img": "https://i.ibb.co/gVbD5LC/piano-digital-hp702-dr-com-ksh-704-2dr.png",
-    "fabricante": "",
-    "especificacao": "",
-    "modelo": "",
-    "preco": ,
+    "fabricante": "Roland",
+    "especificacao": "Cor: Preto. Altura 106,7cm. Largura: 137cm. Profundidade: 46,80cm. Peso Aproximado: 54,4kg. Modelamento de piano Super Natural. Teclado padrão PHA-4 com escapement e toque de marfim. Áudio Bluetooth 3.0. MIDI Bluetooth 4.0. Alimentação: Adaptador AC.",
+    "modelo": "HP702",
+    "preco": 15560.11,
     "estoque": 20
 }
 
 
 
 {
-    "nome": "FLAUTA YAMAHA TENOR BARROCA YRT-304 BII",
-    "descricao": "",
+    "nome": "FLAUTA YAMAHA TENOR BARROCA YRT-304 BII DÓ (C)",
+    "descricao": "O novo modelo tenor incorpora o acabamento imitação de madeira Yamaha, projetado com a conveniência e durabilidade do material ABS. Oferece um som focado, suave e balanceado em todos os registros. Além das flautas doce soprano e contralto, que são mais comuns, os conjuntos normalmente precisam de tenor, baixo e mesmo flautas doce contrabaixo. A Yamaha tem a linha completa de flautas doce tenor e baixo, tanto em resina ABS como em madeira natural. Além disso, a flauta doce contrabaixo Yamaha toca com balanço surpreendentemente eficiente no uso do sopro para a produção de um som amplamente focado. Oferece uma leve resistência quando é tocado para permitir melhor controle da respiração, o que produz projeção e expressividade tonal melhores.",
     "categoria": "sopro",
     "subCategoria": "Flautas",
     "img": "https://i.ibb.co/zbXMb0D/flauta-yamaha-tenor-barroca-yrt-304-bii-afinacao-em-do-c-e-corpo-abs.png",
     "fabricante": "Yamaha",
-    "especificacao": "",
+    "especificacao": "Cor: Preto. Digitação barroca. Corpo se divide em 3 partes. Peso aproximado: 350g. Afinação C (Dó). Corpo em resina ABS. Tipo tenor. Comprimento 64,5cm.",
     "modelo": "YRT304",
-    "preco": ,
+    "preco": 599.31,
     "estoque": 20
 }
 
 {
-    "nome": "FLAUTA TENOR YAMAHA YRT-30 BII",
-    "descricao": "",
+    "nome": "FLAUTA YAMAHA CONTRALTO BARROCA YRA-402B FÁ (F) BIOPLÁSTICO",
+    "descricao": "Flauta doce alto com sistema barroco. Os corpos feitos de plástico “Ecodear” com base de plantas alcançam um timbre suave e centralizado similar ao das flautas doces de madeira. Sua funcionalidade, durabilidade, resistência e aparência são as mesmas das flautas de resina ABS convencionais, com alteração somente na cor, que foi escolhida para induzir a imagem de plantas e natureza. A mudança no material resultou em um som suave, semelhante à de flautas doces de madeira, além de uma melhor resposta de respiração e de controle dos sons agudos.",
     "categoria": "sopro",
     "subCategoria": "Flautas",
-    "img": "https://i.ibb.co/zfj2KV3/flauta-tenor-yamaha-yrt-30-bii.png",
+    "img": "https://i.ibb.co/cxvqFpJ/flauta-yamaha-contralto-barroca-yra-402b-ecodear.png",
     "fabricante": "Yamaha",
-    "especificacao": "",
+    "especificacao": "Cor: Bege. Digitação barroca. Abertura de sopro curvada, modelo Rottenburgh. Peso aproximado: 300g. Afinação Fá (F). Corpo em plástico à base de plantas. Tipo contralto.",
     "modelo": "YRT30",
-    "preco": ,
+    "preco": 379.71,
     "estoque": 20
 }
 
 {
-    "nome": "FLAUTA PÍFANO YAMAHA YRF-21",
-    "descricao": "",
+    "nome": "FLAUTA TRANSVERSAL YAMAHA YFL-212 DÓ (C) PRATA DE NÍQUEL",
+    "descricao": "A Yamaha YFL212 é a flauta ideal para estudantes que desejam desenvolver suas habilidades. Este modelo beneficia de um corpo chapeado em prata, produzindo um Tom geralmente mais quente. O corpo de liga de níquel e prata tem uma qualidade de construção robusta e produz tons claros. O E-mecanismo e deslocamento G tem uma forma mais natural de mão, que é ideal para músicos de começo. Ela é projetada para ajudar os músicos a maximizar sua capacidade e alcançar suas aspirações",
     "categoria": "sopro",
     "subCategoria": "Flautas",
-    "img": "https://i.ibb.co/6nxw02K/flauta-pifaro-yamaha-yrf-21.png",
+    "img": "https://i.ibb.co/CwGxDrP/flauta-transversal-yamaha-yfl-212.png",
     "fabricante": "Yamaha",
-    "especificacao": "",
-    "modelo": "YRF21",
-    "preco": ,
+    "especificacao": "Cor: Prata. Lábio oval. Cabeça Headjoint reto. Acabamento banhado a prata. Inclui mecanismo E. Pé C. Afinação C. Chaves closed. Altura: 8cm. Largura: 15cm. Profundidade: 44cm. Peso aproximado: 1kg.",
+    "modelo": "YFL212",
+    "preco": 3929.31,
+    "estoque": 20
+}
+
+{
+    "nome": "FLAUTA DOCE YAMAHA BARROCA YRS-20BB VERDE DÓ (C)",
+    "descricao": "Flauta Doce Soprano Barroca Yamaha YRS-20B é perfeita para estudantes iniciantes de música. Fabricada com plástico translúcido (ABS), o instrumento é extremamente durável e possui um belo timbre, sendo também de fácil limpeza. A flauta foi produzida para oferecer a máxima facilidade de uso, tornando mais atrativo o aprendizado da música.",
+    "categoria": "sopro",
+    "subCategoria": "Flautas",
+    "img": "https://i.ibb.co/RyP22J1/flauta-doce-yamaha-barroca-yrs-20bb-verde.png",
+    "fabricante": "Yamaha",
+    "especificacao": "Cor: Verde água. Estilo barroco. Construção em três peças. Afinação em Dó (C). Tipo: Soprano. Corpo em ABS Verde. Peso aproximado: 100g.",
+    "modelo": "YRS-20BB",
+    "preco": 75.90,
+    "estoque": 20
+}
+
+{
+    "nome": "FLAUTA TRANSVERSAL EAGLE FL03S DÓ (C)",
+    "descricao": "O FL03 S é uma flauta em Dó com mecanismo de Mi, com acabamento prateado que lhe confere um visual elegante e maior resistência às condições de uso do músico. Ela se destaca pela qualidade de sua construção e pelos materiais que a compõe. Ajustadas manualmente, as chaves ergonômicas oferecem maior conforto, respostas rápidas e afinação precisa.",
+    "categoria": "sopro",
+    "subCategoria": "Flautas",
+    "img": "https://i.ibb.co/gWP2dkk/flauta-transversal-c-fl03s-prateada-eagle.png",
+    "fabricante": "Eagle",
+    "especificacao": "Cor: Prata. Afinação Dó (C). Sistema Boehm. Parafusos em aço inoxidável. Mecanismo de Mi. Banhada a prata.",
+    "modelo": "FL03S",
+    "preco": 1250.91,
+    "estoque": 20
+}
+
+{
+    "nome": "FLAUTA TRANSVERSAL HARMONICS HFL-5237S DÓ (C)",
+    "descricao": "A HFL-5237S é uma flauta em Dó com mecanismo de Mi, com acabamento prateado que lhe confere um visual elegante e resistência ao uso. Ela se destaca pela qualidade de sua construção e pelos materiais que a compõe proporcionando respostas rápidas e afinação precisa.",
+    "categoria": "sopro",
+    "subCategoria": "Flautas",
+    "img": "https://i.ibb.co/qnKk78N/flauta-transversal-chfl-5237s-prateada-harmonics.png",
+    "fabricante": "Harmonics",
+    "especificacao": "Cor: Prata. Afinação Dó (C). Pé C. Mecanismo E. 16 chaves abertas com vedações de silicone removível. Molas em aço inoxidável. ",
+    "modelo": "HFL-5237S",
+    "preco": 1715.88,
+    "estoque": 20
+}
+
+{
+    "nome": "FLAUTA DOCE YAMAHA BAIXO BARROCA YRB-302 BII",
+    "descricao": "A série de Flautas 300 oferece uma gama completa de flautas doce de alta qualidade, desde flautas baixo até flautas sopranino. Todos esses instrumentos produzem um som rico e encorpado, e ao mesmo tempo, fornecem a praticidade de sua estrutura em resina ABS, durável e livre de manutenção. Com sua ampla gama de expressão tonal e sua ótima tocabilidade, essas flautas doce são plenamente competitivas, mesmo comparando-se a modelos de madeira mais caros.",
+    "categoria": "sopro",
+    "subCategoria": "Flautas",
+    "img": "https://i.ibb.co/2gmKxm9/flauta-doce-baixo-barroca-f-yrb-302-bii-yamaha.png",
+    "fabricante": "Yamaha",
+    "especificacao": "Cor: Preto. Afinação Fá (F). Chaves duplas F/F#. Resina ABS. Sistema barroca. Acabamento similiar à madeira artesanal.",
+    "modelo": "YRB-302",
+    "preco": 3421.55,
     "estoque": 20
 }
 
@@ -286,12 +351,12 @@
 
 {
     "nome": "SAXOFONE ALTO YAMAHA YAS26-ID LAQUEADO",
-    "descricao": "Novo receptor de tudel com parafuso durável. O novo projeto do receptor de tudel permite uma resposta rápida e uma facilidade de tocar, ao mesmo tempo que aumenta a durabilidade do mecanismo",
+    "descricao": "O Saxofone Alto YAS-26 da Yamaha, tem uma qualidade impecável, com o seu Novo receptor de tudel com parafuso durável tenha mais facilidade na hora de tocar e se expressar. O novo projeto do receptor do tudel permite uma resposta rápida e uma facilidade de tocar, ao mesmo tempo que aumenta a durabilidade do mecanismo do seu Sax. Contando com uma melhoria na conexão entre sí - dó sustenido grave que, assegura o fechamento consistente da chave de dó sustenido e melhora a clareza da resposta nas notas da tessitura grave do instrumento. Ajuste o apoio de polegar conforme a sua necessidade, todos os saxofones Yamaha têm apoio de polegar ajustável, permitindo o posicionamento preciso e confortável da mão para o dedilhado. As chaves prateadas são mais duráveis e resistentes ao desgaste.",
     "categoria": "sopro",
     "subCategoria": "Saxofones",
     "img": "https://i.ibb.co/KwY3LDt/saxofone-alto-yamaha-yas26-id-laqueado.png",
     "fabricante": "Yamaha",
-    "especificacao": "Afinação Eb, Cor laqueado dourado com chaves niqueladas, Apoio para mão direita ajustável, Boquilha #4C Standard de plástico, Limitador de abertura das chaves na campana, regulável.Mecanismo de F frontal, F agudo, Modelo Standard profissional, Acompanha estojo",
+    "especificacao": "Acabamento: Laqueado dourado com chaves niqueladas. Altura: 70cm. Largura: 30cm. Profundidade: 50cm. Peso aproximado: 5kg. Chaves: Limitador de abertura das chaves na campana, regulável. Boquilha #4C Standard de plástico. Apoio de polegar para mão direita ajustável. Parafusos para micro-regulagem. Todel g1 de metal. Campana destacável. Campana estampada gravada a mâo. Mecanismo de F frontal. Recurso de F# agudo. ",
     "modelo": "YAS26ID",
     "preco": 7980.99,
     "estoque": 20
@@ -304,7 +369,7 @@
     "subCategoria": "Saxofones",
     "img": "https://i.ibb.co/qm1wHRC/saxofone-tenor-michael-wtsm30n-bb-si-bemol.png",
     "fabricante": "MICHAEL",
-    "especificacao": "Afinação Bb Si. Apoio de polegar Direito metálico regulável. Acabamento Laqueado.Campana Removível e com ornamentação, Parafusos de micro regulagem nas chaves B -Si-  A -Lá-  F -Fá-  E -Mi- D -Ré-. Pad Save desumidificador. Boquilha e palheta. Abraçadeira de metal. Cobre boquilha. Kit de limpeza e case.",
+    "especificacao": "Acabamento: Laqueado dourado. Altura: 30cm. Largura: 75cm. Profundidade: 20cm. Peso aproximado: 2kg. Saxofone tenor. Afinação Bb (Sí bemol). Apoio de polegar direito metálico regulável. Acabamento laqueado. Campana removível e com ornamentação. Parafusos de microrregulagem nas chaves B (si) / A (lá) / F (fá) / E (mi) / D (ré). ",
     "modelo": "WTSM30N",
     "preco": 3417.99,
     "estoque": 20
@@ -317,9 +382,50 @@
     "subCategoria": "Saxofones",
     "img": "https://i.ibb.co/nz2HZXX/saxofone-tenor-eagle-st-503-laqueado-bb.png",
     "fabricante": "Eagle",
-    "especificacao": "Apoio de polegar regulável. Dimensão Fa# agudo Si b articulado. Recursos Porta Lira.Acabamento Finish: Laquer laqueado",
+    "especificacao": "Acabamento: Laqueado dourado com chaves niqueladas. Altura: 87cm. Largura: 37cm. Profundidade: 23cm. Afinação Bb (Sí bemol). Apoio de polegar regulável. Parafusos em aço inoxidável. Chaves com regulagem de abertura. ",
     "modelo": "ST 503",
     "preco": 3417.99,
+    "estoque": 20
+}
+
+
+
+{
+    "nome": "CLARINETE YAMAHA YCL-255 Bb SÍ BEMOL ABS",
+    "descricao": "O Clarinete Yamaha YCL-255 Bb alia uma aperfeiçoada técnica de fabricação às características topo de linha dos clarinetes Yamaha. O resultado é um instrumento extraordinário para o seu nível, que proporciona um som quente e ressonante, marcadamente semelhante ao de um clarinete de madeira. Os clarinetes YCL-255 são perfeitos para estudantes iniciantes. Feitos de resina ABS durável, são fáceis de manejar, e com o novo apoio de polegar ajustável e aliado a melhoria da braçadeira, são muito mais confortáveis ao tocar. Retirando o anel metálico da campana, tornamos o instrumento ainda mais leve, e ainda assim é muito robusto. Entonação precisa e resposta imediata, ajudam o estudante a produzir um som redondo.",
+    "categoria": "sopro",
+    "subCategoria": "Clarinetes",
+    "img": "https://i.ibb.co/hgycvfY/clarinete-yamaha-ycl-255-bb-si-bemol-abs-preto.png",
+    "fabricante": "Yamaha",
+    "especificacao": "Cor: Preto. Afinação em Bb (Sí Bemol). 17 chaves. 6 anéis. Barrilete: 65mm. Sistema Boehm. Apoio de polegar ajustável. Chaves niqueladas. Corpo em resina ABS fosca. Acompanha boquilha CL-4C.",
+    "modelo": "YCL-255",
+    "preco": 3999.51,
+    "estoque": 20
+}
+
+{
+    "nome": "CLARINETE EAGLE CL04N Bb SÍ BEMOL ABS",
+    "descricao": "O Clarinete Eagle CL04N SIB possui resistência, beleza e boa sonoridade. Ela se destaca pelo acabamento brilhante com chaves niqueladas que lhe confere um visual elegante e maior resistência às condições de uso do músico. Ajustadas manualmente, as chaves ergonômicas oferecem maior conforto, respostas rápidas e afinação precisa.",
+    "categoria": "sopro",
+    "subCategoria": "Clarinetes",
+    "img": "https://i.ibb.co/9WZyghz/clarinete-eagle-cl-04n-sib.png",
+    "fabricante": "Eagle",
+    "especificacao": "Cor: Preto brilhante. Afinação Bb (Sí Bemol). 17 chaves niqueladas. Corpo em ABS. Sistema BOehm. Apoio de polegar ajustáve. Parafusos em aço inoxidável.",
+    "modelo": "CL04N",
+    "preco": 1275.99,
+    "estoque": 20
+}
+
+{
+    "nome": "CLARINETE MICHAEL WCLM30N Bb SÍ BEMOL",
+    "descricao": " Clarinete Michael WCLM30N que pertence à Linha Essence, é um instrumento de sopro com alto padrão de acabamento, com ótima sonoridade e tocabilidade. Este clarinete conta com timbre aveludado, entregando resultados de alta qualidade nos mais diversos estilos musicais. O seu corpo é feito em resina Bakelite que ressalta os harmônicos, dá uma pitada de elegância e ressalta a beleza do instrumento. Além disso, o WCLM30N apresenta ainda 17 chaves niqueladas, que oferecem durabilidade ao modelo e contrastam com o seu corpo na cor preto, deixando seu aspecto visual ainda mais surpreendete! Sempre com a qualidade que apenas uma marca como a Michael pode oferecer!",
+    "categoria": "sopro",
+    "subCategoria": "Clarinetes",
+    "img": "https://i.ibb.co/BP13z5T/clarinete-michael-wclm30n-bb-si-bemol.png",
+    "fabricante": "Michael",
+    "especificacao": "Cor: Preto. Resina bakelite. Campana 74mm. Cortiça natural. Afinação Bb (Sí Bemol). 17 chaves niqueladas. Apoio de polegar regulável. Peso aproximado: 2kg.",
+    "modelo": "WCLM30N",
+    "preco": 1159.88,
     "estoque": 20
 }
 
