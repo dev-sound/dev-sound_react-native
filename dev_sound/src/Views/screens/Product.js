@@ -21,9 +21,13 @@ export default class Product extends Component{
 
     async componentDidMount (){
    
-     await this.ProductDBImports()
-   
+    await this.ProductDBImports()
+    await this.ProductBanner()
 
+    }
+
+    componentWillReceiveProps(){
+     this.ProductBanner()
     }
 
 
@@ -75,7 +79,23 @@ export default class Product extends Component{
         })
     }
 
-    willFocus = this.props.navigation.addListener('willFocus', () => {this.ProductDBImports()})
+
+    ProductBanner = async () => {
+        let productName = this.props.navigation.getParam('nome')
+        await axios.get(`http://10.0.3.2:3000/produtos/${productName}`)
+        .then((infos) => {
+        this.setState({
+            productID: infos.data[0]._id,
+            productName: infos.data[0].nome,
+            productImage: infos.data[0].img,
+            productPrice: infos.data[0].preco,
+            productDescription: infos.data[0].descricao,
+            productSpecs: infos.data[0].especificacao
+            })
+        })
+    }
+
+    willFocus = this.props.navigation.addListener('willFocus', () => {this.ProductBanner()})
 
     tratarPreco = (preco) => {
         let precoConvertido = parseFloat(preco).toFixed(2)
@@ -92,8 +112,6 @@ export default class Product extends Component{
                     drawer={() => this.props.navigation.openDrawer()} 
                     cart={() => this.props.navigation.navigate('ShopCart')} 
                 />   
-
-                <Search/>
 
             <Text style={styles.productTitle}>{this.state.productName}</Text>
             <View style={styles.imageContainer}>
