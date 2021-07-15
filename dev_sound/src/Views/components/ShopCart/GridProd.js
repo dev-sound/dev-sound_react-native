@@ -42,7 +42,7 @@ export default (props) => {
            {/* props.deleteItem(props.database.item.productImage) */}
             <View style={styles.imageContainer}>
            
-                <Image source={{uri:props.database.item.productImage}} style={styles.imgProd} />
+                <Image source={{uri:props.database.item.img}} style={styles.imgProd} />
                 <TouchableOpacity onPress={() => props.excluir()}> 
                     <Text style={styles.Delete}>Excluir</Text>
                 </TouchableOpacity>
@@ -55,13 +55,13 @@ export default (props) => {
 
                     <View style={styles.titleCartProduct}>
                   
-                     <Title title={props.database.item.productName} />
+                     <Title title={props.database.item.nome} />
                    
                     </View>
 
                     <View style={styles.areaPrice}>
                         <Text style={styles.price}>Preço</Text>
-                        <Text style={styles.priceValue}>{`R$ ${props.database.item.productPrice}`}</Text>
+                        <Text style={styles.priceValue}>{`R$ ${props.database.item.valor_unitario}`}</Text>
                     </View>
 
                 </View>

@@ -1,5 +1,5 @@
 import React,{Component}  from 'react';
-import { View, SafeAreaView, Text, StyleSheet, FlatList, ScrollView, Touchable, TouchableOpacity } from 'react-native';
+import { View, SafeAreaView, Text, StyleSheet, FlatList, ScrollView, Alert } from 'react-native';
 import Header from '../components/Header';
 import GridProd from '../components/ShopCart/GridProd';
 import Title from '../components/Title';
@@ -13,23 +13,32 @@ export default class ShopCart extends Component {
   state ={
     valueTotal:0,
     items:[],
-    number:1
+    userInfos:{}
   }
 
 
   async componentDidMount(){
     await this.captureProduct()
-    
+    await this.captureUserInfos()
   }
 
 
   //Captura produto da tela de produto, e inseri no carrinho..
    captureProduct = async () =>  {
-      const productImport = await AsyncStorage.getItem('product')
-      const productParse = JSON.parse(productImport)
-      this.setState({items:productParse})
+     const productImport = await AsyncStorage.getItem('product')
+     const productParse = JSON.parse(productImport)
+     this.setState({items:productParse})
 
-    }
+   }
+
+
+  captureUserInfos = async () => {
+    const userAuth = await AsyncStorage.getItem('userData')
+    const users =  JSON.parse(userAuth)
+    this.setState({userInfos:users}) 
+  }
+
+
 
   sumItems = () => {
     
@@ -38,7 +47,7 @@ export default class ShopCart extends Component {
     let sumsItem = 0
 
     if(items){
-      items.forEach(element => arrPrice.push(element.productPrice))
+      items.forEach(element => arrPrice.push(element.valor_unitario))
       for (let i = 0; i < arrPrice.length; i++ ) { sumsItem += arrPrice[i] }
     }    
 
@@ -49,13 +58,14 @@ export default class ShopCart extends Component {
   }
 
 
-  excluir = async (params) => {
 
-    let itemsExclude = params.item._id
+  excludeItem = async (params) => {
+
+    let itemsExclude = params.item.excludeID
     let items = this.state.items
 
     let newArr =  items.filter(value => {
-        return value._id != itemsExclude
+        return value.excludeID != itemsExclude
     })
   
   
@@ -65,11 +75,44 @@ export default class ShopCart extends Component {
   }
 
 
+  buttonPayment = () => {
+
+    let userTokem = this.state.userInfos
+    let valueItems = this.state.items
+    
+    if(userTokem && valueItems){
+      return  (
+        <Button label="Finalizar" onPress={() => this.props.navigation.navigate('Payment')} />
+      )
+    }
+
+    return (
+      <Button label="Finalizar"
+       onPress={
+         () => Alert.alert('Login','Faça Login para concluir sua compra',
+          [
+            {
+              text:'Voltar Home',
+              onPress:() => this.props.navigation.navigate('Home')
+            },
+            {
+              text:'Fazer Login :) ',
+              onPress:() => this.props.navigation.navigate('Auth')
+            }
+          ]
+        )
+      } 
+      />
+    )
+
+  }
+
 
   willFocus = this.props.navigation.addListener('willFocus', () => {this.captureProduct()})
 
   render(){
 
+    
     return(
       <SafeAreaView style={styles.container}>
          
@@ -88,7 +131,7 @@ export default class ShopCart extends Component {
                  keyExtractor={(item) => `${item.id}`}
                  renderItem={ (item) =>
                     <GridProd 
-                     excluir={() => this.excluir(item)}
+                     excluir={() => this.excludeItem(item)}
                      database={item}
                      quant={this.state.number}
                     
@@ -106,7 +149,8 @@ export default class ShopCart extends Component {
                   {this.sumItems()}
             
                </View>
-               <Button label="Finalizar compra" onPress={() => this.props.navigation.navigate('Payment')} />
+
+               {this.buttonPayment()}
             </ScrollView>
               
       </SafeAreaView>
@@ -118,38 +162,7 @@ export default class ShopCart extends Component {
 
 
 
-//   //soma do preço dos itens
-//   let valueInitial = 0
-//   if (respItem.length == 1) {
-//     valueInitial = respItem[0].priceValue
-//   } else {
-//     valueInitial = respItem.reduce((acumulador, itemValue) => {
-//       return acumulador + itemValue.priceValue
-//     }, 0);
-//   }
 
-
-//   //função para deletar os itens
-//   function deleteItem(id){
-//     const newArray = items.filter( (item) => { 
-//       return item.id != id
-//     })
-//     setItems(newArray)
-//     changeValueTotal()
-//   }
-
-//   //funcão em andamento para mudar o valor do total conforme deleta os itens
-//   function changeValueTotal(){
-//     const valueTotal = 0
-//     if (respItem.length == 1) {
-//       valueTotal = respItem[0].priceValue
-//     } else {
-//       valueTotal = respItem.reduce((acumulador, itemValue) => {
-//         setValueTotal(acumulador + itemValue.priceValue)
-//       }, 0);
-//     }
-  
-//   }
 
 
 
