@@ -130,6 +130,8 @@ module.exports = app => {
                                                             Pedido , alem disso, impedidos de abater do estoque se o pedido for uma quantidade acima do que temos
                                                             em estoque..
                                                         */
+
+                                                        console.log(Pedido)
                                                         const pedidosUsuario = Pedido.Produtos
                                                         pedidosUsuario.forEach(produtoVendas => {
 
@@ -298,7 +300,7 @@ module.exports = app => {
                                                             } 
                                                             
                                                             notaDB.create(dadosNf)
-                                                            .then(resultado => console.log(`NF criada com sucesso ${resultado}`))
+                                                            .then(resultado => console.log(`NF criada com sucesso `))
                                                             .catch(err => console.log(err))
                                                         response.status(200).send('Pedido Cadastrado com Sucesso')
                                                     })
