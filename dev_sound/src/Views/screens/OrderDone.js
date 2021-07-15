@@ -39,8 +39,8 @@ export default class OrderDone extends Component {
 
 
     dataPrediction = () => {
-        let dataPrevista = this.state.data.getDate() + 7
-        let formatedDate = dataPrevista
+        let dataPred = this.state.data.getDate() + 7
+        return dataPred.substring(0,10)
     }
 
 
