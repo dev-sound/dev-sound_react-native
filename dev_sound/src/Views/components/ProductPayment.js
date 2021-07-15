@@ -20,13 +20,13 @@ export default props =>{
                 
                 <Image 
                     style={styles.img}
-                    source={props.imgProduct}
+                    source={{uri : props.imgProduct}}
                 />
                 
                 </View>
             
             </View>
-                <Text style={styles.qtdProduct}> Quantidade : {props.qtdProduct}</Text>
+                <Text style={styles.qtdProduct}> Quantidade : 1 </Text>
             </View>
 
 

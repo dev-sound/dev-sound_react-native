@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View,Text,ScrollView,StyleSheet,FlatList, TouchableOpacity} from 'react-native'
+import {View,Text,ScrollView,StyleSheet,FlatList, TouchableOpacity, Alert} from 'react-native'
 import Input from '../components/Input'
 import Logo from '../components/Header/logo'
 import PickerSelect from 'react-native-picker-select'
@@ -8,6 +8,9 @@ import Button from '../components/Button'
 import ProductPaymentDATA from '../components/Common/ProductPaymentDATA'
 import { RadioButton,Checkbox } from 'react-native-paper';
 import paymentsSaves from '../components/Common/paymentsSaves'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import axios from 'axios'
+
 
 
 const disabledInputs = [
@@ -52,7 +55,7 @@ const form = {
    
 }
 
-const initialStateForm ={
+const initialState ={
     form:{...form},
     UF:'SP',
     disabled:{...disabledInputs},
@@ -60,29 +63,110 @@ const initialStateForm ={
     ehBoleto:false,
     saveCard:false,
     saveAdress:false,
+    items: [],
+    userInfos:{},
+    itemsFromBD:{}
 }
 
 
 export default class Payment extends Component {
 
-    state = {...initialStateForm}
 
-    // start validation inputs
+
+    state = {...initialState}
+
+    async componentDidMount() {
+        await this.captureAsync()
+        await this.captureUserInfos()
+     console.warn(this.state.items)
+    }
+
+    //Inicio da captura de valores do Async Storage
+
+     captureAsync = async () => {
+
+        const productImport = await AsyncStorage.getItem('product')
+        const productParse = JSON.parse(productImport)
+        this.setState({items:productParse})
+
+     }
+
+
+     captureUserInfos = async () => {
+        const userAuth = await AsyncStorage.getItem('userData')
+        const users =  JSON.parse(userAuth)
+        this.setState({userInfos:users}) 
+      }
+    
+
+
+
+     willFocus = this.props.navigation.addListener('willFocus', () => {this.captureAsync()})
+
+
+    // Fim  Async Storage --------------------------------
+
+
+
+    //  Inicio Axios , Post 
+
+        savePayment = async () => {
+
+
+
+            try {
+               
+                const inser = await axios.post("http://10.0.3.2:3000/Pagamento",{
+                    cartaoCredito:this.state.numberCard,
+                    cep:this.state.cep,
+                    rua:this.state.street,
+                    numero:this.state.numberHome,
+                    bairro:this.state.district,
+                    cidade:this.state.city,
+                    UF:this.state.UF,
+                    Produtos:this.state.items,
+                    Forma_pagamento:{
+                        ehBoleto:this.state.ehBoleto
+                    }
+                },
+                {
+                  headers:{
+                    'Authorization':this.state.userInfos.token
+                  }
+                })         
+
+
+                console.warn(inser)
+                
+                Alert.alert('Pedido','Realizado com Sucesso')
+            }catch (err){
+                Alert.alert('Deu Ruim !! ','Sla mano olha a API ai vei '-' ')
+            }
+        }   
+
+
+    // Fim Axios Post --------------------------------------
+
+
+
+    // Inicio das Validações de Inputs
     renderProduct = ({item}) => {
         return (
             <ProductPayment
                     paymentArea
-                    imgProduct={item.imgProduct}
-                    qtdProduct={item.qtdUnit}
-                    nameProduct={item.nameProduct}
-                    modelProduct = {item.modelProduct}
-                    priceUnit= {item.priceUnit}
+                    imgProduct={item.img}
+                    nameProduct={item.nome}
+                    modelProduct = {item.modelo}
+                    priceUnit= {item.valor_unitario}
                 />
         )
     }
     
 
     //  5392076388465820
+    // Teste Teste
+    // 07261-983
+    // Teste teste 
     validInputCard = value => {
         const mastercardRegex = /^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/;
         
@@ -229,9 +313,17 @@ export default class Payment extends Component {
     }
 
 
+    
+
+    // Fim das Validações de inputs
+
+
+
+    // Funções que afetam o layout
+
     setDataPayment = ( ) => {   
 
-        paymentsSaves.Products.push(...ProductPaymentDATA)
+        paymentsSaves.Products.push(...this.state.items)
 
 
         if(this.state.saveCard){
@@ -258,9 +350,8 @@ export default class Payment extends Component {
         }       
     }
 
-    // end  validation  inputs
 
-    // alter layout when user press radio button ehBoleto
+
     setBoletoForm = () => {
         if(this.state.ehBoleto){
             disabledInputs[4].disabledCep = true
@@ -274,16 +365,16 @@ export default class Payment extends Component {
 
     setSumItems = () => {
         
-        const items = ProductPaymentDATA
+        const items = this.state.items
         let arr = []
         let subtotal = parseFloat(0)
         let shipping = parseFloat(100)
 
+    
         items.forEach((element => {
-             let sums = element.qtdUnit * element.priceUnit
-             arr.push(sums)
-        }))
-        
+            arr.push(element.valor_unitario)
+        })) 
+
 
         for(let i = 0; i < arr.length; i++){
             subtotal += arr[i]
@@ -306,7 +397,7 @@ export default class Payment extends Component {
 
             <View style={styles.areaPrice}>
                 <Text style={styles.priceTotal}>Total: </Text>
-                <Text style={styles.priceTotal}>R$ {(parseFloat(subtotal + shipping))}</Text>
+                <Text style={styles.priceTotal}>R$ {(parseFloat(subtotal + shipping).toFixed(2))}</Text>
             </View>
         </>
         )
@@ -315,7 +406,7 @@ export default class Payment extends Component {
     
     buttonPayment = () => {
 
-        if(disabledInputs[9].disabledBtn){
+        // if(disabledInputs[9].disabledBtn){
 
             return (
 
@@ -324,27 +415,32 @@ export default class Payment extends Component {
                 <Button 
                 finishButton
                label='FINALIZAR COMPRA'
-                onPress={() => this.setDataPayment()}
+                onPress={() => this.savePayment()}
                 />
                 </>
             )
-        }
+        // }
         
     
-            return (
-                <Button 
-                finishButtonDisabled
-                label='FINALIZAR COMPRA' 
-                disabled={true}
-                />
-            )
+            // return (
+            //     <Button 
+            //     finishButtonDisabled
+            //     label='FINALIZAR COMPRA' 
+            //     disabled={true}
+            //     />
+            // )
         
 
     }
 
+    // Fim funções de afetam o layout
+
+
+
 
     render(){   
-    
+        
+
         return (
         
             <ScrollView style={styles.container} > 
@@ -580,7 +676,7 @@ export default class Payment extends Component {
                 <View style={styles.areaProductReview}>
                 
                     <FlatList
-                        data={ProductPaymentDATA}
+                        data={this.state.items}
                         keyExtractor={item => item.id}
                         renderItem={this.renderProduct}
                     />
@@ -600,9 +696,6 @@ export default class Payment extends Component {
             
 
                  {this.buttonPayment()}
-                    <TouchableOpacity onPress={() => console.warn(paymentsSaves)}>
-                        <Text>TESTE</Text>
-                    </TouchableOpacity>
             </ScrollView>
         )
     }

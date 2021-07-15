@@ -8,6 +8,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const initialState = {
+
     productName: "",
     productImage: "",
     productPrice: "",
@@ -33,10 +34,14 @@ export default class Product extends Component{
     saveStorage = async () => {
 
         const dataProduct = {
-            _id:(Math.random()*1000),
-            productName:this.state.productName,
-            productImage:this.state.productImage,
-            productPrice:this.state.productPrice
+            id_Produto:this.state.productID,
+            nome:this.state.productName,
+            img:this.state.productImage,
+            modelo:this.state.productModel,
+            categoria:this.state.productCategory,
+            valor_unitario:this.state.productPrice,
+            qtd_Produto:1,
+            excludeID:(Math.random()*1000),
         }
 
         let arrProduct = []
@@ -67,13 +72,17 @@ export default class Product extends Component{
         let productId = this.props.navigation.getParam('id')
         await axios.get(`http://10.0.3.2:3000/produtos/id/${productId}`)
         .then((infos) => {
+
+
         this.setState({
             productID: infos.data[0]._id,
             productName: infos.data[0].nome,
             productImage: infos.data[0].img,
             productPrice: infos.data[0].preco,
             productDescription: infos.data[0].descricao,
-            productSpecs: infos.data[0].especificacao
+            productSpecs: infos.data[0].especificacao,
+            productModel:infos.data[0].modelo,
+            productCategory:infos.data[0].categoria
             })
         })
     }
@@ -83,7 +92,7 @@ export default class Product extends Component{
 
 
     render(){ 
-
+        
         return(
 
             <ScrollView style={styles.scrollviewContainer}>
@@ -93,7 +102,6 @@ export default class Product extends Component{
                     cart={() => this.props.navigation.navigate('ShopCart')} 
                 />   
 
-                <Search/>
 
             <Text style={styles.productTitle}>{this.state.productName}</Text>
             <View style={styles.imageContainer}>
