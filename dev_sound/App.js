@@ -18,6 +18,7 @@ import SearchResult from './src/Views/screens/SearchResult';
 import Profile from './src/Views/screens/Profile'
 import ShopCart from './src/Views/screens/ShopCart'
 import Contact from './src/Views/screens/Contact'
+import OrderDone from './src/Views/screens/OrderDone';
 
 
 import { createAppContainer,createSwitchNavigator } from 'react-navigation';
@@ -112,6 +113,10 @@ const Navigator = createAppContainer(
         SearchResult: {
           name: 'SearchResult',
           screen: SearchResult
+        },
+        OrderDone: {
+          name: 'OrderDone',
+          screen: OrderDone
         }
     
       },{

@@ -24,8 +24,8 @@ export default class OrderDone extends Component {
     }
 
     state = {
-        id_pedido = '',
-        date = new Date(),
+        clientOrderId : '',
+        date : new Date(),
     }
 
     // getOrder = async () => {
