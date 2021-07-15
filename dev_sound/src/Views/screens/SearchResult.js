@@ -73,14 +73,15 @@ export default class SearchResult extends Component {
             return (
                 <ScrollView style={styles.scrollContainer}>
                     <Header drawer={() => this.props.navigation.openDrawer()}
-                        cart={() => this.props.navigation.navigate('ShopCart')}/>
+                        cart={() => this.props.navigation.navigate('ShopCart')}
+                    />
                     <Search navigation={this.props.navigation}
                         onPress = {() => this.insideSearch()}/>
                     <View style={styles.container}>
                         <Title title='Você pesquisou por:'/>
                     <Title title={this.state.search.search}/>
                     </View>
-                    <View>  
+                    <View style={styles.flatContainer}>  
                         <FlatList
                             data={this.state.respProdutos}
                             keyExtractor={item => `${item._id}`}
@@ -105,13 +106,16 @@ export default class SearchResult extends Component {
 
         productCard: {
             width: Dimensions.get('window').width / 2.5,
-            marginBottom: 5,
-            paddingBottom: 5,
-            marginLeft: 25,
-            marginTop: 10
+            margin: 10,
         },
         
         scrollContainer: {
             backgroundColor: '#F1F1F1',
-        }
+        },
+
+        flatContainer: {
+            width: '100%',
+            alignItems: 'center',
+            marginBottom: 30
+        },
     })

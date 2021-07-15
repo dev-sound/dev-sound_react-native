@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, ScrollView, View, Text, Image} from 'react-native';
+import {StyleSheet, ScrollView, View, Text, Image, Dimensions} from 'react-native';
 import Search  from '../components/Search';
 import Header from '../components/Header';
 import Title from '../components/Title';
@@ -99,7 +99,7 @@ export default class Product extends Component{
 
             <View style={styles.priceContainer}>
                 <View style={styles.collumnContainer}>
-                    <Title title='Preço' />
+                    <Text style={styles.priceTitle}>Preço</Text>
                     <Text style={styles.price}>R${this.state.productPrice}</Text>
                 </View>
                 <View style={styles.inlineContainer}>
@@ -112,7 +112,7 @@ export default class Product extends Component{
             <View style={styles.descriptionContainer}>
                 <Title title='Descrição do produto'/>
                 <Text style={styles.descriptionText}>{this.state.productDescription}</Text>
-                <Title title='Especificações'/>
+                <Text style={styles.specsTitle}>Especificações</Text>
                 <Text style={styles.descriptionText}>{this.state.productSpecs}</Text>
             </View>
                 
@@ -137,13 +137,13 @@ const styles =  StyleSheet.create(
         },
 
         price: {
-            fontSize: 28,
-            marginLeft: 10,
+            fontSize: 22,
+            
         },
 
         imageContainer:{
-            width: '87%',
-            height: 412,
+            width: Dimensions.get('window').width/1.1,
+            height: Dimensions.get('window').width/1.1,
             alignSelf: 'center',
             marginTop: 25,
             elevation: 7,
@@ -152,12 +152,12 @@ const styles =  StyleSheet.create(
 
         productImage: {
             width: '100%',
-            height: 412,
+            height: '100%',
             borderRadius: 11,
         },
 
         descriptionContainer: {
-            width: '87%',
+            width: '89%',
             backgroundColor: '#BABABA',
             alignItems: 'flex-start',
             padding: 15,
@@ -172,13 +172,27 @@ const styles =  StyleSheet.create(
         },
 
         inlineContainer: {
-            justifyContent: 'space-between',
+            justifyContent: 'flex-end',
             marginTop: 50,
+        },
+
+        priceTitle: {
+            fontSize: 25,
+            fontWeight: "500",
+            fontWeight: 'bold'
+        },
+
+        specsTitle: {
+            fontSize: 25,
+            fontWeight: "500",
+            fontWeight: 'bold',
+            marginTop: 10,
+            marginLeft: 10
         },
 
         priceContainer:{
             flexDirection: 'row',
-            width: '86%',
+            width: '88%',
             alignSelf: 'center',
             justifyContent: 'space-between',
             marginBottom: 35,

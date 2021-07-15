@@ -29,15 +29,45 @@ export default class Menu extends Component  {
     }   
 
  
-    setPageGuitar = async () =>{
+    setPageGuitar = async () => {
         await this.setState({page:'Guitarras'})
         this.props.navigation.navigate('Category',{page:this.state.page}) 
     }
 
-    setPageViolao = async () =>{
-    await this.setState({page:'Violões'})
-    this.props.navigation.navigate('CategoryViolao',{page:this.state.page}) 
-   }
+    setPageViolao = async () => {
+        await this.setState({page:'Violões'})
+        this.props.navigation.navigate('CategoryViolao',{page:this.state.page}) 
+    }
+
+    setPageBass = async () => {
+        await this.setState({page:'Contrabaixos'})
+        this.props.navigation.navigate('CategoryContrabaixos',{page:this.state.page}) 
+    }
+
+    setPageSax = async () => {
+        await this.setState({page:'Saxofones'})
+        this.props.navigation.navigate('CategorySaxofones',{page:this.state.page}) 
+    }
+
+    setPageFlute = async () => {
+        await this.setState({page:'Flautas'})
+        this.props.navigation.navigate('CategoryFlautas',{page:this.state.page}) 
+    }
+
+    setPageClarinets = async () => {
+        await this.setState({page:'Clarinetes'})
+        this.props.navigation.navigate('CategoryClarinetes',{page:this.state.page}) 
+    }
+
+    setPagePiano = async () => {
+        await this.setState({page:'Pianos'})
+        this.props.navigation.navigate('CategoryPianos',{page:this.state.page}) 
+    }
+
+    setPageKeyBoard = async () => {
+        await this.setState({page:'Teclados'})
+        this.props.navigation.navigate('CategoryTeclados',{page:this.state.page}) 
+    }
 
 
 
@@ -95,7 +125,7 @@ export default class Menu extends Component  {
                                             <List.Item title="Violões" />
                                         </TouchableOpacity>
                                         
-                                        <TouchableOpacity>
+                                        <TouchableOpacity onPress={() => this.setPageBass()}>
                                             <List.Item title="Contrabaixos" />
                                         </TouchableOpacity>
                                         
@@ -107,15 +137,15 @@ export default class Menu extends Component  {
                                
                                 <View style={styles.areaItemLayer}>
                                 
-                                    <TouchableOpacity>
-                                        <List.Item title="Saxfones" />
+                                    <TouchableOpacity onPress={() => this.setPageSax()}>
+                                        <List.Item title="Saxofones" />
                                     </TouchableOpacity>
 
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={() => this.setPageFlute()}>
                                         <List.Item title="Flautas" />
                                     </TouchableOpacity>
                                     
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={() => this.setPageClarinets()}>
                                         <List.Item title="Clarinetes" />
                                     </TouchableOpacity> 
                                   </View>
@@ -125,11 +155,11 @@ export default class Menu extends Component  {
                                 <List.Accordion title='TECLAS' style={styles.listCategStyle}  titleStyle={{color:'#000000'}}>
                                
                                 <View style={styles.areaItemLayer}> 
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={() => this.setPagePiano()}>
                                     <List.Item title="Pianos" />
                                     </TouchableOpacity>
                                 
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={() => this.setPageKeyBoard()}>
                                     <List.Item title="Teclados" />
                                     </TouchableOpacity>
                                   </View>

@@ -27,27 +27,6 @@ export default class Category extends Component {
             .catch(erro => console.warn(erro))
         }
 
-        getTitle = () => {
-            if (this.state.page == 'guitarra') {
-                return(<Title title='Guitarras'/>)
-            } else if (this.state.page == 'violao' || this.state.page == 'violão' ) {
-                return(<Title title='Violões'/>)
-            } else if (this.state.page == 'contrabaixo') {
-                return(<Title title='Contra Baixos'/>)
-            } else if (this.state.page == 'saxofone') {
-                return(<Title title='Saxofones'/>)
-            } else if (this.state.page == 'flautas') {
-                return(<Title title='Flautas'/>)
-            } else if (this.state.page == 'clarinete') {
-                return(<Title title='Clarinetes'/>)
-            } else if (this.state.page == 'piano') {
-                return(<Title title='Pianos'/>)
-            } else if (this.state.page == 'teclado') {
-                return(<Title title='Teclados'/>)
-            }          
-        }
-
-
 
         state = {
             page:'',
@@ -79,15 +58,16 @@ export default class Category extends Component {
                 <ScrollView style={styles.scrollContainer}> 
                     <Header drawer={() => this.props.navigation.openDrawer()}/>
                     <View style={styles.container}>
-                        {this.getTitle()}
+                        <Title title={this.state.page}/>
                     </View>
+                    <View style={styles.flatContainer}>
                                 <FlatList
                                     data={this.state.respProdutos}
                                     keyExtractor={item => `${item._id}`}
                                     renderItem={this.renderProductCategory}
                                     numColumns={2}
                                 />
-            
+                    </View>
                 </ScrollView>
             )
         }
@@ -103,13 +83,16 @@ export default class Category extends Component {
 
         productCard: {
             width: Dimensions.get('window').width / 2.5,
-            marginBottom: 5,
-            paddingBottom: 5,
-            marginLeft: 20,
-            marginTop: 10
+            margin: 10,
         },
 
         scrollContainer: {
             backgroundColor: '#F1F1F1'
+        },
+
+        flatContainer: {
+            width: '100%',
+            alignItems: 'center',
+            marginBottom: 30
         }
     })

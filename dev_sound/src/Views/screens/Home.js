@@ -24,7 +24,7 @@ export default class Home extends Component {
     
     
     await this.getProduct()  
- 
+    await this.getProductNewer()
         
   } 
 
@@ -33,36 +33,60 @@ export default class Home extends Component {
 
   state={
     infos:'',
-    respProdutos:[]
-
+    respProdutos:[],
+    respProdutosNewer: []
   }
 
-
   getProduct = async () => {
+
+    await axios.get(`http://10.0.3.2:3000/produtos/sig series/`)
+     .then(infos => {
+   
+       this.setState({respProdutos:infos.data})
+     })
+       .catch(erro => console.warn(erro))
+
+}
+
+  getProductNewer = async () => {
 
        await axios.get(`http://10.0.3.2:3000/produtos/`)
         .then(infos => {
       
-          this.setState({respProdutos:infos.data})
+          this.setState({respProdutosNewer:infos.data})
         })
           .catch(erro => console.warn(erro))
   
   }
 
+
    
     renderProductSpotlight = ({item}) =>  {
       return (
+        <View style={style.productOnly}>
           <ProductOnly
             onPress={() => this.props.navigation.navigate('Product', {id: item._id})}
             imgProduct={item.img}
             nameProduct={item.nome}
             price={item.preco}
           />
+        </View>
       )
     }
 
-    
-    
+    renderProductNewer = ({item}) => {
+      return (
+      <View style={style.productOnly}>
+        <ProductOnly
+          onPress={() => this.props.navigation.navigate('Product', {id: item._id})}
+          imgProduct={item.img}
+          nameProduct={item.nome}
+          price={item.preco}
+        />
+      </View>
+      )
+    }
+
 
 
     render(){ 
@@ -117,16 +141,14 @@ export default class Home extends Component {
           
           </View>
       
-
-
             <Title title="Novidades" style={style.fontText}/>
             <View style={style.newsProduct}>
 
               <FlatList 
                 horizontal
-                data={this.state.respProdutos}
+                data={this.state.respProdutosNewer}
                 keyExtractor={item => `${item._id}`}
-                renderItem={this.renderProductSpotlight}
+                renderItem={this.renderProductNewer}
                 
               />
 
@@ -164,9 +186,8 @@ export default class Home extends Component {
       },
 
       SpotlightProduct:{
-
         paddingVertical:10,
-        padding:10
+        padding:10,
       }
       ,
       newsProduct:{
@@ -177,6 +198,10 @@ export default class Home extends Component {
 
       fontText: {
         fontWeight: 'bold'
+      },
+
+      productOnly: {
+        margin: 10,
       }
       
     }

@@ -1,23 +1,56 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import axios from 'axios'
 
 import Header from '../components/Header/'
 import ProductOrder from '../components/ProductOrder/ProductOrder'
 import Title from '../components/Title'
 import Button from '../components/Button'
 
-const initialState = {
 
-}
+
 export default class OrderDone extends Component {
 
-    state = {...initialState}
+
+
+    async componentDidMount () {
+        const userData  = await AsyncStorage.getItem('userData')
+        const parseUserData = JSON.parse(userData)
+        
+        let resp =  await axios.get(`http://10.0.3.2:3000/usuario/email/${parseUserData.email.login}`)
+        const lastOrder = resp.data.Pedidos.lenght-1
+        this.setState({clientOrderId: resp.data.Pedidos[lastOrder].idPedido})
+    }
+
+    state = {
+        id_pedido = '',
+        date = new Date(),
+    }
+
+    // getOrder = async () => {
+    //     await axios.get(`http://10.0.3.2:3000/Pagamento/${this.state.clientOrderId}`)
+    //     .then(infos => {
+    //       this.setState({respPedido:infos.data})
+
+    //    })
+    //    .catch(erro => console.warn(erro))
+    // }
+
+
+    dataPrediction = () => {
+        let dataPrevista = this.state.data.getDate() + 7
+        let formatedDate = dataPrevista
+    }
+
+
 
     render() {
         return (
             <View>
-                <Header/>
+                <Header
+                    drawer={() => this.props.navigation.openDrawer()} 
+                    cart={() => this.props.navigation.navigate('ShopCart')} />
                 <ScrollView style={styles.container}>
                     {/* mensagem de confirmação */}
                     <View style={styles.containerRow}>
@@ -31,22 +64,23 @@ export default class OrderDone extends Component {
                     <View style={styles.containerGrey}>
                         <View style={styles.containerRow}>
                             <Text style={styles.text}>Número do pedido: </Text>
-                            <Text style={styles.textN}>2196976</Text>
+                            <Text style={styles.textN}>{this.state.respPedido._id}</Text>
                         </View>
                         <View style={styles.containerRow}>
                             <Text style={styles.text}>Entrega prevista para: </Text>
-                            <Text style={styles.textN}>20/07</Text>
+                            <Text style={styles.textN}>{this.dataPrediction()}</Text>
                         </View>
                         <View style={styles.containerRow}>
                             <Text style={styles.textSub}>Veja mais em </Text>
-                            <Button smallButton label='MEU PERFIL'/>
+                            <Button onPress={() => {this.props.navigation.navigate('Profile')}}
+                                smallButton label='MEU PERFIL'/>
                         </View>    
                     </View>
                     {/* resumo pedido */}
-                    <View style={styles.containerGrey}>
+                    {/* <View style={styles.containerGrey}>
                         <Title title='Resumo do pedido'/>
                     </View>
-                    <ProductOrder/>
+                    <ProductOrder/> */}
                 </ScrollView>
             </View>
         )
