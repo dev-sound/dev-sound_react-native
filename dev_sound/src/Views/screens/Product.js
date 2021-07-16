@@ -90,7 +90,7 @@ export default class Product extends Component{
                     cart={() => this.props.navigation.navigate('ShopCart')} 
                 />   
 
-                <Search/>
+                {/* <Search/> */}
 
             <Text style={styles.productTitle}>{this.state.productName}</Text>
             <View style={styles.imageContainer}>

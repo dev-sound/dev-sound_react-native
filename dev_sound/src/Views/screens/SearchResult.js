@@ -75,8 +75,8 @@ export default class SearchResult extends Component {
                     <Header drawer={() => this.props.navigation.openDrawer()}
                         cart={() => this.props.navigation.navigate('ShopCart')}
                     />
-                    <Search navigation={this.props.navigation}
-                        onPress = {() => this.insideSearch()}/>
+                    {/* <Search navigation={this.props.navigation}
+                        onPress = {() => this.insideSearch()}/> */}
                     <View style={styles.container}>
                         <Title title='Você pesquisou por:'/>
                     <Title title={this.state.search.search}/>
