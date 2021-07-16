@@ -88,6 +88,8 @@ export default class Product extends Component{
         })
     }
 
+    willFocus = this.props.navigation.addListener('willFocus', () => {this.ProductDBImports()})
+
 
     ProductBanner = async () => {
         let productName = this.props.navigation.getParam('nome')

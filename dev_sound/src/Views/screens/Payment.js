@@ -811,6 +811,10 @@ const styles = StyleSheet.create(
             top:40,
             zIndex:20,
             textAlign:'center'
+        },
+
+        container: {
+            backgroundColor: '#F1F1F1'
         }
 
    
