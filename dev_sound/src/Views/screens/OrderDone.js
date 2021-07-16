@@ -21,12 +21,12 @@ export default class OrderDone extends Component {
         
         let resp =  await axios.get(`http://10.0.3.2:3000/usuario/email/${parseUserData.email.login}`)
         const lastOrder = resp.data.Pedidos.lenght-1
-        this.setState({clientOrderId: resp.data.Pedidos[lastOrder].idPedido})
+        this.setState({productId: resp.data.Pedidos[lastOrder].idPedido})
         console.warn(clientOrderId)
     }
 
     state = {
-        clientOrderId : '',
+        productId : '',
         // date : new Date(),
     }
 
