@@ -45,7 +45,8 @@ export default class Contact extends Component {
     }
     //validações do Input
     validName = () => {
-        const regexname = /[A-Z][a-z]* [A-Z][a-z]*/
+        // regex nome completo /[A-Z][a-z]* [A-Z][a-z]*/
+        const regexname =  /[A-Z, À-Ú][a-z, à-ú]* [A-Z, À-Ú][a-z, à-ú]*/
         if (regexname.test(this.state.nome)) {
             this.setState({ validNome: 'valid' })
         } else {

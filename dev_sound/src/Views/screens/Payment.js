@@ -184,7 +184,8 @@ export default class Payment extends Component {
 
         
      validInputName = value => {
-            const nameRegex = /[A-Z][a-z].* [A-Z][a-z].*/
+            // /[A-Z][a-z].* [A-Z][a-z].*/ 
+            const nameRegex =/[A-Z, À-Ú][a-z, à-ú]* [A-Z, À-Ú][a-z, à-ú]*/
             
             if(nameRegex.test(value)){
             disabledInputs[1].disabledMonth = true
@@ -261,7 +262,8 @@ export default class Payment extends Component {
 
 
     validAdressStreet = value => {
-        const nameRegex = /[A-z][a-z ]/
+        // /[A-Z][a-z]/
+        const nameRegex = /[A-Z, À-Ú][a-z, à-ú]/
     
         if(nameRegex.test(value)){
             disabledInputs[6].disabledNumber = true
@@ -287,7 +289,7 @@ export default class Payment extends Component {
 
 
     validAdressDistrict = value => {
-        const nameRegex = /[A-z][a-z ]/
+        const nameRegex = /[A-Z, À-Ú][a-z, à-ú]/
     
         if(nameRegex.test(value)){
           
@@ -300,7 +302,7 @@ export default class Payment extends Component {
     }
 
     validAdressCity = value => {
-        const nameRegex = /[A-z][a-z ]/
+        const nameRegex = /[A-Z, À-Ú][a-z, à-ú]/
     
         if(nameRegex.test(value) ){
             disabledInputs[9].disabledBtn = true
