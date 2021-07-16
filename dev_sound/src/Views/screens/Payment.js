@@ -135,11 +135,8 @@ export default class Payment extends Component {
                   }
                 })         
 
-
                 Alert.alert('Pedido','Realizado com Sucesso')
-
                 // this.toOrderDone()
-                this.toHome()
 
             }catch (err){
                 Alert.alert('Deu Ruim !! ','Sla mano olha a API ai vei '-' ')
@@ -160,7 +157,12 @@ export default class Payment extends Component {
     }
 
     // Fim navegacao OrderDone
-
+    cabo = async () => {
+        await this.savePayment()
+       await AsyncStorage.removeItem('product')
+        this.setState(...initialState)
+        this.toHome()
+    }
 
 
     // Inicio das Validações de Inputs
@@ -200,7 +202,6 @@ export default class Payment extends Component {
      validInputName = value => {
             // /[A-Z][a-z].* [A-Z][a-z].*/ 
             const nameRegex =/[A-Z, À-Ú][a-z, à-ú]* [A-Z, À-Ú][a-z, à-ú]*/
-            
             if(nameRegex.test(value)){
             disabledInputs[1].disabledMonth = true
             this.setState({validStyleName:'valid'})
@@ -386,11 +387,13 @@ export default class Payment extends Component {
         let subtotal = parseFloat(0)
         let shipping = parseFloat(100)
 
-    
+    if (items) {
         items.forEach((element => {
             arr.push(element.valor_unitario)
         })) 
 
+    }
+        
 
         for(let i = 0; i < arr.length; i++){
             subtotal += arr[i]
@@ -422,7 +425,7 @@ export default class Payment extends Component {
     
     buttonPayment = () => {
 
-        // if(disabledInputs[9].disabledBtn){
+        if(disabledInputs[9].disabledBtn){
 
             return (
 
@@ -435,16 +438,16 @@ export default class Payment extends Component {
                 />
                 </>
             )
-        // }
+        }
         
     
-            // return (
-            //     <Button 
-            //     finishButtonDisabled
-            //     label='FINALIZAR COMPRA' 
-            //     disabled={true}
-            //     />
-            // )
+            return (
+                <Button 
+                finishButtonDisabled
+                label='FINALIZAR COMPRA' 
+                disabled={true}
+                />
+            )
         
 
     }
