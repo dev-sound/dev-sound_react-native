@@ -388,7 +388,7 @@ export default class Payment extends Component {
             <View style={styles.areaPrice}>
             <Text>Subtotal:</Text>
             
-                <Text>R$ {(subtotal)}</Text>
+                <Text>R$ {(parseFloat(subtotal).toFixed(2))}</Text>
             
             </View>
 
