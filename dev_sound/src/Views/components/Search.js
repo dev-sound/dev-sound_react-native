@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {StyleSheet, TextInput, Image, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, TextInput, Image, View, TouchableOpacity, TouchableWithoutFeedback} from 'react-native';
 
 
 import searchIcon from '../../../assets/icons/search_icon.png'
@@ -22,15 +22,14 @@ export default props => {
                 onChangeText={(search) => setSearch({search})}
                 style = {styles.input} 
                 placeholder = 'O que você procura hoje?'/>
-             
                 <View  style = {styles.image}>
-                    <TouchableOpacity onPress={() => buscar()}
-
+                    <TouchableOpacity {...props}
+                     onPress={() => buscar()}
                         style={styles.ImagePosition}>
-                        <Image source = {searchIcon}/>
+                            <Image source = {searchIcon}/>
                     </TouchableOpacity>
+                    
                 </View>
-           
             </View>
         </View>
     )

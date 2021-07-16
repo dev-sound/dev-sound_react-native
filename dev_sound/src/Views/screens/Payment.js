@@ -136,9 +136,11 @@ export default class Payment extends Component {
                 })         
 
 
-                console.warn(inser)
-                
                 Alert.alert('Pedido','Realizado com Sucesso')
+
+                // this.toOrderDone()
+                this.toHome()
+
             }catch (err){
                 Alert.alert('Deu Ruim !! ','Sla mano olha a API ai vei '-' ')
             }
@@ -146,6 +148,18 @@ export default class Payment extends Component {
 
 
     // Fim Axios Post --------------------------------------
+
+    // Inicio navegacao OrderDone
+
+    toOrderDone = () => {
+        this.props.navigation.navigate('OrderDone')
+    }
+
+    toHome = () => {
+        this.props.navigation.navigate('Home')
+    }
+
+    // Fim navegacao OrderDone
 
 
 
@@ -583,7 +597,7 @@ export default class Payment extends Component {
                         validInput={this.state.validStyleCep}    
                         fieldLabel = 'CEP'
                         keyboardType={'numeric'}
-                        placeholder='0000-000'
+                        placeholder='00000-000'
                         value={this.state.cep}
                         onBlur = {()=> this.validAdressCep(this.state.cep)}
                         onChangeText={(cep) => this.setState({cep})}
@@ -595,7 +609,7 @@ export default class Payment extends Component {
                         <Input 
                             validInput={this.state.validStyleStreet}
                             setSize={290}
-                            fieldLabel = 'Rua/Avenidade'
+                            fieldLabel = 'Rua/Avenida'
                             placeholder='Rua Av. Paulista'
                             value={this.state.street}
                             onChangeText={(street) => this.setState({street})}   

@@ -83,7 +83,7 @@ export default class Contact extends Component {
                 assunto: this.state.assunto,
                 mensagem: this.state.mensagem,
             })
-            Alert.alert('Mensagem enviada!')
+            Alert.alert('Mensagem enviada!', 'A equipe Dev.Sound agradece seu contato.')
             this.setState({ ...initialState })
         } catch (err) {
             this.validName()
