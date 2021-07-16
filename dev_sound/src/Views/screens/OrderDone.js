@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import Header from '../components/Header/'
 import ProductOrder from '../components/ProductOrder/ProductOrder'
@@ -12,7 +13,7 @@ import Button from '../components/Button'
 
 export default class OrderDone extends Component {
 
-
+    
 
     async componentDidMount () {
         const userData  = await AsyncStorage.getItem('userData')
@@ -21,11 +22,12 @@ export default class OrderDone extends Component {
         let resp =  await axios.get(`http://10.0.3.2:3000/usuario/email/${parseUserData.email.login}`)
         const lastOrder = resp.data.Pedidos.lenght-1
         this.setState({clientOrderId: resp.data.Pedidos[lastOrder].idPedido})
+        console.warn(clientOrderId)
     }
 
     state = {
         clientOrderId : '',
-        date : new Date(),
+        // date : new Date(),
     }
 
     // getOrder = async () => {
@@ -38,10 +40,10 @@ export default class OrderDone extends Component {
     // }
 
 
-    dataPrediction = () => {
-        let dataPred = this.state.data.getDate() + 7
-        return dataPred.substring(0,10)
-    }
+    // dataPrediction = () => {
+    //     let dataPred = this.state.data.getDate() + 7
+    //     return dataPred.substring(0,10)
+    // }
 
 
 
@@ -64,11 +66,11 @@ export default class OrderDone extends Component {
                     <View style={styles.containerGrey}>
                         <View style={styles.containerRow}>
                             <Text style={styles.text}>Número do pedido: </Text>
-                            <Text style={styles.textN}>{this.state.respPedido._id}</Text>
+                            <Text style={styles.textN}>{this.state.clientOrderId}</Text>
                         </View>
                         <View style={styles.containerRow}>
                             <Text style={styles.text}>Entrega prevista para: </Text>
-                            <Text style={styles.textN}>{this.dataPrediction()}</Text>
+                            <Text style={styles.textN}>20000</Text>
                         </View>
                         <View style={styles.containerRow}>
                             <Text style={styles.textSub}>Veja mais em </Text>
