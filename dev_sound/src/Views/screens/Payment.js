@@ -547,7 +547,7 @@ export default class Payment extends Component {
 
                 
                                 
-                        <View style={styles.checkboxArea}>
+                        {/* <View style={styles.checkboxArea}>
                             <View style={styles.checkbox}>
                                 <Checkbox 
                                     color={'#FACC22'}
@@ -556,7 +556,7 @@ export default class Payment extends Component {
                                 />
                             </View>
                             <Text>Salvar Cartão </Text>
-                        </View>
+                        </View> */}
 
                         {/* End inputs about informations credid card user */}
 
@@ -589,7 +589,7 @@ export default class Payment extends Component {
                         validInput={this.state.validStyleCep}    
                         fieldLabel = 'CEP'
                         keyboardType={'numeric'}
-                        placeholder='0000-000'
+                        placeholder='00000-000'
                         value={this.state.cep}
                         onBlur = {()=> this.validAdressCep(this.state.cep)}
                         onChangeText={(cep) => this.setState({cep})}
@@ -601,7 +601,7 @@ export default class Payment extends Component {
                         <Input 
                             validInput={this.state.validStyleStreet}
                             setSize={290}
-                            fieldLabel = 'Rua/Avenidade'
+                            fieldLabel = 'Rua/Avenida'
                             placeholder='Rua Av. Paulista'
                             value={this.state.street}
                             onChangeText={(street) => this.setState({street})}   
@@ -663,7 +663,7 @@ export default class Payment extends Component {
                             
                     </View>
                     {/* End informations address user */}
-                    <View style={styles.checkboxArea}>
+                    {/* <View style={styles.checkboxArea}>
                         <View style={styles.checkbox}>
                             <Checkbox 
                                  color={'#FACC22'}
@@ -672,7 +672,7 @@ export default class Payment extends Component {
                             />
                         </View>
                         <Text>Salvar Endereço para proximas compras ? </Text>
-                    </View>
+                    </View> */}
                 
                 </View>
 
@@ -819,6 +819,10 @@ const styles = StyleSheet.create(
             top:40,
             zIndex:20,
             textAlign:'center'
+        },
+
+        container: {
+            backgroundColor: '#F1F1F1'
         }
 
    
