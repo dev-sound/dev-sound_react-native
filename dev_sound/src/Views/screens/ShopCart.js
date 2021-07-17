@@ -79,8 +79,8 @@ export default class ShopCart extends Component {
 
     let userTokem = this.state.userInfos
     let valueItems = this.state.items
-    
-    if(userTokem && valueItems){
+  
+    if(userTokem && valueItems.length >= 1){
       return  (
         <Button label="Finalizar" onPress={() => this.props.navigation.navigate('Payment')} />
       )

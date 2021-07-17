@@ -26,7 +26,10 @@ export default class Product extends Component{
    
 
     }
-
+    tratarPreco = (preco) => {
+        let precoConvertido = parseFloat(preco).toFixed(2)
+        return `R$${precoConvertido.replace('.', ',')}`
+    }
 
     saveStorage = async () => {
 
@@ -95,6 +98,7 @@ export default class Product extends Component{
             <ScrollView style={styles.scrollviewContainer}>
                 
                 <Header
+                    comeBackHome={() => this.props.navigation.navigate('Home')} 
                     drawer={() => this.props.navigation.openDrawer()} 
                     cart={() => this.props.navigation.navigate('ShopCart')} 
                 />   
@@ -108,7 +112,7 @@ export default class Product extends Component{
             <View style={styles.priceContainer}>
                 <View style={styles.collumnContainer}>
                     <Text style={styles.priceTitle}>Preço</Text>
-                    <Text style={styles.price}>R${this.state.productPrice}</Text>
+                    <Text style={styles.price}>{this.tratarPreco(this.state.productPrice)}</Text>
                 </View>
                 <View style={styles.inlineContainer}>
                     <Button 

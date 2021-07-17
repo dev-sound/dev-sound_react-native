@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { View, StyleSheet, FlatList, Dimensions, ScrollView } from 'react-native'
+import { View, StyleSheet, FlatList, Dimensions, ScrollView, Text } from 'react-native'
 import axios from 'axios'
 
 
@@ -9,6 +9,7 @@ import Header from '../components/Header'
 import Title from '../components/Title'
 import ProductOnly from '../components/ProductOnly'
 import Search from '../components/Search'
+import Button from '../components/Button'
 
 
 
@@ -27,6 +28,8 @@ export default class SearchResult extends Component {
             this.customDidMount()
         } 
 
+
+
         willFocus = this.props.navigation.addListener('willFocus',
             () => {this.customDidMount()}
         )
@@ -38,6 +41,12 @@ export default class SearchResult extends Component {
                 this.setState({respProdutos:infos.data})
             })
             .catch(erro => console.warn(erro))
+        }
+
+        notFound = () => {
+            if (this.state.respProdutos == '') {
+                return <Text style={styles.text}>Nenhum produto encontrado</Text>
+            }
         }
 
         insideSearch = () => {
@@ -76,7 +85,9 @@ export default class SearchResult extends Component {
                         cart={() => this.props.navigation.navigate('ShopCart')}
                     />
                     <Search navigation={this.props.navigation}
-                        onPress = {() => this.insideSearch()}/>
+                        reload={() => this.insideSearch()}
+                    />
+
                     <View style={styles.container}>
                         <Title title='Você pesquisou por:'/>
                     <Title title={this.state.search.search}/>
@@ -88,7 +99,8 @@ export default class SearchResult extends Component {
                             renderItem={this.renderProductSearch}
                             numColumns={2}
                         />
-
+                        {this.notFound()}
+                        {/* <Button label='CACETE' onPress={() => this.insideSearch()}/> */}
                     </View>
                 </ScrollView>
             )
@@ -118,4 +130,8 @@ export default class SearchResult extends Component {
             alignItems: 'center',
             marginBottom: 30
         },
+
+        text: {
+            fontSize: 25
+        }
     })
