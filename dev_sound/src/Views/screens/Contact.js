@@ -83,14 +83,14 @@ export default class Contact extends Component {
                 assunto: this.state.assunto,
                 mensagem: this.state.mensagem,
             })
-            Alert.alert('Mensagem enviada!')
+            Alert.alert('Mensagem enviada, \nDEVSOUND agradece seu contato!')
             this.setState({ ...initialState })
         } catch (err) {
             this.validName()
             this.validEmail()
             this.validTopic()
             this.validMessage()
-            Alert.alert('Verifique se todos os campos foram preenchidos.')
+            Alert.alert('Verifique se todos os campos foram preenchidos.') 
         }
     }
     render() {
