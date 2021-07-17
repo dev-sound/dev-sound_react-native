@@ -75,6 +75,7 @@ export default class Contact extends Component {
             this.setState({ validMensagem: 'noValid' })
         }
     }
+    //asyncstorage
     contact = async () => {
         try {
             await axios.post("http://10.0.3.2:3000/contato", {
