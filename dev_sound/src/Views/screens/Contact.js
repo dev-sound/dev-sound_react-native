@@ -163,7 +163,8 @@ export default class Contact extends Component {
 }
 const styles = StyleSheet.create({
     container: {
-        width: '100%'
+        width: '100%',
+        backgroundColor: '#F1F1F1'
     },
     titleContainer: {
         paddingTop: 25,

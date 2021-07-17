@@ -78,7 +78,7 @@ export default class Payment extends Component {
     async componentDidMount() {
         await this.captureAsync()
         await this.captureUserInfos()
-     console.warn(this.state.items)
+        
     }
 
     //Inicio da captura de valores do Async Storage
@@ -135,14 +135,19 @@ export default class Payment extends Component {
                   }
                 })         
 
-
-                Alert.alert('Pedido','Realizado com Sucesso')
-
-                // this.toOrderDone()
-                this.toHome()
-
+                
+                
+                Alert.alert('Pedido','Realizado com Sucesso' , [ {
+                    text:'Finalizar',
+                    onPress: () => {
+                        
+                       
+                        this.props.navigation.navigate('Home') 
+                        
+                    }
+                  },])
             }catch (err){
-                Alert.alert('Deu Ruim !! ','Sla mano olha a API ai vei '-' ')
+                Alert.alert('Compra não concluida :(  ',' houve um erro na sua compra :/ ')
             }
         }   
 
@@ -384,11 +389,12 @@ export default class Payment extends Component {
         let subtotal = parseFloat(0)
         let shipping = parseFloat(100)
 
-    
-        items.forEach((element => {
-            arr.push(element.valor_unitario)
-        })) 
-
+        
+        if(items){
+            items.forEach((element => {
+                arr.push(element.valor_unitario)
+            })) 
+        }
 
         for(let i = 0; i < arr.length; i++){
             subtotal += arr[i]
@@ -400,7 +406,7 @@ export default class Payment extends Component {
             <View style={styles.areaPrice}>
             <Text>Subtotal:</Text>
             
-                <Text>R$ {(subtotal)}</Text>
+                <Text>R$ {parseFloat(subtotal).toFixed(2)}</Text>
             
             </View>
 
@@ -420,7 +426,7 @@ export default class Payment extends Component {
     
     buttonPayment = () => {
 
-        // if(disabledInputs[9].disabledBtn){
+        if(disabledInputs[9].disabledBtn){
 
             return (
 
@@ -433,16 +439,16 @@ export default class Payment extends Component {
                 />
                 </>
             )
-        // }
+        }
         
     
-            // return (
-            //     <Button 
-            //     finishButtonDisabled
-            //     label='FINALIZAR COMPRA' 
-            //     disabled={true}
-            //     />
-            // )
+            return (
+                <Button 
+                finishButtonDisabled
+                label='FINALIZAR COMPRA' 
+                disabled={true}
+                />
+            )
         
 
     }
@@ -553,7 +559,7 @@ export default class Payment extends Component {
 
                 
                                 
-                        <View style={styles.checkboxArea}>
+                        {/* <View style={styles.checkboxArea}>
                             <View style={styles.checkbox}>
                                 <Checkbox 
                                     color={'#FACC22'}
@@ -562,7 +568,7 @@ export default class Payment extends Component {
                                 />
                             </View>
                             <Text>Salvar Cartão </Text>
-                        </View>
+                        </View> */}
 
                         {/* End inputs about informations credid card user */}
 
@@ -669,7 +675,7 @@ export default class Payment extends Component {
                             
                     </View>
                     {/* End informations address user */}
-                    <View style={styles.checkboxArea}>
+                    {/* <View style={styles.checkboxArea}>
                         <View style={styles.checkbox}>
                             <Checkbox 
                                  color={'#FACC22'}
@@ -678,7 +684,7 @@ export default class Payment extends Component {
                             />
                         </View>
                         <Text>Salvar Endereço para proximas compras ? </Text>
-                    </View>
+                    </View> */}
                 
                 </View>
 
@@ -825,6 +831,10 @@ const styles = StyleSheet.create(
             top:40,
             zIndex:20,
             textAlign:'center'
+        },
+
+        container: {
+            backgroundColor: '#F1F1F1'
         }
 
    
