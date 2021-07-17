@@ -27,7 +27,7 @@ export default class Contact extends Component {
         this.setState({ focus: true })
     }
     inputArea = () => {
-        this.setState({focus: false})
+        this.setState({ focus: false })
         this.validMessage()
     }
     //funções para capturar caracteres dos inputs
@@ -46,7 +46,7 @@ export default class Contact extends Component {
     //validações do Input
     validName = () => {
         // regex nome completo /[A-Z][a-z]* [A-Z][a-z]*/
-        const regexname =  /[A-Z, À-Ú][a-z, à-ú]* [A-Z, À-Ú][a-z, à-ú]*/
+        const regexname = /[A-Z, À-Ú][a-z, à-ú]* [A-Z, À-Ú][a-z, à-ú]*/
         if (regexname.test(this.state.nome)) {
             this.setState({ validNome: 'valid' })
         } else {
@@ -91,13 +91,17 @@ export default class Contact extends Component {
             this.validEmail()
             this.validTopic()
             this.validMessage()
-            Alert.alert('Verifique se todos os campos foram preenchidos.') 
+            Alert.alert('Verifique se todos os campos foram preenchidos.')
         }
     }
+
     render() {
         return (
             <View style={styles.container}>
-                <Header drawer={() => this.props.navigation.openDrawer()} />
+                <Header drawer={() => this.props.navigation.openDrawer()}
+                    comeBackHome={() => this.props.navigation.navigate('Home')}
+                    cart={() => this.props.navigation.navigate('ShopCart')}
+                />
                 <View style={styles.titleContainer}>
                     <Title title='Contato' />
                 </View>
