@@ -583,7 +583,7 @@ export default class Payment extends Component {
                         validInput={this.state.validStyleCep}    
                         fieldLabel = 'CEP'
                         keyboardType={'numeric'}
-                        placeholder='0000-000'
+                        placeholder='Digite seu Cep'
                         value={this.state.cep}
                         onBlur = {()=> this.validAdressCep(this.state.cep)}
                         onChangeText={(cep) => this.setState({cep})}
@@ -596,7 +596,7 @@ export default class Payment extends Component {
                             validInput={this.state.validStyleStreet}
                             setSize={290}
                             fieldLabel = 'Rua/Avenidade'
-                            placeholder='Rua Av. Paulista'
+                            placeholder='Digite seu Endereço'
                             value={this.state.street}
                             onChangeText={(street) => this.setState({street})}   
                             onBlur={()=> this.validAdressStreet(this.state.street)}
@@ -607,7 +607,7 @@ export default class Payment extends Component {
                             validInput={this.state.validStyleNumber}
                             setSize={85}
                             fieldLabel = 'Numero'
-                            placeholder='987'
+                            placeholder='Número'
                             keyboardType={'numeric'}
                             value={this.state.numberHome}
                             onBlur={()=> this.validAdressNumber(this.state.numberHome)}
@@ -620,7 +620,7 @@ export default class Payment extends Component {
                     <Input 
                         validInput={this.state.validStyleDistrict}
                         fieldLabel = 'Bairro'
-                        placeholder='Vila Orleans'
+                        placeholder='Digite seu Bairro'
                         value={this.state.district}
                         onBlur={()=> this.validAdressDistrict(this.state.district)}
                         onChangeText={(district) => this.setState({district})}   
@@ -633,7 +633,7 @@ export default class Payment extends Component {
                             validInput={this.state.validStyleCity}
                             setSize={290}
                             fieldLabel = 'Cidade'
-                            placeholder='São Paulo'
+                            placeholder='Digite sua Cidade'
                             value={this.state.city}
                             onBlur={()=> this.validAdressCity(this.state.city)}
                             onChangeText={(city) => this.setState({city})}   
