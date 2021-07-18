@@ -14,5 +14,9 @@ module.exports = (app) => {
         '/usuario/email/:email',
         app.src.controllers.usuario.buscaUsuario
     )
+    app.post(
+        '/changePassword',
+        app.src.controllers.usuario.trocaSenhaLogado
+    )
 
 }
