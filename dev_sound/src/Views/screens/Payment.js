@@ -494,13 +494,14 @@ export default class Payment extends Component {
            disabledInputs[6].disabledNumber = true
        
            this.setState({
-     
+
             street:adress.data.logradouro,
             district:adress.data.bairro,
             city:adress.data.localidade,  
-       
+            UF:adress.data.uf
            })
-    
+           
+           console.warn(adress.data)
         }
         catch(err) {
             this.setState({
@@ -509,9 +510,11 @@ export default class Payment extends Component {
                 district:'',
                 city:'',
                 numberHome:'',
-                cep:''
+                cep:'',
+                buttonPayment:false
             })
             disabledInputs[6].disabledNumber = false
+            
            Alert.alert('Ops! Probleminha no cep ', 'Cep inserido inexistente, por favor confira se foi digitado de forma correta :) ')
         }
       }
