@@ -93,9 +93,12 @@ export default class Profile extends Component {
                 <Text style = {styles.name}>Meu endereço de entrega</Text>
             </View>
             <View  style = {styles.adressField}>
+                
+                
                 <Text style = {styles.adress}>
                 {this.state.clientStreet}, {this.state.clientCity}, {this.state.clientUF}
                 </Text> 
+                
                 <View style = {styles.fields}>
                     <Text style = {styles.adress}>
                         Número: 

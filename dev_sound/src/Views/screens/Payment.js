@@ -158,6 +158,23 @@ export default class Payment extends Component {
 
     // Fim Axios Post --------------------------------------
 
+    // Inicio navegacao OrderDone
+
+    toOrderDone = () => {
+        this.props.navigation.navigate('OrderDone')
+    }
+
+    toHome = () => {
+        this.props.navigation.navigate('Home')
+    }
+
+    // Fim navegacao OrderDone
+    cabo = async () => {
+        await this.savePayment()
+       await AsyncStorage.removeItem('product')
+        this.setState(...initialState)
+        this.toHome()
+    }
 
 
     // Inicio das Validações de Inputs
@@ -198,7 +215,6 @@ export default class Payment extends Component {
      validInputName = value => {
             // /[A-Z][a-z].* [A-Z][a-z].*/ 
             const nameRegex =/[A-Z, À-Ú][a-z, à-ú]* [A-Z, À-Ú][a-z, à-ú]*/
-            
             if(nameRegex.test(value)){
             disabledInputs[1].disabledMonth = true
             this.setState({validStyleName:'valid'})
@@ -624,7 +640,7 @@ export default class Payment extends Component {
                         validInput={this.state.validStyleCep}    
                         fieldLabel = 'CEP'
                         keyboardType={'numeric'}
-                        placeholder='Digite seu Cep'
+                        placeholder='00000-000'
                         value={this.state.cep}
                         onBlur = {()=> this.validAdressCep(this.state.cep)}
                         onChangeText={(cep) => this.setState({cep})}
@@ -636,8 +652,8 @@ export default class Payment extends Component {
                         <Input 
                             validInput={this.state.validStyleStreet}
                             setSize={290}
-                            fieldLabel = 'Rua/Avenidade'
-                            placeholder='Digite seu Endereço'
+                            fieldLabel = 'Rua/Avenida'
+                            placeholder='Rua Av. Paulista'
                             value={this.state.street}
                             onChangeText={(street) => this.setState({street})}   
                             onBlur={()=> this.validAdressStreet(this.state.street)}

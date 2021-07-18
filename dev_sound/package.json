@@ -20,6 +20,7 @@
     "jsonwebtoken": "^8.5.1",
     "kill-port": "^1.6.1",
     "mongoose": "^5.12.14",
+    "nodemailer": "^6.6.3",
     "npx": "^10.2.2",
     "properties-reader": "^2.2.0",
     "react": "16.13.1",
