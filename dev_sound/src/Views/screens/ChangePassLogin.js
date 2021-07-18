@@ -79,7 +79,10 @@ export default class ChangePassLogin extends Component {
     render(){
         return(
             <ScrollView style={styles.container}>
-                <Header drawer={() => this.props.navigation.openDrawer()}/>
+                <Header drawer={() => this.props.navigation.openDrawer()}
+                    comeBackHome={() => this.props.navigation.navigate('Home')}
+                    cart={() => this.props.navigation.navigate('ShopCart')}
+                />
                 <Portrait>
                     <Text style={styles.title}>Alterar Senha</Text>
                     <Input fieldLabel='Nova Senha'

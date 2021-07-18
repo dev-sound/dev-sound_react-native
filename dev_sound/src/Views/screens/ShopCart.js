@@ -13,7 +13,8 @@ export default class ShopCart extends Component {
   state ={
     valueTotal:0,
     items:[],
-    userInfos:{}
+    userInfos:{},
+    itensCart: true
   }
 
 
@@ -79,14 +80,15 @@ export default class ShopCart extends Component {
 
     let userTokem = this.state.userInfos
     let valueItems = this.state.items
-  
-    if(userTokem && valueItems.length >= 1){
-      return  (
-        <Button label="Finalizar" onPress={() => this.props.navigation.navigate('Payment')} />
-      )
+    if(valueItems){
+      if(userTokem && valueItems.length >= 1){
+        return  (
+          <Button label="Finalizar" onPress={() => this.props.navigation.navigate('Payment')} />
+        )
+      }
     }
-
     return (
+      
       <Button label="Finalizar"
        onPress={
          () => Alert.alert('Login','Faça Login para concluir sua compra',

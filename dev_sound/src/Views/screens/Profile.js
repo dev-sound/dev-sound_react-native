@@ -27,7 +27,13 @@ export default class Profile extends Component {
     state = {
         ...initialState
     }
+    willFocus = this.props.navigation.addListener('willFocus',
+            () => {this.customDidMount()}
+        )
     async componentDidMount(){
+        this.customDidMount()
+    }
+    customDidMount = async () =>{
         const userData  = await AsyncStorage.getItem('userData')
         const parseUserData = JSON.parse(userData)
    
@@ -53,7 +59,6 @@ export default class Profile extends Component {
     
         }
     }
-
     
 
     logOut = async () => {
@@ -170,7 +175,10 @@ export default class Profile extends Component {
         return(
             
             <ScrollView>
-                <Header drawer={() => this.props.navigation.openDrawer()}/>
+                <Header drawer={() => this.props.navigation.openDrawer()}
+                    comeBackHome={() => this.props.navigation.navigate('Home')}
+                    cart={() => this.props.navigation.navigate('ShopCart')}
+                />
                 <View style= {styles.clientArea}>
                     <Icon name='user-circle'  size={50} color={'#c1c1c1'}/>
                     <View style = {styles.iconArea}>

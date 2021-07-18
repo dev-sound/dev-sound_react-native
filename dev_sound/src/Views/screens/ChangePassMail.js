@@ -43,7 +43,10 @@ export default class ChangePassMail extends Component {
     render(){
         return(
             <View>
-                <Header drawer={() => this.props.navigation.openDrawer()}/>
+                <Header drawer={() => this.props.navigation.openDrawer()}
+                    comeBackHome={() => this.props.navigation.navigate('Home')}
+                    cart={() => this.props.navigation.navigate('ShopCart')}
+                />
                 {!this.state.finally &&
                  <Text style={styles.mainTitle}>Recuperação de senha</Text>
                 }
