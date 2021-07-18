@@ -172,14 +172,8 @@ export default class Payment extends Component {
                     disabledInputs[8].disabledCity = false
                     disabledInputs[9].disabledBtn = false
                    
-                    
-                    Alert.alert('Pedido','Realizado com Sucesso' , [ {
-                        text:'Finalizar',
-                        onPress: () => {
+                    this.props.navigation.navigate('OrderDone') 
 
-                            this.props.navigation.navigate('Home') 
-                        }
-                      },])
                 }catch (err){
                     Alert.alert('Compra não concluida :(  ',' houve um erro na sua compra :/ ')
                 }
@@ -196,9 +190,6 @@ export default class Payment extends Component {
         this.props.navigation.navigate('OrderDone')
     }
 
-    toHome = () => {
-        this.props.navigation.navigate('Home')
-    }
 
     // Fim navegacao OrderDone
     cabo = async () => {
@@ -223,8 +214,7 @@ export default class Payment extends Component {
     }
     
 
-
-    //  5392076388465820
+    //  c
     // Teste Teste
     // 07261-983
     // Teste teste 
