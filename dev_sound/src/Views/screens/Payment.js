@@ -118,41 +118,39 @@ export default class Payment extends Component {
 
                 try {   
                
-                    const inser = await axios.post("http://10.0.3.2:3000/Pagamento",{
-                        cartaoCredito:this.state.numberCard,
-                        cep:this.state.cep,
-                        rua:this.state.street,
-                        numero:this.state.numberHome,
-                        bairro:this.state.district,
-                        cidade:this.state.city,
-                        UF:this.state.UF,
-                        Produtos:this.state.items,
-                        Forma_pagamento:{
-                            ehBoleto:this.state.ehBoleto
-                        }
-                    },
-                    {
-                      headers:{
-                        'Authorization':this.state.userInfos.token
-                      }
-                    })         
-    
-                    
-                    
-                    Alert.alert('Pedido','Realizado com Sucesso' , [ {
-                        text:'Finalizar',
-                        onPress: () => {
-                            
-                           
-                            this.props.navigation.navigate('Home') 
-                            
-                        }
-                      },])
-                }catch (err){
-                    Alert.alert('Compra não concluida :(  ',' houve um erro na sua compra :/ ')
-                }
-            
-            
+                const inser = await axios.post("http://10.0.3.2:3000/Pagamento",{
+                    cartaoCredito:this.state.numberCard,
+                    cep:this.state.cep,
+                    rua:this.state.street,
+                    numero:this.state.numberHome,
+                    bairro:this.state.district,
+                    cidade:this.state.city,
+                    UF:this.state.UF,
+                    Produtos:this.state.items,
+                    Forma_pagamento:{
+                        ehBoleto:this.state.ehBoleto
+                    }
+                },
+                {
+                  headers:{
+                    'Authorization':this.state.userInfos.token
+                  }
+                })         
+
+                
+                
+                Alert.alert('Pedido','Realizado com Sucesso' , [ {
+                    text:'Finalizar',
+                    onPress: () => {
+                        
+                       
+                        this.props.navigation.navigate('Home') 
+                        
+                    }
+                  },])
+            }catch (err){
+                Alert.alert('Compra não concluida :(  ',' houve um erro na sua compra :/ ')
+            }
         }   
 
 
