@@ -252,6 +252,7 @@ const styles = StyleSheet.create({
         letterSpacing:0.06,
         color:'#000000',
         fontWeight:'bold',
+        backgroundColor: '#f1f1f1'
 
     },
 

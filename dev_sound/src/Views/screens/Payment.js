@@ -13,6 +13,7 @@ import axios from 'axios'
 
 
 
+
 const disabledInputs = [
     {disabledName:false},
     {disabledMonth:false},
@@ -61,11 +62,10 @@ const initialState ={
     disabled:{...disabledInputs},
     stylesInput:{...stylesInput},
     ehBoleto:false,
-    saveCard:false,
-    saveAdress:false,
     items: [],
     userInfos:{},
-    itemsFromBD:{}
+    itemsFromBD:{},
+    buttonPayment:false
 }
 
 
@@ -106,49 +106,85 @@ export default class Payment extends Component {
 
     // Fim  Async Storage --------------------------------
 
-
+    
 
     //  Inicio Axios , Post 
 
         savePayment = async () => {
 
-
-
-            try {
-               
-                const inser = await axios.post("http://10.0.3.2:3000/Pagamento",{
-                    cartaoCredito:this.state.numberCard,
-                    cep:this.state.cep,
-                    rua:this.state.street,
-                    numero:this.state.numberHome,
-                    bairro:this.state.district,
-                    cidade:this.state.city,
-                    UF:this.state.UF,
-                    Produtos:this.state.items,
-                    Forma_pagamento:{
-                        ehBoleto:this.state.ehBoleto
-                    }
-                },
-                {
-                  headers:{
-                    'Authorization':this.state.userInfos.token
-                  }
-                })         
-
-                
-                
-                Alert.alert('Pedido','Realizado com Sucesso' , [ {
-                    text:'Finalizar',
-                    onPress: () => {
-                        
-                       
-                        this.props.navigation.navigate('Home') 
-                        
-                    }
-                  },])
-            }catch (err){
-                Alert.alert('Compra não concluida :(  ',' houve um erro na sua compra :/ ')
+            if(this.state.ehBoleto){
+                this.setState({numberCard:''})
             }
+
+                try {   
+               
+                    await axios.post("http://10.0.3.2:3000/Pagamento",{
+                        cartaoCredito:this.state.numberCard,
+                        cep:this.state.cep,
+                        rua:this.state.street,
+                        numero:this.state.numberHome,
+                        bairro:this.state.district,
+                        cidade:this.state.city,
+                        UF:this.state.UF,
+                        Produtos:this.state.items,
+                        Forma_pagamento:{
+                            ehBoleto:this.state.ehBoleto
+                        }
+                    },
+                    {
+                      headers:{
+                        'Authorization':this.state.userInfos.token
+                      }
+                    })         
+                    
+                    this.setState({
+                        numberCard:'',
+                        nameClient:'',
+                        monthCard:'',
+                        yearCard:'',
+                        cvv:'',
+                        cep:'',
+                        street:'',
+                        numberHome:'',
+                        district:'',
+                        city:'',  
+                        validStyleCard:'',
+                        validStyleName:'',
+                        validStyleMouth:'',
+                        validStyleYear:'',
+                        validStyleCvv:'',
+                        validStyleCep:'',
+                        validStyleStreet:'',
+                        validStyleNumber:'',
+                        validStyleDistrict:'',
+                        validStyleCity:''
+                    })
+                    
+                
+                    disabledInputs[0].disabledName = false
+                    disabledInputs[1].disabledMonth = false
+                    disabledInputs[2].disabledYear = false
+                    disabledInputs[3].diabledCvv = false
+                    disabledInputs[4].disabledCep = false
+                    disabledInputs[5].disabledStreet = false
+                    disabledInputs[6].disabledNumber = false
+                    disabledInputs[7].disabledDistrict = false
+                    disabledInputs[8].disabledCity = false
+                    disabledInputs[9].disabledBtn = false
+                   
+                    
+                    Alert.alert('Pedido','Realizado com Sucesso' , [ {
+                        text:'Finalizar',
+                        onPress: () => {
+
+                            this.props.navigation.navigate('Home') 
+                        }
+                      },])
+                }catch (err){
+                    Alert.alert('Compra não concluida :(  ',' houve um erro na sua compra :/ ')
+                }
+            
+            
         }   
 
 
@@ -186,6 +222,7 @@ export default class Payment extends Component {
         )
     }
     
+
 
     //  5392076388465820
     // Teste Teste
@@ -272,8 +309,8 @@ export default class Payment extends Component {
         const regexCep = /[0-9]{5}-[0-9]{3}/
 
         if(regexCep.test(value)){
-            disabledInputs[5].disabledStreet = true
-            this.setState({validStyleCep:'valid'})      
+            this.captureCepUser(value)
+            this.setState({validStyleCep:'valid'})    
 
         }else{
             paymentsSaves.Adress.cep = ""
@@ -301,12 +338,11 @@ export default class Payment extends Component {
         const regexNumber = /[1-9]/;
        
         if(regexNumber.test(value)){
-            disabledInputs[7].disabledDistrict = true
-            this.setState({validStyleNumber:'valid'})    
+            this.setState({validStyleNumber:'valid' ,buttonPayment:true})    
 
         }else{
             disabledInputs[7].disabledDistrict = false
-            this.setState({validStyleNumber:'noValid'})
+            this.setState({validStyleNumber:'noValid' , buttonPayment:false})
         }
     }
 
@@ -314,6 +350,7 @@ export default class Payment extends Component {
     validAdressDistrict = value => {
         const nameRegex = /[A-Z, À-Ú][a-z, à-ú]/
     
+
         if(nameRegex.test(value)){
           
             disabledInputs[8].disabledCity = true
@@ -380,7 +417,7 @@ export default class Payment extends Component {
     setBoletoForm = () => {
         if(this.state.ehBoleto){
             disabledInputs[4].disabledCep = true
-            this.state.saveCard = false
+    
             return 'none'
         }
         
@@ -431,8 +468,9 @@ export default class Payment extends Component {
 
     
     buttonPayment = () => {
+   
 
-        if(disabledInputs[9].disabledBtn){
+        if(this.state.buttonPayment){
 
             return (
 
@@ -461,12 +499,51 @@ export default class Payment extends Component {
 
     // Fim funções de afetam o layout
 
+    // Consumo de API externas 
+
+
+    captureCepUser = async (cepUser) => {
+
+        let cep = cepUser
+
+        try { 
+           const adress = await axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+            
+           disabledInputs[6].disabledNumber = true
+       
+           this.setState({
+
+            street:adress.data.logradouro,
+            district:adress.data.bairro,
+            city:adress.data.localidade,  
+            UF:adress.data.uf
+           })
+           
+           console.warn(adress.data)
+        }
+        catch(err) {
+            this.setState({
+                validStyleCep:'noValid',
+                street:'',
+                district:'',
+                city:'',
+                numberHome:'',
+                cep:'',
+                buttonPayment:false
+            })
+            disabledInputs[6].disabledNumber = false
+            
+           Alert.alert('Ops! Probleminha no cep ', 'Cep inserido inexistente, por favor confira se foi digitado de forma correta :) ')
+        }
+      }
+
+    // Fim consumo de api externas
+
 
 
 
     render(){   
         
-
         return (
         
             <ScrollView style={styles.container} > 
@@ -565,7 +642,7 @@ export default class Payment extends Component {
 
                 
                                 
-                        <View style={styles.checkboxArea}>
+                        {/* <View style={styles.checkboxArea}>
                             <View style={styles.checkbox}>
                                 <Checkbox 
                                     color={'#FACC22'}
@@ -574,7 +651,7 @@ export default class Payment extends Component {
                                 />
                             </View>
                             <Text>Salvar Cartão </Text>
-                        </View>
+                        </View> */}
 
                         {/* End inputs about informations credid card user */}
 
@@ -680,7 +757,7 @@ export default class Payment extends Component {
                             
                     </View>
                     {/* End informations address user */}
-                    <View style={styles.checkboxArea}>
+                    {/* <View style={styles.checkboxArea}>
                         <View style={styles.checkbox}>
                             <Checkbox 
                                  color={'#FACC22'}
@@ -689,7 +766,7 @@ export default class Payment extends Component {
                             />
                         </View>
                         <Text>Salvar Endereço para proximas compras ? </Text>
-                    </View>
+                    </View> */}
                 
                 </View>
 

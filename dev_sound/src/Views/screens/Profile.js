@@ -30,20 +30,32 @@ export default class Profile extends Component {
     async componentDidMount(){
         const userData  = await AsyncStorage.getItem('userData')
         const parseUserData = JSON.parse(userData)
-       let resp =  await axios.get(`http://10.0.3.2:3000/usuario/email/${parseUserData.email.login}`)
+   
+        let resp =  await axios.get(`http://10.0.3.2:3000/usuario/email/${parseUserData.email.login}`)
         this.setState({clientName: resp.data[0].nome, 
             clientLastName: resp.data[0].sobrenome})
-        if(resp.data[0].Endereco.cep){
+   
+            if(resp.data[0].Endereco.cep){
             this.setState({clientCEP: resp.data[0].Endereco.cep,
                 clientStreet: resp.data[0].Endereco.rua,
                 clientNumber: resp.data[0].Endereco.numero,
                 clientDistrict: resp.data[0].Endereco.bairro,
                 clientCity: resp.data[0].Endereco.cidade,
                 clientUF: resp.data[0].Endereco.UF,
-                clientCreditCard: resp.data[0].cartaoCredito,
                 clientOrders: resp.data[0].Pedidos})
+
+        }
+
+        if(resp.data[0].cartaoCredito){
+            this.setState({
+                clientCreditCard: resp.data[0].cartaoCredito,
+            })
+    
         }
     }
+
+    
+
     logOut = async () => {
         delete axios.defaults.headers.common['Authorization']
         await AsyncStorage.removeItem('userData')
