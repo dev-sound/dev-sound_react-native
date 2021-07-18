@@ -94,7 +94,8 @@ export default class Auth extends Component {
     }
 
     regexName = (value)=>{
-        const nameValidator = /[A-Z][a-z]/;
+        //regex nome /[A-Z][a-z]/
+        const nameValidator = /[A-Z, À-Ú][a-z, à-ú]/;
         if(nameValidator.test(value)){
             this.setState({Validname:'valid',
                             editableLastName:true})
@@ -105,7 +106,7 @@ export default class Auth extends Component {
         
     }
     regexLastName= (value) =>{
-        const lastNameValidator = /[A-Z][a-z]/;
+        const lastNameValidator = /[A-Z, À-Ú][a-z, à-ú]/;
         if(lastNameValidator.test(value)){
             this.setState({ValidlastName: 'valid',
                             editableEmail: true})

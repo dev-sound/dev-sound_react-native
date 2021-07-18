@@ -196,7 +196,8 @@ export default class Payment extends Component {
 
         
      validInputName = value => {
-            const nameRegex = /[A-Z][a-z].* [A-Z][a-z].*/
+            // /[A-Z][a-z].* [A-Z][a-z].*/ 
+            const nameRegex =/[A-Z, À-Ú][a-z, à-ú]* [A-Z, À-Ú][a-z, à-ú]*/
             
             if(nameRegex.test(value)){
             disabledInputs[1].disabledMonth = true
@@ -273,7 +274,8 @@ export default class Payment extends Component {
 
 
     validAdressStreet = value => {
-        const nameRegex = /[A-z][a-z ]/
+        // /[A-Z][a-z]/
+        const nameRegex = /[A-Z, À-Ú][a-z, à-ú]/
     
         if(nameRegex.test(value)){
             disabledInputs[6].disabledNumber = true
@@ -298,7 +300,7 @@ export default class Payment extends Component {
 
 
     validAdressDistrict = value => {
-        const nameRegex = /[A-z][a-z ]/
+        const nameRegex = /[A-Z, À-Ú][a-z, à-ú]/
     
 
         if(nameRegex.test(value)){
@@ -312,7 +314,7 @@ export default class Payment extends Component {
     }
 
     validAdressCity = value => {
-        const nameRegex = /[A-z][a-z ]/
+        const nameRegex = /[A-Z, À-Ú][a-z, à-ú]/
     
         if(nameRegex.test(value) ){
             disabledInputs[9].disabledBtn = true
@@ -622,7 +624,7 @@ export default class Payment extends Component {
                         validInput={this.state.validStyleCep}    
                         fieldLabel = 'CEP'
                         keyboardType={'numeric'}
-                        placeholder='00000-000'
+                        placeholder='Digite seu Cep'
                         value={this.state.cep}
                         onBlur = {()=> this.validAdressCep(this.state.cep)}
                         onChangeText={(cep) => this.setState({cep})}
@@ -634,8 +636,8 @@ export default class Payment extends Component {
                         <Input 
                             validInput={this.state.validStyleStreet}
                             setSize={290}
-                            fieldLabel = 'Rua/Avenida'
-                            placeholder='Rua Av. Paulista'
+                            fieldLabel = 'Rua/Avenidade'
+                            placeholder='Digite seu Endereço'
                             value={this.state.street}
                             onChangeText={(street) => this.setState({street})}   
                             onBlur={()=> this.validAdressStreet(this.state.street)}
@@ -646,7 +648,7 @@ export default class Payment extends Component {
                             validInput={this.state.validStyleNumber}
                             setSize={85}
                             fieldLabel = 'Numero'
-                            placeholder='987'
+                            placeholder='Número'
                             keyboardType={'numeric'}
                             value={this.state.numberHome}
                             onBlur={()=> this.validAdressNumber(this.state.numberHome)}
@@ -659,7 +661,7 @@ export default class Payment extends Component {
                     <Input 
                         validInput={this.state.validStyleDistrict}
                         fieldLabel = 'Bairro'
-                        placeholder='Vila Orleans'
+                        placeholder='Digite seu Bairro'
                         value={this.state.district}
                         onBlur={()=> this.validAdressDistrict(this.state.district)}
                         onChangeText={(district) => this.setState({district})}   
@@ -672,7 +674,7 @@ export default class Payment extends Component {
                             validInput={this.state.validStyleCity}
                             setSize={290}
                             fieldLabel = 'Cidade'
-                            placeholder='São Paulo'
+                            placeholder='Digite sua Cidade'
                             value={this.state.city}
                             onBlur={()=> this.validAdressCity(this.state.city)}
                             onChangeText={(city) => this.setState({city})}   
