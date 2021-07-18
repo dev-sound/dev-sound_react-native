@@ -123,6 +123,7 @@ export default class Product extends Component{
             <ScrollView style={styles.scrollviewContainer}>
                 
                 <Header
+                    comeBackHome={() => this.props.navigation.navigate('Home')} 
                     drawer={() => this.props.navigation.openDrawer()} 
                     cart={() => this.props.navigation.navigate('ShopCart')} 
                 />   

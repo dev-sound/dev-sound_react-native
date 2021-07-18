@@ -5,13 +5,13 @@ import Logo from '../../../../assets/img/logo.png'
 export default props => {
     return (
 
-        <View style={style.headerArea} >      
-            <TouchableOpacity onPress={props.comeBackHome}>
+        <View style={style.headerArea}> 
+
                     <View style={style.container}>
                         <Image source={Logo}/>
                         <Text style={style.textLogo}>INSTRUMENTOS</Text>
                     </View>
-            </TouchableOpacity>
+                    
         </View>
     )
 }
