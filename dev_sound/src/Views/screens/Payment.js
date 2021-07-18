@@ -136,16 +136,8 @@ export default class Payment extends Component {
                 })         
 
                 
-                
-                Alert.alert('Pedido','Realizado com Sucesso' , [ {
-                    text:'Finalizar',
-                    onPress: () => {
-                        
-                       
-                        this.props.navigation.navigate('Home') 
-                        
-                    }
-                  },])
+                this.toOrderDone()
+
             }catch (err){
                 Alert.alert('Compra não concluida :(  ',' houve um erro na sua compra :/ ')
             }
@@ -160,9 +152,6 @@ export default class Payment extends Component {
         this.props.navigation.navigate('OrderDone')
     }
 
-    toHome = () => {
-        this.props.navigation.navigate('Home')
-    }
 
     // Fim navegacao OrderDone
 
@@ -182,7 +171,7 @@ export default class Payment extends Component {
     }
     
 
-    //  5392076388465820
+    //  c
     // Teste Teste
     // 07261-983
     // Teste teste 

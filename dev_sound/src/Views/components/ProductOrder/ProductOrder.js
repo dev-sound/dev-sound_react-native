@@ -35,15 +35,17 @@ export default props => {
         setDetails(!details)
     }
 
-    // function showDetails() {
-    //     if (details) {
-    //         setDetails(false)
-    //     }
-    //     else {
-    //         setDetails(true)
-    //     }
-            
-    // }
+    renderProductSpotlight = ({item}) =>  {
+        return (
+          <View>
+            <ProductPayment
+              imgProduct={item.img}
+              nameProduct={item.nome}
+              price={item.preco}
+            />
+          </View>
+        )
+      }
 
 
 
@@ -72,9 +74,11 @@ export default props => {
                     {btnDetails()}                    
             </View>
             {details &&
-                // implementar FlatList
-                <ProductPayment infos nameProduct='VIOLAO TAKAMINE TELECASTER BLACK'
-                modelProduct='054534' qtdProduct='1' priceUnit='3800,00'/>
+                <FlatList 
+                data={this.state.respProdutosNewer}
+                keyExtractor={item => `${item._id}`}
+                renderItem={this.renderProductNewer} 
+            />
             }
         </View>
     )

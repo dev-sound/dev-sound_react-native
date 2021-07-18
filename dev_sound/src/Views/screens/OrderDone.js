@@ -15,19 +15,30 @@ export default class OrderDone extends Component {
 
     
 
-    async componentDidMount () {
+    customDidMount = async () => {
+        AsyncStorage.removeItem('product')
         const userData  = await AsyncStorage.getItem('userData')
         const parseUserData = JSON.parse(userData)
         
-        let resp =  await axios.get(`http://10.0.3.2:3000/usuario/email/${parseUserData.email.login}`)
-        const lastOrder = resp.data.Pedidos.lenght-1
-        this.setState({productId: resp.data.Pedidos[lastOrder].idPedido})
-        console.warn(clientOrderId)
+        const resp =  await axios.get(`http://10.0.3.2:3000/usuario/email/${parseUserData.email.login}`)
+        const order = resp.data[0].Pedidos
+        const index = order.length-1
+        const lastOrder = order[index]
+        this.setState({productId: lastOrder.idPedido})
+        this.setState({date: lastOrder.dataPedido})
     }
+
+    componentDidMount() {
+        this.customDidMount()
+    }
+
+    willFocus = this.props.navigation.addListener('willFocus',
+    () => {this.customDidMount()}
+    )
 
     state = {
         productId : '',
-        // date : new Date(),
+        date : '',
     }
 
     // getOrder = async () => {
@@ -40,11 +51,6 @@ export default class OrderDone extends Component {
     // }
 
 
-    // dataPrediction = () => {
-    //     let dataPred = this.state.data.getDate() + 7
-    //     return dataPred.substring(0,10)
-    // }
-
 
 
     render() {
@@ -52,7 +58,8 @@ export default class OrderDone extends Component {
             <View>
                 <Header
                     drawer={() => this.props.navigation.openDrawer()} 
-                    cart={() => this.props.navigation.navigate('ShopCart')} />
+                    cart={() => this.props.navigation.navigate('ShopCart')}
+                    comeBackHome={() => this.props.navigation.navigate('Home')} />
                 <ScrollView style={styles.container}>
                     {/* mensagem de confirmação */}
                     <View style={styles.containerRow}>
@@ -66,11 +73,11 @@ export default class OrderDone extends Component {
                     <View style={styles.containerGrey}>
                         <View style={styles.containerRow}>
                             <Text style={styles.text}>Número do pedido: </Text>
-                            <Text style={styles.textN}>{this.state.clientOrderId}</Text>
+                            <Text style={styles.textN}>{this.state.productId.substring(2,14)}</Text>
                         </View>
                         <View style={styles.containerRow}>
-                            <Text style={styles.text}>Entrega prevista para: </Text>
-                            <Text style={styles.textN}>20000</Text>
+                            <Text style={styles.text}>Data do pedido: </Text>
+                            <Text style={styles.textN}>{this.state.date.substring(0,10)}</Text>
                         </View>
                         <View style={styles.containerRow}>
                             <Text style={styles.textSub}>Veja mais em </Text>
