@@ -10,7 +10,7 @@ import { RadioButton,Checkbox } from 'react-native-paper';
 import paymentsSaves from '../components/Common/paymentsSaves'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import axios from 'axios'
-import { add } from 'react-native-reanimated'
+
 
 
 
@@ -118,7 +118,7 @@ export default class Payment extends Component {
 
                 try {   
                
-                    const inser = await axios.post("http://10.0.3.2:3000/Pagamento",{
+                    await axios.post("http://10.0.3.2:3000/Pagamento",{
                         cartaoCredito:this.state.numberCard,
                         cep:this.state.cep,
                         rua:this.state.street,
@@ -136,16 +136,48 @@ export default class Payment extends Component {
                         'Authorization':this.state.userInfos.token
                       }
                     })         
-    
                     
+                    this.setState({
+                        numberCard:'',
+                        nameClient:'',
+                        monthCard:'',
+                        yearCard:'',
+                        cvv:'',
+                        cep:'',
+                        street:'',
+                        numberHome:'',
+                        district:'',
+                        city:'',  
+                        validStyleCard:'',
+                        validStyleName:'',
+                        validStyleMouth:'',
+                        validStyleYear:'',
+                        validStyleCvv:'',
+                        validStyleCep:'',
+                        validStyleStreet:'',
+                        validStyleNumber:'',
+                        validStyleDistrict:'',
+                        validStyleCity:''
+                    })
+                    
+                
+                    disabledInputs[0].disabledName = false
+                    disabledInputs[1].disabledMonth = false
+                    disabledInputs[2].disabledYear = false
+                    disabledInputs[3].diabledCvv = false
+                    disabledInputs[4].disabledCep = false
+                    disabledInputs[5].disabledStreet = false
+                    disabledInputs[6].disabledNumber = false
+                    disabledInputs[7].disabledDistrict = false
+                    disabledInputs[8].disabledCity = false
+                    disabledInputs[9].disabledBtn = false
+                   
                     
                     Alert.alert('Pedido','Realizado com Sucesso' , [ {
                         text:'Finalizar',
                         onPress: () => {
-                            
-                           
+
                             this.props.navigation.navigate('Home') 
-                            
                         }
                       },])
                 }catch (err){
@@ -471,7 +503,16 @@ export default class Payment extends Component {
     
         }
         catch(err) {
-           Alert.alert('Probleminha no Cep', 'Não enconstramos seu cep, verique se esta correto :) ')
+            this.setState({
+                validStyleCep:'noValid',
+                street:'',
+                district:'',
+                city:'',
+                numberHome:'',
+                cep:''
+            })
+            disabledInputs[6].disabledNumber = false
+           Alert.alert('Ops! Probleminha no cep ', 'Cep inserido inexistente, por favor confira se foi digitado de forma correta :) ')
         }
       }
 
