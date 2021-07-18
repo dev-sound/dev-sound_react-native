@@ -262,6 +262,7 @@ export default class Auth extends Component {
 }
 const styles = StyleSheet.create({
     container:{
+        backgroundColor: '#F1F1F1'
     },
     logoArea:{
         justifyContent:'center',
