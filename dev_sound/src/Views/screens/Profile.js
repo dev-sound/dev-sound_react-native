@@ -1,15 +1,13 @@
+import  Icon  from 'react-native-vector-icons/FontAwesome5'
+import axios from 'axios'
+import Header from '../components/Header'
+
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { Component } from 'react'
 import { 
     Text, ScrollView, View, TouchableOpacity, StyleSheet, FlatList
 } 
 from 'react-native'
-import  Icon  from 'react-native-vector-icons/FontAwesome5'
-import axios from 'axios'
-import Header from '../components/Header'
-import Button from '../components/Button'
-import ProductOrder from '../components/ProductOrder/ProductOrder'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-
 
 const initialState = {
     clientName: '',
@@ -22,7 +20,8 @@ const initialState = {
     clientDistrict: '',
     clientCreditCard: '',
     clientOrders: '',
-    switch: false
+    modalVisible: false,
+    products: ''
 }
 export default class Profile extends Component {
     state = {
@@ -51,18 +50,111 @@ export default class Profile extends Component {
         this.setState({...initialState}) 
         this.props.navigation.navigate('Auth')
     }
-    orderDetails = async (id) => {
-        let resp = await axios.get(`http://10.0.3.2:3000/Pagamento/${id}`)
-        console.warn(resp.data)
-        
-
-       
-    }
     
+    
+    goToChangePass = () => {
+        this.props.navigation.navigate('ChangePassLogin')
+    }
+    adressData = () => {
+        if(this.state.clientStreet && this.state.clientCity && this.state.clientUF){
+            return (
+                <>
+                    <Text style = {styles.adress}>
+                        {this.state.clientStreet}, {this.state.clientCity}, {this.state.clientUF}
+                    </Text> 
+                    <View style = {styles.fields}>
+                        <Text style = {styles.adress}>
+                            Número: 
+                        </Text>
+                        <Text>
+                            {this.state.clientNumber}
+                        </Text>
+                    </View>
+                    <View style = {styles.fields}>
+                        <Text style = {styles.adress}>
+                            CEP: 
+                        </Text>
+                        <Text>
+                        {this.state.clientCEP}
+                        </Text>
+                    </View>
+                </>
+            )
+        }
+        return(
+            <>
+               <Text style = {styles.noOrder}>Sem endereço cadastrado</Text>
+            </>
+        )
+    }
+    creditCardData = () => {
+        if(this.state.clientCreditCard){
+            return (
+                <>
+                    <Text style = {styles.adress}>
+                        cartão de crédito 
+                    </Text>
+                    <View style = {styles.cardArea}> 
+                        <Text style = {styles.card}>
+                            XXXX XXXX XXXX {this.state.clientCreditCard.substring(this.state.clientCreditCard.length -4,)}
+                        </Text>
+                        {/* <Button smallButton label= "EXCLUIR"/> */}
+                    </View>
+                </>
+            )
+        }
+        return(
+            <>
+                <Text style = {styles.noOrder}>Sem cartão cadastrado</Text>
+            </>
+        )
+    }
+    orderData = () => {
+        if(this.state.clientOrders){
+            return(
+                <>
+                    <View style={styles.orders}>
+                        <Text>
+                            Número do Pedido
+                        </Text>
+                        <Text>
+                            Data
+                        </Text>
+                        <Text>
+                            Pagamento
+                        </Text>
+                    </View>
+                    <View>
+                        <FlatList
+                            data = {this.state.clientOrders}
+                            keyExtractor = {(item)=> `${item.idPedido}`}
+                            renderItem= {({item})=>{
+                                return(
+                                    
+                                        <View style={styles.flatlist}>
+                                            <Text style={{color:'black'}}>{item.idPedido.substring(2,14)}</Text>
+                                            <Text style={{color:'black'}}>{item.dataPedido.substring(0,10)}</Text>
+                                            {item.formaPagamento.ehBoleto&& 
+                                            <Text style={{color:'black'}}>Boleto</Text>}
+                                            {!item.formaPagamento.ehBoleto&& 
+                                            <Text style={{color:'black'}}>Cartão</Text>}
+                                        </View>
+                                    
+                                    )}}/>
+                    </View>
+                </>
+            )
+        }
+        return (
+            <View style = {styles.adressField}>
+                <Text style = {styles.noOrder}>Ainda sem pedidos</Text>
+            </View>
+        )
+    }
     
 
     render(){
-        // console.log(this.state.clientOrders[0].dataPedido)
+        
         return(
             
             <ScrollView>
@@ -71,93 +163,42 @@ export default class Profile extends Component {
                     <Icon name='user-circle'  size={50} color={'#c1c1c1'}/>
                     <View style = {styles.iconArea}>
                         <Text style = {styles.name}>{this.state.clientName} {this.state.clientLastName}</Text>
+                        <View style = {styles.btns}>
                         <TouchableOpacity  onPress={()=> this.logOut()} style ={styles.logOutContainer}>
                             <Icon name= 'door-open' size= {13} />
                             <Text style={styles.exit}>SAIR</Text>
-                        </TouchableOpacity> 
+                        </TouchableOpacity>
+                        <TouchableOpacity  onPress={()=>this.goToChangePass()}style ={styles.changePass}>
+                            <Icon name= 'key' size= {13} />
+                            <Text style={styles.exit}>{'TROCAR\nSENHA'}</Text>
+                        </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
             <View style = {styles.title}>
                 <Text style = {styles.name}>Meu endereço de entrega</Text>
             </View>
-            <View  style = {styles.adressField}>
-                
-                
-                <Text style = {styles.adress}>
-                {this.state.clientStreet}, {this.state.clientCity}, {this.state.clientUF}
-                </Text> 
-                
-                <View style = {styles.fields}>
-                    <Text style = {styles.adress}>
-                        Número: 
-                    </Text>
-                    <Text>
-                         {this.state.clientNumber}
-                    </Text>
-                </View>
-                <View style = {styles.fields}>
-                    <Text style = {styles.adress}>
-                        CEP: 
-                    </Text>
-                    <Text>
-                       {this.state.clientCEP}
-                    </Text>
-                </View>
+            <View style = {styles.adressField}>
+                {this.adressData()}
             </View>
-            <View style = {styles.btnAdress}>
-                <View style = {styles.oneBtn}>
+            {/* <View style = {styles.btnAdress}> */}
+                {/* <View style = {styles.oneBtn}>
                     {/* <Button smallButton label= "EXCLUIR"/> */}
-                </View>
-                <View>
+                {/* </View> */}
+                {/* <View> */}
                     {/* <Button smallButton label= "ALTERAR"/> */}
-                </View>
-            </View>
+                {/* </View> */} 
+            {/* </View> */}
             <View style = {styles.title}>
                 <Text style = {styles.name}>Meu Cartão</Text>
             </View>
-                <View  style = {styles.adressField}>
-                    <Text style = {styles.adress}>
-                        cartão de crédito 
-                    </Text>
-                <View style = {styles.cardArea}> 
-                    <Text style = {styles.card}>
-                        XXXX XXXX XXXX {this.state.clientCreditCard.substring(this.state.clientCreditCard.length -4,)}
-                    </Text>
-                    {/* <Button smallButton label= "EXCLUIR"/> */}
-                </View>
+            <View style = {styles.adressField}>
+                {this.creditCardData()}
             </View>
             <View style = {styles.title}>
                 <Text style = {styles.name}>Meus pedidos</Text>
             </View>
-            <View style={styles.orders}>
-                <Text>
-                    Número do Pedido
-                </Text>
-                <Text>
-                    Data
-                </Text>
-                <Text>
-                    Pagamento
-                </Text>
-            </View>
-            <View>
-                <FlatList
-                data = {this.state.clientOrders}
-                keyExtractor = {(item)=> `${item.idPedido}`}
-                renderItem= {({item})=>{
-                    return(
-                            <View style={styles.flatlist}>
-                                <Text style={{color:'black'}}>{item.idPedido.substring(2,14)}</Text>
-                                <Text style={{color:'black'}}>{item.dataPedido.substring(0,10)}</Text>
-                                {item.formaPagamento.ehBoleto&& 
-                                <Text style={{color:'black'}}>Boleto</Text>}
-                                {!item.formaPagamento.ehBoleto&& 
-                                <Text style={{color:'black'}}>Cartão</Text>}
-                            </View>
-                        )
-                    }}/>
-            </View>
-
+           {this.orderData()}
             </ScrollView>
          )
     }
@@ -168,11 +209,17 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginLeft: 12,
-        marginBottom: 20
+        marginBottom: 20,
+        flex: 1,
     },
     iconArea:{
         paddingLeft:30,
         
+    },
+    btns: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around'
     },
     name:{
         fontSize: 20,
@@ -183,6 +230,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingTop:10,
         width: 60
+    },
+    changePass: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: 100,
+        marginLeft: 30
     },
     exit:{
         fontSize: 17,
@@ -201,7 +254,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     adressField: {
-        padding: 15
+        padding: 15,
     },
     btnAdress : {
         flexDirection: 'row',
@@ -230,5 +283,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: '10%',
         height: 50,
         backgroundColor: '#c1c1c1'
+    },
+    noOrder:{
+        fontSize: 30,
+        textAlign:'center'
     }
 })

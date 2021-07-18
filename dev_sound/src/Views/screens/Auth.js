@@ -33,13 +33,7 @@ let initialState = {
     Validpassword: '',
     Validnumber: '',
     ValidconfirmPassword: '',
-    validPhone: '',
-    editableLastName: false,
-    editableEmail: false,
-    editablePassword: false,
-    editableConfirmPassword: false,
-    editablePhone: false
-    
+    validPhone: ''
 }
 
 export default class Auth extends Component {
@@ -108,44 +102,36 @@ export default class Auth extends Component {
         //regex nome /[A-Z][a-z]/
         const nameValidator = /[A-Z, À-Ú][a-z, à-ú]/;
         if(nameValidator.test(value)){
-            this.setState({Validname:'valid',
-                            editableLastName:true})
+            this.setState({Validname:'valid'})
         }else{
-            this.setState({Validname:'noValid',
-                            editableLastName:false})
+            this.setState({Validname:'noValid'})
         }
         
     }
     regexLastName= (value) =>{
         const lastNameValidator = /[A-Z, À-Ú][a-z, à-ú]/;
         if(lastNameValidator.test(value)){
-            this.setState({ValidlastName: 'valid',
-                            editableEmail: true})
+            this.setState({ValidlastName: 'valid'})
         }else{
-            this.setState({ValidlastName:'noValid',
-                            editableEmail: false})
+            this.setState({ValidlastName:'noValid'})
         }
 
     }
     regexEmail = (value)=>{
         const emailValidator = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
         if(emailValidator.test(value)){
-            this.setState({Validemail: 'valid',
-                            editablePhone: true})
+            this.setState({Validemail: 'valid'})
         }else{
-            this.setState({Validemail: 'noValid',
-                            editablePhone: false})
+            this.setState({Validemail: 'noValid'})
         }
     }
 
     regexPhone = (value)=>{
         const celphoneValidator = /^\(?(?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/;
         if(celphoneValidator.test(value)){
-            this.setState({validPhone: 'valid',
-                            editablePassword: true})
+            this.setState({validPhone: 'valid'})
         }else{
-            this.setState({validPhone: 'noValid',
-                            editablePassword: false})
+            this.setState({validPhone: 'noValid'})
         }
     }
     regexPassword =(value) =>{
@@ -161,11 +147,9 @@ export default class Auth extends Component {
 
     readyToSignup = (value) => {
         if(value==this.state.password&& value != ''){
-            this.setState({ValidconfirmPassword: 'valid',
-                            disBtn: false})
+            this.setState({ValidconfirmPassword: 'valid'})
         }else{
-            this.setState({ValidconfirmPassword: 'noValid',
-                             disBtn: true})
+            this.setState({ValidconfirmPassword: 'noValid'})
     }
     }
      
@@ -212,8 +196,7 @@ export default class Auth extends Component {
                     {this.state.register &&                  
                     <Input fieldLabel= 'Senha'
                         validInput = {this.state.Validpassword}
-                        placeholder= 'Crie uma senha' 
-                        
+                        placeholder= 'Crie uma senha'
                         style={styles.input}  
                         secureTextEntry
                         onChangeText={password =>this.setState({password})}
@@ -264,7 +247,14 @@ export default class Auth extends Component {
                     onPress={()=>this.setState({login: false,
                                                 register: true})}>
                         <Text style={styles.textCreate}>Criar minha conta</Text>
-                </TouchableOpacity>}
+                </TouchableOpacity>
+                }
+                {this.state.login && 
+                <TouchableOpacity style={styles.create}
+                onPress={()=>this.props.navigation.navigate('ChangePassMail')}>
+                    <Text style={styles.textCreate}>Esqueci minha senha</Text>
+                </TouchableOpacity>
+                }
                     
                     {/* btn login/signup start here */}
                 {this.state.login &&
@@ -302,7 +292,7 @@ const styles = StyleSheet.create({
     create: {
         justifyContent:'center',
         alignItems:'center',
-        padding:35,
+        padding:10,
         
     },
     textCreate: {
@@ -310,7 +300,8 @@ const styles = StyleSheet.create({
         textDecorationLine: 'underline'
         
     },btnArea: {
-        marginBottom: 50
+        marginBottom: 50,
+        marginTop: 30
     }
     
 })

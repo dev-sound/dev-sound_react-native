@@ -602,7 +602,6 @@ export default class Payment extends Component {
 
                 <View style={styles.areaForms}>
                 {/* Start informations address user */}
-                
                     <Input 
                         validInput={this.state.validStyleCep}    
                         fieldLabel = 'CEP'
