@@ -30,6 +30,7 @@ export default class Product extends Component{
     componentWillReceiveProps(){
      this.ProductBanner()
     }
+
     tratarPreco = (preco) => {
         let precoConvertido = parseFloat(preco).toFixed(2)
         return `R$${precoConvertido.replace('.', ',')}`
@@ -78,25 +79,27 @@ export default class Product extends Component{
         .then((infos) => {
 
 
-        this.setState({
-            productID: infos.data[0]._id,
-            productName: infos.data[0].nome,
-            productImage: infos.data[0].img,
-            productPrice: infos.data[0].preco,
-            productDescription: infos.data[0].descricao,
-            productSpecs: infos.data[0].especificacao,
-            productModel:infos.data[0].modelo,
-            productCategory:infos.data[0].categoria,
-            estoqueProduct:infos.data[0].estoque
+            this.setState({
+                productID: infos.data[0]._id,
+                productName: infos.data[0].nome,
+                productImage: infos.data[0].img,
+                productPrice: infos.data[0].preco,
+                productDescription: infos.data[0].descricao,
+                productSpecs: infos.data[0].especificacao,
+                productModel:infos.data[0].modelo,
+                productCategory:infos.data[0].categoria,
+                estoqueProduct:infos.data[0].estoque
             })
         })
     }
 
     willFocus = this.props.navigation.addListener('willFocus', () => {this.ProductDBImports()})
 
+ 
 
     ProductBanner = async () => {
         let productName = this.props.navigation.getParam('nome')
+
         await axios.get(`http://10.0.3.2:3000/produtos/${productName}`)
         .then((infos) => {
             
@@ -106,7 +109,8 @@ export default class Product extends Component{
                 productImage: infos.data[0].img,
                 productPrice: infos.data[0].preco,
                 productDescription: infos.data[0].descricao,
-                productSpecs: infos.data[0].especificacao
+                productSpecs: infos.data[0].especificacao,
+                estoqueProduct:infos.data[0].estoque
             })
         
         
@@ -120,7 +124,6 @@ export default class Product extends Component{
         let precoConvertido = parseFloat(preco).toFixed(2)
         return `R$${precoConvertido.replace('.', ',')}`
     }
-
 
 
     estoqueValidItem = () => {
