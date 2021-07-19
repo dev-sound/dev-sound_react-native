@@ -3,7 +3,7 @@ import PaymentDetails from '../components/PaymentDetails';
 import Title from '../components/Title';
 
 import React, { Component } from 'react'
-import { Text, FlatList, StyleSheet, View } from 'react-native'
+import { Text, FlatList, StyleSheet, View, Dimensions } from 'react-native'
 import axios from 'axios';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -46,12 +46,15 @@ export default class Details extends Component {
     payment = () => {
         if (this.state.ehboleto) {
             return (
-                <View >
-                    <Text style={style.text}>Boleto: </Text>
-                    <View style={style.paymentArea}>
-                        <Text style={style.paymentNumber}>{this.state.numeroBoleto}</Text>
+                <View style={style.orderData}>
+                    <Text style={style.text}>Boleto</Text>
+                    <View style={style.orderData}>
+                        <Text style={style.subTitle}>Número do boleto: </Text>
                     </View>
-                </View>
+                            <View style={style.numberBox}>
+                                <Text style={style.textNumber}>{this.state.numeroBoleto}</Text>
+                            </View>
+                    </View>
             )
         }
         return (
@@ -81,9 +84,10 @@ export default class Details extends Component {
                 <View style={style.pageTitle}>
                 <Title title='Detalhes do pedido'/>
                 </View>
+                <View style={style.dataContainer}>
                 <View style={style.orderData}>
                 <Text style={style.subTitle}>Forma de pagamento: </Text>
-                <Text>{this.payment()}</Text>
+                <Text style={style.text}>{this.payment()}</Text>
                 </View>
                 <View style={style.orderData}>
                 <Text style={style.subTitle}>Data da compra: </Text>
@@ -94,22 +98,25 @@ export default class Details extends Component {
                 <Text style={style.text}>R${this.state.totalValue}</Text>
                 </View>
                 <Text style={style.subTitleItems}>Itens comprados: </Text>
-                
+                </View>
+                <View style={style.flatlistContainer}>
                 <FlatList
                     data={this.state.products}
                     keyExtractor={item => item.id}
                     renderItem={this.renderProduct} />
+                </View>
             </ScrollView>
         )
     }
 }
 const style = StyleSheet.create({
     scrollContainer:{
-        backgroundColor: '#F1F1F1'
+        backgroundColor: '#F1F1F1',
+    },
+    flatlistContainer: {
+        marginBottom: 40,
     },
     orderData:{
-        width: '100%',
-        flexDirection: 'row',
         marginBottom: 4,
     },
     
@@ -122,7 +129,7 @@ const style = StyleSheet.create({
     subTitle: {
         fontSize: 20,
         fontWeight: "bold",
-        marginLeft: 10,
+        
     },
 
     subTitleItems: {
@@ -133,10 +140,29 @@ const style = StyleSheet.create({
 
     text: {
         fontSize: 18,
-        marginTop: 1
+        marginTop: 1,
+    },
+
+    textNumber: {
+        width: '80%',
+        fontSize: 18,
+        marginBottom: 15,
     },
 
     pageTitle: {
         marginBottom: 5,
+    },
+
+    orderDataContainer: {
+        flexWrap: 'wrap'
+    },
+
+    dataContainer: {
+        margin: 10,
+    },
+
+    numberBox: {
+        width: '100%'
     }
+
 })

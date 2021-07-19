@@ -52,7 +52,7 @@ export default class ShopCart extends Component {
     }    
 
     return (
-      <Text style={[styles.total, { fontWeight: "500", }]}>{`R$${(sumsItem).toFixed(2)}`}</Text> 
+      <Text style={[styles.total, { fontWeight: "500", }]}>{`R$${(sumsItem).toFixed(2)}`}</Text>
     )
     
   }
