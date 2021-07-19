@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
-import { View, StyleSheet, FlatList, Dimensions, ScrollView, Text } from 'react-native'
+import { View, StyleSheet, FlatList, Dimensions, ScrollView, Text, TextInput,
+TouchableOpacity, Image } from 'react-native'
 import axios from 'axios'
 
 
@@ -8,9 +9,7 @@ import axios from 'axios'
 import Header from '../components/Header'
 import Title from '../components/Title'
 import ProductOnly from '../components/ProductOnly'
-import Search from '../components/Search'
-import Button from '../components/Button'
-
+import searchIcon from '../../../assets/icons/search_icon.png'
 
 
 
@@ -19,9 +18,11 @@ export default class SearchResult extends Component {
 
         customDidMount = async () => {
 
-            await this.setState({search: this.props.navigation.getParam('search')})
+            
 
             await this.getProduct() 
+
+
         }
 
         componentDidMount () {    
@@ -35,12 +36,29 @@ export default class SearchResult extends Component {
         )
 
         getProduct = async () => {
-            await axios.get(`http://10.0.3.2:3000/produtos/${this.state.search.search}`)
-             .then(infos => {
+            if (this.state.insideSearch) {
+                await axios.get(`http://10.0.3.2:3000/produtos/${this.state.insideSearch}`)
+                .then(infos => {
+              
+                    this.setState({respProdutos:infos.data})
+
+                    this.setState({title:this.state.insideSearch})
+                    this.setState({insideSearch:''})
+                   
+                })
+               .catch(erro => console.warn(erro))
+            } else {
+                await this.setState({search: this.props.navigation.getParam('search')})
+                await axios.get(`http://10.0.3.2:3000/produtos/${this.state.search.search}`)
+                .then(infos => {
            
                 this.setState({respProdutos:infos.data})
+
+                this.setState({title:this.state.search.search})
+
+
             })
-            .catch(erro => console.warn(erro))
+            .catch(erro => console.warn(erro))}
         }
 
         notFound = () => {
@@ -49,15 +67,20 @@ export default class SearchResult extends Component {
             }
         }
 
-        insideSearch = () => {
+        insSearch = () => {
             this.customDidMount()
         }
+
+
+        
 
 
 
         state = {
             search:'',
-            respProdutos: []
+            respProdutos: [],
+            insideSearch: '',
+            title: ''
         }
 
 
@@ -83,14 +106,25 @@ export default class SearchResult extends Component {
                 <ScrollView style={styles.scrollContainer}>
                     <Header drawer={() => this.props.navigation.openDrawer()}
                         cart={() => this.props.navigation.navigate('ShopCart')}
-                    />
-                    <Search navigation={this.props.navigation}
-                        reload={() => this.insideSearch()}
-                    />
-
+                        comeBackHome={() => this.props.navigation.navigate('Home')}/>
+                    <View style = {styles.containerSearch}>
+                        <View style = {styles.containerInput}>
+                            <TextInput value={this.state.insideSearch}
+                                onChangeText={(insideSearch) => {this.setState({insideSearch: insideSearch})}}
+                                style = {styles.input} 
+                                placeholder = 'O que você procura hoje?'/>
+                            <View style = {styles.image}>
+                                <TouchableOpacity
+                                onPress={() => this.insSearch()}
+                                    style={styles.ImagePosition}>
+                                        <Image source = {searchIcon}/>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </View>
                     <View style={styles.container}>
                         <Title title='Você pesquisou por:'/>
-                    <Title title={this.state.search.search}/>
+                    <Title title={this.state.title}/>
                     </View>
                     <View style={styles.flatContainer}>  
                         <FlatList
@@ -133,5 +167,41 @@ export default class SearchResult extends Component {
 
         text: {
             fontSize: 25
+        },
+        containerInput : {
+            flexDirection:'row',
+            padding: 5,
+            borderRadius:8,
+            width:'98%',
+            alignItems:'center',
+            justifyContent:'center',
+            marginLeft:'2%',
+            zIndex: 4,
+        },
+    
+        containerSearch:{
+            justifyContent:'space-between',
+        },
+    
+        image : {
+            backgroundColor: '#E6E6E6',
+            height:38,
+            width:34,
+            borderRadius:10,
+            position:'relative',
+            right:15
+        },
+        input : {
+            backgroundColor: '#E6E6E6',
+            width:'92%',
+            paddingLeft:20,
+            height:38,
+            fontSize: 19,
+            borderRadius:10
+        },
+    
+        ImagePosition:{
+            position:'relative',
+            top:6
         }
     })
