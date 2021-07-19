@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { View, StyleSheet, FlatList, Dimensions, ScrollView, Text, TextInput,
-TouchableOpacity, Image } from 'react-native'
+TouchableOpacity, Image, Alert } from 'react-native'
 import axios from 'axios'
 
 
@@ -36,22 +36,25 @@ export default class SearchResult extends Component {
         )
 
         getProduct = async () => {
+
             if (this.state.insideSearch) {
                 await axios.get(`http://10.0.3.2:3000/produtos/${this.state.insideSearch}`)
                 .then(infos => {
-              
+                
                     this.setState({respProdutos:infos.data})
 
                     this.setState({title:this.state.insideSearch})
                     this.setState({insideSearch:''})
-                   
+                    this.setState({search:''})
+                    this.setState({title:this.state.search.search})
+                    
                 })
-               .catch(erro => console.warn(erro))
+                .catch(erro => console.warn(erro))
             } else {
                 await this.setState({search: this.props.navigation.getParam('search')})
                 await axios.get(`http://10.0.3.2:3000/produtos/${this.state.search.search}`)
                 .then(infos => {
-           
+            
                 this.setState({respProdutos:infos.data})
 
                 this.setState({title:this.state.search.search})
@@ -59,7 +62,8 @@ export default class SearchResult extends Component {
 
             })
             .catch(erro => console.warn(erro))}
-        }
+            
+            }
 
         notFound = () => {
             if (this.state.respProdutos == '') {
