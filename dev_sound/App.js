@@ -3,6 +3,8 @@ import Product from './src/Views/screens/Product';
 import Auth from './src/Views/screens/Auth';
 import Payment from './src/Views/screens/Payment';
 import Menu from './src/Views/screens/Menu';
+import ChangePassLogin from './src/Views/screens/ChangePassLogin';
+import ChangePassMail from './src/Views/screens/ChangePassMail';
 
 import Category from './src/Views/screens/Category';
 import CategoryViolao from './src/Views/screens/Category';
@@ -117,6 +119,14 @@ const Navigator = createAppContainer(
         OrderDone: {
           name: 'OrderDone',
           screen: OrderDone
+        },
+        ChangePassLogin: {
+          name: 'ChangePassLogin',
+          screen: ChangePassLogin
+        },
+        ChangePassMail: {
+          name: 'ChangePassMail',
+          screen: ChangePassMail
         }
     
       },{

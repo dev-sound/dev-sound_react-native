@@ -10,7 +10,7 @@ import { RadioButton,Checkbox } from 'react-native-paper';
 import paymentsSaves from '../components/Common/paymentsSaves'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import axios from 'axios'
-import { add } from 'react-native-reanimated'
+
 
 
 
@@ -118,39 +118,67 @@ export default class Payment extends Component {
 
                 try {   
                
-                const inser = await axios.post("http://10.0.3.2:3000/Pagamento",{
-                    cartaoCredito:this.state.numberCard,
-                    cep:this.state.cep,
-                    rua:this.state.street,
-                    numero:this.state.numberHome,
-                    bairro:this.state.district,
-                    cidade:this.state.city,
-                    UF:this.state.UF,
-                    Produtos:this.state.items,
-                    Forma_pagamento:{
-                        ehBoleto:this.state.ehBoleto
-                    }
-                },
-                {
-                  headers:{
-                    'Authorization':this.state.userInfos.token
-                  }
-                })         
+                    await axios.post("http://10.0.3.2:3000/Pagamento",{
+                        cartaoCredito:this.state.numberCard,
+                        cep:this.state.cep,
+                        rua:this.state.street,
+                        numero:this.state.numberHome,
+                        bairro:this.state.district,
+                        cidade:this.state.city,
+                        UF:this.state.UF,
+                        Produtos:this.state.items,
+                        Forma_pagamento:{
+                            ehBoleto:this.state.ehBoleto
+                        }
+                    },
+                    {
+                      headers:{
+                        'Authorization':this.state.userInfos.token
+                      }
+                    })         
+                    
+                    this.setState({
+                        numberCard:'',
+                        nameClient:'',
+                        monthCard:'',
+                        yearCard:'',
+                        cvv:'',
+                        cep:'',
+                        street:'',
+                        numberHome:'',
+                        district:'',
+                        city:'',  
+                        validStyleCard:'',
+                        validStyleName:'',
+                        validStyleMouth:'',
+                        validStyleYear:'',
+                        validStyleCvv:'',
+                        validStyleCep:'',
+                        validStyleStreet:'',
+                        validStyleNumber:'',
+                        validStyleDistrict:'',
+                        validStyleCity:''
+                    })
+                    
+                
+                    disabledInputs[0].disabledName = false
+                    disabledInputs[1].disabledMonth = false
+                    disabledInputs[2].disabledYear = false
+                    disabledInputs[3].diabledCvv = false
+                    disabledInputs[4].disabledCep = false
+                    disabledInputs[5].disabledStreet = false
+                    disabledInputs[6].disabledNumber = false
+                    disabledInputs[7].disabledDistrict = false
+                    disabledInputs[8].disabledCity = false
+                    disabledInputs[9].disabledBtn = false
+                   
+                    this.props.navigation.navigate('OrderDone') 
 
-                
-                
-                Alert.alert('Pedido','Realizado com Sucesso' , [ {
-                    text:'Finalizar',
-                    onPress: () => {
-                        
-                       
-                        this.props.navigation.navigate('Home') 
-                        
-                    }
-                  },])
-            }catch (err){
-                Alert.alert('Compra não concluida :(  ',' houve um erro na sua compra :/ ')
-            }
+                }catch (err){
+                    Alert.alert('Compra não concluida :(  ',' houve um erro na sua compra :/ ')
+                }
+            
+            
         }   
 
 
@@ -162,9 +190,6 @@ export default class Payment extends Component {
         this.props.navigation.navigate('OrderDone')
     }
 
-    toHome = () => {
-        this.props.navigation.navigate('Home')
-    }
 
     // Fim navegacao OrderDone
     cabo = async () => {
@@ -189,8 +214,7 @@ export default class Payment extends Component {
     }
     
 
-
-    //  5392076388465820
+    //  c
     // Teste Teste
     // 07261-983
     // Teste teste 
@@ -478,16 +502,28 @@ export default class Payment extends Component {
            disabledInputs[6].disabledNumber = true
        
            this.setState({
-     
+
             street:adress.data.logradouro,
             district:adress.data.bairro,
             city:adress.data.localidade,  
-       
+            UF:adress.data.uf
            })
-    
+           
+           console.warn(adress.data)
         }
         catch(err) {
-           Alert.alert('Probleminha no Cep', 'Não enconstramos seu cep, verique se esta correto :) ')
+            this.setState({
+                validStyleCep:'noValid',
+                street:'',
+                district:'',
+                city:'',
+                numberHome:'',
+                cep:'',
+                buttonPayment:false
+            })
+            disabledInputs[6].disabledNumber = false
+            
+           Alert.alert('Ops! Probleminha no cep ', 'Cep inserido inexistente, por favor confira se foi digitado de forma correta :) ')
         }
       }
 
@@ -633,7 +669,6 @@ export default class Payment extends Component {
 
                 <View style={styles.areaForms}>
                 {/* Start informations address user */}
-                
                     <Input 
                         validInput={this.state.validStyleCep}    
                         fieldLabel = 'CEP'

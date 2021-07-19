@@ -13,7 +13,8 @@ export default class ShopCart extends Component {
   state ={
     valueTotal:0,
     items:[],
-    userInfos:{}
+    userInfos:{},
+    itensCart: true
   }
 
 
@@ -85,7 +86,6 @@ export default class ShopCart extends Component {
         <Button finishButton label="Finalizar" onPress={() => this.props.navigation.navigate('Payment')} />
       )
     }
-
     return (
       <Button finishButton label="Finalizar"
        onPress={
