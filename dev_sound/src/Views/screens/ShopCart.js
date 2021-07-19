@@ -52,7 +52,7 @@ export default class ShopCart extends Component {
     }    
 
     return (
-      <Text style={[styles.total, { fontWeight: "500", }]}>{`R$ ${(sumsItem).toFixed(2)}`}</Text>
+      <Text style={[styles.total, { fontWeight: "500", }]}>{`R$${(sumsItem).toFixed(2)}`}</Text>
     )
     
   }
@@ -82,12 +82,12 @@ export default class ShopCart extends Component {
   
     if(userTokem && valueItems.length >= 1){
       return  (
-        <Button label="Finalizar" onPress={() => this.props.navigation.navigate('Payment')} />
+        <Button finishButton label="Finalizar" onPress={() => this.props.navigation.navigate('Payment')} />
       )
     }
 
     return (
-      <Button label="Finalizar"
+      <Button finishButton label="Finalizar"
        onPress={
          () => Alert.alert('Login','Faça Login para concluir sua compra',
           [
@@ -125,6 +125,13 @@ export default class ShopCart extends Component {
               //  cartQuant={this.state.items.length}
              />
               <Title title="Seu carrinho" />
+
+              <View style={styles.totalPrice}>
+                <Text style={styles.total}>Subtotal: </Text>
+            
+                  {this.sumItems()}
+            
+               </View>
              
             <FlatList
                  data={this.state.items}
@@ -142,30 +149,15 @@ export default class ShopCart extends Component {
             />
             
              </View>
-             
-           <View style={styles.totalPrice}>
-                <Text style={styles.total}>Total: </Text>
-            
-                  {this.sumItems()}
-            
-               </View>
-
-               {this.buttonPayment()}
             </ScrollView>
+
+            {this.buttonPayment()}
               
       </SafeAreaView>
     )
   }
 
 }
- 
-
-
-
-
-
-
-
 
 const styles = StyleSheet.create(
   {
@@ -173,14 +165,15 @@ const styles = StyleSheet.create(
       flex: 1,
       backgroundColor: "#F1F1F1",
     },
+
     totalPrice: {
       flexDirection: "row",
-      justifyContent: "center",
-      paddingTop: 30,
-      paddingBottom: 16
+      marginLeft: 10,
+      marginTop: 5
     },
+
     total: {
-      fontSize: 20,
+      fontSize: 18,
       textDecorationStyle: "solid",
       fontWeight: "700",
       paddingBottom: 10

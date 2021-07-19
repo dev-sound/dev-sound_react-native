@@ -19,12 +19,12 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         height: 'auto',
     },
-  teste:{
-    paddingVertical:30,
-    paddingHorizontal: 20,
-    borderWidth: 1,
-    borderRadius: 20,
-    borderColor: '#B8B8B8', 
-
+    teste:{
+        paddingBottom: 30,
+        paddingHorizontal: 20,
+        paddingTop: 10,
+        borderWidth: 1,
+        borderRadius: 20,
+        borderColor: '#B8B8B8', 
   }
 })

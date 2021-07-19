@@ -73,7 +73,7 @@ export default class Auth extends Component {
         
         catch(err){
             if(`${err}` == 'Error: Request failed with status code 401'){
-                Alert.alert('Erro ao realizar login', `Usuario ou senha inválido  \n\n ${err}`)
+                Alert.alert('Erro ao realizar login', `Usuário ou senha inválida  \n\n ${err}`)
             }else{
                 Alert.alert('Error ao realizar login', `Erro de conexão \n\n${err}`) 
             }
@@ -99,7 +99,7 @@ export default class Auth extends Component {
             this.regexPhone(this.state.number)
             this.regexPassword(this.state.password)
             this.readyToSignup(this.state.confirmPassword)
-            Alert.alert('Erro ao cadastrar', 'Verifique se todos os campos foram cadastrados corretamentes' )
+            Alert.alert('Erro ao cadastrar', 'Verifique se todos os campos foram preenchidos corretamente' )
         }
         
     }
@@ -177,21 +177,22 @@ export default class Auth extends Component {
                     <Logo comeBackHome={() => this.props.navigation.navigate('Home')}/>
                 </View>
                 <Portrait>
-                    <Text style={styles.text}>
-                        {this.state.register ? 'Crie a sua conta': ''}
-                    </Text>              
+                    {this.state.register &&
+                    <View>
+                        <Text style={styles.text}>Crie a sua conta</Text>
+                    </View>}     
                         {/* Signup Start here */}
                     {this.state.register && 
                     <Input fieldLabel= 'Nome' 
                         validInput = {this.state.Validname}
-                        placeholder= 'Ex: Jorge' 
+                        placeholder= 'Insira seu nome' 
                         style={styles.input} 
                         onChangeText={name =>this.setState({name})}
                         onBlur={()=>this.regexName(this.state.name)}/>}
                     {this.state.register && 
                     <Input fieldLabel= 'Sobrenome'
                         validInput = {this.state.ValidlastName}
-                        placeholder= 'Ex: Silva' 
+                        placeholder= 'Insira seu sobrenome' 
                         style={styles.input}
                         onChangeText={lastName =>this.setState({lastName})}
                         onBlur={()=>this.regexLastName(this.state.lastName)}/>}
@@ -205,7 +206,7 @@ export default class Auth extends Component {
                     {this.state.register && 
                     <Input fieldLabel= 'Celular' 
                         validInput = {this.state.validPhone}
-                        placeholder= 'Ex: 11933332222' 
+                        placeholder= 'Insira seu número' 
                         style={styles.input}
                         onChangeText={number =>this.setState({number})}
                         onBlur={()=>this.regexPhone(this.state.number)}/>} 
@@ -213,13 +214,12 @@ export default class Auth extends Component {
                     <Input fieldLabel= 'Senha'
                         validInput = {this.state.Validpassword}
                         placeholder= 'Crie uma senha' 
-                        
                         style={styles.input}  
                         secureTextEntry
                         onChangeText={password =>this.setState({password})}
                         onBlur={()=> this.regexPassword(this.state.password)}/>}
                     {this.state.register &&
-                    <Text>A senha deve conter no mínimo 8 caracteres, um digito numérico</Text>
+                    <Text>A senha deve conter no mínimo 8 caracteres e um digito numérico</Text>
                     }
                     {this.state.register && 
                     <Input fieldLabel= 'Confirme sua senha' 
@@ -231,14 +231,18 @@ export default class Auth extends Component {
                         onChangeText={confirmPassword =>this.setState({confirmPassword})}
                         onBlur={()=>this.readyToSignup(this.state.confirmPassword)} />}
                     {this.state.register &&
-                    <Text>As senhas precisam ser iguais</Text>
+                    <Text>As senhas devem ser iguais</Text>
                     }
                         {/* Signup end here */}
 
                         {/* Login start here */}
                     {this.state.login &&
+                    <View>
+                        <Text style={styles.text}>Entrar na conta</Text>
+                    </View>}  
+                    {this.state.login &&
                     <Input  left={<TextInput.Icon name="account" />}
-                        fieldLabel= 'Login' 
+                        fieldLabel= 'E-mail' 
                         placeholder= 'Digite seu e-mail' 
                         value={this.state.logEmail}
                         onChangeText={logEmail => this.setState({logEmail})}
@@ -248,7 +252,7 @@ export default class Auth extends Component {
                         left={<TextInput.Icon name="lock" />} 
                         left={<TextInput.Icon name="lock" />} 
                         value={this.state.logSenha}
-                        placeholder= 'Crie uma senha' style={styles.input} 
+                        placeholder= 'Digite sua senha' style={styles.input} 
                         onChangeText={logSenha => this.setState({logSenha})} 
                         secureTextEntry/>}
                 </Portrait>
@@ -269,12 +273,12 @@ export default class Auth extends Component {
                     {/* btn login/signup start here */}
                 {this.state.login &&
                 <View style={styles.btnArea}>
-                    <Btn label='ENTRAR'  onPress={()=>this.signin()}/>
+                    <Btn label='Entrar'  onPress={()=>this.signin()}/>
                 </View>
                 }
                 {this.state.register && 
                 <View  style={styles.btnArea}>
-                    <Btn label='CADASTRAR' onPress={()=>this.signup()}/>
+                    <Btn label='Cadastrar' onPress={()=>this.signup()}/>
                 </View>
                 }
             </ScrollView>
@@ -282,35 +286,42 @@ export default class Auth extends Component {
      }
 }
 const styles = StyleSheet.create({
-    container:{
-        backgroundColor: '#F1F1F1'
+    container: {
+        backgroundColor: '#F1F1F1',
     },
-    logoArea:{
-        justifyContent:'center',
-        alignItems:'center',
-        padding:35,
-        
+
+    logoArea: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 35,
     },
-    input:{
+    
+    input: {
         fontSize: 25,
-        
-        
+        marginBottom: 5,
+        marginTop: 10
     },
+
     text: {
         fontSize: 28,
-        textAlign: 'center'
+        textAlign: 'center',
+        marginTop: 5,
+        marginRight: 10
     },
+
     create: {
-        justifyContent:'center',
-        alignItems:'center',
+        justifyContent: 'center',
+        alignItems: 'center',
         padding:35,
-        
     },
+
     textCreate: {
-        color:'#17133B',
-        textDecorationLine: 'underline'
-        
-    },btnArea: {
+        color: '#17133B',
+        textDecorationLine: 'underline',
+        fontSize: 18,
+    },
+    
+    btnArea: {
         marginBottom: 50
     }
     
