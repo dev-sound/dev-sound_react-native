@@ -86,7 +86,8 @@ export default class Product extends Component{
             productDescription: infos.data[0].descricao,
             productSpecs: infos.data[0].especificacao,
             productModel:infos.data[0].modelo,
-            productCategory:infos.data[0].categoria
+            productCategory:infos.data[0].categoria,
+            estoqueProduct:infos.data[0].estoque
             })
         })
     }
@@ -98,15 +99,19 @@ export default class Product extends Component{
         let productName = this.props.navigation.getParam('nome')
         await axios.get(`http://10.0.3.2:3000/produtos/${productName}`)
         .then((infos) => {
-        this.setState({
-            productID: infos.data[0]._id,
-            productName: infos.data[0].nome,
-            productImage: infos.data[0].img,
-            productPrice: infos.data[0].preco,
-            productDescription: infos.data[0].descricao,
-            productSpecs: infos.data[0].especificacao
+            
+            this.setState({
+                productID: infos.data[0]._id,
+                productName: infos.data[0].nome,
+                productImage: infos.data[0].img,
+                productPrice: infos.data[0].preco,
+                productDescription: infos.data[0].descricao,
+                productSpecs: infos.data[0].especificacao
             })
+        
+        
         })
+        
     }
 
     willFocus = this.props.navigation.addListener('willFocus', () => {this.ProductBanner()})
@@ -114,6 +119,29 @@ export default class Product extends Component{
     tratarPreco = (preco) => {
         let precoConvertido = parseFloat(preco).toFixed(2)
         return `R$${precoConvertido.replace('.', ',')}`
+    }
+
+
+
+    estoqueValidItem = () => {
+        let estoqueItem = this.state.estoqueProduct
+        console.warn(estoqueItem)
+
+        if(estoqueItem > 0 ){
+            return (
+                <View style={styles.inlineContainer}>
+                    <Button 
+                    onPress={() => this.envProduct()}
+                    label='Comprar'/>
+                </View>
+            )
+        }
+
+        return(
+            <View style={styles.failPaymentEstoque}>
+                <Text style={styles.failPayment}> Sem Estoque 😟 </Text>
+             </View>
+        )
     }
 
     render(){ 
@@ -138,11 +166,7 @@ export default class Product extends Component{
                     <Text style={styles.priceTitle}>Preço</Text>
                     <Text style={styles.price}>{this.tratarPreco(this.state.productPrice)}</Text>
                 </View>
-                <View style={styles.inlineContainer}>
-                    <Button 
-                    onPress={() => this.envProduct()}
-                    label='Comprar'/>
-                </View>
+                {this.estoqueValidItem()}
             </View>
 
             <View style={styles.descriptionContainer}>
@@ -161,6 +185,17 @@ const styles =  StyleSheet.create(
     {   
         scrollviewContainer: {
             backgroundColor: '#F1F1F1'
+        },
+
+        failPayment:{
+            fontSize:23,
+            textAlign:'left'
+        },
+
+        failPaymentEstoque:{
+            justifyContent: 'flex-end',
+            marginTop: 50,
+            width:180
         },
 
         productTitle: {

@@ -30,7 +30,7 @@ export default class Home extends Component {
 
 
 
-
+  willFocus = this.props.navigation.addListener('willFocus', () => {this.componentDidMount()})
   state={
     infos:'',
     respProdutos:[],
@@ -60,18 +60,21 @@ export default class Home extends Component {
   }
 
 
-   
+
     renderProductSpotlight = ({item}) =>  {
+      
       return (
         <View style={style.productOnly}>
           <ProductOnly
             onPress={() => this.props.navigation.navigate('Product', {id: item._id})}
             imgProduct={item.img}
+            itemEstoque = {item.estoque}
             nameProduct={item.nome}
             price={item.preco}
           />
         </View>
       )
+    
     }
 
     renderProductNewer = ({item}) => {
@@ -79,6 +82,7 @@ export default class Home extends Component {
       <View style={style.productOnly}>
         <ProductOnly
           onPress={() => this.props.navigation.navigate('Product', {id: item._id})}
+          itemEstoque = {item.estoque}
           imgProduct={item.img}
           nameProduct={item.nome}
           price={item.preco}
@@ -86,6 +90,7 @@ export default class Home extends Component {
       </View>
       )
     }
+
 
 
 
