@@ -538,13 +538,13 @@ export default class Payment extends Component {
         return (
             <SafeAreaView style={styles.container}>
             <ScrollView> 
+               
+                <View style={styles.logoArea}>
+                    <Logo comeBackHome={() => this.props.navigation.navigate('Home')}/>
+                </View>
 
-                <Header drawer={() => this.props.navigation.openDrawer()}
-                comeBackHome={() => this.props.navigation.navigate('Home')}
-                cart={() => this.props.navigation.navigate('ShopCart')}
-                />
                 <View style={styles.pageTitle}>
-                <Title title='Checkout'/>
+                <Title title='Finalização de Pedido'/>
                 </View>
                 <View style={styles.textTitles}>
                     <Text style={styles.titleForm}>Forma de Pagamento</Text>
@@ -765,7 +765,10 @@ export default class Payment extends Component {
                                 <Text styles={styles.ufText}>{this.state.UF}</Text>
                             </PickerSelect>
                         </View>
-                            
+                    </View>
+
+                    <View> 
+                      <Text style={styles.infoFrete}>* Caros clientes, informamos que usamos um frete fixo de R$ 100,00 </Text>
                     </View>
                     {/* End informations address user */}
                     {/* <View style={styles.checkboxArea}>
@@ -824,6 +827,11 @@ const styles = StyleSheet.create(
         areaForms:{
             padding:13,
         },
+
+        infoFrete:{
+            color:"#FE3535",
+            fontSize:12
+        },  
 
         logoArea:{
             justifyContent:'center',
@@ -920,7 +928,7 @@ const styles = StyleSheet.create(
         },
 
         pageTitle: {
-            marginBottom: 15
+            marginBottom:12
         },
 
         container: {
