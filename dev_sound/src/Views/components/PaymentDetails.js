@@ -14,7 +14,7 @@ export default props => {
                     <View style={styles.price}>
                         <Text style={styles.priceTitle}>Preço unitário</Text>
                         <Text style={styles.value}>R${props.priceUnit}</Text>
-                        <Text style={styles.qtdProduct}> Quantidade: 1 </Text>
+                        <Text style={styles.priceTitle}>Quantidade: 1</Text>
                     </View>
                 </View>
             </View>
@@ -29,72 +29,46 @@ const styles = StyleSheet.create(
     {
 
         container: {
-            width: '100%',
-            flexDirection: 'row',
-            justifyContent: 'center',
+            backgroundColor: '#FACC22',
+            width: '80%',
             padding: 10,
-            borderBottomWidth: 1,
-            borderBottomColor: '#D0D0D0'
+            alignSelf: 'center',
+            borderRadius: 15,
+            marginTop: 10,
+            elevation: 1
         },
 
-        containerImgProduct: {
-            width: Dimensions.get('window').width / 2.5,
-            height: Dimensions.get('window').width / 2.5,
-            backgroundColor: '#fff',
-            borderRadius: 11,
-            padding: 5,
-            elevation: 4
-        },
-
-        img: {
-            width: '100%',
-            height: '100%',
-            borderRadius: 11
+        price: {
+            width: '100%'
         },
 
         qtdProduct: {
             marginTop: 7,
-            alignSelf: 'flex-start',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
         },
 
         productName: {
             fontWeight: 'bold',
-            fontSize: 15
+            fontSize: 15,
+            textAlign: 'center'
         },
 
         productModel: {
             marginTop: 10,
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            textAlign: 'center'
         },
 
         priceTitle: {
             fontWeight: 'bold',
-            fontSize: 16
+            fontSize: 16,
+            textAlign: 'center'
         },
 
         value: {
-            fontSize: 18,
+            fontSize: 20,
+            textAlign: 'center',
         },
-
-        areaInfoProduct: {
-            width: '55%',
-            height: '88%',
-            marginLeft: 10,
-            flexDirection: 'row',
-        },
-
-        infos: {
-            justifyContent: 'space-between'
-        },
-
-
-        pricesInfos: {
-            justifyContent: 'space-between',
-            position: 'relative',
-            right: 19
-        },
-
         days: {
             marginTop: 10,
             marginLeft: 20

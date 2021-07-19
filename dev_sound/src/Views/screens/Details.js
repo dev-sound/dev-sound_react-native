@@ -55,80 +55,88 @@ export default class Details extends Component {
             )
         }
         return (
-            <>
+            <View style={style.cardTitleContainer}>
                 <Text style={style.text}>Cartão de Crédito</Text>
-            </>
+            </View>
         )
     }
     renderProduct = ({ item }) => {
         return (
+            <ScrollView>
             <PaymentDetails
                 datails
                 nameProduct={item.nome}
                 modelProduct={item.modelo}
                 priceUnit={item.valor_unitario} />
+                </ScrollView>
         )
     }
     render() {
         return (
-            <ScrollView>
+            <ScrollView style={style.scrollContainer}>
                 <Header drawer={() => this.props.navigation.openDrawer()}
                     comeBackHome={() => this.props.navigation.navigate('Home')}
                     cart={() => this.props.navigation.navigate('ShopCart')}
                 />
-                <Text style={style.title}>Detalhes do pedido</Text>
-                <Text style={style.subTitle}>Forma de pagamento:</Text>
-                {this.payment()}
-                <Text style={style.date}> Data da compra:  {`\n ${this.state.dataCompra.substring(0, 10)}`}</Text>
-                <Text style={style.subTitle}>Itens comprados: </Text>
+                <View style={style.pageTitle}>
+                <Title title='Detalhes do pedido'/>
+                </View>
+                <View style={style.orderData}>
+                <Text style={style.subTitle}>Forma de pagamento: </Text>
+                <Text>{this.payment()}</Text>
+                </View>
+                <View style={style.orderData}>
+                <Text style={style.subTitle}>Data da compra: </Text>
+                <Text style={style.text}>{this.state.dataCompra.substring(0, 10)}</Text>
+                </View>
+                <View style={style.orderData}>
+                <Text style={style.subTitle}>Total da compra: </Text>
+                <Text style={style.text}>R${this.state.totalValue}</Text>
+                </View>
+                <Text style={style.subTitleItems}>Itens comprados: </Text>
+                
                 <FlatList
                     data={this.state.products}
                     keyExtractor={item => item.id}
                     renderItem={this.renderProduct} />
-                <Text>{this.state.totalValue}</Text>
             </ScrollView>
         )
     }
 }
 const style = StyleSheet.create({
+    scrollContainer:{
+        backgroundColor: '#F1F1F1'
+    },
+    orderData:{
+        width: '100%',
+        flexDirection: 'row',
+        marginBottom: 4,
+    },
+    
     title: {
         textAlign: 'center',
         fontSize: 25,
-        fontWeight: "500",
         marginLeft: 10,
         fontWeight: 'bold'
     },
     subTitle: {
-        textAlign: 'center',
-        fontSize: 25,
-        fontWeight: "500",
-        marginLeft: 10,
-        fontWeight: 'bold'
-    },
-    text: {
-        textAlign: 'center',
-        fontSize: 18,
-        marginLeft: 10,
-        fontWeight: "500",
-        marginLeft: 10,
-        fontWeight: 'bold'
-    },
-    paymentNumber:{
-        textAlign: 'center',
         fontSize: 20,
-        fontWeight: "500",
+        fontWeight: "bold",
         marginLeft: 10,
-        fontWeight: 'bold'
     },
-    paymentArea: {
-        textAlign: 'center',
-        margin: 10
+
+    subTitleItems: {
+        fontWeight: 'bold',
+        fontSize: 22,
+        textAlign: 'center'
     },
-    date: {
-        textAlign: 'center',
-        fontSize: 15,
-        fontWeight: "500",
-        marginLeft: 10,
-        fontWeight: 'bold'
+
+    text: {
+        fontSize: 18,
+        marginTop: 1
+    },
+
+    pageTitle: {
+        marginBottom: 5,
     }
 })

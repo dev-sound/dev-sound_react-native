@@ -82,7 +82,7 @@ export default class Auth extends Component {
                 senhaValida: this.state.confirmPassword,
                 
             })
-            Alert.alert('Usuario cadastrado!')
+            Alert.alert('Usuário cadastrado!')
             this.setState({...initialState})
         }catch (err){
             this.regexName(this.state.name)

@@ -600,11 +600,11 @@ export default class Payment extends Component {
                         <View style={styles.areaInputsMins}>
 
                             <Input 
-                                medium
+                                
                                 validInput={this.state.validStyleMouth}
                                 style={styles.inputLabel}  
                                 fieldLabel = 'Mês de expiração'
-                                setSize={120}
+                              
                                 placeholder='Ex: 05'
                                 keyboardType={'numeric'}
                                 value={this.state.monthCard}
@@ -617,7 +617,7 @@ export default class Payment extends Component {
                                 validInput={this.state.validStyleYear}
                                 style={styles.inputLabel}                         
                                 fieldLabel = 'Ano de expiração'
-                                setSize={120}
+                                
                                 placeholder='Ex: 2022'
                                 keyboardType={'numeric'}
                                 value={this.state.yearCard}
@@ -630,7 +630,7 @@ export default class Payment extends Component {
                                 validInput={this.state.validStyleCvv}
                                 style={styles.inputLabel}    
                                 fieldLabel = 'CVV'
-                                setSize={100}
+                                
                                 placeholder='Ex: 100'
                                 keyboardType={'numeric'}
                                 value={this.state.cvv}
@@ -701,7 +701,7 @@ export default class Payment extends Component {
 
                         <Input 
                             validInput={this.state.validStyleStreet}
-                            setSize={290}
+                           
                             style={styles.inputLabel}
                             fieldLabel = 'Rua / Avenida'
                             placeholder='Insira o nome da Rua/Avenida'
@@ -714,7 +714,7 @@ export default class Payment extends Component {
                         <Input 
                             validInput={this.state.validStyleNumber}
                             style={styles.inputLabel}
-                            setSize={85}
+                            
                             fieldLabel = 'Número'
                             placeholder='Ex: 20'
                             keyboardType={'numeric'}
@@ -742,9 +742,9 @@ export default class Payment extends Component {
                         <Input 
                             validInput={this.state.validStyleCity}
                             style={styles.inputLabel}
-                            setSize={290}
+                            
                             fieldLabel = 'Cidade'
-                            placeholder='Insira a cidade'
+                            placeholder='Insira a cidade / município'
                             value={this.state.city}
                             onBlur={()=> this.validAdressCity(this.state.city)}
                             onChangeText={(city) => this.setState({city})}   
@@ -830,7 +830,8 @@ const styles = StyleSheet.create(
 
         infoFrete:{
             color:"#FE3535",
-            fontSize:12
+            fontSize:12,
+            fontWeight: 'bold'
         },  
 
         logoArea:{
@@ -864,7 +865,7 @@ const styles = StyleSheet.create(
         areaInputsMins:{
             flexDirection:'row',
             justifyContent:'space-between',
-            marginBottom: 12
+            marginBottom: 12,
         },
 
         select:{

@@ -82,7 +82,7 @@ export default class OrderDone extends Component {
                         <View style={styles.containerRow}>
                             <Text style={styles.textSub}>Veja mais em </Text>
                             <Button onPress={() => {this.props.navigation.navigate('Profile')}}
-                                smallButton label='MEU PERFIL'/>
+                                smallButton label='Meu Perfil'/>
                         </View>    
                     </View>
                     {/* resumo pedido */}
