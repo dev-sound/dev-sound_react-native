@@ -149,6 +149,7 @@ export default class Payment extends Component {
                         numberHome:'',
                         district:'',
                         city:'',  
+                        UF:'SP',
                         validStyleCard:'',
                         validStyleName:'',
                         validStyleMouth:'',
@@ -500,8 +501,13 @@ export default class Payment extends Component {
         try { 
            const adress = await axios.get(`https://viacep.com.br/ws/${cep}/json/`)
             
-           disabledInputs[6].disabledNumber = true
-       
+            disabledInputs[6].disabledNumber = true
+            disabledInputs[5].disabledStreet = true
+            disabledInputs[7].disabledDistrict = true
+            disabledInputs[8].disabledCity = true
+
+           
+
            this.setState({
 
             street:adress.data.logradouro,
@@ -509,8 +515,21 @@ export default class Payment extends Component {
             city:adress.data.localidade,  
             UF:adress.data.uf
            })
-           
-           console.warn(adress.data)
+
+
+           if(this.state.UF != 'SP' && this.state.UF != 'RJ' && this.state.UF != 'MG'){
+
+            Alert.alert('!Ops, você esta muito longe :( ', 'Ainda não fazemos entrega , fora das regiões de SP, RJ e MG :( ')
+            this.setState({
+                street:'',
+                district:'',
+                city:'',  
+                UF:'SP'
+            })
+        }
+
+      
+
         }
         catch(err) {
             this.setState({
@@ -756,9 +775,7 @@ export default class Payment extends Component {
                                 onValueChange ={(value) => this.setState({UF:value})}
                                 items ={[
                                     {label:'RJ' , value:'RJ'},
-                                    {label:'MG' , value:'MG'},
-                                    {label:'GO' , value:'GO'},
-                                    {label:'SC' , value:'SC'},
+                                    {label:'MG' , value:'MG'}
                                 ]}         
                                 placeholder={{ label:"SP", value: 'SP' }}
                                 >   
