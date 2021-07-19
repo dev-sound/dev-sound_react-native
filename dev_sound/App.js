@@ -5,7 +5,7 @@ import Payment from './src/Views/screens/Payment';
 import Menu from './src/Views/screens/Menu';
 import ChangePassLogin from './src/Views/screens/ChangePassLogin';
 import ChangePassMail from './src/Views/screens/ChangePassMail';
-
+import Details from './src/Views/screens/Details';
 import Category from './src/Views/screens/Category';
 import CategoryViolao from './src/Views/screens/Category';
 import CategoryContrabaixos from './src/Views/screens/Category';
@@ -127,6 +127,10 @@ const Navigator = createAppContainer(
         ChangePassMail: {
           name: 'ChangePassMail',
           screen: ChangePassMail
+        },
+        Details: {
+          name: 'Details',
+          screen: Details
         }
     
       },{
