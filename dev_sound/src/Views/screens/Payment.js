@@ -149,6 +149,7 @@ export default class Payment extends Component {
                         numberHome:'',
                         district:'',
                         city:'',  
+                        UF:'SP',
                         validStyleCard:'',
                         validStyleName:'',
                         validStyleMouth:'',
@@ -500,8 +501,13 @@ export default class Payment extends Component {
         try { 
            const adress = await axios.get(`https://viacep.com.br/ws/${cep}/json/`)
             
-           disabledInputs[6].disabledNumber = true
-       
+            disabledInputs[6].disabledNumber = true
+            disabledInputs[5].disabledStreet = true
+            disabledInputs[7].disabledDistrict = true
+            disabledInputs[8].disabledCity = true
+
+           
+
            this.setState({
 
             street:adress.data.logradouro,
@@ -509,8 +515,21 @@ export default class Payment extends Component {
             city:adress.data.localidade,  
             UF:adress.data.uf
            })
-           
-           console.warn(adress.data)
+
+
+           if(this.state.UF != 'SP' && this.state.UF != 'RJ' && this.state.UF != 'MG'){
+
+            Alert.alert('!Ops, você esta muito longe :( ', 'Ainda não fazemos entrega , fora das regiões de SP, RJ e MG :( ')
+            this.setState({
+                street:'',
+                district:'',
+                city:'',  
+                UF:'SP'
+            })
+        }
+
+      
+
         }
         catch(err) {
             this.setState({
@@ -538,13 +557,13 @@ export default class Payment extends Component {
         return (
             <SafeAreaView style={styles.container}>
             <ScrollView> 
+               
+                <View style={styles.logoArea}>
+                    <Logo comeBackHome={() => this.props.navigation.navigate('Home')}/>
+                </View>
 
-                <Header drawer={() => this.props.navigation.openDrawer()}
-                comeBackHome={() => this.props.navigation.navigate('Home')}
-                cart={() => this.props.navigation.navigate('ShopCart')}
-                />
                 <View style={styles.pageTitle}>
-                <Title title='Checkout'/>
+                <Title title='Finalização de Pedido'/>
                 </View>
                 <View style={styles.textTitles}>
                     <Text style={styles.titleForm}>Forma de Pagamento</Text>
@@ -756,16 +775,17 @@ export default class Payment extends Component {
                                 onValueChange ={(value) => this.setState({UF:value})}
                                 items ={[
                                     {label:'RJ' , value:'RJ'},
-                                    {label:'MG' , value:'MG'},
-                                    {label:'GO' , value:'GO'},
-                                    {label:'SC' , value:'SC'},
+                                    {label:'MG' , value:'MG'}
                                 ]}         
                                 placeholder={{ label:"SP", value: 'SP' }}
                                 >   
                                 <Text styles={styles.ufText}>{this.state.UF}</Text>
                             </PickerSelect>
                         </View>
-                            
+                    </View>
+
+                    <View> 
+                      <Text style={styles.infoFrete}>* Caros clientes, informamos que usamos um frete fixo de R$ 100,00 </Text>
                     </View>
                     {/* End informations address user */}
                     {/* <View style={styles.checkboxArea}>
@@ -824,6 +844,11 @@ const styles = StyleSheet.create(
         areaForms:{
             padding:13,
         },
+
+        infoFrete:{
+            color:"#FE3535",
+            fontSize:12
+        },  
 
         logoArea:{
             justifyContent:'center',
@@ -920,7 +945,7 @@ const styles = StyleSheet.create(
         },
 
         pageTitle: {
-            marginBottom: 15
+            marginBottom:12
         },
 
         container: {

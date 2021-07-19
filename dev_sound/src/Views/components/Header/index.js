@@ -1,27 +1,11 @@
 import React,{useState,useEffect, Component} from 'react';
 import {StyleSheet,Text,View,Image,TouchableOpacity} from 'react-native';
 import MenuIcon from '../../../../assets/icons/menu_icon.png'
-import Logo from './logo';
 import CartIcon from './Cart';
-
+import Logo from '../../../../assets/img/logo.png'
 
 export default class Header  extends Component {
 
-    // async componentDidUpdate(){
-    //     await this.captureCartQuant()
-
-    // }
-
-    // captureCartQuant = async () =>  {
-    //     const productImport = await AsyncStorage.getItem('product')
-    //     const productParse = JSON.parse(productImport)
-    //     console.warn(productParse)
-    //     this.setState({Cart:6})
-    // }
-
-    // state = {
-    //     Cart:0
-    // }
 
 
 
@@ -36,9 +20,13 @@ export default class Header  extends Component {
                
                 </TouchableOpacity>
                 
-                <TouchableOpacity>
-                        <Logo />
+                <TouchableOpacity style={style.areaLogo} onPress={this.props.comeBackHome}>
+                
+                    <Image source={Logo}/>
+                    <Text style={style.textLogo}>INSTRUMENTOS</Text>
+                
                 </TouchableOpacity>
+
 
                 <TouchableOpacity onPress ={this.props.cart}>
 
@@ -82,6 +70,24 @@ const style =  StyleSheet.create(
             textAlign:"center",
             position:'relative',
             bottom:3
+        },
+
+        textLogo:{
+            color:(0, 0, 0, 0,65),
+            fontSize:12,
+            letterSpacing:0.6,
+            position:'relative',
+            bottom:5,
+            fontWeight:'bold'
+        },
+
+        container:{
+            position:'relative',
+            top:8
+        },
+
+        areaLogo:{
+            flexDirection:'column'
         }
     }
 )
