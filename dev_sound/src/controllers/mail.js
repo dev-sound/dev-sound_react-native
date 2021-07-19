@@ -27,7 +27,6 @@ module.exports = app => {
                 UsuarioDB.find({email: request.body.email})
                 .then(resultado=>{
                     if(resultado.length > 0){
-                       let rng = Math.random() * 10000
                        let tempSenha = crypto.randomBytes(4)
                        let tempSenhaUser = tempSenha.toString('hex')
                        console.log(tempSenhaUser)

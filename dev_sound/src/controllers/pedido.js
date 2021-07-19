@@ -248,6 +248,7 @@ module.exports = app => {
                                                 produtos.forEach((element)=> {
                                                     element.icms = element.valor_unitario * 0.02
                                                     element.ipi= element.valor_unitario * 0.02
+                                                    produtos.ipi =  element.valor_unitario * 0.02
                                                     total_icms = (total_icms + element.icms) * element.qtd_Produto
                                                     total_ipi = (total_ipi + element.icms)* element.qtd_Produto
                                                 }

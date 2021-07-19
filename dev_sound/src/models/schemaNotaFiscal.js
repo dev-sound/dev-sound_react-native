@@ -58,7 +58,9 @@ module.exports = app => {
                     modelo:{type:String},
                     qtd_Produto:{type:Number},
                     valor_unitario:{type:Number},    
-                    valor_total_produto:{type:Number}   
+                    valor_total_produto:{type:Number} ,
+                    icms:{type:Number},
+                    ipi:{type:Number}
                 }
             ],
             totalIcsm: {type: Number},
