@@ -2,7 +2,7 @@ import Header from '../components/Header'
 import Portrait from '../components/Register/Portrait'
 import Input from '../components/Input'
 import Button from '../components/Button'
-
+import { TextInput } from 'react-native-paper';
 
 
 import React, { Component } from 'react'
@@ -84,21 +84,25 @@ export default class ChangePassLogin extends Component {
                     cart={() => this.props.navigation.navigate('ShopCart')}
                 />
                 <Portrait>
-                    <Text style={styles.title}>Alterar Senha</Text>
-                    <Input fieldLabel='Nova Senha'
+                    <Text style={styles.title}>Alterar senha</Text>
+                    <Input fieldLabel='Nova senha'
                      placeholder= 'Crie uma senha'
+                     left={<TextInput.Icon name="lock" />}
                      secureTextEntry
                      validInput={this.state.validNewPass}
                      value={this.state.newPass}
+                     style={styles.input}
                      onChangeText={newPass=> this.setState({newPass})}
                      onBlur={()=>this.regexPassword(this.state.newPass)}/>
-                    <Text style={styles.textInput}>A senha deve conter no mínimo 8 caracteres, um digito numérico</Text>
+                    <Text style={styles.textInput}>A senha deve conter no mínimo 8 caracteres e um digito numérico</Text>
 
-                    <Input fieldLabel= 'Confirmar Senha'
+                    <Input fieldLabel= 'Confirmar senha'
                      placeholder= 'Confirme a senha'
+                     left={<TextInput.Icon name="lock" />}
                      secureTextEntry
                      validInput={this.state.validConfirmPass}
                      value={this.state.confirmPass}
+                     style={styles.input}
                      onChangeText={confirmPass=> this.setState({confirmPass})}
                      onBlur={()=>this.readyToSignup(this.state.newPass)}/>
                     <Text style={styles.textInput}>As senhas devem ser iguais</Text>
@@ -112,16 +116,24 @@ export default class ChangePassLogin extends Component {
 }  
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        backgroundColor: '#F1F1F1'
     },
     textInput: {
-        marginBottom: 20
+        marginBottom: 6
     },
     title: {
         fontSize: 28,
-        textAlign: 'center'
+        textAlign: 'center',
+        marginTop: 5,
+        marginRight: 10,
+        marginBottom: 10,
     },
     btnArea: {
         margin: 10
-    }
+    },
+    input: {
+        fontSize: 24,
+        marginBottom: 5,
+        marginTop: 10
+    },
 })

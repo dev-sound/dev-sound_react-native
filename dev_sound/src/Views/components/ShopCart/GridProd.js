@@ -52,6 +52,7 @@ export default (props) => {
            
                 <View style={styles.productInfoContainer}>
                     <Text style={styles.productTitle}>{props.database.item.nome}</Text>
+
                     <View style={styles.priceContainer}>
                     <Text style={styles.priceTitle}>Preço unitário</Text>
                     <Text style={styles.priceValue}>{`R$${props.database.item.valor_unitario}`}</Text>
@@ -59,7 +60,7 @@ export default (props) => {
                 </View>
         </View>
        
-                // {/* <View style={styles.containerQuant}>
+                //     <View style={styles.containerQuant}>
                    
                 //     <Text style={styles.quantity}>{props.database.item.quantity}</Text>
                   
@@ -75,7 +76,7 @@ export default (props) => {
                 //         <Text style={styles.plusMinus}> + </Text>
                 //     </TouchableOpacity>
        
-                // </View> */}
+                // </View>
 
 
     )

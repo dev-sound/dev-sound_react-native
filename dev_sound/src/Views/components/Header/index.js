@@ -36,7 +36,7 @@ export default class Header  extends Component {
                
                 </TouchableOpacity>
                 
-                <TouchableOpacity onPress={this.props.comeBackHome}>
+                <TouchableOpacity>
                         <Logo />
                 </TouchableOpacity>
 

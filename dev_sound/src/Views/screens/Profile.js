@@ -1,7 +1,7 @@
 import  Icon  from 'react-native-vector-icons/FontAwesome5'
 import axios from 'axios'
 import Header from '../components/Header'
-
+import Title from '../components/Title'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { Component } from 'react'
 import { 
@@ -83,7 +83,7 @@ export default class Profile extends Component {
                         <Text style = {styles.adress}>
                             Número: 
                         </Text>
-                        <Text>
+                        <Text style={styles.adressText}>
                             {this.state.clientNumber}
                         </Text>
                     </View>
@@ -91,7 +91,7 @@ export default class Profile extends Component {
                         <Text style = {styles.adress}>
                             CEP: 
                         </Text>
-                        <Text>
+                        <Text style={styles.adressText}>
                         {this.state.clientCEP}
                         </Text>
                     </View>
@@ -109,10 +109,10 @@ export default class Profile extends Component {
             return (
                 <>
                     <Text style = {styles.adress}>
-                        cartão de crédito 
+                        Cartão de crédito
                     </Text>
                     <View style = {styles.cardArea}> 
-                        <Text style = {styles.card}>
+                        <Text style = {styles.adressText}>
                             XXXX XXXX XXXX {this.state.clientCreditCard.substring(this.state.clientCreditCard.length -4,)}
                         </Text>
                         {/* <Button smallButton label= "EXCLUIR"/> */}
@@ -131,13 +131,13 @@ export default class Profile extends Component {
             return(
                 <>
                     <View style={styles.orders}>
-                        <Text>
+                        <Text style={styles.orderTitle}>
                             Número do Pedido
                         </Text>
-                        <Text>
+                        <Text style={styles.orderTitle}>
                             Data
                         </Text>
-                        <Text>
+                        <Text style={styles.orderTitle}>
                             Pagamento
                         </Text>
                     </View>
@@ -149,12 +149,12 @@ export default class Profile extends Component {
                                 return(
                                     
                                         <View style={styles.flatlist}>
-                                            <Text style={{color:'black'}}>{item.idPedido.substring(2,14)}</Text>
-                                            <Text style={{color:'black'}}>{item.dataPedido.substring(0,10)}</Text>
+                                            <Text style={styles.orderItemsTitle}>{item.idPedido.substring(2,14)}</Text>
+                                            <Text style={styles.orderItemsTitle}>{item.dataPedido.substring(0,10)}</Text>
                                             {item.formaPagamento.ehBoleto&& 
-                                            <Text style={{color:'black'}}>Boleto</Text>}
+                                            <Text style={styles.orderItemsTitle}>Boleto</Text>}
                                             {!item.formaPagamento.ehBoleto&& 
-                                            <Text style={{color:'black'}}>Cartão</Text>}
+                                            <Text style={styles.orderItemsTitle}>Cartão</Text>}
                                         </View>
                                     
                                     )}}/>
@@ -174,11 +174,12 @@ export default class Profile extends Component {
         
         return(
             
-            <ScrollView>
+            <ScrollView style={styles.scrollContainer}>
                 <Header drawer={() => this.props.navigation.openDrawer()}
                     comeBackHome={() => this.props.navigation.navigate('Home')}
                     cart={() => this.props.navigation.navigate('ShopCart')}
                 />
+                <Title title='Minha conta'/>
                 <View style= {styles.clientArea}>
                     <Icon name='user-circle'  size={50} color={'#c1c1c1'}/>
                     <View style = {styles.iconArea}>
@@ -190,7 +191,7 @@ export default class Profile extends Component {
                         </TouchableOpacity>
                         <TouchableOpacity  onPress={()=>this.goToChangePass()}style ={styles.changePass}>
                             <Icon name= 'key' size= {13} />
-                            <Text style={styles.exit}>{'TROCAR\nSENHA'}</Text>
+                            <Text style={styles.exit}>{'TROCAR SENHA'}</Text>
                         </TouchableOpacity>
                         </View>
                     </View>
@@ -225,12 +226,16 @@ export default class Profile extends Component {
     
 }
 const styles = StyleSheet.create({
+    scrollContainer: {
+        backgroundColor: '#F1F1F1'
+    },
     clientArea: {
         flexDirection: 'row',
         alignItems: 'center',
         marginLeft: 12,
         marginBottom: 20,
         flex: 1,
+        marginTop: 15
     },
     iconArea:{
         paddingLeft:30,
@@ -239,39 +244,44 @@ const styles = StyleSheet.create({
     btns: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around'
+        marginTop: 5
     },
     name:{
         fontSize: 20,
-        fontWeight: '300'
+        fontWeight: 'bold'
     },
     logOutContainer:{
         flexDirection: 'row',
         alignItems: 'center',
-        paddingTop:10,
-        width: 60
+        width: '25%',
+        marginRight: 10
     },
     changePass: {
         flexDirection: 'row',
         alignItems: 'center',
-        width: 100,
-        marginLeft: 30
+        width: '55%',
     },
     exit:{
         fontSize: 17,
         paddingLeft: 10
     },
     title:{
-        backgroundColor: '#eeeeee',
-        paddingLeft: 12,
-        paddingVertical: 10
+        backgroundColor:'#E2DDDD',
+        height:40,
+        justifyContent:'center',
+        padding: 10
     },
     fields:{
         flexDirection: 'row'
     },
     adress:{
         paddingRight: 10,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontSize: 18
+    },
+    adressText:{
+        paddingRight: 10,
+        fontSize: 18
     },
     adressField: {
         padding: 15,
@@ -291,18 +301,27 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginRight: 20
     },
+    orderTitle:{
+        margin: 5,
+        fontWeight: 'bold',
+        fontSize: 15
+    },
     orders: {
         justifyContent: 'space-around',
-        flexDirection: 'row'
+        flexDirection: 'row',
+    },
+    orderItemsTitle:{
+        color:'black',
+        fontWeight: 'bold',
+        fontSize: 15
     },
     flatlist:{
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
+        padding: 15,
         alignItems: 'center',
-        marginVertical: '1%',
-        paddingHorizontal: '10%',
-        height: 50,
-        backgroundColor: '#c1c1c1'
+        backgroundColor: '#FACC22',
+        marginBottom: 10
     },
     noOrder:{
         fontSize: 30,

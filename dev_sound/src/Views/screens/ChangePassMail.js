@@ -2,11 +2,11 @@ import Header from '../components/Header'
 import Input from '../components/Input'
 import Portrait from '../components/Register/Portrait'
 import Button from '../components/Button'
-
-
-
+import Title from '../components/Title'
+import { TextInput } from 'react-native-paper';
+import Logo from '../components/Header/logo'
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Alert, TouchableOpacity } from 'react-native'
+import { Text, View, StyleSheet, Alert, TouchableOpacity, ScrollView } from 'react-native'
 import axios from 'axios'
 
 const initialState = {
@@ -28,51 +28,51 @@ export default class ChangePassMail extends Component {
             }
             catch(err){
                 if(`${err}` == 'Error: Request failed with status code 404'){
-                    Alert.alert('Erro ao localizar email', `Email informado não cadastrado  \n\n ${err}`)
+                    Alert.alert('Erro ao localizar E-mail', `E-mail informado não cadastrado  \n\n ${err}`)
                 }else{
-                    Alert.alert('Erro ao localizar email', `Erro de conexão \n\n${err}`) 
+                    Alert.alert('Erro ao localizar E-mail', `Erro de conexão \n\n${err}`) 
                 }
                 
             }
         }else{
-            Alert.alert('Erro ao enviar email', 'Por favor preencha o campo email')
+            Alert.alert('Erro ao enviar E-mail', 'Por favor, preencha o campo corretamente.')
         }
         
         
     }
     render(){
         return(
-            <View>
-                <Header drawer={() => this.props.navigation.openDrawer()}
-                    comeBackHome={() => this.props.navigation.navigate('Home')}
-                    cart={() => this.props.navigation.navigate('ShopCart')}
-                />
+            <ScrollView style={styles.scrollContainer}>
+                <View style={styles.logoArea}>
+                    <Logo comeBackHome={() => this.props.navigation.navigate('Home')}/>
+                </View>
                 {!this.state.finally &&
-                 <Text style={styles.mainTitle}>Recuperação de senha</Text>
+                <View style={styles.pageTitle}>
+                 <Title title='Recuperação de senha'/>
+                </View>
                 }
                 <Portrait>
-                    {!this.state.finally && 
-                    <Text style={styles.title}>Informe o Email cadastrado</Text>
-                    }
+                    {!this.state.finally &&
+                    <View>
+                        <Text style={styles.formTitle}>Informe o e-mail cadastrado</Text>
+                    </View>} 
                     {!this.state.finally && 
                     <Input 
-                    placeholder= 'Insira seu email'
-                    fieldLabel='Email'
+                    left={<TextInput.Icon name="account" />}
+                    placeholder= 'Insira seu e-mail'
+                    fieldLabel='E-mail'
                     value = {this.state.email}
+                    style={styles.input}
                     onChangeText={email=>this.setState({email})}/>
                     }
                     {this.state.finally && 
-                    <Text style={styles.passText}>Um e-mail contendo uma senha temporaria foi enviado para a sua caixa de e-mail.</Text>
+                    <Text style={styles.passText}>Uma senha temporária foi enviada para a sua caixa de E-mail.</Text>
                     }
                     {this.state.finally && 
                     <Text style={styles.passText}>(Verifique o Spam)</Text>
                     }
                 </Portrait>
-                {this.state.finally &&
-                <TouchableOpacity onPress={()=> this.props.navigation.navigate('Auth')}>
-                    <Text style={styles.goback}>Voltar para o login</Text>
-                </TouchableOpacity>
-                }
+                
                 <View style ={styles.btnArea}>
                     {!this.state.finally && 
                     <Button 
@@ -80,11 +80,25 @@ export default class ChangePassMail extends Component {
                     onPress={()=>this.change()}/>
                     }
                 </View>
-            </View>
+                {!this.state.finally &&
+                <TouchableOpacity onPress={()=> this.props.navigation.navigate('Auth')}>
+                    <Text style={styles.goback}>Voltar para o login</Text>
+                </TouchableOpacity>
+                }
+                {this.state.finally &&
+                <TouchableOpacity onPress={()=> this.props.navigation.navigate('Auth')}>
+                    <Text style={styles.goback}>Voltar para o login</Text>
+                </TouchableOpacity>
+                }
+
+            </ScrollView>
          )
      }
 }
 const styles = StyleSheet.create({
+    scrollContainer: {
+        backgroundColor: '#F1F1F1'
+    },
     title: {
         fontSize: 20,
         textAlign: 'center',
@@ -99,12 +113,35 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     passText:{
-        fontSize: 30
+        fontSize: 20,
+        marginTop: 20,
     },
     goback:{
-        fontSize: 18,
         textAlign: 'center',
-        margin: 10,
-        textDecorationLine: 'underline'
-    }
+        color: '#17133B',
+        textDecorationLine: 'underline',
+        fontSize: 18,
+        marginTop: 20
+    },
+    input: {
+        fontSize: 25,
+        marginBottom: 5,
+    },
+    pageTitle: {
+        marginBottom: 10,
+        alignSelf: 'center',
+        marginLeft: -10
+    },
+    logoArea: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 35,
+    },
+    formTitle: {
+        fontSize: 23,
+        textAlign: 'center',
+        marginTop: 5,
+        marginBottom: 15,
+        marginRight: 10
+    },
 })

@@ -18,6 +18,8 @@ const styles = StyleSheet.create({
         width: '90%',
         marginLeft: 20,
         height: 'auto',
+        marginBottom: 25,
+        marginTop: 15
     },
     teste:{
         paddingBottom: 30,

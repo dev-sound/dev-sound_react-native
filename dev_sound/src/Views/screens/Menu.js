@@ -94,7 +94,7 @@ export default class Menu extends Component  {
                             </TouchableOpacity>
 
                             <TouchableOpacity onPress= {()=> this.state.infosUser ? this.props.navigation.navigate('Profile') : this.props.navigation.navigate('Auth')}>
-                                <Text style={styles.AcessUserArea}>Acessar a aréa do usuário</Text>
+                                <Text style={styles.AcessUserArea}>Acessar a área do usuário</Text>
                             </TouchableOpacity>
                         </View>
 
@@ -211,7 +211,8 @@ const styles = StyleSheet.create({
     },
 
     accordion: {
-        backgroundColor: '#F1F1F1'
+        backgroundColor: '#F1F1F1',
+        marginLeft: 3
     },
 
     headerMenu:{
@@ -252,8 +253,7 @@ const styles = StyleSheet.create({
         letterSpacing:0.06,
         color:'#000000',
         fontWeight:'bold',
-        backgroundColor: '#f1f1f1'
-
+        backgroundColor: '#f1f1f1',
     },
 
     listCategStyle: {

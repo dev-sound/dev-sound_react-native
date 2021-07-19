@@ -6,8 +6,6 @@ import {
 import { TextInput } from 'react-native-paper';
 import axios from 'axios'
 import AsyncStorage from "@react-native-async-storage/async-storage"
-
-
 import Portrait from '../components/Register/Portrait'
 import Logo from '../components/Header/logo'
 import Input from '../components/Input'
@@ -161,13 +159,14 @@ export default class Auth extends Component {
                     <Logo comeBackHome={() => this.props.navigation.navigate('Home')}/>
                 </View>
                 <Portrait>
+                    {/* Signup Start here */}
                     {this.state.register &&
                     <View>
                         <Text style={styles.text}>Crie a sua conta</Text>
                     </View>}     
-                        {/* Signup Start here */}
                     {this.state.register && 
-                    <Input fieldLabel= 'Nome' 
+                    <Input fieldLabel= 'Nome'
+                        left={<TextInput.Icon name="account-edit" />}
                         validInput = {this.state.Validname}
                         placeholder= 'Insira seu nome' 
                         style={styles.input} 
@@ -175,6 +174,7 @@ export default class Auth extends Component {
                         onBlur={()=>this.regexName(this.state.name)}/>}
                     {this.state.register && 
                     <Input fieldLabel= 'Sobrenome'
+                        left={<TextInput.Icon name="account-edit" />}
                         validInput = {this.state.ValidlastName}
                         placeholder= 'Insira seu sobrenome' 
                         style={styles.input}
@@ -182,6 +182,7 @@ export default class Auth extends Component {
                         onBlur={()=>this.regexLastName(this.state.lastName)}/>}
                     {this.state.register &&
                     <Input fieldLabel= 'E-mail'
+                        left={<TextInput.Icon name="at" />}
                         validInput = {this.state.Validemail}
                         placeholder= 'Insira seu e-mail'   
                         style={styles.input} 
@@ -189,6 +190,7 @@ export default class Auth extends Component {
                         onBlur={()=>this.regexEmail(this.state.email)}/>}
                     {this.state.register && 
                     <Input fieldLabel= 'Celular' 
+                        left={<TextInput.Icon name="cellphone" />}
                         validInput = {this.state.validPhone}
                         placeholder= 'Insira seu número' 
                         style={styles.input}
@@ -196,6 +198,7 @@ export default class Auth extends Component {
                         onBlur={()=>this.regexPhone(this.state.number)}/>} 
                     {this.state.register &&                  
                     <Input fieldLabel= 'Senha'
+                        left={<TextInput.Icon name="lock" />}
                         validInput = {this.state.Validpassword}
                         placeholder= 'Crie uma senha' 
                         style={styles.input}  
@@ -207,9 +210,9 @@ export default class Auth extends Component {
                     }
                     {this.state.register && 
                     <Input fieldLabel= 'Confirme sua senha' 
+                        left={<TextInput.Icon name="lock" />}
                         placeholder= 'Confirme a senha'
                         validInput = {this.state.ValidconfirmPassword}
-                        
                         style={styles.input} 
                         secureTextEntry
                         onChangeText={confirmPassword =>this.setState({confirmPassword})}
@@ -227,7 +230,7 @@ export default class Auth extends Component {
                     {this.state.login &&
                     <Input  left={<TextInput.Icon name="account" />}
                         fieldLabel= 'E-mail' 
-                        placeholder= 'Digite seu e-mail' 
+                        placeholder= 'Insira seu e-mail' 
                         value={this.state.logEmail}
                         onChangeText={logEmail => this.setState({logEmail})}
                         style={styles.input} />}
@@ -236,12 +239,24 @@ export default class Auth extends Component {
                         left={<TextInput.Icon name="lock" />} 
                         left={<TextInput.Icon name="lock" />} 
                         value={this.state.logSenha}
-                        placeholder= 'Digite sua senha' style={styles.input} 
+                        placeholder= 'Insira sua senha' style={styles.input} 
                         onChangeText={logSenha => this.setState({logSenha})} 
                         secureTextEntry/>}
                 </Portrait>
+                    
+                    {/* btn login/signup start here */}
+                {this.state.login &&
+                <View style={styles.btnArea}>
+                    <Btn label='Entrar'  onPress={()=>this.signin()}/>
+                </View>
+                }
+                {this.state.register && 
+                <View  style={styles.btnArea}>
+                    <Btn label='Cadastrar' onPress={()=>this.signup()}/>
+                </View>
+                }
 
-                        {/* Login end here */}
+                {/* Login end here */}
                 {this.state.register && 
                 <TouchableOpacity style={styles.create} 
                     onPress={()=>this.setState({...initialState})}>
@@ -259,18 +274,6 @@ export default class Auth extends Component {
                 onPress={()=>this.props.navigation.navigate('ChangePassMail')}>
                     <Text style={styles.textCreate}>Esqueci minha senha</Text>
                 </TouchableOpacity>
-                }
-                    
-                    {/* btn login/signup start here */}
-                {this.state.login &&
-                <View style={styles.btnArea}>
-                    <Btn label='Entrar'  onPress={()=>this.signin()}/>
-                </View>
-                }
-                {this.state.register && 
-                <View  style={styles.btnArea}>
-                    <Btn label='Cadastrar' onPress={()=>this.signup()}/>
-                </View>
                 }
             </ScrollView>
         )
@@ -303,17 +306,17 @@ const styles = StyleSheet.create({
     create: {
         justifyContent: 'center',
         alignItems: 'center',
-        padding:35,
     },
 
     textCreate: {
         color: '#17133B',
         textDecorationLine: 'underline',
         fontSize: 18,
+        marginBottom: 18
     },
     
     btnArea: {
-        marginBottom: 50
+        marginBottom: 25
     }
     
 })

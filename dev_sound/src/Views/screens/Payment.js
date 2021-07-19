@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View,Text,ScrollView,StyleSheet,FlatList, TouchableOpacity, Alert} from 'react-native'
+import {View,Text,ScrollView,StyleSheet,FlatList, TouchableOpacity, Alert, SafeAreaView} from 'react-native'
 import Input from '../components/Input'
 import Logo from '../components/Header/logo'
 import PickerSelect from 'react-native-picker-select'
@@ -10,7 +10,8 @@ import { RadioButton,Checkbox } from 'react-native-paper';
 import paymentsSaves from '../components/Common/paymentsSaves'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import axios from 'axios'
-
+import Title from '../components/Title'
+import Header from '../components/Header'
 
 
 
@@ -437,20 +438,20 @@ export default class Payment extends Component {
            <>
 
             <View style={styles.areaPrice}>
-            <Text>Subtotal:</Text>
+            <Text style={styles.resumeText}>Subtotal:</Text>
             
                 <Text>R$ {parseFloat(subtotal).toFixed(2)}</Text>
             
             </View>
 
             <View style={styles.areaPrice}>
-                <Text>Frete:</Text>
-                <Text>R$ 100</Text>  
+                <Text style={styles.resumeText}>Frete fixo:</Text>
+                <Text style={styles.resumeText}>R$100</Text>  
             </View>
 
             <View style={styles.areaPrice}>
                 <Text style={styles.priceTotal}>Total: </Text>
-                <Text style={styles.priceTotal}>R$ {(parseFloat(subtotal + shipping).toFixed(2))}</Text>
+                <Text style={styles.priceTotal}>R${(parseFloat(subtotal + shipping).toFixed(2))}</Text>
             </View>
         </>
         )
@@ -535,13 +536,16 @@ export default class Payment extends Component {
     render(){   
         
         return (
-        
-            <ScrollView style={styles.container} > 
+            <SafeAreaView style={styles.container}>
+            <ScrollView> 
 
-                <View style={styles.logoArea}>
-                    <Logo comeBackHome={() => this.props.navigation.navigate('Home')}/>
+                <Header drawer={() => this.props.navigation.openDrawer()}
+                comeBackHome={() => this.props.navigation.navigate('Home')}
+                cart={() => this.props.navigation.navigate('ShopCart')}
+                />
+                <View style={styles.pageTitle}>
+                <Title title='Checkout'/>
                 </View>
-
                 <View style={styles.textTitles}>
                     <Text style={styles.titleForm}>Forma de Pagamento</Text>
                 </View>
@@ -560,7 +564,9 @@ export default class Payment extends Component {
                                     onPress={() => this.setState({ehBoleto:false})}
                                 /> 
                             </View>
-                            <Text style={styles.labelRadio}>Cartão de Credito</Text>
+                            <View style={styles.labelRadio}>
+                            <Text style={styles.choiceTitle}>Cartão de Credito</Text>
+                            </View>
                         </View>
 
                         {/* Start inputs about informations credid card user */}
@@ -568,8 +574,9 @@ export default class Payment extends Component {
                         <Input 
                         
                             validInput={this.state.validStyleCard}
-                            fieldLabel = 'Numero Cartão'
-                            placeholder='Cartão de Credito'
+                            style={styles.inputLabel}
+                            fieldLabel = 'Numero do cartão'
+                            placeholder='Insira o número do cartão'
                             keyboardType={'numeric'}
                             value={this.state.numberCard}
                             onBlur={() => this.validInputCard(this.state.numberCard)}
@@ -578,9 +585,10 @@ export default class Payment extends Component {
                         />
 
                         <Input  
-                            validInput={this.state.validStyleName}        
-                            fieldLabel = 'Nome do Cartão'
-                            placeholder='Digite seu nome'
+                            validInput={this.state.validStyleName}
+                            style={styles.inputLabel}        
+                            fieldLabel = 'Nome no cartão'
+                            placeholder='Insira seu nome'
                             value={this.state.nameClient}
                             onChangeText={(nameClient) => this.setState({nameClient})}
                             onBlur = {() => this.validInputName(this.state.nameClient)}
@@ -593,9 +601,11 @@ export default class Payment extends Component {
 
                             <Input 
                                 medium
-                                validInput={this.state.validStyleMouth}  
+                                validInput={this.state.validStyleMouth}
+                                style={styles.inputLabel}  
                                 fieldLabel = 'Mês de expiração'
-                                placeholder='12'
+                                setSize={120}
+                                placeholder='Ex: 05'
                                 keyboardType={'numeric'}
                                 value={this.state.monthCard}
                                 onChangeText={(monthCard) => this.setState({monthCard})}
@@ -604,9 +614,11 @@ export default class Payment extends Component {
                             />
 
                             <Input 
-                                validInput={this.state.validStyleYear}                         
+                                validInput={this.state.validStyleYear}
+                                style={styles.inputLabel}                         
                                 fieldLabel = 'Ano de expiração'
-                                placeholder='2022'
+                                setSize={120}
+                                placeholder='Ex: 2022'
                                 keyboardType={'numeric'}
                                 value={this.state.yearCard}
                                 onBlur = {()=> this.validYearCard(this.state.yearCard)}
@@ -615,9 +627,11 @@ export default class Payment extends Component {
                             />
 
                             <Input 
-                                validInput={this.state.validStyleCvv}    
+                                validInput={this.state.validStyleCvv}
+                                style={styles.inputLabel}    
                                 fieldLabel = 'CVV'
-                                placeholder='987'
+                                setSize={100}
+                                placeholder='Ex: 100'
                                 keyboardType={'numeric'}
                                 value={this.state.cvv}
                                 onBlur = {()=> this.validCvvCard(this.state.cvv)}
@@ -655,7 +669,9 @@ export default class Payment extends Component {
                                 onPress={() => this.setState({ehBoleto:true})}
                                 />   
                             </View>
-                            <Text style={styles.labelRadio}>Boleto</Text>
+                            <View style={styles.labelRadio}>
+                            <Text style={styles.choiceTitle}>Boleto</Text>
+                            </View>
                     </View>
 
 
@@ -672,8 +688,9 @@ export default class Payment extends Component {
                     <Input 
                         validInput={this.state.validStyleCep}    
                         fieldLabel = 'CEP'
+                        style={styles.inputLabel}
                         keyboardType={'numeric'}
-                        placeholder='00000-000'
+                        placeholder='Insira o CEP'
                         value={this.state.cep}
                         onBlur = {()=> this.validAdressCep(this.state.cep)}
                         onChangeText={(cep) => this.setState({cep})}
@@ -685,8 +702,9 @@ export default class Payment extends Component {
                         <Input 
                             validInput={this.state.validStyleStreet}
                             setSize={290}
-                            fieldLabel = 'Rua/Avenida'
-                            placeholder='Rua Av. Paulista'
+                            style={styles.inputLabel}
+                            fieldLabel = 'Rua / Avenida'
+                            placeholder='Insira o nome da Rua/Avenida'
                             value={this.state.street}
                             onChangeText={(street) => this.setState({street})}   
                             onBlur={()=> this.validAdressStreet(this.state.street)}
@@ -695,9 +713,10 @@ export default class Payment extends Component {
 
                         <Input 
                             validInput={this.state.validStyleNumber}
+                            style={styles.inputLabel}
                             setSize={85}
-                            fieldLabel = 'Numero'
-                            placeholder='Número'
+                            fieldLabel = 'Número'
+                            placeholder='Ex: 20'
                             keyboardType={'numeric'}
                             value={this.state.numberHome}
                             onBlur={()=> this.validAdressNumber(this.state.numberHome)}
@@ -709,8 +728,9 @@ export default class Payment extends Component {
                     
                     <Input 
                         validInput={this.state.validStyleDistrict}
+                        style={styles.inputLabel}
                         fieldLabel = 'Bairro'
-                        placeholder='Digite seu Bairro'
+                        placeholder='Insira o bairro'
                         value={this.state.district}
                         onBlur={()=> this.validAdressDistrict(this.state.district)}
                         onChangeText={(district) => this.setState({district})}   
@@ -721,9 +741,10 @@ export default class Payment extends Component {
 
                         <Input 
                             validInput={this.state.validStyleCity}
+                            style={styles.inputLabel}
                             setSize={290}
                             fieldLabel = 'Cidade'
-                            placeholder='Digite sua Cidade'
+                            placeholder='Insira a cidade'
                             value={this.state.city}
                             onBlur={()=> this.validAdressCity(this.state.city)}
                             onChangeText={(city) => this.setState({city})}   
@@ -787,8 +808,11 @@ export default class Payment extends Component {
                     </View>
             
 
-                 {this.buttonPayment()}
             </ScrollView>
+
+            {this.buttonPayment()}
+
+            </SafeAreaView>
         )
     }
 }
@@ -798,36 +822,41 @@ const styles = StyleSheet.create(
     {
   
         areaForms:{
-        
-            padding:13
+            padding:13,
         },
 
         logoArea:{
             justifyContent:'center',
             alignItems:'center',
             padding:35,
-          
+        },
+
+        choiceTitle:{
+            fontSize: 17
         },
 
         textTitles:{
             backgroundColor:'#E2DDDD',
-            height:40,
             justifyContent:'center',
-            padding:5
+            padding:10,
+        },
+
+        inputLabel: {
+            fontSize: 15,
+            fontWeight: 'bold',
+            marginTop: 7,
+            marginBottom: 7
         },
 
         titleForm:{
             fontSize:20,
-            letterSpacing:0.3,
             fontWeight:'bold',
-            color:'rgba(0,0,0,0.8)'
         },
 
         areaInputsMins:{
             flexDirection:'row',
             justifyContent:'space-between',
-            alignItems:'center'
-
+            marginBottom: 12
         },
 
         select:{
@@ -839,15 +868,13 @@ const styles = StyleSheet.create(
         },
 
         uf:{
-            position:'relative',
-            
-            top:6,
-            height:45,
-            width:70,
+            width: '20%',
+            height: 43,
             borderWidth:1,
             padding:9,
             borderRadius:5,
             borderWidth:1,
+            alignSelf: 'flex-end'
         },
 
         areaProductReview:{
@@ -855,58 +882,50 @@ const styles = StyleSheet.create(
         },
 
         abstract:{
+            padding:13
+        },
 
-            padding:10
+        resumeText:{
+            fontSize: 18
         },
 
         areaPrice:{
             flexDirection:'row',
             justifyContent:'space-between',
-            padding:5
-
+            padding:5,
         },
 
         priceTotal:{
             fontWeight:'bold',
-            fontSize:18
-        },
-
-        radioArea:{
-            padding:10,
-            width:60
+            fontSize:22
         },
 
         radio:{
             flexDirection:'row',
-            alignItems:'center',
-            position:'relative',
-            right:13
         },
 
         labelRadio:{
-            position:'relative',
-            right:13
+            justifyContent: 'center'
         },
 
         checkboxArea:{
             flexDirection:'row',
-            alignItems:'center',
-            padding:7,
-            position:'relative',
-            right:10
         },
-
 
         buttonFinishPayment:{
             fontSize:28,
-            position:'relative',
             top:40,
             zIndex:20,
             textAlign:'center'
         },
 
+        pageTitle: {
+            marginBottom: 15
+        },
+
         container: {
-            backgroundColor: '#F1F1F1'
+            backgroundColor: '#F1F1F1',
+            flex: 1
         }
 
    

@@ -121,7 +121,7 @@ export default class ShopCart extends Component {
            <View>
              <Header 
              drawer={() => this.props.navigation.openDrawer()}
-             comeBackHome={() => this.props.navigation.navigate('Home')} 
+             comeBackHome={() => this.props.navigation.navigate('Home')}
               //  cartQuant={this.state.items.length}
              />
               <Title title="Seu carrinho" />

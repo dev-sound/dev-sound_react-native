@@ -91,13 +91,13 @@ export default class Contact extends Component {
             this.validEmail()
             this.validTopic()
             this.validMessage()
-            Alert.alert('Verifique se todos os campos foram preenchidos.')
+            Alert.alert('Verifique se todos os campos foram preenchidos corretamente.')
         }
     }
 
     render() {
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <Header drawer={() => this.props.navigation.openDrawer()}
                     comeBackHome={() => this.props.navigation.navigate('Home')}
                     cart={() => this.props.navigation.navigate('ShopCart')}
@@ -105,7 +105,7 @@ export default class Contact extends Component {
                 <View style={styles.titleContainer}>
                     <Title title='Contato' />
                 </View>
-                <ScrollView>
+                <View>
                     <Input
                         styleInput={styles.styleInput}
                         inputContainer={styles.inputContainer}
@@ -162,8 +162,8 @@ export default class Contact extends Component {
                             onPress={() => this.contact()}
                         />
                     </View>
-                </ScrollView>
-            </View>
+                </View>
+            </ScrollView>
         )
     }
 }
@@ -173,8 +173,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F1F1F1'
     },
     titleContainer: {
-        paddingTop: 25,
-        paddingBottom: 15
+        paddingBottom: 10
     },
     label: {
         fontSize: 22,
@@ -192,7 +191,8 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         paddingTop: 25,
-        marginHorizontal: 120
+        marginHorizontal: 120,
+        marginBottom: 40
     },
     textareaContainer: {
         justifyContent: 'center',

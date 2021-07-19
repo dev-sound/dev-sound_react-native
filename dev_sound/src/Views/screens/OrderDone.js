@@ -55,12 +55,12 @@ export default class OrderDone extends Component {
 
     render() {
         return (
-            <View>
+            <ScrollView style={styles.container}>
                 <Header
                     drawer={() => this.props.navigation.openDrawer()} 
                     cart={() => this.props.navigation.navigate('ShopCart')}
                     comeBackHome={() => this.props.navigation.navigate('Home')} />
-                <ScrollView style={styles.container}>
+                <View style={styles.messageContainer}>
                     {/* mensagem de confirmação */}
                     <View style={styles.containerRow}>
                         <Icon name='check' color='green' size={60}/>
@@ -90,15 +90,18 @@ export default class OrderDone extends Component {
                         <Title title='Resumo do pedido'/>
                     </View>
                     <ProductOrder/> */}
-                </ScrollView>
-            </View>
+                </View>
+            </ScrollView>
         )
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 60
+        backgroundColor: '#F1F1F1'
+    },
+    messageContainer:{
+        marginTop: 20
     },
     containerRow: {
         flexDirection: 'row',

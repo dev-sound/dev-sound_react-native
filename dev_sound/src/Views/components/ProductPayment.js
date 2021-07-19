@@ -11,36 +11,27 @@ export default props =>{
 
 
     return (
-        <View style={[stylesContainer]}>
-
-            <View>
+        <View style={styles.container}>
             <View style={styles.containerImgQtd}>
             
                 <View style={styles.containerImgProduct}>
-                
                 <Image 
                     style={styles.img}
-                    source={{uri : props.imgProduct}}
-                />
-                
+                    source={{uri : props.imgProduct}}/>
                 </View>
-            
+            <Text style={styles.qtdProduct}> Quantidade: 1 </Text>
             </View>
-                <Text style={styles.qtdProduct}> Quantidade : 1 </Text>
-            </View>
-
-
                 <View style={styles.areaInfoProduct}>
                     
                     <View style={styles.infos}>
                         <View>
-                            <Text>{props.nameProduct}</Text>
-                            <Text>Modelo: {props.modelProduct}</Text>
+                            <Text style={styles.productName}>{props.nameProduct}</Text>
+                            <Text style={styles.productModel}>Modelo:{props.modelProduct}</Text>
                         </View>
                         
                         <View style={styles.price}>
-                            <Text style={{fontWeight:'bold'}}>Preço unitário: </Text>
-                            <Text>R$ {props.priceUnit}</Text>
+                            <Text style={styles.priceTitle}>Preço unitário</Text>
+                            <Text style={styles.value}>R${props.priceUnit}</Text>
                         </View>
                     </View>
                 </View>
@@ -73,55 +64,65 @@ const styles = StyleSheet.create(
     {
 
         container:{
+            width: '100%',
             flexDirection:'row',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            padding: 10,
+            borderBottomWidth: 1,
+            borderBottomColor: '#D0D0D0'
         },
 
-        containerImgQtd:{
-            marginTop:10,
-            width:Dimensions.get('window').width/3,
-            padding:10,
-            marginLeft:10,
+        containerImgProduct: {
+            width: Dimensions.get('window').width/2.5,
+            height: Dimensions.get('window').width/2.5,
             backgroundColor:'#fff',
-            borderRadius:17,
-            shadowColor: "#000",
-            shadowOffset: {
-                width: 3,
-                height: 3,
-            },
-             shadowOpacity: 0.27,
-             shadowRadius: 4.65,
-             elevation: 6,
+            borderRadius:11,
+            padding: 5,
+            elevation: 4
         },
 
         img:{
-            width:'80%',
-            height:150
+            width:'100%',
+            height: '100%',
+            borderRadius: 11
         },
 
         qtdProduct:{
-            alignItems:'center',
-            marginLeft:25,
-            paddingVertical:5,
+            marginTop: 7,
+            alignSelf:'flex-start',
             fontWeight:'bold'
         },
 
+        productName:{
+            fontWeight: 'bold',
+            fontSize: 15
+        },
+
+        productModel: {
+            marginTop:10,
+            fontWeight: 'bold'
+        },
+
+        priceTitle: {
+            fontWeight: 'bold',
+            fontSize:16
+        },
+
+        value: {
+            fontSize: 18,
+        },
+
         areaInfoProduct:{
-        
-            width:170,
-            marginTop:12,
-            marginLeft:10,
-            flexDirection:'row'
+            width: '55%',
+            height: '88%',
+            marginLeft: 10,
+            flexDirection:'row',
         },
 
         infos:{
             justifyContent:'space-between'
         },
 
-        price:{
-            position:'relative',
-            bottom:35
-        },
 
         pricesInfos:{
             justifyContent:'space-between',

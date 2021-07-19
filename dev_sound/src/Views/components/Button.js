@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
         elevation: 5,
         textAlign: 'center',
         fontSize: 28,
-        fontWeight: '300',
         padding: 2
     },
 
@@ -72,7 +71,10 @@ const styles = StyleSheet.create({
         shadowRadius: 0,
         elevation: 0,
         borderRadius: 0,
-        padding: 5,
+        padding: 7,
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+        fontSize: 25
     },
 
     disabled: {
