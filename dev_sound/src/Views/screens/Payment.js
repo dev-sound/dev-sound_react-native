@@ -216,7 +216,7 @@ export default class Payment extends Component {
     }
     
 
-    //  c
+    //  
     // Teste Teste
     // 07261-983
     // Teste teste 
@@ -298,7 +298,7 @@ export default class Payment extends Component {
     }
 
     validAdressCep = value => {
-        const regexCep = /[0-9]{5}-[0-9]{3}/
+        const regexCep = /[0-9]/
 
         if(regexCep.test(value)){
             this.captureCepUser(value)
@@ -513,37 +513,104 @@ export default class Payment extends Component {
             street:adress.data.logradouro,
             district:adress.data.bairro,
             city:adress.data.localidade,  
-            UF:adress.data.uf
+            UF:adress.data.uf,
+            
+            validStyleCep:'valid',
+            validStyleStreet:'valid',
+            validStyleDistrict:'valid',
+            validStyleCity:'valid',
            })
 
 
            if(this.state.UF != 'SP' && this.state.UF != 'RJ' && this.state.UF != 'MG'){
 
-            Alert.alert('!Ops, você esta muito longe :( ', 'Ainda não fazemos entrega , fora das regiões de SP, RJ e MG :( ')
+          
             this.setState({
                 street:'',
                 district:'',
                 city:'',  
+                cep:'',
+                validStyleCep:'noValid',
+                buttonPayment:false,
                 UF:'SP'
             })
+            disabledInputs[6].disabledNumber = false
+            disabledInputs[5].disabledStreet = false
+            disabledInputs[7].disabledDistrict = false
+            disabledInputs[8].disabledCity = false
+            
+            Alert.alert('!Ops, você esta muito longe :( ',
+             'Ainda não fazemos entrega , fora das regiões de SP, RJ e MG :( ' ,
+             [
+                 {
+                     text:'Okay 😥',
+                     onPress: ()=>{
+                         disabledInputs[5].disabledStreet = false
+                         disabledInputs[6].disabledNumber = false
+                         disabledInputs[7].disabledDistrict = false
+                         disabledInputs[8].disabledCity = false
+                         disabledInputs[9].disabledBtn = false
+ 
+                         this.setState({
+                             validStyleCep:'noValid',
+                             validStyleStreet:'noValid',
+                             validStyleNumber:'noValid',
+                             validStyleDistrict:'noValid',
+                             validStyleCity:'noValid',
+                             street:'',
+                             district:'',
+                             city:'',
+                             numberHome:'',
+                             cep:'',
+                             buttonPayment:false
+                         })
+                     }
+                 }
+             ]
+             
+             )
         }
 
       
 
         }
         catch(err) {
-            this.setState({
-                validStyleCep:'noValid',
-                street:'',
-                district:'',
-                city:'',
-                numberHome:'',
-                cep:'',
-                buttonPayment:false
-            })
-            disabledInputs[6].disabledNumber = false
+           
+           Alert.alert('Ops! Probleminha no cep ', 
+           'Cep inserido inexistente, por favor confira se foi digitado de forma correta :) '
+            ,
+            [
+                {
+                    text:'Okay 😥',
+                    onPress: ()=>{
+                        disabledInputs[5].disabledStreet = false
+                        disabledInputs[6].disabledNumber = false
+                        disabledInputs[7].disabledDistrict = false
+                        disabledInputs[8].disabledCity = false
+                        disabledInputs[9].disabledBtn = false
+
+                        this.setState({
+                            validStyleCep:'noValid',
+                            validStyleStreet:'noValid',
+                            validStyleNumber:'noValid',
+                            validStyleDistrict:'noValid',
+                            validStyleCity:'noValid',
+                            street:'',
+                            district:'',
+                            city:'',
+                            numberHome:'',
+                            cep:'',
+                            buttonPayment:false
+                        })
+                    
+               
+                       
+                        
+                    }
+                }
+            ]
             
-           Alert.alert('Ops! Probleminha no cep ', 'Cep inserido inexistente, por favor confira se foi digitado de forma correta :) ')
+           )
         }
       }
 

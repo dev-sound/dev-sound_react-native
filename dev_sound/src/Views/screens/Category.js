@@ -42,6 +42,7 @@ export default class Category extends Component {
                 <ProductOnly
                     onPress={() => this.props.navigation.navigate('Product', { id: item._id })}
                     productId={item._id}
+                    itemEstoque = {item.estoque}
                     imgProduct={item.img}
                     nameProduct={item.nome}
                     price={item.preco}
