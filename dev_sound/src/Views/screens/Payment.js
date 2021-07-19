@@ -855,7 +855,7 @@ export default class Payment extends Component {
                     </View>
 
                     <View> 
-                      <Text style={styles.infoFrete}>* Caros clientes, informamos que usamos um frete fixo de R$ 100,00 </Text>
+                      <Text style={styles.infoFrete}>*Caros clientes, informamos que usamos um frete fixo de R$ 100,00 </Text>
                     </View>
                     {/* End informations address user */}
                     {/* <View style={styles.checkboxArea}>
@@ -917,7 +917,7 @@ const styles = StyleSheet.create(
 
         infoFrete:{
             color:"#FE3535",
-            fontSize:12,
+            fontSize:15,
             fontWeight: 'bold'
         },  
 

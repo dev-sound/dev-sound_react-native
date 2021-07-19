@@ -29,13 +29,11 @@ const styles = StyleSheet.create(
     {
 
         container: {
-            backgroundColor: '#FACC22',
-            width: '80%',
+            backgroundColor: '#c1c1c1',
+            width: '100%',
             padding: 10,
             alignSelf: 'center',
-            borderRadius: 15,
-            marginTop: 10,
-            elevation: 1
+            marginBottom: 10
         },
 
         price: {
