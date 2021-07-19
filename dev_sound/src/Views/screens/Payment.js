@@ -79,7 +79,6 @@ export default class Payment extends Component {
     async componentDidMount() {
         await this.captureAsync()
         await this.captureUserInfos()
-        
     }
 
     //Inicio da captura de valores do Async Storage
@@ -96,10 +95,12 @@ export default class Payment extends Component {
      captureUserInfos = async () => {
         const userAuth = await AsyncStorage.getItem('userData')
         const users =  JSON.parse(userAuth)
-        this.setState({userInfos:users}) 
-      }
+        this.setState({userInfos:users})
+        
+        
+    }
     
-
+      
 
 
      willFocus = this.props.navigation.addListener('willFocus', () => {this.captureAsync()})
@@ -771,6 +772,8 @@ export default class Payment extends Component {
 
                 <View style={styles.areaForms}>
                 {/* Start informations address user */}
+                
+                
                     <Input 
                         validInput={this.state.validStyleCep}    
                         fieldLabel = 'CEP'
@@ -807,7 +810,7 @@ export default class Payment extends Component {
                             value={this.state.numberHome}
                             onBlur={()=> this.validAdressNumber(this.state.numberHome)}
                             onChangeText={(numberHome) => this.setState({numberHome})}
-                            editable={disabledInputs[6].disabledNumber}  
+                            // editable={disabledInputs[6].disabledNumber}  
                         />
                             
                     </View>
