@@ -14,7 +14,6 @@ export default class ShopCart extends Component {
     valueTotal:0,
     items:[],
     userInfos:{},
-    itensCart: true
   }
 
 
@@ -81,31 +80,54 @@ export default class ShopCart extends Component {
     let userTokem = this.state.userInfos
     let valueItems = this.state.items
   
-    if(userTokem && valueItems.length >= 1){
+   
+    if(valueItems){
+        if(userTokem && valueItems.length >= 1){
+          return  (
+            <Button finishButton label="Finalizar" onPress={() => this.props.navigation.navigate('Payment')} />
+          )
+        }
+    }
+
+    if(valueItems){
+      if(!userTokem && valueItems.length >= 1) {
+        return (
+          <Button finishButton label="Finalizar"
+          onPress={
+            () => Alert.alert('Login','Faça Login para concluir sua compra',
+             [
+               {
+                 text:'Fazer Login :) ',
+                 onPress:() => this.props.navigation.navigate('Auth')
+               }
+             ]
+           )
+         } 
+         />
+        )
+      }
+  }
+  
+
+  if(valueItems){
+      if(userTokem){
+        return  (
+          <Button finishButton label="Carrinho Vazio"/>
+        )
+      }
+  }
+
+
+  if(valueItems){
+    if(!userTokem && valueItems.length <= 0){
       return  (
-        <Button finishButton label="Finalizar" onPress={() => this.props.navigation.navigate('Payment')} />
+        <Button finishButton label="Carrinho Vazio"/>
       )
     }
-    return (
-      <Button finishButton label="Finalizar"
-       onPress={
-         () => Alert.alert('Login','Faça Login para concluir sua compra',
-          [
-            {
-              text:'Voltar Home',
-              onPress:() => this.props.navigation.navigate('Home')
-            },
-            {
-              text:'Fazer Login :) ',
-              onPress:() => this.props.navigation.navigate('Auth')
-            }
-          ]
-        )
-      } 
-      />
-    )
+}
 
-  }
+
+}
 
 
   willFocus = this.props.navigation.addListener('willFocus', () => {this.captureProduct()})
