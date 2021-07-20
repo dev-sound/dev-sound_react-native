@@ -118,6 +118,43 @@ module.exports = (app) => {
                 .catch((erro) => {
                     response.status(500).send(`Erro ao conectar no banco de dados MongoDB: ${erro}`)
                 })
+            },
+            trocaSenhaLogado (request, response){
+                mongoose.connect(
+                    app.constantes.constsDB.connectDB,
+                    app.constantes.constsDB.connectParams
+                )
+                .then(()=> {
+                    const UsuarioDB = app.src.models.schemaUsuarios
+                    const tokenLogin = request.headers.authorization
+                    const verify = jwt.verify(tokenLogin, app.constantes.constSec.chaveJWT)
+                    if(verify){
+                        const senha = request.body.confirmaSenha
+                       const  criptSenha = bcrypt.hashSync(`${senha}`, app.constantes.constSec.custoHash)
+                        UsuarioDB.updateOne({
+                            email: verify.login,
+                        }, {
+                            $set: {
+                                senhaValida : criptSenha
+                            }
+                        })
+                        .then(()=>{
+                            console.log('Senha alterada com sucesso')
+                            response.status(200).send('Senha alterada com sucesso')
+                        })
+                        .catch(erro => {
+                            console.log(erro)
+                            response.status(500).send('erro ao atualizar o documento')
+                        })
+                    }else{
+                        console.log('Usuario não conectado')
+                        response.status(401).send('Usuario não conectado')
+                    }
+                })
+                .catch(erro => {
+                    console.log(erro)
+                    response.status(500).send(`Erro ao conectar no banco de dados MongoDB: ${erro}`)
+                })
             }
         }
     return UsuarioController

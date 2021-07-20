@@ -8,6 +8,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const initialState = {
+
     productName: "",
     productImage: "",
     productPrice: "",
@@ -21,10 +22,15 @@ export default class Product extends Component{
 
     async componentDidMount (){
    
-     await this.ProductDBImports()
-   
+    await this.ProductDBImports()
+    await this.ProductBanner()
 
     }
+
+    componentWillReceiveProps(){
+     this.ProductBanner()
+    }
+
     tratarPreco = (preco) => {
         let precoConvertido = parseFloat(preco).toFixed(2)
         return `R$${precoConvertido.replace('.', ',')}`
@@ -33,10 +39,14 @@ export default class Product extends Component{
     saveStorage = async () => {
 
         const dataProduct = {
-            _id:(Math.random()*1000),
-            productName:this.state.productName,
-            productImage:this.state.productImage,
-            productPrice:this.state.productPrice
+            id_Produto:this.state.productID,
+            nome:this.state.productName,
+            img:this.state.productImage,
+            modelo:this.state.productModel,
+            categoria:this.state.productCategory,
+            valor_unitario:this.state.productPrice,
+            qtd_Produto:1,
+            excludeID:(Math.random()*1000),
         }
 
         let arrProduct = []
@@ -67,33 +77,87 @@ export default class Product extends Component{
         let productId = this.props.navigation.getParam('id')
         await axios.get(`http://10.0.3.2:3000/produtos/id/${productId}`)
         .then((infos) => {
-        this.setState({
-            productID: infos.data[0]._id,
-            productName: infos.data[0].nome,
-            productImage: infos.data[0].img,
-            productPrice: infos.data[0].preco,
-            productDescription: infos.data[0].descricao,
-            productSpecs: infos.data[0].especificacao
+
+
+            this.setState({
+                productID: infos.data[0]._id,
+                productName: infos.data[0].nome,
+                productImage: infos.data[0].img,
+                productPrice: infos.data[0].preco,
+                productDescription: infos.data[0].descricao,
+                productSpecs: infos.data[0].especificacao,
+                productModel:infos.data[0].modelo,
+                productCategory:infos.data[0].categoria,
+                estoqueProduct:infos.data[0].estoque
             })
         })
     }
 
     willFocus = this.props.navigation.addListener('willFocus', () => {this.ProductDBImports()})
 
+ 
 
+    ProductBanner = async () => {
+        let productName = this.props.navigation.getParam('nome')
+
+        await axios.get(`http://10.0.3.2:3000/produtos/${productName}`)
+        .then((infos) => {
+            
+            this.setState({
+                productID: infos.data[0]._id,
+                productName: infos.data[0].nome,
+                productImage: infos.data[0].img,
+                productPrice: infos.data[0].preco,
+                productDescription: infos.data[0].descricao,
+                productSpecs: infos.data[0].especificacao,
+                estoqueProduct:infos.data[0].estoque
+            })
+        
+        
+        })
+        
+    }
+
+    willFocus = this.props.navigation.addListener('willFocus', () => {this.ProductBanner()})
+
+    tratarPreco = (preco) => {
+        let precoConvertido = parseFloat(preco).toFixed(2)
+        return `R$${precoConvertido.replace('.', ',')}`
+    }
+
+
+    estoqueValidItem = () => {
+        let estoqueItem = this.state.estoqueProduct
+        console.warn(estoqueItem)
+
+        if(estoqueItem > 0 ){
+            return (
+                <View style={styles.inlineContainer}>
+                    <Button 
+                    onPress={() => this.envProduct()}
+                    label='Comprar'/>
+                </View>
+            )
+        }
+
+        return(
+            <View style={styles.failPaymentEstoque}>
+                <Text style={styles.failPayment}> Sem Estoque </Text>
+             </View>
+        )
+    }
 
     render(){ 
-
+        
         return(
 
             <ScrollView style={styles.scrollviewContainer}>
                 
                 <Header
+                    comeBackHome={() => this.props.navigation.navigate('Home')} 
                     drawer={() => this.props.navigation.openDrawer()} 
                     cart={() => this.props.navigation.navigate('ShopCart')} 
                 />   
-
-                {/* <Search/> */}
 
             <Text style={styles.productTitle}>{this.state.productName}</Text>
             <View style={styles.imageContainer}>
@@ -105,11 +169,7 @@ export default class Product extends Component{
                     <Text style={styles.priceTitle}>Preço</Text>
                     <Text style={styles.price}>{this.tratarPreco(this.state.productPrice)}</Text>
                 </View>
-                <View style={styles.inlineContainer}>
-                    <Button 
-                    onPress={() => this.envProduct()}
-                    label='Comprar'/>
-                </View>
+                {this.estoqueValidItem()}
             </View>
 
             <View style={styles.descriptionContainer}>
@@ -128,6 +188,17 @@ const styles =  StyleSheet.create(
     {   
         scrollviewContainer: {
             backgroundColor: '#F1F1F1'
+        },
+
+        failPayment:{
+            fontSize:23,
+            textAlign:'left'
+        },
+
+        failPaymentEstoque:{
+            justifyContent: 'flex-end',
+            marginTop: 50,
+            width:180
         },
 
         productTitle: {

@@ -18,13 +18,15 @@ const styles = StyleSheet.create({
         width: '90%',
         marginLeft: 20,
         height: 'auto',
+        marginBottom: 25,
+        marginTop: 15
     },
-  teste:{
-    paddingVertical:30,
-    paddingHorizontal: 20,
-    borderWidth: 1,
-    borderRadius: 20,
-    borderColor: '#B8B8B8', 
-
+    teste:{
+        paddingBottom: 30,
+        paddingHorizontal: 20,
+        paddingTop: 10,
+        borderWidth: 1,
+        borderRadius: 20,
+        borderColor: '#B8B8B8', 
   }
 })

@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import {
      Text, StyleSheet, View, ScrollView, 
-     TouchableOpacity, Alert, 
+     TouchableOpacity, Alert, Dimensions
 } from 'react-native'
 import { TextInput } from 'react-native-paper';
 import axios from 'axios'
 import AsyncStorage from "@react-native-async-storage/async-storage"
-
-
 import Portrait from '../components/Register/Portrait'
 import Logo from '../components/Header/logo'
 import Input from '../components/Input'
@@ -33,13 +31,7 @@ let initialState = {
     Validpassword: '',
     Validnumber: '',
     ValidconfirmPassword: '',
-    validPhone: '',
-    editableLastName: false,
-    editableEmail: false,
-    editablePassword: false,
-    editableConfirmPassword: false,
-    editablePhone: false
-    
+    validPhone: ''
 }
 
 export default class Auth extends Component {
@@ -72,7 +64,12 @@ export default class Auth extends Component {
         }
         
         catch(err){
-            console.warn(err)
+            if(`${err}` == 'Error: Request failed with status code 401'){
+                Alert.alert('Erro ao realizar login', `Usuário ou senha inválida  \n\n ${err}`)
+            }else{
+                Alert.alert('Error ao realizar login', `Erro de conexão \n\n${err}`) 
+            }
+            
         }
     }
     signup = async () => {
@@ -85,55 +82,54 @@ export default class Auth extends Component {
                 senhaValida: this.state.confirmPassword,
                 
             })
-            Alert.alert('Usuario cadastrado!')
+            Alert.alert('Usuário cadastrado!')
             this.setState({...initialState})
         }catch (err){
-            console.warn(err)
+            this.regexName(this.state.name)
+            this.regexLastName(this.state.lastName)
+            this.regexEmail(this.state.email)
+            this.regexPhone(this.state.number)
+            this.regexPassword(this.state.password)
+            this.readyToSignup(this.state.confirmPassword)
+            Alert.alert('Erro ao cadastrar', 'Verifique se todos os campos foram preenchidos corretamente' )
         }
         
     }
 
     regexName = (value)=>{
-        const nameValidator = /[A-Z][a-z]/;
+        //regex nome /[A-Z][a-z]/
+        const nameValidator = /[A-Z, À-Ú][a-z, à-ú]/;
         if(nameValidator.test(value)){
-            this.setState({Validname:'valid',
-                            editableLastName:true})
+            this.setState({Validname:'valid'})
         }else{
-            this.setState({Validname:'noValid',
-                            editableLastName:false})
+            this.setState({Validname:'noValid'})
         }
         
     }
     regexLastName= (value) =>{
-        const lastNameValidator = /[A-Z][a-z]/;
+        const lastNameValidator = /[A-Z, À-Ú][a-z, à-ú]/;
         if(lastNameValidator.test(value)){
-            this.setState({ValidlastName: 'valid',
-                            editableEmail: true})
+            this.setState({ValidlastName: 'valid'})
         }else{
-            this.setState({ValidlastName:'noValid',
-                            editableEmail: false})
+            this.setState({ValidlastName:'noValid'})
         }
 
     }
     regexEmail = (value)=>{
         const emailValidator = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
         if(emailValidator.test(value)){
-            this.setState({Validemail: 'valid',
-                            editablePhone: true})
+            this.setState({Validemail: 'valid'})
         }else{
-            this.setState({Validemail: 'noValid',
-                            editablePhone: false})
+            this.setState({Validemail: 'noValid'})
         }
     }
 
     regexPhone = (value)=>{
         const celphoneValidator = /^\(?(?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/;
         if(celphoneValidator.test(value)){
-            this.setState({validPhone: 'valid',
-                            editablePassword: true})
+            this.setState({validPhone: 'valid'})
         }else{
-            this.setState({validPhone: 'noValid',
-                            editablePassword: false})
+            this.setState({validPhone: 'noValid'})
         }
     }
     regexPassword =(value) =>{
@@ -148,12 +144,10 @@ export default class Auth extends Component {
     }
 
     readyToSignup = (value) => {
-        if(value==this.state.password){
-            this.setState({ValidconfirmPassword: 'valid',
-                            disBtn: false})
+        if(value==this.state.password&& value != ''){
+            this.setState({ValidconfirmPassword: 'valid'})
         }else{
-            this.setState({ValidconfirmPassword: 'noValid',
-                             disBtn: true})
+            this.setState({ValidconfirmPassword: 'noValid'})
     }
     }
      
@@ -165,12 +159,14 @@ export default class Auth extends Component {
                     <Logo comeBackHome={() => this.props.navigation.navigate('Home')}/>
                 </View>
                 <Portrait>
-                    <Text style={styles.text}>
-                        {this.state.register ? 'Crie a sua conta': ''}
-                    </Text>              
-                        {/* Signup Start here */}
+                    {/* Signup Start here */}
+                    {this.state.register &&
+                    <View>
+                        <Text style={styles.text}>Crie a sua conta</Text>
+                    </View>}     
                     {this.state.register && 
-                    <Input fieldLabel= 'Nome' 
+                    <Input fieldLabel= 'Nome'
+                        left={<TextInput.Icon name="account-edit" />}
                         validInput = {this.state.Validname}
                         placeholder= 'Insira seu nome' 
                         style={styles.input} 
@@ -178,53 +174,63 @@ export default class Auth extends Component {
                         onBlur={()=>this.regexName(this.state.name)}/>}
                     {this.state.register && 
                     <Input fieldLabel= 'Sobrenome'
+                        left={<TextInput.Icon name="account-edit" />}
                         validInput = {this.state.ValidlastName}
                         placeholder= 'Insira seu sobrenome' 
                         style={styles.input}
-                        editable={this.state.editableLastName}
                         onChangeText={lastName =>this.setState({lastName})}
                         onBlur={()=>this.regexLastName(this.state.lastName)}/>}
                     {this.state.register &&
                     <Input fieldLabel= 'E-mail'
+                        left={<TextInput.Icon name="at" />}
                         validInput = {this.state.Validemail}
                         placeholder= 'Insira seu e-mail'   
-                        editable={this.state.editableEmail}                   
                         style={styles.input} 
                         onChangeText={email =>this.setState({email})} 
                         onBlur={()=>this.regexEmail(this.state.email)}/>}
                     {this.state.register && 
-                    <Input fieldLabel= 'Telefone' 
+                    <Input fieldLabel= 'Celular' 
+                        left={<TextInput.Icon name="cellphone" />}
                         validInput = {this.state.validPhone}
-                        placeholder= '(00)XXXXX-XXXX' 
-                        editable={this.state.editablePhone}
+                        placeholder= 'Insira seu número' 
                         style={styles.input}
                         onChangeText={number =>this.setState({number})}
                         onBlur={()=>this.regexPhone(this.state.number)}/>} 
                     {this.state.register &&                  
                     <Input fieldLabel= 'Senha'
+                        left={<TextInput.Icon name="lock" />}
                         validInput = {this.state.Validpassword}
                         placeholder= 'Crie uma senha' 
-                        editable={this.state.editablePassword}
                         style={styles.input}  
                         secureTextEntry
                         onChangeText={password =>this.setState({password})}
                         onBlur={()=> this.regexPassword(this.state.password)}/>}
+                    {this.state.register &&
+                    <Text>A senha deve conter no mínimo 8 caracteres e um digito numérico</Text>
+                    }
                     {this.state.register && 
                     <Input fieldLabel= 'Confirme sua senha' 
+                        left={<TextInput.Icon name="lock" />}
                         placeholder= 'Confirme a senha'
                         validInput = {this.state.ValidconfirmPassword}
-                        editable={this.state.editableConfirmPassword} 
                         style={styles.input} 
                         secureTextEntry
                         onChangeText={confirmPassword =>this.setState({confirmPassword})}
                         onBlur={()=>this.readyToSignup(this.state.confirmPassword)} />}
+                    {this.state.register &&
+                    <Text>As senhas devem ser iguais</Text>
+                    }
                         {/* Signup end here */}
 
                         {/* Login start here */}
                     {this.state.login &&
+                    <View>
+                        <Text style={styles.text}>Entrar na conta</Text>
+                    </View>}  
+                    {this.state.login &&
                     <Input  left={<TextInput.Icon name="account" />}
-                        fieldLabel= 'Login' 
-                        placeholder= 'Digite seu e-mail' 
+                        fieldLabel= 'E-mail' 
+                        placeholder= 'Insira seu e-mail' 
                         value={this.state.logEmail}
                         onChangeText={logEmail => this.setState({logEmail})}
                         style={styles.input} />}
@@ -233,12 +239,24 @@ export default class Auth extends Component {
                         left={<TextInput.Icon name="lock" />} 
                         left={<TextInput.Icon name="lock" />} 
                         value={this.state.logSenha}
-                        placeholder= 'Crie uma senha' style={styles.input} 
+                        placeholder= 'Insira sua senha' style={styles.input} 
                         onChangeText={logSenha => this.setState({logSenha})} 
                         secureTextEntry/>}
                 </Portrait>
+                    
+                    {/* btn login/signup start here */}
+                {this.state.login &&
+                <View style={styles.btnArea}>
+                    <Btn label='Entrar'  onPress={()=>this.signin()}/>
+                </View>
+                }
+                {this.state.register && 
+                <View  style={styles.btnArea}>
+                    <Btn label='Cadastrar' onPress={()=>this.signup()}/>
+                </View>
+                }
 
-                        {/* Login end here */}
+                {/* Login end here */}
                 {this.state.register && 
                 <TouchableOpacity style={styles.create} 
                     onPress={()=>this.setState({...initialState})}>
@@ -249,44 +267,56 @@ export default class Auth extends Component {
                     onPress={()=>this.setState({login: false,
                                                 register: true})}>
                         <Text style={styles.textCreate}>Criar minha conta</Text>
-                </TouchableOpacity>}
-                    
-                    {/* btn login/signup start here */}
+                </TouchableOpacity>
+                }
                 {this.state.login && 
-                <Btn label='ENTRAR'  onPress={()=>this.signin()}/>}
-                {this.state.register && 
-                <Btn label='CADASTRAR' onPress={()=>this.signup()} disabled={this.state.disBtn}/>}
+                <TouchableOpacity style={styles.create}
+                onPress={()=>this.props.navigation.navigate('ChangePassMail')}>
+                    <Text style={styles.textCreate}>Esqueci minha senha</Text>
+                </TouchableOpacity>
+                }
             </ScrollView>
         )
      }
 }
 const styles = StyleSheet.create({
-    container:{
+    container: {
+        backgroundColor: '#F1F1F1',
     },
-    logoArea:{
-        justifyContent:'center',
-        alignItems:'center',
-        padding:35,
-        
+
+    logoArea: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 35,
     },
-    input:{
+    
+    input: {
         fontSize: 25,
-        
-        
+        marginBottom: 5,
+        marginTop: 10
     },
+
     text: {
         fontSize: 28,
-        textAlign: 'center'
+        textAlign: 'center',
+        marginTop: 5,
+        marginRight: 10
     },
+
     create: {
-        justifyContent:'center',
-        alignItems:'center',
-        padding:35,
-        
+        justifyContent: 'center',
+        alignItems: 'center',
     },
+
     textCreate: {
-        color:'#17133B',
-        textDecorationLine: 'underline'
-        
+        color: '#17133B',
+        textDecorationLine: 'underline',
+        fontSize: 18,
+        marginBottom: 18
+    },
+    
+    btnArea: {
+        marginBottom: 25
     }
+    
 })

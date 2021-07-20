@@ -27,7 +27,7 @@ export default class Contact extends Component {
         this.setState({ focus: true })
     }
     inputArea = () => {
-        this.setState({focus: false})
+        this.setState({ focus: false })
         this.validMessage()
     }
     //funções para capturar caracteres dos inputs
@@ -45,7 +45,8 @@ export default class Contact extends Component {
     }
     //validações do Input
     validName = () => {
-        const regexname = /[A-Z][a-z]* [A-Z][a-z]*/
+        // regex nome completo /[A-Z][a-z]* [A-Z][a-z]*/
+        const regexname = /[A-Z, À-Ú][a-z, à-ú]* [A-Z, À-Ú][a-z, à-ú]*/
         if (regexname.test(this.state.nome)) {
             this.setState({ validNome: 'valid' })
         } else {
@@ -74,7 +75,10 @@ export default class Contact extends Component {
             this.setState({ validMensagem: 'noValid' })
         }
     }
-    contact = async () => {
+    //asyncstorage
+    contact = async () => { 
+        if (this.state.nome == "valid" && !this.state.nome && this.state.email == "valid" && !this.state.email 
+        && this.state.assunto == "valid" && !this.state.assunto && this.state.mensagem == "valid" && !this.state.mensagem){
         try {
             await axios.post("http://10.0.3.2:3000/contato", {
                 nome: this.state.nome,
@@ -82,24 +86,31 @@ export default class Contact extends Component {
                 assunto: this.state.assunto,
                 mensagem: this.state.mensagem,
             })
-            Alert.alert('Mensagem enviada!')
+            Alert.alert('Mensagem enviada!', 'A equipe Dev.Sound agradece seu contato. ')
             this.setState({ ...initialState })
         } catch (err) {
             this.validName()
             this.validEmail()
             this.validTopic()
             this.validMessage()
-            Alert.alert('Verifique se todos os campos foram preenchidos.')
+            Alert.alert('Erro', 'Verifique se todos os campos foram preenchidos corretamente.')
         }
+    }else {
+        Alert.alert('Erro', 'Verifique se todos os campos foram preenchidos corretamente.')
     }
+}
+
     render() {
         return (
-            <View style={styles.container}>
-                <Header drawer={() => this.props.navigation.openDrawer()} />
+            <ScrollView style={styles.container}>
+                <Header drawer={() => this.props.navigation.openDrawer()}
+                    comeBackHome={() => this.props.navigation.navigate('Home')}
+                    cart={() => this.props.navigation.navigate('ShopCart')}
+                />
                 <View style={styles.titleContainer}>
                     <Title title='Contato' />
                 </View>
-                <ScrollView>
+                <View>
                     <Input
                         styleInput={styles.styleInput}
                         inputContainer={styles.inputContainer}
@@ -156,18 +167,18 @@ export default class Contact extends Component {
                             onPress={() => this.contact()}
                         />
                     </View>
-                </ScrollView>
-            </View>
+                </View>
+            </ScrollView>
         )
     }
 }
 const styles = StyleSheet.create({
     container: {
-        width: '100%'
+        width: '100%',
+        backgroundColor: '#F1F1F1'
     },
     titleContainer: {
-        paddingTop: 25,
-        paddingBottom: 15
+        paddingBottom: 10
     },
     label: {
         fontSize: 22,
@@ -185,7 +196,8 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         paddingTop: 25,
-        marginHorizontal: 120
+        marginHorizontal: 120,
+        marginBottom: 40
     },
     textareaContainer: {
         justifyContent: 'center',

@@ -30,7 +30,7 @@ export default class Home extends Component {
 
 
 
-
+  willFocus = this.props.navigation.addListener('willFocus', () => {this.componentDidMount()})
   state={
     infos:'',
     respProdutos:[],
@@ -60,18 +60,21 @@ export default class Home extends Component {
   }
 
 
-   
+
     renderProductSpotlight = ({item}) =>  {
+      
       return (
         <View style={style.productOnly}>
           <ProductOnly
             onPress={() => this.props.navigation.navigate('Product', {id: item._id})}
             imgProduct={item.img}
+            itemEstoque = {item.estoque}
             nameProduct={item.nome}
             price={item.preco}
           />
         </View>
       )
+    
     }
 
     renderProductNewer = ({item}) => {
@@ -79,6 +82,7 @@ export default class Home extends Component {
       <View style={style.productOnly}>
         <ProductOnly
           onPress={() => this.props.navigation.navigate('Product', {id: item._id})}
+          itemEstoque = {item.estoque}
           imgProduct={item.img}
           nameProduct={item.nome}
           price={item.preco}
@@ -86,6 +90,7 @@ export default class Home extends Component {
       </View>
       )
     }
+
 
 
 
@@ -109,17 +114,17 @@ export default class Home extends Component {
               loop={false}
               autoplay={false}
             >
-              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Product', {nome: 'GUITARRA FENDER® SIG SERIES JIMI HENDRIX STRATOCASTER®'})} >
+              {/* <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Product', {nome: 'GUITARRA FENDER® SIG SERIES JIMI HENDRIX STRATOCASTER®'})} > */}
               <Image style={{width:'97%', height: BannerHeight, borderRadius: 10}} source={ImagesProject.BannerImg.Banner1} />
-              </TouchableWithoutFeedback>
+              {/* </TouchableWithoutFeedback> */}
 
-              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Product', {nome: 'GUITARRA FENDER® SIG SERIES JIMMY PAGE TELECASTER®'})}>
+              {/* <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Product', {nome: 'GUITARRA FENDER® SIG SERIES JIMMY PAGE TELECASTER®'})}> */}
               <Image style={{width:'97%', height: BannerHeight, borderRadius: 10}} source={ImagesProject.BannerImg.Banner2} />
-              </TouchableWithoutFeedback>
+              {/* </TouchableWithoutFeedback> */}
 
-              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Product', {nome: 'GUITARRA FENDER® SIG SERIES RICHIE BLACKMORE STRATOCASTER®'})}>
+              {/* <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Product', {nome: 'GUITARRA FENDER® SIG SERIES RICHIE BLACKMORE STRATOCASTER®'})}> */}
               <Image style={{width:'97%', height: BannerHeight, borderRadius: 10}} source={ImagesProject.BannerImg.Banner3} />
-              </TouchableWithoutFeedback>
+              {/* </TouchableWithoutFeedback> */}
             </Carousel>
           </View>
 

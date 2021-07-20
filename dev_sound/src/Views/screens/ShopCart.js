@@ -13,7 +13,7 @@ export default class ShopCart extends Component {
   state ={
     valueTotal:0,
     items:[],
-    userInfos:{}
+    userInfos:{},
   }
 
 
@@ -52,7 +52,7 @@ export default class ShopCart extends Component {
     }    
 
     return (
-      <Text style={[styles.total, { fontWeight: "500", }]}>{`R$ ${(sumsItem).toFixed(2)}`}</Text>
+      <Text style={[styles.total, { fontWeight: "500", }]}>{`R$${(sumsItem).toFixed(2)}`}</Text>
     )
     
   }
@@ -79,33 +79,55 @@ export default class ShopCart extends Component {
 
     let userTokem = this.state.userInfos
     let valueItems = this.state.items
-    
-    if(userTokem && valueItems){
-      return  (
-        <Button label="Finalizar" onPress={() => this.props.navigation.navigate('Payment')} />
-      )
+  
+   
+    if(valueItems){
+        if(userTokem && valueItems.length >= 1){
+          return  (
+            <Button finishButton label="Finalizar" onPress={() => this.props.navigation.navigate('Payment')} />
+          )
+        }
     }
 
-    return (
-      <Button label="Finalizar"
-       onPress={
-         () => Alert.alert('Login','Faça Login para concluir sua compra',
-          [
-            {
-              text:'Voltar Home',
-              onPress:() => this.props.navigation.navigate('Home')
-            },
-            {
-              text:'Fazer Login :) ',
-              onPress:() => this.props.navigation.navigate('Auth')
-            }
-          ]
+    if(valueItems){
+      if(!userTokem && valueItems.length >= 1) {
+        return (
+          <Button finishButton label="Finalizar"
+          onPress={
+            () => Alert.alert('Login','Faça Login para concluir sua compra',
+             [
+               {
+                 text:'Fazer Login',
+                 onPress:() => this.props.navigation.navigate('Auth')
+               }
+             ]
+           )
+         } 
+         />
         )
-      } 
-      />
-    )
-
+      }
   }
+  
+
+  if(valueItems){
+      if(userTokem){
+        return  (
+          <Button finishButton label="Carrinho Vazio"/>
+        )
+      }
+  }
+
+
+  if(valueItems){
+    if(!userTokem && valueItems.length <= 0){
+      return  (
+        <Button finishButton label="Carrinho Vazio"/>
+      )
+    }
+}
+
+
+}
 
 
   willFocus = this.props.navigation.addListener('willFocus', () => {this.captureProduct()})
@@ -119,11 +141,18 @@ export default class ShopCart extends Component {
           <ScrollView>
            
            <View>
-             <Header 
-             drawer={() => this.props.navigation.openDrawer()}
-              //  cartQuant={this.state.items.length}
-             />
+           <Header drawer={() => this.props.navigation.openDrawer()}
+                    comeBackHome={() => this.props.navigation.navigate('Home')}
+                    cart={() => this.props.navigation.navigate('ShopCart')}
+                />
               <Title title="Seu carrinho" />
+
+              <View style={styles.totalPrice}>
+                <Text style={styles.total}>Subtotal: </Text>
+            
+                  {this.sumItems()}
+            
+               </View>
              
             <FlatList
                  data={this.state.items}
@@ -141,30 +170,15 @@ export default class ShopCart extends Component {
             />
             
              </View>
-             
-           <View style={styles.totalPrice}>
-                <Text style={styles.total}>Total: </Text>
-            
-                  {this.sumItems()}
-            
-               </View>
-
-               {this.buttonPayment()}
             </ScrollView>
+
+            {this.buttonPayment()}
               
       </SafeAreaView>
     )
   }
 
 }
- 
-
-
-
-
-
-
-
 
 const styles = StyleSheet.create(
   {
@@ -172,14 +186,15 @@ const styles = StyleSheet.create(
       flex: 1,
       backgroundColor: "#F1F1F1",
     },
+
     totalPrice: {
       flexDirection: "row",
-      justifyContent: "center",
-      paddingTop: 30,
-      paddingBottom: 16
+      marginLeft: 10,
+      marginTop: 5
     },
+
     total: {
-      fontSize: 20,
+      fontSize: 18,
       textDecorationStyle: "solid",
       fontWeight: "700",
       paddingBottom: 10

@@ -3,7 +3,9 @@ import Product from './src/Views/screens/Product';
 import Auth from './src/Views/screens/Auth';
 import Payment from './src/Views/screens/Payment';
 import Menu from './src/Views/screens/Menu';
-
+import ChangePassLogin from './src/Views/screens/ChangePassLogin';
+import ChangePassMail from './src/Views/screens/ChangePassMail';
+import Details from './src/Views/screens/Details';
 import Category from './src/Views/screens/Category';
 import CategoryViolao from './src/Views/screens/Category';
 import CategoryContrabaixos from './src/Views/screens/Category';
@@ -18,6 +20,7 @@ import SearchResult from './src/Views/screens/SearchResult';
 import Profile from './src/Views/screens/Profile'
 import ShopCart from './src/Views/screens/ShopCart'
 import Contact from './src/Views/screens/Contact'
+import OrderDone from './src/Views/screens/OrderDone';
 
 
 import { createAppContainer,createSwitchNavigator } from 'react-navigation';
@@ -112,6 +115,22 @@ const Navigator = createAppContainer(
         SearchResult: {
           name: 'SearchResult',
           screen: SearchResult
+        },
+        OrderDone: {
+          name: 'OrderDone',
+          screen: OrderDone
+        },
+        ChangePassLogin: {
+          name: 'ChangePassLogin',
+          screen: ChangePassLogin
+        },
+        ChangePassMail: {
+          name: 'ChangePassMail',
+          screen: ChangePassMail
+        },
+        Details: {
+          name: 'Details',
+          screen: Details
         }
     
       },{

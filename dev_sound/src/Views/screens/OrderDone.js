@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import Header from '../components/Header/'
 import ProductOrder from '../components/ProductOrder/ProductOrder'
@@ -12,20 +13,31 @@ import Button from '../components/Button'
 
 export default class OrderDone extends Component {
 
+    
 
-
-    async componentDidMount () {
+    customDidMount = async () => {
+        AsyncStorage.removeItem('product')
         const userData  = await AsyncStorage.getItem('userData')
         const parseUserData = JSON.parse(userData)
         
-        let resp =  await axios.get(`http://10.0.3.2:3000/usuario/email/${parseUserData.email.login}`)
-        const lastOrder = resp.data.Pedidos.lenght-1
-        this.setState({clientOrderId: resp.data.Pedidos[lastOrder].idPedido})
+        const resp =  await axios.get(`http://10.0.3.2:3000/usuario/email/${parseUserData.email.login}`)
+        const order = resp.data[0].Pedidos
+        const lastOrder = order[order.length-1]
+        this.setState({productId: lastOrder.idPedido})
+        this.setState({date: lastOrder.dataPedido})
     }
 
+    componentDidMount() {
+        this.customDidMount()
+    }
+
+    willFocus = this.props.navigation.addListener('willFocus',
+    () => {this.customDidMount()}
+    )
+
     state = {
-        id_pedido = '',
-        date = new Date(),
+        productId : '',
+        date : '',
     }
 
     // getOrder = async () => {
@@ -38,20 +50,16 @@ export default class OrderDone extends Component {
     // }
 
 
-    dataPrediction = () => {
-        let dataPrevista = this.state.data.getDate() + 7
-        let formatedDate = dataPrevista
-    }
-
 
 
     render() {
         return (
-            <View>
+            <ScrollView style={styles.container}>
                 <Header
                     drawer={() => this.props.navigation.openDrawer()} 
-                    cart={() => this.props.navigation.navigate('ShopCart')} />
-                <ScrollView style={styles.container}>
+                    cart={() => this.props.navigation.navigate('ShopCart')}
+                    comeBackHome={() => this.props.navigation.navigate('Home')} />
+                <View style={styles.messageContainer}>
                     {/* mensagem de confirmação */}
                     <View style={styles.containerRow}>
                         <Icon name='check' color='green' size={60}/>
@@ -64,16 +72,16 @@ export default class OrderDone extends Component {
                     <View style={styles.containerGrey}>
                         <View style={styles.containerRow}>
                             <Text style={styles.text}>Número do pedido: </Text>
-                            <Text style={styles.textN}>{this.state.respPedido._id}</Text>
+                            <Text style={styles.textN}>{this.state.productId.substring(2,14)}</Text>
                         </View>
                         <View style={styles.containerRow}>
-                            <Text style={styles.text}>Entrega prevista para: </Text>
-                            <Text style={styles.textN}>{this.dataPrediction()}</Text>
+                            <Text style={styles.text}>Data do pedido: </Text>
+                            <Text style={styles.textN}>{this.state.date.substring(0,10)}</Text>
                         </View>
                         <View style={styles.containerRow}>
                             <Text style={styles.textSub}>Veja mais em </Text>
                             <Button onPress={() => {this.props.navigation.navigate('Profile')}}
-                                smallButton label='MEU PERFIL'/>
+                                smallButton label='Meu Perfil'/>
                         </View>    
                     </View>
                     {/* resumo pedido */}
@@ -81,15 +89,18 @@ export default class OrderDone extends Component {
                         <Title title='Resumo do pedido'/>
                     </View>
                     <ProductOrder/> */}
-                </ScrollView>
-            </View>
+                </View>
+            </ScrollView>
         )
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 60
+        backgroundColor: '#F1F1F1'
+    },
+    messageContainer:{
+        marginTop: 20
     },
     containerRow: {
         flexDirection: 'row',
