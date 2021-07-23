@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, StyleSheet, TouchableOpacity, Image, View, Dimensions } from 'react-native'
-
+const format = require('../components/Common/moneyFormat')
 export default props => {
 
     const stylesContainer = [styles.container]
@@ -24,7 +24,7 @@ export default props => {
 
                         <View style={styles.price}>
                             <Text style={styles.priceTitle}>Preço unitário</Text>
-                            <Text style={styles.value}>R${props.priceUnit}</Text>
+                            <Text style={styles.value}>{format.moneyFormat(props.priceUnit)}</Text>
                         </View>
                     </View>
                 </View>
@@ -54,7 +54,7 @@ export default props => {
 
                     <View style={styles.price}>
                         <Text style={styles.priceTitle}>Preço unitário</Text>
-                        <Text style={styles.value}>R${props.priceUnit}</Text>
+                        <Text style={styles.value}>{format.moneyFormat(props.priceUnit)}</Text>
                     </View>
                 </View>
             </View>

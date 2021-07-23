@@ -6,7 +6,7 @@ import React, { Component } from 'react'
 import { Text, FlatList, StyleSheet, View, Dimensions } from 'react-native'
 import axios from 'axios';
 import { ScrollView } from 'react-native-gesture-handler';
-
+const format = require('../components/Common/moneyFormat')
 
 const initialState = {
     products: [],
@@ -75,6 +75,8 @@ export default class Details extends Component {
         )
     }
     render() {
+        console.warn(this.state.dataCompra)
+        
         return (
             <ScrollView style={style.scrollContainer}>
                 <Header drawer={() => this.props.navigation.openDrawer()}
@@ -95,7 +97,7 @@ export default class Details extends Component {
                 </View>
                 <View style={style.orderData}>
                 <Text style={style.subTitle}>Total da compra: </Text>
-                <Text style={style.text}>R${this.state.totalValue}</Text>
+                <Text style={style.text}>{format.moneyFormat(this.state.totalValue)}</Text>
                 </View>
                 <Text style={style.subTitleItems}>Itens comprados: </Text>
                 </View>

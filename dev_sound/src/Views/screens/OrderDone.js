@@ -76,7 +76,7 @@ export default class OrderDone extends Component {
                         </View>
                         <View style={styles.containerRow}>
                             <Text style={styles.text}>Data do pedido: </Text>
-                            <Text style={styles.textN}>{this.state.date.substring(0,10)}</Text>
+                            <Text style={styles.textN}>{this.state.date}</Text>
                         </View>
                         <View style={styles.containerRow}>
                             <Text style={styles.textSub}>Veja mais em </Text>

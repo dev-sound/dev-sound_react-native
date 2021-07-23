@@ -1,3 +1,5 @@
+import 'intl';
+import 'intl/locale-data/jsonp/pt-BR';
 import React,{Component}  from 'react';
 import { View, SafeAreaView, Text, StyleSheet, FlatList, ScrollView, Alert } from 'react-native';
 import Header from '../components/Header';
@@ -6,7 +8,7 @@ import Title from '../components/Title';
 import respItem from '../components/ShopCart/respItem';
 import Button from '../components/Button';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+const format = require('../components/Common/moneyFormat')
 
 export default class ShopCart extends Component {
 
@@ -38,7 +40,13 @@ export default class ShopCart extends Component {
     this.setState({userInfos:users}) 
   }
 
-
+  // moneyFormat = (money) => {
+  //   let formatter = new Intl.NumberFormat([], {
+  //     style: 'currency',
+  //     currency: 'BRL'
+  //   })
+  //   return formatter.format(money)
+  // }
 
   sumItems = () => {
     
@@ -51,8 +59,9 @@ export default class ShopCart extends Component {
       for (let i = 0; i < arrPrice.length; i++ ) { sumsItem += arrPrice[i] }
     }    
 
+    // `R$${(sumsItem).toFixed(2)}`
     return (
-      <Text style={[styles.total, { fontWeight: "500", }]}>{`R$${(sumsItem).toFixed(2)}`}</Text>
+      <Text style={[styles.total, { fontWeight: "500", }]}>{format.moneyFormat(sumsItem)}</Text>
     )
     
   }
@@ -133,7 +142,6 @@ export default class ShopCart extends Component {
   willFocus = this.props.navigation.addListener('willFocus', () => {this.captureProduct()})
 
   render(){
-
     
     return(
       <SafeAreaView style={styles.container}>

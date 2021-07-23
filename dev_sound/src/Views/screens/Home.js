@@ -1,3 +1,5 @@
+import 'intl';
+import 'intl/locale-data/jsonp/pt-BR';
 import React, { Component } from 'react';
 import {View,Image,StyleSheet,ScrollView,Dimensions,FlatList,Text,TouchableWithoutFeedback} from 'react-native';
 import Search  from '../components/Search';

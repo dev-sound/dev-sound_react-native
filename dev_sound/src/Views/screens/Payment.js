@@ -12,7 +12,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import axios from 'axios'
 import Title from '../components/Title'
 import Header from '../components/Header'
-
+const format = require('../components/Common/moneyFormat')
 
 
 const disabledInputs = [
@@ -442,18 +442,18 @@ export default class Payment extends Component {
             <View style={styles.areaPrice}>
             <Text style={styles.resumeText}>Subtotal:</Text>
             
-                <Text>R$ {parseFloat(subtotal).toFixed(2)}</Text>
+                <Text>{format.moneyFormat(subtotal)}</Text>
             
             </View>
 
             <View style={styles.areaPrice}>
                 <Text style={styles.resumeText}>Frete fixo:</Text>
-                <Text style={styles.resumeText}>R$100</Text>  
+                <Text style={styles.resumeText}>{format.moneyFormat(100)}</Text>  
             </View>
 
             <View style={styles.areaPrice}>
                 <Text style={styles.priceTotal}>Total: </Text>
-                <Text style={styles.priceTotal}>R${(parseFloat(subtotal + shipping).toFixed(2))}</Text>
+                <Text style={styles.priceTotal}>{format.moneyFormat(subtotal + shipping)}</Text>
             </View>
         </>
         )

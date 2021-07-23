@@ -6,7 +6,7 @@ module.exports = app => {
         {
             id_cliente:{type:String,required:true},
             EmailCliente:{type:String,required:true},
-            data_compra:{type:Date,required:true},
+            data_compra:{type:String,required:true},
             previsao_entrega:{type:String,required:true},
             Produtos:[
                 {

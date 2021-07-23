@@ -1,3 +1,5 @@
+import 'intl';
+import 'intl/locale-data/jsonp/pt-BR';
 import { set } from 'mongoose'
 import React, { useState } from 'react'
 import { View, Image, Text, TouchableOpacity, StyleSheet, Dimensions} from 'react-native'
@@ -17,7 +19,13 @@ export default (props) => {
             
         }
     }
-
+    function moneyFormat(money){
+        let formatter = new Intl.NumberFormat([], {
+          style: 'currency',
+          currency: 'BRL'
+        })
+        return formatter.format(money)
+      }
     //função para diminuir a quantidade dos itens selecionados
     function decrement() {
         if (number > 1) {
@@ -55,7 +63,7 @@ export default (props) => {
 
                     <View style={styles.priceContainer}>
                     <Text style={styles.priceTitle}>Preço unitário</Text>
-                    <Text style={styles.priceValue}>{`R$${props.database.item.valor_unitario}`}</Text>
+                    <Text style={styles.priceValue}>{moneyFormat(props.database.item.valor_unitario)}</Text>
                     </View>
                 </View>
         </View>

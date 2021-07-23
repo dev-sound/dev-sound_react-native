@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Text, StyleSheet, TouchableOpacity, Image, View, Dimensions} from 'react-native'
-
+const format = require('../components/Common/moneyFormat')
 
 
 export default class ProductOnly extends Component{
@@ -10,10 +10,6 @@ export default class ProductOnly extends Component{
         
     }
 
-    tratarPreco = (preco) => {
-        let precoConvertido = parseFloat(preco).toFixed(2)
-        return `R$${precoConvertido.replace('.', ',')}`
-    }
 
 
 
@@ -32,7 +28,7 @@ export default class ProductOnly extends Component{
                         <Text style={styles.title} numberOfLines={3}>{this.props.nameProduct}</Text>
                     </View>
                     <View>
-                        <Text style={styles.price}>{this.tratarPreco(this.props.price)}</Text>
+                        <Text style={styles.price}>{format.moneyFormat(this.props.price)}</Text>
                     </View>
                 </TouchableOpacity>
             )

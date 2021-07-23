@@ -83,19 +83,21 @@ module.exports = app => {
                                 .then(infoEndereco => {
 
                                     /* Fim Cadastro de endereço e inicio de cadastro de Produtos do Pedido*/
-
+                                    let formatter = new Intl.DateTimeFormat('pt-BR')
                                     const PedidoDB = app.src.models.schemaPedido
                                     const ProdutoDB = app.src.models.schemaProdutos
 
                                     const idClient = usuarioInfo.id
                                     const emailClient = usuarioInfo.email
-                                    const DataCompra = new Date()
+                                    const DataCompra = formatter.format(new Date())
                                     const previsaoEntrega = "7 Dias"
 
                                     const frete = 100
 
                                     const infosPedido = request.body
                                     const produtos = request.body.Produtos
+                                    
+                                     
 
                                     /* Nesta etapa de Produtos do pedido, inserimos diversas regras ,
                                        começamos setando valores fixos , e realizando operações aritmeticas,
